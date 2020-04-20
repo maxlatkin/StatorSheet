@@ -21,8 +21,8 @@ public class StatorSheetButton {
 	public static final Logger LOG = LoggerFactory.getLogger(StatorSheetButton.class);
 	
 	private StatorSheetButton() {
-    throw new IllegalStateException("Utility class");
-  }
+		throw new IllegalStateException("Utility class");
+	}
 
 
     public static void start() throws jxthrowable{
@@ -36,7 +36,7 @@ public class StatorSheetButton {
     }
 
     public static void stop() throws jxthrowable{
-    	LOG.info("The StatorSheet application has completed its work.");
+    	LOG.info("The StatorSheet application stopped.");
     }
     
     private static void setLogbackFile() {
