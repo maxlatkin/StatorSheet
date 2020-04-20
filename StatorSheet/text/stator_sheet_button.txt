@@ -1,0 +1,8 @@
+StatorSheet.label
+Stator sheet
+#
+#
+Stator sheet creation.
+Stator sheet creation.
+#
+#
