@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcCommand.DefaultUICommandActionListener;
 
-import ru.sheet.Sheet;
+import ru.main.Main;
 
 public class StatorSheetButtonListener extends DefaultUICommandActionListener {
     public static final Logger LOG = LoggerFactory.getLogger(StatorSheetButtonListener.class);
@@ -14,7 +14,7 @@ public class StatorSheetButtonListener extends DefaultUICommandActionListener {
 	@Override
 	public void OnCommand() throws jxthrowable {
 		LOG.info("The button has been pressed!");
-		Sheet.create();
+		Main.execute();
 		LOG.info("The StatorSheet application completed.\n");
 	}
 }
