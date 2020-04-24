@@ -1,31 +1,24 @@
-package ru.dimensions;
+package ru.assignment;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcDimension.Dimension;
-import com.ptc.pfc.pfcModel.ModelType;
 import com.ptc.pfc.pfcModelItem.ModelItemType;
-import com.ptc.pfc.pfcSession.CreoCompatibility;
-import com.ptc.pfc.pfcSession.Session;
-import com.ptc.pfc.pfcSession.pfcSession;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.data.DataStore;
 
-public class DimAssignment {
-	public static final Logger LOG = LoggerFactory.getLogger(DimAssignment.class);
+public class SheetDimAssignment {
+	public static final Logger LOG = LoggerFactory.getLogger(SheetDimAssignment.class);
 	
-	private DimAssignment() {
+	private SheetDimAssignment() {
 	    throw new IllegalStateException("Utility class");
 	  }
 	
-	public static void assignDims() {
+	public static void assign(Solid currSolid) {
 		try {
-			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
-			Solid currSolid = (Solid)session.GetModel(DataStore.getTempFile(), ModelType.MDL_PART);
-			
 			String sheetSectionName = "SHEET";
 			((Dimension)currSolid.GetFeatureByName(sheetSectionName).
 					ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getExtDiam());

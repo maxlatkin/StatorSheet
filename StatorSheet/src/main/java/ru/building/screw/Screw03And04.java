@@ -18,7 +18,7 @@ public class Screw03And04 implements Screw {
 	@Override
 	public void build(Solid currSolid) {
 		try {
-			if (DataStore.getScrew03Qty() == 2) {
+			if (DataStore.getScrewQty() == 2) {
 				ExtrusionCut screw03Hole = new ExtrusionCut();
 				screw03Hole.build("EXT_SCREW_03_HOLE_2", "SCREW_03_HOLE_2", currSolid);
 				RotatPattern360 screwAr = new RotatPattern360("Z");
@@ -37,7 +37,7 @@ public class Screw03And04 implements Screw {
 						"SCREW_03_HOLE_4", "SCREW_05_HOLE",
 						"SCREW_06_HOLE", "SCREW_07_HOLE");
 				LOG.info("Screw_03And04_Qty=2 is built");
-			} else if (DataStore.getScrew03Qty() == 4) {
+			} else if (DataStore.getScrewQty() == 4) {
 				ExtrusionCut screw03Hole = new ExtrusionCut();
 				screw03Hole.build("EXT_SCREW_03_HOLE_4", "SCREW_03_HOLE_4", currSolid);
 				RotatPattern360 screwAr = new RotatPattern360("Z");
@@ -58,7 +58,7 @@ public class Screw03And04 implements Screw {
 				LOG.info("Screw_03And04_Qty=4 is built");
 			}
 		} catch (jxthrowable e) {
-			LOG.error("Error creating the Screw_03And04", e);
+			LOG.error("Error building the Screw_03And04", e);
 		}
 	}
 

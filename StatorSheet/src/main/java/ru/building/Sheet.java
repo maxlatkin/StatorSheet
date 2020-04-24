@@ -20,7 +20,7 @@ public final class Sheet {
 	    throw new IllegalStateException("Utility class");
 	}
 	
-	public static void create(Solid currSolid) {
+	public static void build(Solid currSolid) {
 		try {
 			ExtrusionAddSym sheetThck = new ExtrusionAddSym();
 			sheetThck.build(DataStore.getSheetThck(), "EXT_SHEET", "SHEET", currSolid);

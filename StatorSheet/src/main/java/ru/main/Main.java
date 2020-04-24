@@ -9,12 +9,11 @@ import com.ptc.pfc.pfcSession.Session;
 import com.ptc.pfc.pfcSession.pfcSession;
 import com.ptc.pfc.pfcSolid.Solid;
 
+import ru.assignment.SheetDimAssignment;
+import ru.assignment.screw.Screw01DimAssignment;
 import ru.building.Sheet;
-import ru.building.screw.Screw;
-import ru.building.screw.Screw07;
 import ru.building.screw.ScrewFactory;
 import ru.data.DataStore;
-import ru.dimensions.DimAssignment;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.templates.TemplateModel;
 
@@ -33,9 +32,10 @@ public class Main {
 			TemplateModel templateModel = new TemplateModel(DataStore.getTempFile(), DataStore.getModelsPath());
 			Solid currSolid = (Solid) templateModel.retrieve();
 			LOG.info("Model is retrieved");
-			DimAssignment.assignDims();
-			Sheet.create(currSolid);
-			
+			SheetDimAssignment.assign(currSolid);
+			Sheet.build(currSolid);
+			Screw01DimAssignment screw01DimAssignment = new Screw01DimAssignment();
+			screw01DimAssignment.assign(currSolid);
 			ScrewFactory.getScrew().build(currSolid);
 			
 			ExtrusionCut transformCoreToSheet = new ExtrusionCut();

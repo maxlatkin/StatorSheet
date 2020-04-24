@@ -21,7 +21,7 @@ public class Screw05 implements Screw {
 			ExtrusionCut screwHole = new ExtrusionCut();
 			screwHole.build("EXT_SCREW_05_HOLE", "SCREW_05_HOLE", currSolid);
 			RotatPattern360 screwAr = new RotatPattern360("Z");
-			screwAr.patternBuild(DataStore.getSegmQty() * DataStore.getScrew05Qty(), 1, 
+			screwAr.patternBuild(DataStore.getSegmQty() * DataStore.getScrewQty(), 1, 
 					"AR_SCREW_05_HOLE", "EXT_SCREW_05_HOLE", currSolid);
 			FetOperations.deleteFeature(currSolid, "SCREW_01_SOLID_2", "SCREW_01_HOLE_2",
 					"SCREW_01_SOLID_4", "SCREW_01_HOLE_4",
@@ -29,9 +29,9 @@ public class Screw05 implements Screw {
 					"SCREW_02_SOLID_4", "SCREW_02_HOLE_4",
 					"SCREW_03_HOLE_2", "SCREW_03_HOLE_4",
 					"SCREW_04_HOLE", "SCREW_06_HOLE", "SCREW_07_HOLE");
-			LOG.info("Screw_05_Qty={} is built", DataStore.getScrew05Qty());
+			LOG.info("Screw_05_Qty={} is built", DataStore.getScrewQty());
 		} catch (jxthrowable e) {
-			LOG.error("Error creating the Screw_05", e);
+			LOG.error("Error building the Screw_05", e);
 		}
 	}
 }

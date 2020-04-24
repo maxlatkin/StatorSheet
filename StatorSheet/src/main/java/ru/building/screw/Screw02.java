@@ -19,7 +19,7 @@ public class Screw02 implements Screw {
 	@Override
 	public void build(Solid currSolid) {
 		try {
-			if (DataStore.getScrew02Qty() == 2) {
+			if (DataStore.getScrewQty() == 2) {
 				ExtrusionAddSym screwSolid = new ExtrusionAddSym();
 				screwSolid.build(DataStore.getSheetThck(), "EXT_SCREW_02_SOLID_2", "SCREW_02_SOLID_2", currSolid);
 				RotatPattern360 screwAr = new RotatPattern360("Z");
@@ -34,7 +34,7 @@ public class Screw02 implements Screw {
 						"SCREW_04_HOLE", "SCREW_05_HOLE",
 						"SCREW_06_HOLE", "SCREW_07_HOLE");
 				LOG.info("Screw_02_Qty=2 is built");
-			} else if (DataStore.getScrew02Qty() == 4) {
+			} else if (DataStore.getScrewQty() == 4) {
 				ExtrusionAddSym screwSolid = new ExtrusionAddSym();
 				screwSolid.build(DataStore.getSheetThck(), "EXT_SCREW_02_SOLID_4", "SCREW_02_SOLID_4", currSolid);
 				RotatPattern360 screwAr = new RotatPattern360("Z");
@@ -51,7 +51,7 @@ public class Screw02 implements Screw {
 				LOG.info("Screw_02_Qty=4 is built");
 			}
 		} catch (jxthrowable e) {
-			LOG.error("Error creating the Screw_02 - {}", e);
+			LOG.error("Error building the Screw_02", e);
 		}
 	}
 }
