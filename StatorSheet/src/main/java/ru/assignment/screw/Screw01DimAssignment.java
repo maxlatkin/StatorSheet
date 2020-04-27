@@ -9,7 +9,6 @@ import com.ptc.pfc.pfcModelItem.ModelItemType;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.data.DataStore;
-import ru.ruselprom.fet.info.Info;
 
 public class Screw01DimAssignment implements ScrewDimAssignment {
 	
@@ -37,7 +36,7 @@ public class Screw01DimAssignment implements ScrewDimAssignment {
 				//Nearest Point
 				((Dimension)currSolid.GetFeatureByName(screwSolid).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.
-								getScrew01NearestPoints().get(DataStore.getScrewDiam()));
+								getScrew0102NearestPoints().get(DataStore.getScrewDiam()));
 				//Far Top Point
 				((Dimension)currSolid.GetFeatureByName(screwSolid).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.
@@ -64,7 +63,7 @@ public class Screw01DimAssignment implements ScrewDimAssignment {
 				String screwSolid = "SCREW_01_SOLID_4";
 				//Int Rad
 				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(14)).SetDimValue(DataStore.getExtDiam()/2);
+						ListSubItems(ModelItemType.ITEM_DIMENSION).get(13)).SetDimValue(DataStore.getExtDiam()/2);
 				//Ext Rad
 				((Dimension)currSolid.GetFeatureByName(screwSolid).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(4)).SetDimValue(DataStore.
@@ -79,7 +78,7 @@ public class Screw01DimAssignment implements ScrewDimAssignment {
 				//Nearest Point
 				((Dimension)currSolid.GetFeatureByName(screwSolid).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.
-								getScrew01NearestPoints().get(DataStore.getScrewDiam()));
+								getScrew0102NearestPoints().get(DataStore.getScrewDiam()));
 				//Far Top Point
 				((Dimension)currSolid.GetFeatureByName(screwSolid).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.
@@ -91,6 +90,9 @@ public class Screw01DimAssignment implements ScrewDimAssignment {
 				//Screw Shift
 				((Dimension)currSolid.GetFeatureByName(screwSolid).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(6)).SetDimValue(DataStore.getScrewShift());
+				//Axis of symmetry for screw
+				((Dimension)currSolid.GetFeatureByName(screwSolid).
+						ListSubItems(ModelItemType.ITEM_DIMENSION).get(14)).SetDimValue(360.0 / DataStore.getSegmQty() / 4);
 				String screwHole = "SCREW_01_HOLE_4";
 				//Mid Rad
 				((Dimension)currSolid.GetFeatureByName(screwHole).
@@ -101,10 +103,11 @@ public class Screw01DimAssignment implements ScrewDimAssignment {
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getScrewDiam());
 				//Screw Shift
 				((Dimension)currSolid.GetFeatureByName(screwHole).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(4)).SetDimValue(DataStore.getScrewShift());
+						ListSubItems(ModelItemType.ITEM_DIMENSION).get(3)).SetDimValue(DataStore.getScrewShift());
+				//Axis of symmetry for screw
+				((Dimension)currSolid.GetFeatureByName(screwHole).
+						ListSubItems(ModelItemType.ITEM_DIMENSION).get(5)).SetDimValue(360.0 / DataStore.getSegmQty() / 4);
 			}
-			Info.getDimensionsInfoIn("SCREW_01_SOLID_4", currSolid);
-			Info.getDimensionsInfoIn("SCREW_01_HOLE_4", currSolid);
 		} catch (jxthrowable e) {
 			LOG.error("Error assigning dimensions to the Screw_01", e);
 		}

@@ -10,7 +10,7 @@ import com.ptc.pfc.pfcSession.pfcSession;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.assignment.SheetDimAssignment;
-import ru.assignment.screw.Screw01DimAssignment;
+import ru.assignment.screw.ScrewDimAssignmentFactory;
 import ru.building.Sheet;
 import ru.building.screw.ScrewFactory;
 import ru.data.DataStore;
@@ -34,8 +34,8 @@ public class Main {
 			LOG.info("Model is retrieved");
 			SheetDimAssignment.assign(currSolid);
 			Sheet.build(currSolid);
-			Screw01DimAssignment screw01DimAssignment = new Screw01DimAssignment();
-			screw01DimAssignment.assign(currSolid);
+			
+			ScrewDimAssignmentFactory.getScrewDimAssignment().assign(currSolid);
 			ScrewFactory.getScrew().build(currSolid);
 			
 			ExtrusionCut transformCoreToSheet = new ExtrusionCut();
