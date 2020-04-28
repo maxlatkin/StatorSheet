@@ -73,8 +73,6 @@ public class SheetDimAssignment {
 					ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getMarkRound());
 			((Dimension)currSolid.GetFeatureByName(markSectionName).
 					ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.getMarkRadius());
-			((Dimension)currSolid.GetFeatureByName(markSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.getMarkShift());
 			LOG.info("Assigned dimensions for the {}", markSectionName);
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Failed to assing dimensions!", e);

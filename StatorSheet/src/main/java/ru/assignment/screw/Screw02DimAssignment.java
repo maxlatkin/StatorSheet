@@ -28,11 +28,11 @@ public class Screw02DimAssignment implements ScrewDimAssignment {
 				//Nearest Point same as in Screw 1
 				((Dimension)currSolid.GetFeatureByName(screwSolid).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.
-								getScrew0102NearestPoints().get(DataStore.getScrewDiam()));
+								getScrew010203NearestPoints().get(DataStore.getScrewDiam()));
 				//Second Nearest Point in Screw 2
 				((Dimension)currSolid.GetFeatureByName(screwSolid).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(3)).SetDimValue(DataStore.
-								getScrew02NearestPoints().get(DataStore.getScrewDiam()));
+								getScrew0203NearestPoints().get(DataStore.getScrewDiam()));
 				//Far Top Point 1
 				((Dimension)currSolid.GetFeatureByName(screwSolid).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(4)).SetDimValue(DataStore.
@@ -66,7 +66,7 @@ public class Screw02DimAssignment implements ScrewDimAssignment {
 				//Second Nearest Point in Screw 2
 				((Dimension)currSolid.GetFeatureByName(screwHole).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.
-								getScrew02NearestPoints().get(DataStore.getScrewDiam()));
+								getScrew0203NearestPoints().get(DataStore.getScrewDiam()));
 				//Ext Rad
 				((Dimension)currSolid.GetFeatureByName(screwHole).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(3)).SetDimValue(DataStore.
@@ -85,11 +85,11 @@ public class Screw02DimAssignment implements ScrewDimAssignment {
 				//Nearest Point same as in Screw 1
 				((Dimension)currSolid.GetFeatureByName(screwSolid).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.
-								getScrew0102NearestPoints().get(DataStore.getScrewDiam()));
+								getScrew010203NearestPoints().get(DataStore.getScrewDiam()));
 				//Second Nearest Point in Screw 2
 				((Dimension)currSolid.GetFeatureByName(screwSolid).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(3)).SetDimValue(DataStore.
-								getScrew02NearestPoints().get(DataStore.getScrewDiam()));
+								getScrew0203NearestPoints().get(DataStore.getScrewDiam()));
 				//Far Top Point 1
 				((Dimension)currSolid.GetFeatureByName(screwSolid).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(4)).SetDimValue(DataStore.
@@ -126,7 +126,7 @@ public class Screw02DimAssignment implements ScrewDimAssignment {
 				//Second Nearest Point in Screw 2
 				((Dimension)currSolid.GetFeatureByName(screwHole).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.
-								getScrew02NearestPoints().get(DataStore.getScrewDiam()));
+								getScrew0203NearestPoints().get(DataStore.getScrewDiam()));
 				//Ext Rad
 				((Dimension)currSolid.GetFeatureByName(screwHole).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(3)).SetDimValue(DataStore.
@@ -135,6 +135,8 @@ public class Screw02DimAssignment implements ScrewDimAssignment {
 				((Dimension)currSolid.GetFeatureByName(screwHole).
 						ListSubItems(ModelItemType.ITEM_DIMENSION).get(6)).SetDimValue(DataStore.getScrewShift());
 			}
+			((Dimension)currSolid.GetFeatureByName("MARK").
+					ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.getMarkShift());
 		} catch (jxthrowable e) {
 			LOG.error("Error assigning dimensions to the Screw_02", e);
 		}

@@ -17,9 +17,21 @@ public class Screw06DimAssignment implements ScrewDimAssignment {
 	@Override
 	public void assign(Solid currSolid) {
 		try {
-			String sheetSectionName = "SHEET";
-			((Dimension)currSolid.GetFeatureByName(sheetSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getExtDiam());
+			String screwHole = "SCREW_06_HOLE";
+			//Screw Wdth
+			((Dimension)currSolid.GetFeatureByName(screwHole).
+					ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getScrew06Wdth());
+			//Rad
+			((Dimension)currSolid.GetFeatureByName(screwHole).
+					ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.getExtDiam()/2);
+			//Screw Shift
+			((Dimension)currSolid.GetFeatureByName(screwHole).
+					ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.getScrewShift());
+			//Mark Shift
+			((Dimension)currSolid.GetFeatureByName("MARK").
+					ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.getMarkShift() + 
+							DataStore.getExtDiam()/2 - Math.sqrt(Math.pow(DataStore.getExtDiam()/2, 2) - Math.
+									pow(DataStore.getScrew06Wdth()/2, 2)));
 		} catch (jxthrowable e) {
 			LOG.error("Error assigning dimensions to the Screw_06", e);
 		}

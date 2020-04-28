@@ -15,6 +15,7 @@ import ru.building.Sheet;
 import ru.building.screw.ScrewFactory;
 import ru.data.DataStore;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
+import ru.ruselprom.fet.info.Info;
 import ru.ruselprom.templates.TemplateModel;
 
 public class Main {
@@ -43,6 +44,7 @@ public class Main {
 			LOG.info("transformCoreToSheet is built");
 			ExtrusionCut mark = new ExtrusionCut();
 			mark.build("EXT_MARK", "MARK", currSolid);
+			Info.getDimensionsInfoIn("MARK", currSolid);
 			LOG.info("mark is built");
 			session.CreateModelWindow(currSolid).Activate();
 		} catch (NullPointerException | jxthrowable e) {

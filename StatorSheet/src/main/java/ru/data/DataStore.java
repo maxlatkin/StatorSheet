@@ -30,16 +30,55 @@ public final class DataStore {
 	private static int screwQty;
 	private static boolean screw04Exist;
 	private static int typeOfScrew;
-	private static Map<Double, Integer> screw0102NearestPoints = new HashMap<>();
-	private static Map<Double, Integer> screw02NearestPoints = new HashMap<>();
+	private static Map<Double, Integer> screw010203NearestPoints = new HashMap<>();
+	private static Map<Double, Integer> screw0203NearestPoints = new HashMap<>();
 	private static Map<Double, Double> screw01ExtRads = new HashMap<>();
-	private static Map<Double, Double> screw02ExtRads = new HashMap<>();
 	private static Map<Double, Double> screw01MidRads = new HashMap<>();
+	private static Map<Double, Double> screw02ExtRads = new HashMap<>();
+	private static Map<Double, Double> screw03IntRads = new HashMap<>();
 	private static Map<Double, Integer> screw01FarTopPoints = new HashMap<>();
 	private static Map<Double, Integer> screw01FarBottomPoints = new HashMap<>();
 	private static double screwDiam;
 	private static double screwShift;
+	private static double screw05Wdth;
+	private static double screw05Hght;
+	private static double screw06Wdth;
+	private static double screw07Wdth;
+	private static double screw07Hght;
 	
+	public static double getScrew07Wdth() {
+		screw07Wdth = 27;
+		return screw07Wdth;
+	}
+
+	public static double getScrew07Hght() {
+		screw07Hght = 9;
+		return screw07Hght;
+	}
+
+	public static double getScrew06Wdth() {
+		screw06Wdth = 100;
+		return screw06Wdth;
+	}
+
+	public static double getScrew05Wdth() {
+		screw05Wdth = 20;
+		return screw05Wdth;
+	}
+
+	public static double getScrew05Hght() {
+		screw05Hght = 5;
+		return screw05Hght;
+	}
+
+	public static Map<Double, Double> getScrew03IntRads() {
+		screw03IntRads.put(20.3, getExtDiam()/2 - 8);
+		screw03IntRads.put(24.3, getExtDiam()/2 - 10);
+		screw03IntRads.put(30.3, getExtDiam()/2 - 12);
+		screw03IntRads.put(36.3, getExtDiam()/2 - 14);
+		return screw03IntRads;
+	}
+
 	public static Map<Double, Double> getScrew02ExtRads() {
 		screw02ExtRads.put(20.3, getExtDiam()/2 + 8);
 		screw02ExtRads.put(24.3, getExtDiam()/2 + 10);
@@ -48,21 +87,21 @@ public final class DataStore {
 		return screw02ExtRads;
 	}
 
-	public static Map<Double, Integer> getScrew02NearestPoints() {
-		screw02NearestPoints.put(20.3, 20);
-		screw02NearestPoints.put(24.3, 22);
-		screw02NearestPoints.put(30.3, 29);
-		screw02NearestPoints.put(36.3, 35);
-		return screw02NearestPoints;
+	public static Map<Double, Integer> getScrew0203NearestPoints() {
+		screw0203NearestPoints.put(20.3, 20);
+		screw0203NearestPoints.put(24.3, 22);
+		screw0203NearestPoints.put(30.3, 29);
+		screw0203NearestPoints.put(36.3, 35);
+		return screw0203NearestPoints;
 	}
 
 	public static double getScrewDiam() {
-		screwDiam = 36.3;
+		screwDiam = 20.3;
 		return screwDiam;
 	}
 
 	public static double getScrewShift() {
-		screwShift = 35;
+		screwShift = 45;
 		return screwShift;
 	}
 
@@ -98,16 +137,16 @@ public final class DataStore {
 		return screw01ExtRads;
 	}
 
-	public static Map<Double, Integer> getScrew0102NearestPoints() {
-		screw0102NearestPoints.put(20.3, 8);
-		screw0102NearestPoints.put(24.3, 10);
-		screw0102NearestPoints.put(30.3, 12);
-		screw0102NearestPoints.put(36.3, 14);
-		return screw0102NearestPoints;
+	public static Map<Double, Integer> getScrew010203NearestPoints() {
+		screw010203NearestPoints.put(20.3, 8);
+		screw010203NearestPoints.put(24.3, 10);
+		screw010203NearestPoints.put(30.3, 12);
+		screw010203NearestPoints.put(36.3, 14);
+		return screw010203NearestPoints;
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 3;
+		typeOfScrew = 5;
 		return typeOfScrew;
 	}
 
@@ -117,7 +156,7 @@ public final class DataStore {
 	}
 
 	public static int getScrewQty() {
-		screwQty = 4;
+		screwQty = 2;
 		return screwQty;
 	}
 
