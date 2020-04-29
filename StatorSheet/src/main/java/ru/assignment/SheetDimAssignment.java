@@ -25,14 +25,16 @@ public class SheetDimAssignment {
 			((Dimension)currSolid.GetFeatureByName(sheetSectionName).
 					ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.getIntDiam());
 			LOG.info("Assigned dimensions for the {}", sheetSectionName);
-			String transformSectionName = "TRANSFORM_CORE_TO_SHEET";
-			((Dimension)currSolid.GetFeatureByName(transformSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getExtDiam() + 70);
-			((Dimension)currSolid.GetFeatureByName(transformSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.getSegmPruning());
-			((Dimension)currSolid.GetFeatureByName(transformSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(360.0 / DataStore.getSegmQty());
-			LOG.info("Assigned dimensions for the {}", transformSectionName);
+			if (DataStore.getSegmQty() != 1) {
+				String transformSectionName = "TRANSFORM_CORE_TO_SHEET";
+				((Dimension)currSolid.GetFeatureByName(transformSectionName).
+						ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getExtDiam() + 70);
+				((Dimension)currSolid.GetFeatureByName(transformSectionName).
+						ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.getSegmPruning());
+				((Dimension)currSolid.GetFeatureByName(transformSectionName).
+						ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(360.0 / DataStore.getSegmQty());
+				LOG.info("Assigned dimensions for the {}", transformSectionName);
+			}
 			String slotWithoutRoundSectionName = "SLOT_WITHOUT_ROUND";
 			String slotWithRoundSectionName = "SLOT_WITH_ROUND";
 			((Dimension)currSolid.GetFeatureByName(slotWithoutRoundSectionName).

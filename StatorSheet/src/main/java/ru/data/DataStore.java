@@ -198,7 +198,7 @@ public final class DataStore {
 	}
 
 	public static int getSegmQty() {
-		segmQty = 4;
+		segmQty = 1;
 		return segmQty;
 	}
 

@@ -15,7 +15,6 @@ import ru.building.Sheet;
 import ru.building.screw.ScrewFactory;
 import ru.data.DataStore;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
-import ru.ruselprom.fet.info.Info;
 import ru.ruselprom.templates.TemplateModel;
 
 public class Main {
@@ -39,13 +38,14 @@ public class Main {
 			ScrewDimAssignmentFactory.getScrewDimAssignment().assign(currSolid);
 			ScrewFactory.getScrew().build(currSolid);
 			
-			ExtrusionCut transformCoreToSheet = new ExtrusionCut();
-			transformCoreToSheet.build("EXT_TRANSFORM", "TRANSFORM_CORE_TO_SHEET", currSolid);
-			LOG.info("transformCoreToSheet is built");
-			ExtrusionCut mark = new ExtrusionCut();
-			mark.build("EXT_MARK", "MARK", currSolid);
-			Info.getDimensionsInfoIn("MARK", currSolid);
-			LOG.info("mark is built");
+			if (DataStore.getSegmQty() != 1) {
+				ExtrusionCut transformCoreToSheet = new ExtrusionCut();
+				transformCoreToSheet.build("EXT_TRANSFORM", "TRANSFORM_CORE_TO_SHEET", currSolid);
+				LOG.info("transformCoreToSheet is built");
+				ExtrusionCut mark = new ExtrusionCut();
+				mark.build("EXT_MARK", "MARK", currSolid);
+				LOG.info("mark is built");
+			}
 			session.CreateModelWindow(currSolid).Activate();
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in the main class!", e);
