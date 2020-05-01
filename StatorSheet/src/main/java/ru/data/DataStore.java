@@ -45,7 +45,13 @@ public final class DataStore {
 	private static double screw06Wdth;
 	private static double screw07Wdth;
 	private static double screw07Hght;
+	private static double screw07Gap;
 	
+	public static double getScrew07Gap() {
+		screw07Gap = 1;
+		return screw07Gap;
+	}
+
 	public static double getScrew07Wdth() {
 		screw07Wdth = 27;
 		return screw07Wdth;
@@ -146,7 +152,7 @@ public final class DataStore {
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 5;
+		typeOfScrew = 7;
 		return typeOfScrew;
 	}
 
@@ -198,7 +204,7 @@ public final class DataStore {
 	}
 
 	public static int getSegmQty() {
-		segmQty = 1;
+		segmQty = 4;
 		return segmQty;
 	}
 
