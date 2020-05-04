@@ -11,7 +11,7 @@ import com.ptc.pfc.pfcSolid.Solid;
 import ru.data.DataStore;
 
 public class SheetDimAssignment {
-	public static final Logger LOG = LoggerFactory.getLogger(SheetDimAssignment.class);
+	private static final Logger LOG = LoggerFactory.getLogger(SheetDimAssignment.class);
 	
 	private SheetDimAssignment() {
 	    throw new IllegalStateException("Utility class");
@@ -61,10 +61,18 @@ public class SheetDimAssignment {
 					ListSubItems(ModelItemType.ITEM_DIMENSION).get(5)).SetDimValue(DataStore.getSlotWdth());
 			((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
 					ListSubItems(ModelItemType.ITEM_DIMENSION).get(9)).SetDimValue(DataStore.getSlotWdth());
-			((Dimension)currSolid.GetFeatureByName(slotWithoutRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(8)).SetDimValue(DataStore.getSlotAngle());
-			((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(7)).SetDimValue(DataStore.getSlotAngle());
+			if (DataStore.getSegmQty() != 1) {
+				((Dimension)currSolid.GetFeatureByName(slotWithoutRoundSectionName).
+						ListSubItems(ModelItemType.ITEM_DIMENSION).get(8)).SetDimValue(360.0 / DataStore.getSegmQty() / 2);
+				((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
+						ListSubItems(ModelItemType.ITEM_DIMENSION).get(7)).SetDimValue(360.0 / DataStore.getSegmQty() / 2);
+			} else {
+				((Dimension)currSolid.GetFeatureByName(slotWithoutRoundSectionName).
+						ListSubItems(ModelItemType.ITEM_DIMENSION).get(8)).SetDimValue(0);
+				((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
+						ListSubItems(ModelItemType.ITEM_DIMENSION).get(7)).SetDimValue(0);
+				
+			}
 			((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
 					ListSubItems(ModelItemType.ITEM_DIMENSION).get(8)).SetDimValue(DataStore.getSlotRoundBottom());
 			((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).

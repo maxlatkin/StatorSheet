@@ -1,4 +1,4 @@
-package ru.main;
+package ru.general;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,21 +14,25 @@ import ru.assignment.screw.ScrewDimAssignmentFactory;
 import ru.building.Sheet;
 import ru.building.screw.ScrewFactory;
 import ru.data.DataStore;
+import ru.parameters.SheetParams;
+import ru.parameters.SlotParams;
+import ru.parameters.calculated.CalculatedParams;
+import ru.parameters.screw.ScrewParamsFactory;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.templates.TemplateModel;
 
-public class Main {
+public class General {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(Main.class);
+	private static final Logger LOG = LoggerFactory.getLogger(General.class);
 	
-	private Main() {
+	private General() {
 		throw new IllegalStateException("Utility class");
 	}
 	
 	public static void execute() {
 		try {
 			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
-			LOG.info("Session received in {}", Main.class);
+			LOG.info("Session received in {}", General.class);
 			TemplateModel templateModel = new TemplateModel(DataStore.getTempFile(), DataStore.getModelsPath());
 			Solid currSolid = (Solid) templateModel.retrieve();
 			LOG.info("Model is retrieved");
@@ -46,6 +50,10 @@ public class Main {
 				mark.build("EXT_MARK", "MARK", currSolid);
 				LOG.info("mark is built");
 			}
+			SheetParams.getInstance().create(currSolid);
+			SlotParams.getInstance().create(currSolid);
+			ScrewParamsFactory.getParams().create(currSolid);
+			CalculatedParams.getInstance().create(currSolid);
 			session.CreateModelWindow(currSolid).Activate();
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in the main class!", e);

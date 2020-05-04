@@ -9,7 +9,6 @@ import com.ptc.pfc.pfcModelItem.ModelItemType;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.data.DataStore;
-import ru.ruselprom.fet.info.Info;
 
 public class Screw07DimAssignment implements ScrewDimAssignment {
 
@@ -39,7 +38,6 @@ public class Screw07DimAssignment implements ScrewDimAssignment {
 			((Dimension)currSolid.GetFeatureByName("MARK").
 					ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.getMarkShift() + 
 							DataStore.getScrew07Hght() + DataStore.getScrew07Gap());
-			Info.getDimensionsInfoIn(screwHole, currSolid);
 		} catch (jxthrowable e) {
 			LOG.error("Error assigning dimensions to the Screw_07", e);
 		}

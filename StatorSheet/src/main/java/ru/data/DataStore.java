@@ -23,7 +23,6 @@ public final class DataStore {
 	private static double slotWdth = 12;
 	private static double slotRoundBottom = 1;
 	private static double slotRoundTop = 0.4;
-	private static double slotAngle = 45;
 	private static double markRound = 0.4;
 	private static double markRadius = 1.5;
 	private static double markShift = 15;
@@ -238,10 +237,6 @@ public final class DataStore {
 
 	public static double getSlotRoundTop() {
 		return slotRoundTop;
-	}
-
-	public static double getSlotAngle() {
-		return slotAngle;
 	}
 
 	public static double getMarkRound() {

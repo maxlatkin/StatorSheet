@@ -18,24 +18,28 @@ import ch.qos.logback.core.joran.spi.JoranException;
 
 public class StatorSheetButton {
 	private static final String MSG_FILE = "stator_sheet_button.txt";
-	public static final Logger LOG = LoggerFactory.getLogger(StatorSheetButton.class);
+	private static final Logger LOG = LoggerFactory.getLogger(StatorSheetButton.class);
 	
 	private StatorSheetButton() {
 		throw new IllegalStateException("Utility class");
 	}
 
 
-    public static void start() throws jxthrowable{
-    	setLogbackFile();
-		LOG.info("The StatorSheet application has begun its work.");
-    	
-    	Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);			 
-    	UICommand uiCommand = session.UICreateCommand("StatorSheet", new StatorSheetButtonListener());		
-    	uiCommand.SetIcon("statorsheet_16x16.png");
-		uiCommand.Designate(MSG_FILE, "StatorSheet.label", "Stator sheet creation.", null);
+    public static void start() {
+    	try {
+			setLogbackFile();
+			LOG.info("The StatorSheet application has begun its work.");
+			
+			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);			 
+			UICommand uiCommand = session.UICreateCommand("StatorSheet", new StatorSheetButtonListener());		
+			uiCommand.SetIcon("statorsheet_16x16.png");
+			uiCommand.Designate(MSG_FILE, "StatorSheet.label", "Stator sheet creation.", null);
+		} catch (NullPointerException | jxthrowable e) {
+			LOG.error("Error in start() method", e);
+		}
     }
 
-    public static void stop() throws jxthrowable{
+    public static void stop() {
     	LOG.info("The StatorSheet application stopped.");
     }
     

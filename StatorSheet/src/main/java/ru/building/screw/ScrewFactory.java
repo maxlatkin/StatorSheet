@@ -2,7 +2,7 @@ package ru.building.screw;
 
 import ru.data.DataStore;
 
-public class ScrewFactory {
+public final class ScrewFactory {
 	
 	private ScrewFactory() {
 	    throw new IllegalStateException("Utility class");
