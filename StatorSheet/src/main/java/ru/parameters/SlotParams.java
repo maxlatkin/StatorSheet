@@ -4,13 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ptc.cipjava.jxthrowable;
-import com.ptc.pfc.pfcBase.LengthUnitType;
 import com.ptc.pfc.pfcModel.Model;
 
 import ru.data.DataStore;
 import ru.ruselprom.parameters.Parameters;
 
-public class SlotParams implements Params {
+public class SlotParams implements ParamsSetting {
 	
 	private static SlotParams instance;
 	private static final Logger LOG = LoggerFactory.getLogger(SlotParams.class);
@@ -25,15 +24,15 @@ public class SlotParams implements Params {
     }
 	
 	@Override
-	public void create(Model currModel) {
+	public void setValue(Model currModel) {
 		try {
-			Parameters.createDoubleLengthParam("AA_STATOR_CORE_SLOT_WDTH", DataStore.getSlotWdth(), LengthUnitType.LENGTHUNIT_MM, currModel);
-			Parameters.createDoubleLengthParam("AA_STATOR_CORE_SLOT_HGHT_TO_WDG", DataStore.getSlotHghtToWdg(), LengthUnitType.LENGTHUNIT_MM, currModel);
-			Parameters.createDoubleLengthParam("AA_STATOR_CORE_WEDGE_THCK", DataStore.getWedgeThck(), LengthUnitType.LENGTHUNIT_MM, currModel);
-			Parameters.createDoubleLengthParam("AA_STATOR_CORE_WEDGE_GAP", DataStore.getWedgeGap(), LengthUnitType.LENGTHUNIT_MM, currModel);
-			LOG.info("Slot parameters created");
+			Parameters.setDoubleParamValue("AA_STATOR_CORE_SLOT_WDTH", DataStore.getSlotWdth(), currModel);
+			Parameters.setDoubleParamValue("AA_STATOR_CORE_SLOT_HGHT_TO_WDG", DataStore.getSlotHghtToWdg(), currModel);
+			Parameters.setDoubleParamValue("AA_STATOR_CORE_WEDGE_THCK", DataStore.getWedgeThck(), currModel);
+			Parameters.setDoubleParamValue("AA_STATOR_CORE_WEDGE_GAP", DataStore.getWedgeGap(), currModel);
+			LOG.info("Slot parameters set");
 		} catch (NullPointerException | jxthrowable e) {
-			LOG.error("Error in creating slot parameters", e);
+			LOG.error("Error in setting slot parameters", e);
 		}
 	}
 }

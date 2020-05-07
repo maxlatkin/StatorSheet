@@ -12,80 +12,69 @@ import ru.data.DataStore;
 
 public class SheetDimAssignment {
 	private static final Logger LOG = LoggerFactory.getLogger(SheetDimAssignment.class);
+	private static Solid currSolid;
 	
 	private SheetDimAssignment() {
 	    throw new IllegalStateException("Utility class");
 	  }
 	
-	public static void assign(Solid currSolid) {
+	public static void assign(Solid solid) {
 		try {
+			currSolid = solid;
 			String sheetSectionName = "SHEET";
-			((Dimension)currSolid.GetFeatureByName(sheetSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getExtDiam());
-			((Dimension)currSolid.GetFeatureByName(sheetSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.getIntDiam());
+			setDimValue(sheetSectionName, 0, DataStore.getExtDiam());
+			setDimValue(sheetSectionName, 1, DataStore.getIntDiam());
 			LOG.info("Assigned dimensions for the {}", sheetSectionName);
+			
 			if (DataStore.getSegmQty() != 1) {
 				String transformSectionName = "TRANSFORM_CORE_TO_SHEET";
-				((Dimension)currSolid.GetFeatureByName(transformSectionName).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getExtDiam() + 70);
-				((Dimension)currSolid.GetFeatureByName(transformSectionName).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.getSegmPruning());
-				((Dimension)currSolid.GetFeatureByName(transformSectionName).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(360.0 / DataStore.getSegmQty());
+				setDimValue(transformSectionName, 0, DataStore.getExtDiam() + 100);
+				setDimValue(transformSectionName, 1, DataStore.getSegmPruning());
+				setDimValue(transformSectionName, 2, 360.0 / DataStore.getSegmQty());
 				LOG.info("Assigned dimensions for the {}", transformSectionName);
 			}
-			String slotWithoutRoundSectionName = "SLOT_WITHOUT_ROUND";
-			String slotWithRoundSectionName = "SLOT_WITH_ROUND";
-			((Dimension)currSolid.GetFeatureByName(slotWithoutRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getSlotHghtToWdg());
-			((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getSlotHghtToWdg());
-			((Dimension)currSolid.GetFeatureByName(slotWithoutRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.getWedgeThck());
-			((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.getWedgeThck());
-			((Dimension)currSolid.GetFeatureByName(slotWithoutRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.getWedgeGap());
-			((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.getWedgeGap());
-			((Dimension)currSolid.GetFeatureByName(slotWithoutRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(3)).SetDimValue(DataStore.getWedgeAngleTop());
-			((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(3)).SetDimValue(DataStore.getWedgeAngleTop());
-			((Dimension)currSolid.GetFeatureByName(slotWithoutRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(4)).SetDimValue(DataStore.getWedgeAngleBottom());
-			((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(4)).SetDimValue(DataStore.getWedgeAngleBottom());
-			((Dimension)currSolid.GetFeatureByName(slotWithoutRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(5)).SetDimValue(DataStore.getSlotWdth());
-			((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(9)).SetDimValue(DataStore.getSlotWdth());
-			if (DataStore.getSegmQty() != 1) {
-				((Dimension)currSolid.GetFeatureByName(slotWithoutRoundSectionName).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(8)).SetDimValue(360.0 / DataStore.getSegmQty() / 2);
-				((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(7)).SetDimValue(360.0 / DataStore.getSegmQty() / 2);
+			
+			double[] slotDimValue = {DataStore.getSlotHghtToWdg(), DataStore.getWedgeThck(), DataStore.getWedgeGap(),
+					DataStore.getWedgeAngleTop(), DataStore.getWedgeAngleBottom(), DataStore.getSlotWdth()};
+			if (DataStore.isSlotWithRound()) {
+				String slotWithRoundSectionName = "SLOT_WITH_ROUND";
+				int[] slotWithRoundDimIndex = {0, 1, 2, 3, 4, 9};
+				for (int i = 0; i < slotWithRoundDimIndex.length; i++) {
+					setDimValue(slotWithRoundSectionName, slotWithRoundDimIndex[i], slotDimValue[i]);
+				}
+				if (DataStore.getSegmQty() != 1) {
+					setDimValue(slotWithRoundSectionName, 7, 360.0 / DataStore.getSegmQty() / 2);
+				} else {
+					setDimValue(slotWithRoundSectionName, 7, 0);
+				}
+				setDimValue(slotWithRoundSectionName, 8, DataStore.getSlotRoundBottom());
+				setDimValue(slotWithRoundSectionName, 10, DataStore.getSlotRoundTop());
+				LOG.info("Assigned dimensions for the {}", slotWithRoundSectionName);
 			} else {
-				((Dimension)currSolid.GetFeatureByName(slotWithoutRoundSectionName).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(8)).SetDimValue(0);
-				((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(7)).SetDimValue(0);
-				
+				String slotWithoutRoundSectionName = "SLOT_WITHOUT_ROUND";
+				int[] slotWithoutRoundDimIndex = {0, 1, 2, 3, 4, 5};
+				for (int i = 0; i < slotWithoutRoundDimIndex.length; i++) {
+					setDimValue(slotWithoutRoundSectionName, slotWithoutRoundDimIndex[i], slotDimValue[i]);
+				}
+				if (DataStore.getSegmQty() != 1) {
+					setDimValue(slotWithoutRoundSectionName, 8, 360.0 / DataStore.getSegmQty() / 2);
+				} else {
+					setDimValue(slotWithoutRoundSectionName, 8, 0);
+				}
+				LOG.info("Assigned dimensions for the {}", slotWithoutRoundSectionName);
 			}
-			((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(8)).SetDimValue(DataStore.getSlotRoundBottom());
-			((Dimension)currSolid.GetFeatureByName(slotWithRoundSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(10)).SetDimValue(DataStore.getSlotRoundTop());
-			LOG.info("Assigned dimensions for the {} and {}", slotWithoutRoundSectionName, slotWithRoundSectionName);
+			
 			String markSectionName = "MARK";
-			((Dimension)currSolid.GetFeatureByName(markSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getMarkRound());
-			((Dimension)currSolid.GetFeatureByName(markSectionName).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.getMarkRadius());
+			setDimValue(markSectionName, 0, DataStore.getMarkRound());
+			setDimValue(markSectionName, 1, DataStore.getMarkRadius());
 			LOG.info("Assigned dimensions for the {}", markSectionName);
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Failed to assing dimensions!", e);
 		}
+	}
+	
+	private static void setDimValue(String sectionName, int index, double value) throws jxthrowable {
+		((Dimension)currSolid.GetFeatureByName(sectionName).
+				ListSubItems(ModelItemType.ITEM_DIMENSION).get(index)).SetDimValue(value);
 	}
 }

@@ -14,10 +14,7 @@ import ru.assignment.screw.ScrewDimAssignmentFactory;
 import ru.building.Sheet;
 import ru.building.screw.ScrewFactory;
 import ru.data.DataStore;
-import ru.parameters.SheetParams;
-import ru.parameters.SlotParams;
-import ru.parameters.calculated.CalculatedParams;
-import ru.parameters.screw.ScrewParamsFactory;
+import ru.parameters.Params;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.templates.TemplateModel;
 
@@ -50,10 +47,8 @@ public class General {
 				mark.build("EXT_MARK", "MARK", currSolid);
 				LOG.info("mark is built");
 			}
-			SheetParams.getInstance().create(currSolid);
-			SlotParams.getInstance().create(currSolid);
-			ScrewParamsFactory.getParams().create(currSolid);
-			CalculatedParams.getInstance().create(currSolid);
+			Params.createAllParams(currSolid);
+			Params.setAllParams(currSolid);
 			session.CreateModelWindow(currSolid).Activate();
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in the main class!", e);

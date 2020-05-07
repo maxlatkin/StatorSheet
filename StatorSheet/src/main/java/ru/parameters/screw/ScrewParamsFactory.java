@@ -1,7 +1,7 @@
 package ru.parameters.screw;
 
 import ru.data.DataStore;
-import ru.parameters.Params;
+import ru.parameters.ParamsSetting;
 
 public class ScrewParamsFactory {
 	
@@ -9,8 +9,8 @@ public class ScrewParamsFactory {
 	    throw new IllegalStateException("Utility class");
 	}
 	
-	public static Params getParams() {
-		Params params = null;
+	public static ParamsSetting getParams() {
+		ParamsSetting params = null;
 		if (DataStore.getTypeOfScrew() == 1) {
 			params = new Screw01Params();
 		} else if (DataStore.getTypeOfScrew() == 2) {

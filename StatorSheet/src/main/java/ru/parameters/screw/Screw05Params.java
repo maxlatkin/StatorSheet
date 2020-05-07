@@ -4,28 +4,27 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ptc.cipjava.jxthrowable;
-import com.ptc.pfc.pfcBase.LengthUnitType;
 import com.ptc.pfc.pfcModel.Model;
 
 import ru.data.DataStore;
-import ru.parameters.Params;
+import ru.parameters.ParamsSetting;
 import ru.ruselprom.parameters.Parameters;
 
-public class Screw05Params implements Params {
+public class Screw05Params implements ParamsSetting {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(Screw05Params.class);
 	
 	@Override
-	public void create(Model currModel) {
+	public void setValue(Model currModel) {
 		try {
-			Parameters.createBoolParam("AA_STATOR_CORE_SCREW_05_EXIST", true, currModel);
-			Parameters.createDoubleLengthParam("AA_STATOR_CORE_SCREW_05_WDTH", DataStore.getScrew05Wdth(), LengthUnitType.LENGTHUNIT_MM, currModel);
-			Parameters.createDoubleLengthParam("AA_STATOR_CORE_SCREW_05_HGHT", DataStore.getScrew05Hght(), LengthUnitType.LENGTHUNIT_MM, currModel);
-			Parameters.createDoubleParamInDeg("AA_STATOR_CORE_SCREW_05_SHIFT", DataStore.getScrewShift(), currModel);
-			Parameters.createIntParam("AA_STATOR_CORE_SCREW_05_QTY", DataStore.getScrewQty(), currModel);
-			LOG.info("Screw05 parameters created");
+			Parameters.setBoolParamValue("AA_STATOR_CORE_SCREW_05_EXIST", true, currModel);
+			Parameters.setDoubleParamValue("AA_STATOR_CORE_SCREW_05_WDTH", DataStore.getScrew05Wdth(), currModel);
+			Parameters.setDoubleParamValue("AA_STATOR_CORE_SCREW_05_HGHT", DataStore.getScrew05Hght(), currModel);
+			Parameters.setDoubleParamValue("AA_STATOR_CORE_SCREW_05_SHIFT", Math.toRadians(DataStore.getScrewShift()), currModel);
+			Parameters.setIntParamValue("AA_STATOR_CORE_SCREW_05_QTY", DataStore.getScrewQty(), currModel);
+			LOG.info("Screw05 parameters set");
 		} catch (jxthrowable e) {
-			LOG.error("Error in creating Screw05 parameters", e);
+			LOG.error("Error in setting Screw05 parameters", e);
 		}
 	}
 }

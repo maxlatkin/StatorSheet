@@ -12,7 +12,7 @@ public final class DataStore {
 	private static int slotQty = 72;
 	private static boolean slotWithRound = true;
 	private static double extDiam;
-	private static double intDiam = 500;
+	private static double intDiam;
 	private static double segmPruning = 0.2;
 	private static int segmQty;
 	private static double slotHghtToWdg = 44;
@@ -62,7 +62,7 @@ public final class DataStore {
 	}
 
 	public static double getScrew06Wdth() {
-		screw06Wdth = 100;
+		screw06Wdth = 80;
 		return screw06Wdth;
 	}
 
@@ -106,7 +106,7 @@ public final class DataStore {
 	}
 
 	public static double getScrewShift() {
-		screwShift = 45;
+		screwShift = 30;
 		return screwShift;
 	}
 
@@ -151,7 +151,7 @@ public final class DataStore {
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 7;
+		typeOfScrew = 1;
 		return typeOfScrew;
 	}
 
@@ -161,7 +161,7 @@ public final class DataStore {
 	}
 
 	public static int getScrewQty() {
-		screwQty = 2;
+		screwQty = 4;
 		return screwQty;
 	}
 
@@ -190,11 +190,12 @@ public final class DataStore {
 	}
 
 	public static double getExtDiam() {
-		extDiam = 700;
+		extDiam = 560;
 		return extDiam;
 	}
 
 	public static double getIntDiam() {
+		intDiam = 400;
 		return intDiam;
 	}
 
