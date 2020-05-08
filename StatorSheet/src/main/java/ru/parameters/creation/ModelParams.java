@@ -37,6 +37,9 @@ public final class ModelParams {
 				case BOOL:
 					Parameters.createBoolParam(paramName.name(), false, currModel);
 					break;
+				case STRING:
+					Parameters.createStringParam(paramName.name(), "NONE", currModel);
+					break;
 				default:
 					LOG.error("Unknown parameter type when creating it");
 					break;

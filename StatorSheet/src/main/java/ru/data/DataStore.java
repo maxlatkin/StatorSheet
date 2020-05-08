@@ -45,7 +45,13 @@ public final class DataStore {
 	private static double screw07Wdth;
 	private static double screw07Hght;
 	private static double screw07Gap;
+	private static String segmRolling;
 	
+	public static String getSegmRolling() {
+		segmRolling = "VERTICAL"; //"HORIZONTAL"; "NONE"
+		return segmRolling;
+	}
+
 	public static double getScrew07Gap() {
 		screw07Gap = 1;
 		return screw07Gap;

@@ -46,6 +46,14 @@ public class CalculatedParams implements ParamsSetting {
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_01_ANGL2.name(), Math.toRadians(getScrew0102Angl2()), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_02_ANGL1.name(), Math.toRadians(getScrew0102Angl2()), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_02_ANGL2.name(), Math.toRadians(getScrew0102Angl2()), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_CHORD_SCREW_05.name(), getChordScrew05(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_05_STEP.name(), getScrew05067Step(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_05_H_STEP.name(), getScrew05067HStep(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_06_STEP.name(), getScrew05067Step(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_06_H_STEP.name(), getScrew05067HStep(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_07_STEP.name(), getScrew05067Step(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_07_H_STEP.name(), getScrew05067HStep(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_CHORD_SCREW_07.name(), getChordScrew07(), currModel);
 			
 			LOG.info("Calculated parameters set");
 		} catch (NullPointerException | jxthrowable e) {
@@ -97,9 +105,9 @@ public class CalculatedParams implements ParamsSetting {
 		return extRad - Math.sqrt(Math.pow(extRad, 2) - Math.pow(DataStore.getScrew06Wdth()/2, 2));
 	}
 	private double getChordScrew06() {
-		double shiftSlice = 2 * getScrew06Hght() * Math.cos(Math.toRadians(getHAnglPerSegm()));
+		double shiftFlat = 2 * getScrew06Hght() * Math.cos(Math.toRadians(getHAnglPerSegm()));
 		double shiftPrun = 2 * DataStore.getSegmPruning() * Math.cos(Math.toRadians(getHAnglPerSegm()));
-		return getChordExt() - shiftSlice - shiftPrun;
+		return getChordExt() - shiftFlat - shiftPrun;
 	}
 	private double getSheetHDim00() {
 		double intRad = DataStore.getIntDiam() / 2;
@@ -134,5 +142,21 @@ public class CalculatedParams implements ParamsSetting {
 		} else {
 			return 0;
 		}
+	}
+	private double getChordScrew05() {
+		double shiftEdge = 2 * DataStore.getScrew05Hght() * Math.cos(Math.toRadians(getHAnglPerSegm()));
+		double shiftPrun = 2 * DataStore.getSegmPruning() * Math.cos(Math.toRadians(getHAnglPerSegm()));
+		return getChordExt() - shiftEdge - shiftPrun;
+	}
+	private double getScrew05067Step() {
+		return 360.0 / (DataStore.getScrewQty() * DataStore.getSegmQty());
+	}
+	private double getScrew05067HStep() {
+		return getScrew05067Step() / 2;
+	}
+	private double getChordScrew07() {
+		double shiftDovetail = 2 * (DataStore.getScrew07Hght() + DataStore.getScrew07Gap()) * Math.cos(Math.toRadians(getHAnglPerSegm()));
+		double shiftPrun = 2 * DataStore.getSegmPruning() * Math.cos(Math.toRadians(getHAnglPerSegm()));
+		return getChordExt() - shiftDovetail - shiftPrun;
 	}
 }

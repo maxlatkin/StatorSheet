@@ -71,7 +71,10 @@ public enum ModelParamNames {
 	AA_STATOR_CORE_SCREW_06_H_STEP(ModelParamTypes.DOUBLE),
 	AA_STATOR_CORE_CHORD_SCREW_07(ModelParamTypes.DOUBLE_LENGTH),
 	AA_STATOR_CORE_SCREW_07_STEP(ModelParamTypes.DOUBLE),
-	AA_STATOR_CORE_SCREW_07_H_STEP(ModelParamTypes.DOUBLE);
+	AA_STATOR_CORE_SCREW_07_H_STEP(ModelParamTypes.DOUBLE),
+	AA_SETUP_MODE(ModelParamTypes.BOOL),
+	AA_STATOR_CORE_SEGM_ROLLING(ModelParamTypes.STRING);
+	
 	
 	private ModelParamTypes paramType;
 

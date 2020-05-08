@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.ptc.pfc.pfcModel.Model;
 
 import ru.parameters.creation.ModelParams;
+import ru.parameters.setting.AuxiliaryParams;
 import ru.parameters.setting.CalculatedParams;
 import ru.parameters.setting.SheetParams;
 import ru.parameters.setting.SlotParams;
@@ -29,6 +30,7 @@ public final class Params {
 		SlotParams.getInstance().setValue(currModel);
 		ScrewParamsFactory.getParams().setValue(currModel);
 		CalculatedParams.getInstance().setValue(currModel);
+		AuxiliaryParams.getInstance().setValue(currModel);
 		LOG.info("All parameters set");
 	}
 }

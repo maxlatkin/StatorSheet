@@ -5,5 +5,6 @@ public enum ModelParamTypes {
 	DOUBLE_IN_DEG,
 	DOUBLE,
 	INT,
-	BOOL;
+	BOOL,
+	STRING;
 }
