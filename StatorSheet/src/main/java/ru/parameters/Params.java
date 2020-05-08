@@ -5,9 +5,11 @@ import org.slf4j.LoggerFactory;
 
 import com.ptc.pfc.pfcModel.Model;
 
-import ru.parameters.calculated.CalculatedParams;
-import ru.parameters.creation.CreationOfParams;
-import ru.parameters.screw.ScrewParamsFactory;
+import ru.parameters.creation.ModelParams;
+import ru.parameters.setting.CalculatedParams;
+import ru.parameters.setting.SheetParams;
+import ru.parameters.setting.SlotParams;
+import ru.parameters.setting.screw.ScrewParamsFactory;
 
 public final class Params {
 	
@@ -18,7 +20,7 @@ public final class Params {
 	}
 	
 	public static void createAllParams(Model currModel) {
-		CreationOfParams.create(currModel);
+		ModelParams.create(currModel);
 		LOG.info("All parameters created");
 	}
 	

@@ -1,4 +1,4 @@
-package ru.parameters;
+package ru.parameters.setting;
 
 import com.ptc.pfc.pfcModel.Model;
 

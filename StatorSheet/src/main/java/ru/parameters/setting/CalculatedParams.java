@@ -1,4 +1,4 @@
-package ru.parameters.calculated;
+package ru.parameters.setting;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,7 +7,7 @@ import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcModel.Model;
 
 import ru.data.DataStore;
-import ru.parameters.ParamsSetting;
+import ru.parameters.ModelParamNames;
 import ru.ruselprom.parameters.Parameters;
 
 public class CalculatedParams implements ParamsSetting {
@@ -27,23 +27,26 @@ public class CalculatedParams implements ParamsSetting {
 	@Override
 	public void setValue(Model currModel) {
 		try {
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_SLOT_HGHT_TOTAL", getSlotHghtTotal(), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_SLOT_WDG_WDTH", getSlotWdgWdth(), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_SLOT_HGHT_ADD", getSlotHghtAdd(), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_SLT_PER_SEGM", getSltPerSegm(), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_ANGL_PER_SEGM", Math.toRadians(getAnglPerSegm()), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_SLOT_ANGL", Math.toRadians(getSlotAngl()), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_H_ANGL_PER_SEGM", Math.toRadians(getHAnglPerSegm()), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_CHORD_INT", getChordInt(), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_CHORD_SLOT", getChordSlot(), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_RAD_DELTA", getRadDelta(), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_CHORD_EXT", getChordExt(), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_SCREW_06_HGHT", getScrew06Hght(), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_CHORD_SCREW_06", getChordScrew06(), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_SHEET_H_DIM_00", getSheetHDim00(), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_CHORD_EXT_CUT", getChordExtCut(), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_SCREW_01_ANGL1", Math.toRadians(getScrew01Angl1()), currModel);
-			Parameters.setDoubleParamValue("AA_STATOR_CORE_SCREW_01_ANGL2", Math.toRadians(getScrew01Angl2()), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_HGHT_TOTAL.name(), getSlotHghtTotal(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_WDG_WDTH.name(), getSlotWdgWdth(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_HGHT_ADD.name(), getSlotHghtAdd(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLT_PER_SEGM.name(), getSltPerSegm(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_ANGL_PER_SEGM.name(), Math.toRadians(getAnglPerSegm()), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_ANGL.name(), Math.toRadians(getSlotAngl()), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_H_ANGL_PER_SEGM.name(), Math.toRadians(getHAnglPerSegm()), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_CHORD_INT.name(), getChordInt(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_CHORD_SLOT.name(), getChordSlot(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_RAD_DELTA.name(), getRadDelta(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_CHORD_EXT.name(), getChordExt(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_06_HGHT.name(), getScrew06Hght(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_CHORD_SCREW_06.name(), getChordScrew06(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SHEET_H_DIM_00.name(), getSheetHDim00(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_CHORD_EXT_CUT.name(), getChordExtCut(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_01_ANGL1.name(), Math.toRadians(getScrew0102Angl1()), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_01_ANGL2.name(), Math.toRadians(getScrew0102Angl2()), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_02_ANGL1.name(), Math.toRadians(getScrew0102Angl2()), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_02_ANGL2.name(), Math.toRadians(getScrew0102Angl2()), currModel);
+			
 			LOG.info("Calculated parameters set");
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in setting calculated parameters", e);
@@ -114,16 +117,16 @@ public class CalculatedParams implements ParamsSetting {
 				Math.sin(Math.toRadians(getHAnglPerSegm())));
 		return getChordExt() - secondPart;
 	}
-	private double getScrew01Angl1() {
+	private double getScrew0102Angl1() {
 		if (DataStore.getScrewShift() > 360.0 / DataStore.getSegmQty() / 4) {
-			return DataStore.getScrewShift() - getScrew01Angl2();
+			return DataStore.getScrewShift() - getScrew0102Angl2();
 		} else if (DataStore.getScrewShift() < 360.0 / DataStore.getSegmQty() / 4) {
 			return DataStore.getScrewShift();
 		} else {
 			return 0;
 		}
 	}
-	private double getScrew01Angl2() {
+	private double getScrew0102Angl2() {
 		if (DataStore.getScrewShift() > 360.0 / DataStore.getSegmQty() / 4 && DataStore.getScrewQty() == 4) {
 			return (360.0 / DataStore.getSegmQty() - (360.0 / DataStore.getSegmQty() - DataStore.getScrewShift()*2)*2)/2;
 		} else if (DataStore.getScrewShift() < 360.0 / DataStore.getSegmQty() / 4 && DataStore.getScrewQty() == 4) {
