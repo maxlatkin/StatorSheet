@@ -22,7 +22,7 @@ public class Screw02Params implements ParamsSetting {
 			Parameters.setDoubleParamValue("AA_STATOR_CORE_SCREW_02_SHIFT", Math.toRadians(DataStore.getScrewShift()), currModel);
 			Parameters.setIntParamValue("AA_STATOR_CORE_SCREW_02_QTY", DataStore.getScrewQty(), currModel);
 			LOG.info("Screw02 parameters set");
-		} catch (jxthrowable e) {
+		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in setting Screw02 parameters", e);
 		}
 	}

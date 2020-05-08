@@ -84,6 +84,22 @@ public final class CreationOfParams {
 			Parameters.createDoubleLengthParam("AA_STATOR_CORE_CHORD_EXT_CUT", 0, LengthUnitType.LENGTHUNIT_MM, currModel);
 			Parameters.createDoubleParamInDeg("AA_STATOR_CORE_SCREW_01_ANGL1", 0, currModel);
 			Parameters.createDoubleParamInDeg("AA_STATOR_CORE_SCREW_01_ANGL2", 0, currModel);
+			Parameters.createDoubleParamInDeg("AA_STATOR_CORE_SCREW_02_ANGL1", 0, currModel);
+			Parameters.createDoubleParamInDeg("AA_STATOR_CORE_SCREW_02_ANGL2", 0, currModel);
+			Parameters.createBoolParam("AA_STATOR_CORE_SEGM_MARK_EXIST", false, currModel);
+			Parameters.createDoubleLengthParam("AA_STATOR_CORE_SEGM_MARK_SHIFT", 0, LengthUnitType.LENGTHUNIT_MM, currModel);
+			Parameters.createBoolParam("AA_STATOR_CORE_SCREW_05_CORNER", false, currModel);
+			Parameters.createBoolParam("AA_STATOR_CORE_SCREW_06_CORNER", false, currModel);
+			Parameters.createBoolParam("AA_STATOR_CORE_SCREW_07_CORNER", false, currModel);
+			Parameters.createDoubleLengthParam("AA_STATOR_CORE_CHORD_SCREW_05", 0, LengthUnitType.LENGTHUNIT_MM, currModel);
+			Parameters.createDoubleParam("AA_STATOR_CORE_SCREW_05_H_STEP", 0, currModel);
+			Parameters.createDoubleParam("AA_STATOR_CORE_SCREW_05_STEP", 0, currModel);
+			Parameters.createDoubleParam("AA_STATOR_CORE_SCREW_06_STEP", 0, currModel);
+			Parameters.createDoubleParam("AA_STATOR_CORE_SCREW_06_H_STEP", 0, currModel);
+			Parameters.createDoubleLengthParam("AA_STATOR_CORE_CHORD_SCREW_07", 0, LengthUnitType.LENGTHUNIT_MM, currModel);
+			Parameters.createDoubleParam("AA_STATOR_CORE_SCREW_07_STEP", 0, currModel);
+			Parameters.createDoubleParam("AA_STATOR_CORE_SCREW_07_H_STEP", 0, currModel);
+			
 			LOG.info("All parameters created");
 		} catch (jxthrowable e) {
 			LOG.error("Error in creating all parameters", e);

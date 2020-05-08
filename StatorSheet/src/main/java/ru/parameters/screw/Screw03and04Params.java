@@ -29,7 +29,7 @@ public class Screw03and04Params implements ParamsSetting {
 				Parameters.setIntParamValue("AA_STATOR_CORE_SCREW_04_QTY", DataStore.getScrewQty(), currModel);
 				LOG.info("Screw04 parameters set");
 			}
-		} catch (jxthrowable e) {
+		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in setting Screw03and04 parameters", e);
 		}
 	}
