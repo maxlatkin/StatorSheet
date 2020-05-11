@@ -22,8 +22,11 @@ public final class ModelParams {
 		try {
 			for (ModelParamNames paramName: ModelParamNames.values()) {
 				switch (paramName.getParamType()) {
-				case DOUBLE_LENGTH:
+				case DOUBLE_LENGTH_MM:
 					Parameters.createDoubleLengthParam(paramName.name(), 0, LengthUnitType.LENGTHUNIT_MM, currModel);
+					break;
+				case DOUBLE_LENGTH_M:
+					Parameters.createDoubleLengthParam(paramName.name(), 0, LengthUnitType.LENGTHUNIT_M, currModel);
 					break;
 				case DOUBLE_IN_DEG:
 					Parameters.createDoubleParamInDeg(paramName.name(), 0, currModel);
