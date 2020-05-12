@@ -8,19 +8,20 @@ import com.ptc.pfc.pfcDimension.Dimension;
 import com.ptc.pfc.pfcModelItem.ModelItemType;
 import com.ptc.pfc.pfcSolid.Solid;
 
-import ru.data.DataStore;
+import ru.externaldata.DataStore;
 
 public class SheetDimAssignment {
+	
 	private static final Logger LOG = LoggerFactory.getLogger(SheetDimAssignment.class);
-	private static Solid currSolid;
+	private static Solid solid;
 	
 	private SheetDimAssignment() {
 	    throw new IllegalStateException("Utility class");
 	  }
 	
-	public static void assign(Solid solid) {
+	public static void assign(Solid currSolid) {
 		try {
-			currSolid = solid;
+			solid = currSolid;
 			String sheetSectionName = "SHEET";
 			setDimValue(sheetSectionName, 0, DataStore.getExtDiam());
 			setDimValue(sheetSectionName, 1, DataStore.getIntDiam());
@@ -74,7 +75,7 @@ public class SheetDimAssignment {
 	}
 	
 	private static void setDimValue(String sectionName, int index, double value) throws jxthrowable {
-		((Dimension)currSolid.GetFeatureByName(sectionName).
+		((Dimension)solid.GetFeatureByName(sectionName).
 				ListSubItems(ModelItemType.ITEM_DIMENSION).get(index)).SetDimValue(value);
 	}
 }

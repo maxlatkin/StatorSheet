@@ -1,8 +1,13 @@
 package ru.assignment.screw;
 
-import ru.data.DataStore;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import ru.externaldata.DataStore;
 
 public class ScrewDimAssignmentFactory {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(ScrewDimAssignmentFactory.class);
 	
 	private ScrewDimAssignmentFactory() {
 	    throw new IllegalStateException("Utility class");
@@ -10,19 +15,30 @@ public class ScrewDimAssignmentFactory {
 	
 	public static ScrewDimAssignment getScrewDimAssignment() {
 		ScrewDimAssignment screwDimAssignment = null;
-		if (DataStore.getTypeOfScrew() == 1) {
+		switch (DataStore.getTypeOfScrew()) {
+		case 1:
 			screwDimAssignment = new Screw01DimAssignment();
-		} else if (DataStore.getTypeOfScrew() == 2) {
+			break;
+		case 2:
 			screwDimAssignment = new Screw02DimAssignment();
-		} else if (DataStore.getTypeOfScrew() == 3) {
+			break;
+		case 3:
 			screwDimAssignment = new Screw03And04DimAssignment();
-		} else if (DataStore.getTypeOfScrew() == 5) {
+			break;
+		case 5:
 			screwDimAssignment = new Screw05DimAssignment();
-		} else if (DataStore.getTypeOfScrew() == 6) {
+			break;
+		case 6:
 			screwDimAssignment = new Screw06DimAssignment();
-		} else if (DataStore.getTypeOfScrew() == 7) {
+			break;
+		case 7:
 			screwDimAssignment = new Screw07DimAssignment();
+			break;
+		default:
+			LOG.error("ScrewDimAssignmentFactory - incorrect screw type entered");
+			break;
 		}
+		LOG.info("ScrewDimAssignment got from ScrewDimAssignmentFactory");
 		return screwDimAssignment;
 	}
 }

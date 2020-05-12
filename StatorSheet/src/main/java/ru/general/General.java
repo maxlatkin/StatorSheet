@@ -13,7 +13,7 @@ import ru.assignment.SheetDimAssignment;
 import ru.assignment.screw.ScrewDimAssignmentFactory;
 import ru.building.Sheet;
 import ru.building.screw.ScrewFactory;
-import ru.data.DataStore;
+import ru.externaldata.DataStore;
 import ru.parameters.Params;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.templates.TemplateModel;

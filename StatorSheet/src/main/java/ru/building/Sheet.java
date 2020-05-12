@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcSolid.Solid;
 
-import ru.data.DataStore;
+import ru.externaldata.DataStore;
 import ru.ruselprom.fet.extrusions.add.ExtrusionAddSym;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.fet.operations.FetOperations;
@@ -14,7 +14,7 @@ import ru.ruselprom.fet.patterns.RotatPattern360;
 
 public final class Sheet {
 	
-	public static final Logger LOG = LoggerFactory.getLogger(Sheet.class);
+	private static final Logger LOG = LoggerFactory.getLogger(Sheet.class);
 	
 	private Sheet() {
 	    throw new IllegalStateException("Utility class");

@@ -5,13 +5,14 @@ import org.slf4j.LoggerFactory;
 
 import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcDimension.Dimension;
+import com.ptc.pfc.pfcGeometry.Edges;
 import com.ptc.pfc.pfcGeometry.Surface;
 import com.ptc.pfc.pfcModel.Model;
 import com.ptc.pfc.pfcModelItem.ModelItemType;
 import com.ptc.pfc.pfcSolid.Solid;
 import com.ptc.wfc.wfcGeometry.WSurface;
 
-import ru.data.DataStore;
+import ru.externaldata.DataStore;
 import ru.parameters.ModelParamNames;
 import ru.ruselprom.parameters.Parameters;
 
@@ -39,13 +40,9 @@ public class AuxiliaryParams implements ParamsSetting {
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SHEET_AREA.name(), getSheetArea(currModel), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SHEET_PERIMETER.name(), getSheetPerimeter(currModel), currModel);
 			LOG.info("Auxiliary parameters set");
-			
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in setting auxiliary parameters", e);
-		} catch (Exception e) {
-			LOG.error("Error in setting auxiliary parameters", e);
-		}
-		
+		} 
 	}
 	private double getSlotWdgFltW(Model currModel) throws jxthrowable {
 		double distBetwCenters = ((Dimension)((Solid)currModel).GetFeatureByName("SLOT_WITH_ROUND").
@@ -58,10 +55,10 @@ public class AuxiliaryParams implements ParamsSetting {
 	}
 	private double getSheetPerimeter(Model currModel) throws jxthrowable {
 		double value = 0;
-		for (int i = 0; i < ((WSurface)((Solid)currModel).GetFeatureByName("EXT_SHEET").
-				ListSubItems(ModelItemType.ITEM_SURFACE).get(0)).ListContours().get(0).ListElements().getarraysize(); i++) {
-			value += ((WSurface)((Solid)currModel).GetFeatureByName("EXT_SHEET").
-					ListSubItems(ModelItemType.ITEM_SURFACE).get(0)).ListContours().get(0).ListElements().get(i).EvalLength();
+		Edges edges = ((WSurface)((Solid)currModel).GetFeatureByName("EXT_SHEET").
+				ListSubItems(ModelItemType.ITEM_SURFACE).get(0)).ListContours().get(0).ListElements();
+		for (int i = 0; i < edges.getarraysize(); i++) {
+			value += edges.get(i).EvalLength();
 		}
 		return value;
 	}

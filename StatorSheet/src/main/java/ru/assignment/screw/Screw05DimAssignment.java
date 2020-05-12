@@ -8,7 +8,7 @@ import com.ptc.pfc.pfcDimension.Dimension;
 import com.ptc.pfc.pfcModelItem.ModelItemType;
 import com.ptc.pfc.pfcSolid.Solid;
 
-import ru.data.DataStore;
+import ru.externaldata.DataStore;
 
 public class Screw05DimAssignment implements ScrewDimAssignment {
 

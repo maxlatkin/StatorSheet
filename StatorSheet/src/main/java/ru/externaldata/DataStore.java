@@ -1,4 +1,4 @@
-package ru.data;
+package ru.externaldata;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -157,7 +157,7 @@ public final class DataStore {
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 1;
+		typeOfScrew = 3;
 		return typeOfScrew;
 	}
 

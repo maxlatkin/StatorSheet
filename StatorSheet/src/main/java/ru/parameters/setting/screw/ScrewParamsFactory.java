@@ -1,6 +1,6 @@
 package ru.parameters.setting.screw;
 
-import ru.data.DataStore;
+import ru.externaldata.DataStore;
 import ru.parameters.setting.ParamsSetting;
 
 public class ScrewParamsFactory {
