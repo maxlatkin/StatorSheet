@@ -11,7 +11,7 @@ import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.fet.operations.FetOperations;
 import ru.ruselprom.fet.patterns.RotatPattern360;
 
-public class Screw07 implements Screw {
+public class Screw07 extends Screw {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(Screw07.class);
 	

@@ -43,6 +43,7 @@ public class Screw01DimAssignment extends DimAssignment {
 		setCommonScrewHoleIndexAndValue(screwHoleIndexAndValue);
 		screwHoleIndexAndValue.put(3, 360.0 / (DataStore.getSegmQty() * DataStore.getScrewQty()) * 1.5);
 		screwHoleIndexAndValue.put(5, 360.0 / DataStore.getSegmQty() / 4);
+		screwHoleIndexAndValue.put(6, 360.0 / (DataStore.getSegmQty() * DataStore.getScrewQty()) * 0.5);
 		return screwHoleIndexAndValue;
 	}
 

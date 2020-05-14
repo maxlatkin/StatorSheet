@@ -12,7 +12,7 @@ import ru.ruselprom.fet.operations.FetOperations;
 import ru.ruselprom.fet.patterns.RotatPattern360;
 import ru.ruselprom.fet.patterns.TwoRotatPattern;
 
-public class Screw03And04 implements Screw {
+public class Screw03And04 extends Screw {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Screw03And04.class);
 	

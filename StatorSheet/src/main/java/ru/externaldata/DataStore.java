@@ -157,7 +157,7 @@ public final class DataStore {
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 1;
+		typeOfScrew = 2;
 		return typeOfScrew;
 	}
 
@@ -167,7 +167,7 @@ public final class DataStore {
 	}
 
 	public static int getScrewQty() {
-		screwQty = 2;
+		screwQty = 4;
 		return screwQty;
 	}
 

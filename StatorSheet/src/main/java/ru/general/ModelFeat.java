@@ -35,6 +35,10 @@ public enum ModelFeat {
 	AR_SCREW_01_SOLID_2,
 	EXT_SCREW_01_HOLE_2,
 	AR_SCREW_01_HOLE_2,
+	EXT_SCREW_01_SOLID_4,
+	AR_SCREW_01_SOLID_4,
+	EXT_SCREW_01_HOLE_4,
+	AR_SCREW_01_HOLE_4,
 	MARK;
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ModelFeat.class);

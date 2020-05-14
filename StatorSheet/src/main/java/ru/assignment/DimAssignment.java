@@ -7,6 +7,7 @@ import com.ptc.pfc.pfcDimension.Dimension;
 import com.ptc.pfc.pfcModelItem.ModelItemType;
 import com.ptc.pfc.pfcSolid.Solid;
 
+import ru.externaldata.DataStore;
 import ru.general.ModelFeat;
 
 public abstract class DimAssignment {
@@ -18,6 +19,18 @@ public abstract class DimAssignment {
 	}
 
 	public abstract void assign();
+	
+	protected double getQuarterSegmAngle() {
+		return 360.0 / DataStore.getSegmQty() / 4;
+	}
+	
+	protected double getOneAndHalfStepScrew() {
+		return 360.0 / (DataStore.getSegmQty() * DataStore.getScrewQty()) * 1.5;
+	}
+	
+	protected double getHalfStepScrew() {
+		return 360.0 / (DataStore.getSegmQty() * DataStore.getScrewQty()) * 0.5;
+	}
 	
 	protected void setArrayOfDimValue(ModelFeat sectionName, Map<Integer, Double> indexAndValue) throws jxthrowable {
 		for (Map.Entry<Integer, Double> pair: indexAndValue.entrySet()) {
