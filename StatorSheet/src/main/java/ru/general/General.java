@@ -36,7 +36,7 @@ public class General {
 			SheetDimAssignment.assign(currSolid);
 			Sheet.build(currSolid);
 			
-			ScrewDimAssignmentFactory.getScrewDimAssignment().assign(currSolid);
+			ScrewDimAssignmentFactory.getScrewDimAssignment(currSolid).assign();
 			ScrewFactory.getScrew().build(currSolid);
 			
 			if (DataStore.getSegmQty() != 1) {

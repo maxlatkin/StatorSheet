@@ -8,14 +8,19 @@ import com.ptc.pfc.pfcDimension.Dimension;
 import com.ptc.pfc.pfcModelItem.ModelItemType;
 import com.ptc.pfc.pfcSolid.Solid;
 
+import ru.assignment.DimAssignment;
 import ru.externaldata.DataStore;
 
-public class Screw05DimAssignment implements ScrewDimAssignment {
+public class Screw05DimAssignment extends DimAssignment {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Screw05DimAssignment.class);
+
+	public Screw05DimAssignment(Solid currSolid) {
+		super(currSolid);
+	}
 	
 	@Override
-	public void assign(Solid currSolid) {
+	public void assign() {
 		try {
 			String screwHole = "SCREW_05_HOLE";
 			//Screw Wdth

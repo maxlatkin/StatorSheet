@@ -49,7 +49,7 @@ public class Screw03And04 implements Screw {
 					RotatPattern360 screw04HoleAr = new RotatPattern360("Z");
 					screw04HoleAr.patternBuild(DataStore.getSegmQty(), 1, "AR_SCREW_04_HOLE", "EXT_SCREW_04_HOLE", currSolid);
 				} else if (DataStore.getScrewQty() == 4) {
-					TwoRotatPattern screw04HoleTwoAr = new TwoRotatPattern("Z");
+					TwoRotatPattern screw04HoleTwoAr = new TwoRotatPattern("Z","Z");
 					screw04HoleTwoAr.patternBuild(DataStore.getSegmQty(), 360.0 / DataStore.getSegmQty(),
 							2, 360.0 / (DataStore.getSegmQty() * (DataStore.getScrewQty() + 2)),
 							"AR_SCREW_04_HOLE", "EXT_SCREW_04_HOLE", currSolid);

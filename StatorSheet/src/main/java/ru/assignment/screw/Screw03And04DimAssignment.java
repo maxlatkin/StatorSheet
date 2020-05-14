@@ -8,15 +8,20 @@ import com.ptc.pfc.pfcDimension.Dimension;
 import com.ptc.pfc.pfcModelItem.ModelItemType;
 import com.ptc.pfc.pfcSolid.Solid;
 
+import ru.assignment.DimAssignment;
 import ru.externaldata.DataStore;
 
-public class Screw03And04DimAssignment implements ScrewDimAssignment {
+public class Screw03And04DimAssignment extends DimAssignment {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Screw03And04DimAssignment.class);
 	private Solid solid;
 	
+	public Screw03And04DimAssignment(Solid currSolid) {
+		super(currSolid);
+	}
+	
 	@Override
-	public void assign(Solid currSolid) {
+	public void assign() {
 		try {
 			solid = currSolid;
 			
@@ -67,7 +72,7 @@ public class Screw03And04DimAssignment implements ScrewDimAssignment {
 			
 			setDimValue("MARK", 2, DataStore.getMarkShift());
 			
-			LOG.info("Assigned dimensions for the Screw03and04");
+			LOG.info("Dimensions for the Screw03and04 assigned");
 		} catch (jxthrowable e) {
 			LOG.error("Error assigning dimensions to the Screw_03And04", e);
 		}

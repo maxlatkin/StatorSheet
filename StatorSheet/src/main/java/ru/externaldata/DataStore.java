@@ -29,14 +29,14 @@ public final class DataStore {
 	private static int screwQty;
 	private static boolean screw04Exist;
 	private static int typeOfScrew;
-	private static Map<Double, Integer> screw010203NearestPoints = new HashMap<>();
-	private static Map<Double, Integer> screw0203NearestPoints = new HashMap<>();
+	private static Map<Double, Double> screw010203NearestPoints = new HashMap<>();
+	private static Map<Double, Double> screw0203NearestPoints = new HashMap<>();
 	private static Map<Double, Double> screw01ExtRads = new HashMap<>();
 	private static Map<Double, Double> screw01MidRads = new HashMap<>();
 	private static Map<Double, Double> screw02ExtRads = new HashMap<>();
 	private static Map<Double, Double> screw03IntRads = new HashMap<>();
-	private static Map<Double, Integer> screw01FarTopPoints = new HashMap<>();
-	private static Map<Double, Integer> screw01FarBottomPoints = new HashMap<>();
+	private static Map<Double, Double> screw01FarTopPoints = new HashMap<>();
+	private static Map<Double, Double> screw01FarBottomPoints = new HashMap<>();
 	private static double screwDiam;
 	private static double screwShift;
 	private static double screw05Wdth;
@@ -98,11 +98,11 @@ public final class DataStore {
 		return screw02ExtRads;
 	}
 
-	public static Map<Double, Integer> getScrew0203NearestPoints() {
-		screw0203NearestPoints.put(20.3, 20);
-		screw0203NearestPoints.put(24.3, 22);
-		screw0203NearestPoints.put(30.3, 29);
-		screw0203NearestPoints.put(36.3, 35);
+	public static Map<Double, Double> getScrew0203NearestPoints() {
+		screw0203NearestPoints.put(20.3, 20.0);
+		screw0203NearestPoints.put(24.3, 22.0);
+		screw0203NearestPoints.put(30.3, 29.0);
+		screw0203NearestPoints.put(36.3, 35.0);
 		return screw0203NearestPoints;
 	}
 
@@ -116,19 +116,19 @@ public final class DataStore {
 		return screwShift;
 	}
 
-	public static Map<Double, Integer> getScrew01FarBottomPoints() {
-		screw01FarBottomPoints.put(20.3, 35);
-		screw01FarBottomPoints.put(24.3, 40);
-		screw01FarBottomPoints.put(30.3, 50);
-		screw01FarBottomPoints.put(36.3, 60);
+	public static Map<Double, Double> getScrew01FarBottomPoints() {
+		screw01FarBottomPoints.put(20.3, 35.0);
+		screw01FarBottomPoints.put(24.3, 40.0);
+		screw01FarBottomPoints.put(30.3, 50.0);
+		screw01FarBottomPoints.put(36.3, 60.0);
 		return screw01FarBottomPoints;
 	}
 
-	public static Map<Double, Integer> getScrew01FarTopPoints() {
-		screw01FarTopPoints.put(20.3, 30);
-		screw01FarTopPoints.put(24.3, 35);
-		screw01FarTopPoints.put(30.3, 45);
-		screw01FarTopPoints.put(36.3, 55);
+	public static Map<Double, Double> getScrew01FarTopPoints() {
+		screw01FarTopPoints.put(20.3, 30.0);
+		screw01FarTopPoints.put(24.3, 35.0);
+		screw01FarTopPoints.put(30.3, 45.0);
+		screw01FarTopPoints.put(36.3, 55.0);
 		return screw01FarTopPoints;
 	}
 
@@ -148,16 +148,16 @@ public final class DataStore {
 		return screw01ExtRads;
 	}
 
-	public static Map<Double, Integer> getScrew010203NearestPoints() {
-		screw010203NearestPoints.put(20.3, 8);
-		screw010203NearestPoints.put(24.3, 10);
-		screw010203NearestPoints.put(30.3, 12);
-		screw010203NearestPoints.put(36.3, 14);
+	public static Map<Double, Double> getScrew010203NearestPoints() {
+		screw010203NearestPoints.put(20.3, 8.0);
+		screw010203NearestPoints.put(24.3, 10.0);
+		screw010203NearestPoints.put(30.3, 12.0);
+		screw010203NearestPoints.put(36.3, 14.0);
 		return screw010203NearestPoints;
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 3;
+		typeOfScrew = 1;
 		return typeOfScrew;
 	}
 
@@ -167,7 +167,7 @@ public final class DataStore {
 	}
 
 	public static int getScrewQty() {
-		screwQty = 4;
+		screwQty = 2;
 		return screwQty;
 	}
 
@@ -196,12 +196,12 @@ public final class DataStore {
 	}
 
 	public static double getExtDiam() {
-		extDiam = 560;
+		extDiam = 2500;
 		return extDiam;
 	}
 
 	public static double getIntDiam() {
-		intDiam = 400;
+		intDiam = 2000;
 		return intDiam;
 	}
 
@@ -210,7 +210,7 @@ public final class DataStore {
 	}
 
 	public static int getSegmQty() {
-		segmQty = 4;
+		segmQty = 20;
 		return segmQty;
 	}
 

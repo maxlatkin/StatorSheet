@@ -1,117 +1,88 @@
 package ru.assignment.screw;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ptc.cipjava.jxthrowable;
-import com.ptc.pfc.pfcDimension.Dimension;
-import com.ptc.pfc.pfcModelItem.ModelItemType;
 import com.ptc.pfc.pfcSolid.Solid;
 
+import ru.assignment.DimAssignment;
 import ru.externaldata.DataStore;
+import ru.general.ModelFeat;
 
-public class Screw01DimAssignment implements ScrewDimAssignment {
+public class Screw01DimAssignment extends DimAssignment {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(Screw01DimAssignment.class);
-	
+
+	public Screw01DimAssignment(Solid currSolid) {
+		super(currSolid);
+	}
+
 	@Override
-	public void assign(Solid currSolid) {
+	public void assign() {
 		try {
 			if (DataStore.getScrewQty() == 2) {
-				String screwSolid = "SCREW_01_SOLID_2";
-				//Int Rad
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(7)).SetDimValue(DataStore.getExtDiam()/2);
-				//Ext Rad
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(4)).SetDimValue(DataStore.
-								getScrew01ExtRads().get(DataStore.getScrewDiam()));
-				//Mid Rad
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(5)).SetDimValue(DataStore.
-								getScrew01MidRads().get(DataStore.getScrewDiam()));
-				//Screw Diam
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getScrewDiam());
-				//Nearest Point
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.
-								getScrew010203NearestPoints().get(DataStore.getScrewDiam()));
-				//Far Top Point
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.
-								getScrew01FarTopPoints().get(DataStore.getScrewDiam()));
-				//Fat Bottom Point
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(3)).SetDimValue(DataStore.
-								getScrew01FarBottomPoints().get(DataStore.getScrewDiam()));
-				//Screw Shift
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(6)).SetDimValue(DataStore.getScrewShift());
-				String screwHole = "SCREW_01_HOLE_2";
-				//Mid Rad
-				((Dimension)currSolid.GetFeatureByName(screwHole).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.
-								getScrew01MidRads().get(DataStore.getScrewDiam()));
-				//Screw Diam
-				((Dimension)currSolid.GetFeatureByName(screwHole).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getScrewDiam());
-				//Screw Shift
-				((Dimension)currSolid.GetFeatureByName(screwHole).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.getScrewShift());
+				setArrayOfDimValue(ModelFeat.SCREW_01_SOLID_2, getScrewSolid02IndexAndValue());
+				setArrayOfDimValue(ModelFeat.SCREW_01_HOLE_2, getScrewHole02IndexAndValue());
 			} else if (DataStore.getScrewQty() == 4) {
-				String screwSolid = "SCREW_01_SOLID_4";
-				//Int Rad
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(13)).SetDimValue(DataStore.getExtDiam()/2);
-				//Ext Rad
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(4)).SetDimValue(DataStore.
-								getScrew01ExtRads().get(DataStore.getScrewDiam()));
-				//Mid Rad
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(5)).SetDimValue(DataStore.
-								getScrew01MidRads().get(DataStore.getScrewDiam()));
-				//Screw Diam
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getScrewDiam());
-				//Nearest Point
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.
-								getScrew010203NearestPoints().get(DataStore.getScrewDiam()));
-				//Far Top Point
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.
-								getScrew01FarTopPoints().get(DataStore.getScrewDiam()));
-				//Fat Bottom Point
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(3)).SetDimValue(DataStore.
-								getScrew01FarBottomPoints().get(DataStore.getScrewDiam()));
-				//Screw Shift
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(6)).SetDimValue(DataStore.getScrewShift());
-				//Axis of symmetry for screw
-				((Dimension)currSolid.GetFeatureByName(screwSolid).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(14)).SetDimValue(360.0 / DataStore.getSegmQty() / 4);
-				String screwHole = "SCREW_01_HOLE_4";
-				//Mid Rad
-				((Dimension)currSolid.GetFeatureByName(screwHole).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.
-								getScrew01MidRads().get(DataStore.getScrewDiam()));
-				//Screw Diam
-				((Dimension)currSolid.GetFeatureByName(screwHole).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getScrewDiam());
-				//Screw Shift
-				((Dimension)currSolid.GetFeatureByName(screwHole).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(3)).SetDimValue(DataStore.getScrewShift());
-				//Axis of symmetry for screw
-				((Dimension)currSolid.GetFeatureByName(screwHole).
-						ListSubItems(ModelItemType.ITEM_DIMENSION).get(5)).SetDimValue(360.0 / DataStore.getSegmQty() / 4);
+				setArrayOfDimValue(ModelFeat.SCREW_01_SOLID_4, getScrewSolid04IndexAndValue());
+				setArrayOfDimValue(ModelFeat.SCREW_01_HOLE_4, getScrewHole04IndexAndValue());
 			}
-			((Dimension)currSolid.GetFeatureByName("MARK").
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.getMarkShift());
+			setDimValue(ModelFeat.MARK, 2, DataStore.getMarkShift());
+			LOG.info("Dimensions for the Screw01 assigned");
 		} catch (jxthrowable e) {
 			LOG.error("Error assigning dimensions to the Screw_01", e);
 		}
+	}
+
+	private Map<Integer, Double> getScrewHole04IndexAndValue() {
+		Map<Integer, Double> screwHoleIndexAndValue = new HashMap<>();
+		setCommonScrewHoleIndexAndValue(screwHoleIndexAndValue);
+		screwHoleIndexAndValue.put(3, 360.0 / (DataStore.getSegmQty() * DataStore.getScrewQty()) * 1.5);
+		screwHoleIndexAndValue.put(5, 360.0 / DataStore.getSegmQty() / 4);
+		return screwHoleIndexAndValue;
+	}
+
+	private Map<Integer, Double> getScrewSolid04IndexAndValue() {
+		Map<Integer, Double> screwSolidIndexAndValue = new HashMap<>();
+		screwSolidIndexAndValue.put(0, DataStore.getScrewDiam());                                             
+		screwSolidIndexAndValue.put(1, DataStore.getScrew010203NearestPoints().get(DataStore.getScrewDiam()));
+		screwSolidIndexAndValue.put(2, DataStore.getScrew01FarTopPoints().get(DataStore.getScrewDiam()));     
+		screwSolidIndexAndValue.put(3, DataStore.getScrew01FarBottomPoints().get(DataStore.getScrewDiam()));  
+		screwSolidIndexAndValue.put(4, DataStore.getScrew01ExtRads().get(DataStore.getScrewDiam()));          
+		screwSolidIndexAndValue.put(5, DataStore.getScrew01MidRads().get(DataStore.getScrewDiam()));          
+		screwSolidIndexAndValue.put(6, 360.0 / (DataStore.getSegmQty() * DataStore.getScrewQty()) * 1.5);     
+		screwSolidIndexAndValue.put(13, DataStore.getExtDiam()/2);                                            
+		screwSolidIndexAndValue.put(14, 360.0 / DataStore.getSegmQty() / 4);                                  
+		screwSolidIndexAndValue.put(15, 360.0 / (DataStore.getSegmQty() * DataStore.getScrewQty()) * 0.5);
+		return screwSolidIndexAndValue;
+	}
+
+	private Map<Integer, Double> getScrewHole02IndexAndValue() {
+		Map<Integer, Double> screwHoleIndexAndValue = new HashMap<>();
+		setCommonScrewHoleIndexAndValue(screwHoleIndexAndValue);
+		screwHoleIndexAndValue.put(2, 360.0 / DataStore.getSegmQty() / 4);
+		return screwHoleIndexAndValue;
+	}
+
+	private Map<Integer, Double> getScrewSolid02IndexAndValue() {
+		Map<Integer, Double> screwSolidIndexAndValue = new HashMap<>();
+		screwSolidIndexAndValue.put(0, 360.0 / DataStore.getSegmQty() / 4);                                   
+		screwSolidIndexAndValue.put(1, DataStore.getScrew01MidRads().get(DataStore.getScrewDiam()));          
+		screwSolidIndexAndValue.put(2, DataStore.getExtDiam()/2);                                             
+		screwSolidIndexAndValue.put(3, DataStore.getScrewDiam());                                             
+		screwSolidIndexAndValue.put(4, DataStore.getScrew01ExtRads().get(DataStore.getScrewDiam()));          
+		screwSolidIndexAndValue.put(5, DataStore.getScrew01FarTopPoints().get(DataStore.getScrewDiam()));     
+		screwSolidIndexAndValue.put(6, DataStore.getScrew01FarBottomPoints().get(DataStore.getScrewDiam()));  
+		screwSolidIndexAndValue.put(7, DataStore.getScrew010203NearestPoints().get(DataStore.getScrewDiam()));
+		return screwSolidIndexAndValue;
+	}
+
+	private void setCommonScrewHoleIndexAndValue(Map<Integer, Double> screwHoleIndexAndValue) {
+		screwHoleIndexAndValue.put(0, DataStore.getScrewDiam());
+		screwHoleIndexAndValue.put(1, DataStore.getScrew01MidRads().get(DataStore.getScrewDiam()));
 	}
 }

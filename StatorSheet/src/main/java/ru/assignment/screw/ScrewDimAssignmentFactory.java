@@ -3,6 +3,9 @@ package ru.assignment.screw;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ptc.pfc.pfcSolid.Solid;
+
+import ru.assignment.DimAssignment;
 import ru.externaldata.DataStore;
 
 public class ScrewDimAssignmentFactory {
@@ -13,26 +16,26 @@ public class ScrewDimAssignmentFactory {
 	    throw new IllegalStateException("Utility class");
 	}
 	
-	public static ScrewDimAssignment getScrewDimAssignment() {
-		ScrewDimAssignment screwDimAssignment = null;
+	public static DimAssignment getScrewDimAssignment(Solid currSolid) {
+		DimAssignment screwDimAssignment = null;
 		switch (DataStore.getTypeOfScrew()) {
 		case 1:
-			screwDimAssignment = new Screw01DimAssignment();
+			screwDimAssignment = new Screw01DimAssignment(currSolid);
 			break;
 		case 2:
-			screwDimAssignment = new Screw02DimAssignment();
+			screwDimAssignment = new Screw02DimAssignment(currSolid);
 			break;
 		case 3:
-			screwDimAssignment = new Screw03And04DimAssignment();
+			screwDimAssignment = new Screw03And04DimAssignment(currSolid);
 			break;
 		case 5:
-			screwDimAssignment = new Screw05DimAssignment();
+			screwDimAssignment = new Screw05DimAssignment(currSolid);
 			break;
 		case 6:
-			screwDimAssignment = new Screw06DimAssignment();
+			screwDimAssignment = new Screw06DimAssignment(currSolid);
 			break;
 		case 7:
-			screwDimAssignment = new Screw07DimAssignment();
+			screwDimAssignment = new Screw07DimAssignment(currSolid);
 			break;
 		default:
 			LOG.error("ScrewDimAssignmentFactory - incorrect screw type entered");
