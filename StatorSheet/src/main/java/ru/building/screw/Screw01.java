@@ -17,12 +17,12 @@ public class Screw01 extends Screw {
 	public void build(Solid currSolid) {
 		try {
 			if (DataStore.getScrewQty() == 2) {
-				buildReducedRadScrew(currSolid,
+				buildScrew0102(currSolid,
 						ModelFeat.SCREW_01_SOLID_2, ModelFeat.EXT_SCREW_01_SOLID_2,	ModelFeat.AR_SCREW_01_SOLID_2,
 						ModelFeat.SCREW_01_HOLE_2, ModelFeat.EXT_SCREW_01_HOLE_2, ModelFeat.AR_SCREW_01_HOLE_2);
 				LOG.info("Screw_01_Qty=2 is built");
 			} else if (DataStore.getScrewQty() == 4) {
-				buildReducedRadScrew(currSolid,
+				buildScrew0102(currSolid,
 						ModelFeat.SCREW_01_SOLID_4, ModelFeat.EXT_SCREW_01_SOLID_4,	ModelFeat.AR_SCREW_01_SOLID_4,
 						ModelFeat.SCREW_01_HOLE_4, ModelFeat.EXT_SCREW_01_HOLE_4, ModelFeat.AR_SCREW_01_HOLE_4);
 				LOG.info("Screw_01_Qty=4 is built");

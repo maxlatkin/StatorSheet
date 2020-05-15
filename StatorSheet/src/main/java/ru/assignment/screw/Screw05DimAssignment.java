@@ -1,15 +1,17 @@
 package ru.assignment.screw;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ptc.cipjava.jxthrowable;
-import com.ptc.pfc.pfcDimension.Dimension;
-import com.ptc.pfc.pfcModelItem.ModelItemType;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.assignment.DimAssignment;
 import ru.externaldata.DataStore;
+import ru.general.ModelFeat;
 
 public class Screw05DimAssignment extends DimAssignment {
 
@@ -22,23 +24,14 @@ public class Screw05DimAssignment extends DimAssignment {
 	@Override
 	public void assign() {
 		try {
-			String screwHole = "SCREW_05_HOLE";
-			//Screw Wdth
-			((Dimension)currSolid.GetFeatureByName(screwHole).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getScrew05Wdth());
-			//Screw Hght
-			((Dimension)currSolid.GetFeatureByName(screwHole).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.getScrew05Hght());
-			//Rad
-			((Dimension)currSolid.GetFeatureByName(screwHole).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.getExtDiam()/2);
-			//Screw Shift
-			((Dimension)currSolid.GetFeatureByName(screwHole).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(3)).SetDimValue(90 - DataStore.getScrewShift());
-			//Mark Shift
-			((Dimension)currSolid.GetFeatureByName("MARK").
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.getMarkShift() + 
-							DataStore.getScrew05Hght());
+			Map<Integer, Double> screwSolidIndexAndValue = new HashMap<>();
+			screwSolidIndexAndValue.put(0, DataStore.getScrew05Wdth());
+			screwSolidIndexAndValue.put(1, DataStore.getScrew05Hght());
+			screwSolidIndexAndValue.put(2, DataStore.getExtDiam()/2);
+			screwSolidIndexAndValue.put(3, 360.0 / DataStore.getSegmQty() / 2);
+			setArrayOfDimValue(ModelFeat.SCREW_05_HOLE, screwSolidIndexAndValue);
+			setDimValue(ModelFeat.MARK, 2, DataStore.getMarkShift() + DataStore.getScrew05Hght());
+			LOG.info("Dimensions for the Screw05 assigned");
 		} catch (jxthrowable e) {
 			LOG.error("Error assigning dimensions to the Screw_05", e);
 		}

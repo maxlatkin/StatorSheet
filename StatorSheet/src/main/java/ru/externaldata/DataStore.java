@@ -107,7 +107,7 @@ public final class DataStore {
 	}
 
 	public static double getScrewDiam() {
-		screwDiam = 20.3;
+		screwDiam = 24.3;
 		return screwDiam;
 	}
 
@@ -157,7 +157,7 @@ public final class DataStore {
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 2;
+		typeOfScrew = 7;
 		return typeOfScrew;
 	}
 

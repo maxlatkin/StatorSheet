@@ -42,8 +42,7 @@ public class Screw02DimAssignment extends DimAssignment {
 		Map<Integer, Double> screwHoleIndexAndValue = new HashMap<>();
 		setCommonScrewHoleIndexAndValue(screwHoleIndexAndValue);
 		screwHoleIndexAndValue.put(6, getOneAndHalfStepScrew());
-		screwHoleIndexAndValue.put(7, getQuarterSegmAngle());
-		screwHoleIndexAndValue.put(8, getHalfStepScrew());
+		screwHoleIndexAndValue.put(7, getHalfStepScrew());
 		return screwHoleIndexAndValue;
 	}
 
@@ -65,8 +64,7 @@ public class Screw02DimAssignment extends DimAssignment {
 		Map<Integer, Double> screwSolidIndexAndValue = new HashMap<>();
 		setCommonScrewSolidIndexAndValue(screwSolidIndexAndValue);
 		screwSolidIndexAndValue.put(9, getOneAndHalfStepScrew());
-		screwSolidIndexAndValue.put(22, getQuarterSegmAngle());
-		screwSolidIndexAndValue.put(23, getHalfStepScrew());
+		screwSolidIndexAndValue.put(22, getHalfStepScrew());
 		return screwSolidIndexAndValue;
 	}
 

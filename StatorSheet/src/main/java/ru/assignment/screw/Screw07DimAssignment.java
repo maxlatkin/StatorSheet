@@ -1,15 +1,17 @@
 package ru.assignment.screw;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ptc.cipjava.jxthrowable;
-import com.ptc.pfc.pfcDimension.Dimension;
-import com.ptc.pfc.pfcModelItem.ModelItemType;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.assignment.DimAssignment;
 import ru.externaldata.DataStore;
+import ru.general.ModelFeat;
 
 public class Screw07DimAssignment extends DimAssignment {
 
@@ -22,27 +24,16 @@ public class Screw07DimAssignment extends DimAssignment {
 	@Override
 	public void assign() {
 		try {
-			String screwHole = "SCREW_07_HOLE";
-			//Screw Wdth
-			((Dimension)currSolid.GetFeatureByName(screwHole).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(0)).SetDimValue(DataStore.getScrew07Wdth());
-			//Screw Gap
-			((Dimension)currSolid.GetFeatureByName(screwHole).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(1)).SetDimValue(DataStore.
-							getScrew07Gap() + DataStore.getScrew07Hght());
-			//Screw Hght
-			((Dimension)currSolid.GetFeatureByName(screwHole).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(3)).SetDimValue(DataStore.getScrew07Hght());
-			//Rad
-			((Dimension)currSolid.GetFeatureByName(screwHole).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(5)).SetDimValue(DataStore.getExtDiam()/2);
-			//Screw Shift
-			((Dimension)currSolid.GetFeatureByName(screwHole).
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(6)).SetDimValue(DataStore.getScrewShift());
-			//Mark Shift
-			((Dimension)currSolid.GetFeatureByName("MARK").
-					ListSubItems(ModelItemType.ITEM_DIMENSION).get(2)).SetDimValue(DataStore.getMarkShift() + 
-							DataStore.getScrew07Hght() + DataStore.getScrew07Gap());
+			Map<Integer, Double> screwSolidIndexAndValue = new HashMap<>();
+			screwSolidIndexAndValue.put(0, DataStore.getScrew07Wdth());
+			screwSolidIndexAndValue.put(1, DataStore.getScrew07Gap() + DataStore.getScrew07Hght());
+			screwSolidIndexAndValue.put(3, DataStore.getScrew07Hght());
+			screwSolidIndexAndValue.put(5, DataStore.getExtDiam()/2);
+			screwSolidIndexAndValue.put(6, 360.0 / DataStore.getSegmQty() / 2);
+			setArrayOfDimValue(ModelFeat.SCREW_07_HOLE, screwSolidIndexAndValue);
+			setDimValue(ModelFeat.MARK, 2,
+					DataStore.getMarkShift() + DataStore.getScrew07Hght() +	DataStore.getScrew07Gap());
+			LOG.info("Dimensions for the Screw07 assigned");
 		} catch (jxthrowable e) {
 			LOG.error("Error assigning dimensions to the Screw_07", e);
 		}

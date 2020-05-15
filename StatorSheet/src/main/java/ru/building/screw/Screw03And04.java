@@ -7,6 +7,7 @@ import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.externaldata.DataStore;
+import ru.general.ModelFeat;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.fet.operations.FetOperations;
 import ru.ruselprom.fet.patterns.RotatPattern360;
@@ -20,42 +21,25 @@ public class Screw03And04 extends Screw {
 	public void build(Solid currSolid) {
 		try {
 			if (DataStore.getScrewQty() == 2) {
-				ExtrusionCut screw03Hole = new ExtrusionCut();
-				screw03Hole.build("EXT_SCREW_03_HOLE_2", "SCREW_03_HOLE_2", currSolid);
-				RotatPattern360 screwAr = new RotatPattern360("Z");
-				screwAr.patternBuild(DataStore.getSegmQty(), 1, "AR_SCREW_03_HOLE_2", "EXT_SCREW_03_HOLE_2", currSolid);
-				FetOperations.deleteFeature(currSolid, "SCREW_01_SOLID_2", "SCREW_01_HOLE_2",
-						"SCREW_01_SOLID_4", "SCREW_01_HOLE_4",
-						"SCREW_02_SOLID_2", "SCREW_02_HOLE_2",
-						"SCREW_02_SOLID_4", "SCREW_02_HOLE_4",
-						"SCREW_03_HOLE_4", "SCREW_05_HOLE",
-						"SCREW_06_HOLE", "SCREW_07_HOLE");
+				buildScrew03(currSolid, ModelFeat.SCREW_03_HOLE_2, ModelFeat.EXT_SCREW_03_HOLE_2, ModelFeat.AR_SCREW_03_HOLE_2);
 			} else if (DataStore.getScrewQty() == 4) {
-				ExtrusionCut screw03Hole = new ExtrusionCut();
-				screw03Hole.build("EXT_SCREW_03_HOLE_4", "SCREW_03_HOLE_4", currSolid);
-				RotatPattern360 screwAr = new RotatPattern360("Z");
-				screwAr.patternBuild(DataStore.getSegmQty(), 1, "AR_SCREW_03_HOLE_4", "EXT_SCREW_03_HOLE_4", currSolid);
-				FetOperations.deleteFeature(currSolid, "SCREW_01_SOLID_2", "SCREW_01_HOLE_2",
-						"SCREW_01_SOLID_4", "SCREW_01_HOLE_4",
-						"SCREW_02_SOLID_2", "SCREW_02_HOLE_2",
-						"SCREW_02_SOLID_4", "SCREW_02_HOLE_4",
-						"SCREW_03_HOLE_2", "SCREW_05_HOLE",
-						"SCREW_06_HOLE", "SCREW_07_HOLE");
+				buildScrew03(currSolid, ModelFeat.SCREW_03_HOLE_4, ModelFeat.EXT_SCREW_03_HOLE_4, ModelFeat.AR_SCREW_03_HOLE_4);
 			}
 			if (DataStore.isScrew04Exist()) {
 				ExtrusionCut screw04Hole = new ExtrusionCut();
-				screw04Hole.build("EXT_SCREW_04_HOLE", "SCREW_04_HOLE", currSolid);
+				screw04Hole.build(ModelFeat.EXT_SCREW_04_HOLE.name(), ModelFeat.SCREW_04_HOLE.name(), currSolid);
 				if (DataStore.getScrewQty() == 2) {
-					RotatPattern360 screw04HoleAr = new RotatPattern360("Z");
-					screw04HoleAr.patternBuild(DataStore.getSegmQty(), 1, "AR_SCREW_04_HOLE", "EXT_SCREW_04_HOLE", currSolid);
+					RotatPattern360 screw04HoleAr = new RotatPattern360(ModelFeat.Z.name());
+					screw04HoleAr.patternBuild(DataStore.getSegmQty(), 1,
+							ModelFeat.AR_SCREW_04_HOLE.name(), ModelFeat.EXT_SCREW_04_HOLE.name(), currSolid);
 				} else if (DataStore.getScrewQty() == 4) {
-					TwoRotatPattern screw04HoleTwoAr = new TwoRotatPattern("Z","Z");
+					TwoRotatPattern screw04HoleTwoAr = new TwoRotatPattern(ModelFeat.Z.name(), ModelFeat.Z.name());
 					screw04HoleTwoAr.patternBuild(DataStore.getSegmQty(), 360.0 / DataStore.getSegmQty(),
 							2, 360.0 / (DataStore.getSegmQty() * (DataStore.getScrewQty() + 2)),
-							"AR_SCREW_04_HOLE", "EXT_SCREW_04_HOLE", currSolid);
+							ModelFeat.AR_SCREW_04_HOLE.name(), ModelFeat.EXT_SCREW_04_HOLE.name(), currSolid);
 				}
 			} else {
-				FetOperations.deleteFeature(currSolid, "SCREW_04_HOLE");
+				FetOperations.deleteFeature(currSolid, ModelFeat.SCREW_04_HOLE.name());
 			}
 			LOG.info("Screw_03And04_Qty is built");
 		} catch (NullPointerException | jxthrowable e) {
