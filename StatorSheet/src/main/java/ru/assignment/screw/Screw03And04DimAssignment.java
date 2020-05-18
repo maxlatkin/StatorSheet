@@ -26,19 +26,16 @@ public class Screw03And04DimAssignment extends DimAssignment {
 		try {
 			if (DataStore.getScrewQty() == 2) {
 				setArrayOfDimValue(ModelFeat.SCREW_03_HOLE_2, getCommonScrew03IndexAndValue());
-				if (DataStore.isScrew04Exist()) {
-					setDimValue(ModelFeat.SCREW_03_HOLE_2, 5, 360.0 / DataStore.getSegmQty() / 3);
-				} else {
-					setDimValue(ModelFeat.SCREW_03_HOLE_2, 5, getQuarterSegmAngle());
-				}
+				setDimValue(ModelFeat.SCREW_03_HOLE_2, 5, DataStore.getScrewShift());
 			} else if (DataStore.getScrewQty() == 4) {
 				setArrayOfDimValue(ModelFeat.SCREW_03_HOLE_4, getCommonScrew03IndexAndValue());
+				setDimValue(ModelFeat.SCREW_03_HOLE_4, 5, DataStore.getScrewShift());
 				if (DataStore.isScrew04Exist()) {
-					setDimValue(ModelFeat.SCREW_03_HOLE_4, 5, 360.0 / (DataStore.getSegmQty() * (DataStore.getScrewQty() + 2)) * 2.5);
-					setDimValue(ModelFeat.SCREW_03_HOLE_4, 10, 360.0 / (DataStore.getSegmQty() * (DataStore.getScrewQty() + 2)) * 1.5);
+					setDimValue(ModelFeat.SCREW_03_HOLE_4, 10, DataStore.getScrewShift() - 
+							(2 * DataStore.getScrewShift() - (360.0 / DataStore.getSegmQty()) * 2 / 3));
 				} else {
-					setDimValue(ModelFeat.SCREW_03_HOLE_4, 5, getOneAndHalfStepScrew());
-					setDimValue(ModelFeat.SCREW_03_HOLE_4, 10, getHalfStepScrew());
+					setDimValue(ModelFeat.SCREW_03_HOLE_4, 10, DataStore.getScrewShift() - 
+							(2 * DataStore.getScrewShift() - (360.0 / DataStore.getSegmQty()) / 2));
 				}
 			}
 			

@@ -18,6 +18,14 @@ public enum ModelFeat {
 	X,
 	Y,
 	Z,
+	SHEET,
+	EXT_SHEET,
+	SLOT_WITH_ROUND,
+	SLOT_WITHOUT_ROUND,
+	EXT_SLOT,
+	AR_SLOT,
+	TRANSFORM_CORE_TO_SHEET,
+	EXT_TRANSFORM,
 	SCREW_01_SOLID_2,
 	SCREW_01_HOLE_2,
 	SCREW_01_SOLID_4,
@@ -60,7 +68,8 @@ public enum ModelFeat {
 	AR_SCREW_06_HOLE,
 	EXT_SCREW_07_HOLE,
 	AR_SCREW_07_HOLE,
-	MARK;
+	MARK,
+	EXT_MARK;
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ModelFeat.class);
 

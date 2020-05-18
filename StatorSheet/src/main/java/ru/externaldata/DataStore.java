@@ -21,8 +21,8 @@ public final class DataStore {
 	private static double wedgeAngleTop = 30;
 	private static double wedgeAngleBottom = 60;
 	private static double slotWdth = 12;
-	private static double slotRoundBottom = 1;
-	private static double slotRoundTop = 0.4;
+	private static double slotRoundBottom;
+	private static double slotRoundTop;
 	private static double markRound = 0.4;
 	private static double markRadius = 1.5;
 	private static double markShift = 15;
@@ -112,7 +112,31 @@ public final class DataStore {
 	}
 
 	public static double getScrewShift() {
-		screwShift = 30;
+		if (getTypeOfScrew() == 1 || getTypeOfScrew() == 2) {
+			if (getScrewQty() == 2) {
+				return 360.0 / DataStore.getSegmQty() / 4;
+			} else if (getScrewQty() == 4) {
+				return 360.0 / (DataStore.getSegmQty() * DataStore.getScrewQty()) * 1.5;
+			}
+		} else if (getTypeOfScrew() == 3) {
+			if (getScrewQty() == 2 && isScrew04Exist()) {
+				return 360.0 / DataStore.getSegmQty() / 3;
+			} else if (getScrewQty() == 2 && !isScrew04Exist()) {
+				return 360.0 / DataStore.getSegmQty() / 4;
+			} else if (getScrewQty() == 4 && isScrew04Exist()) {
+				return 360.0 / (DataStore.getSegmQty() * (DataStore.getScrewQty() + 2)) * 2.5;
+			} else if (getScrewQty() == 4 && !isScrew04Exist()) {
+				return 360.0 / (DataStore.getSegmQty() * DataStore.getScrewQty()) * 1.5;
+			}
+		} else if (getTypeOfScrew() == 5 || getTypeOfScrew() == 6 || getTypeOfScrew() == 7) {
+			if (getSegmQty() == 1) {
+				return 0;
+			} else {
+				return 360.0 / DataStore.getSegmQty() / 2;
+			}
+		} else {
+			throw new IllegalArgumentException("Unknown type of Screw");
+		}
 		return screwShift;
 	}
 
@@ -157,7 +181,7 @@ public final class DataStore {
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 1;
+		typeOfScrew = 3;
 		return typeOfScrew;
 	}
 
@@ -167,7 +191,7 @@ public final class DataStore {
 	}
 
 	public static int getScrewQty() {
-		screwQty = 2;
+		screwQty = 4;
 		return screwQty;
 	}
 
@@ -192,29 +216,32 @@ public final class DataStore {
 	}
 
 	public static boolean isSlotWithRound() {
+		slotWithRound = false;
 		return slotWithRound;
 	}
 
 	public static double getExtDiam() {
-		extDiam = 700;
+		extDiam = 800;
 		return extDiam;
 	}
 
 	public static double getIntDiam() {
-		intDiam = 500;
+		intDiam = 600;
 		return intDiam;
 	}
 
 	public static double getSegmPruning() {
+		segmPruning = 0.2;
 		return segmPruning;
 	}
 
 	public static int getSegmQty() {
-		segmQty = 4;
+		segmQty = 6;
 		return segmQty;
 	}
 
 	public static double getSlotHghtToWdg() {
+		slotHghtToWdg = 44;
 		return slotHghtToWdg;
 	}
 
@@ -235,14 +262,17 @@ public final class DataStore {
 	}
 
 	public static double getSlotWdth() {
+		slotWdth = 12;
 		return slotWdth;
 	}
 
 	public static double getSlotRoundBottom() {
+		slotRoundBottom = 1;
 		return slotRoundBottom;
 	}
 
 	public static double getSlotRoundTop() {
+		slotRoundTop = 0.4;
 		return slotRoundTop;
 	}
 

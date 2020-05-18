@@ -7,6 +7,7 @@ import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.externaldata.DataStore;
+import ru.general.ModelFeat;
 import ru.ruselprom.fet.extrusions.add.ExtrusionAddSym;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.fet.operations.FetOperations;
@@ -23,17 +24,17 @@ public final class Sheet {
 	public static void build(Solid currSolid) {
 		try {
 			ExtrusionAddSym sheetThck = new ExtrusionAddSym();
-			sheetThck.build(DataStore.getSheetThck(), "EXT_SHEET", "SHEET", currSolid);
+			sheetThck.build(DataStore.getSheetThck(), ModelFeat.EXT_SHEET.name(), ModelFeat.SHEET.name(), currSolid);
 			ExtrusionCut slot = new ExtrusionCut();
 			if (DataStore.isSlotWithRound()) {
-				slot.build("EXT_SLOT", "SLOT_WITH_ROUND", currSolid);
-				FetOperations.deleteFeature(currSolid, "SLOT_WITHOUT_ROUND");
+				slot.build(ModelFeat.EXT_SLOT.name(), ModelFeat.SLOT_WITH_ROUND.name(), currSolid);
+				FetOperations.deleteFeature(currSolid, ModelFeat.SLOT_WITHOUT_ROUND.name());
 			} else {
-				slot.build("EXT_SLOT", "SLOT_WITHOUT_ROUND", currSolid);
-				FetOperations.deleteFeature(currSolid, "SLOT_WITH_ROUND");
+				slot.build(ModelFeat.EXT_SLOT.name(), ModelFeat.SLOT_WITHOUT_ROUND.name(), currSolid);
+				FetOperations.deleteFeature(currSolid, ModelFeat.SLOT_WITH_ROUND.name());
 			}
-			RotatPattern360 slotAr = new RotatPattern360("Z");
-			slotAr.patternBuild(DataStore.getSlotQty(), 1, "AR_SLOT", "EXT_SLOT", currSolid);
+			RotatPattern360 slotAr = new RotatPattern360(ModelFeat.Z.name());
+			slotAr.patternBuild(DataStore.getSlotQty(), 1, ModelFeat.AR_SLOT.name(), ModelFeat.EXT_SLOT.name(), currSolid);
 			LOG.info("Sheet is built");
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in creating sheet!", e);

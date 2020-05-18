@@ -33,7 +33,7 @@ public class General {
 			TemplateModel templateModel = new TemplateModel(DataStore.getTempFile(), DataStore.getModelsPath());
 			Solid currSolid = (Solid) templateModel.retrieve();
 			LOG.info("Model is retrieved");
-			SheetDimAssignment.assign(currSolid);
+			new SheetDimAssignment(currSolid).assign();
 			Sheet.build(currSolid);
 			
 			ScrewDimAssignmentFactory.getScrewDimAssignment(currSolid).assign();
@@ -41,17 +41,17 @@ public class General {
 			
 			if (DataStore.getSegmQty() != 1) {
 				ExtrusionCut transformCoreToSheet = new ExtrusionCut();
-				transformCoreToSheet.build("EXT_TRANSFORM", "TRANSFORM_CORE_TO_SHEET", currSolid);
+				transformCoreToSheet.build(ModelFeat.EXT_TRANSFORM.name(), ModelFeat.TRANSFORM_CORE_TO_SHEET.name(), currSolid);
 				LOG.info("transformCoreToSheet is built");
 				ExtrusionCut mark = new ExtrusionCut();
-				mark.build("EXT_MARK", "MARK", currSolid);
+				mark.build(ModelFeat.EXT_MARK.name(), ModelFeat.MARK.name(), currSolid);
 				LOG.info("mark is built");
 			}
 			Params.createAllParams(currSolid);
 			Params.setAllParams(currSolid);
 			session.CreateModelWindow(currSolid).Activate();
 		} catch (NullPointerException | jxthrowable e) {
-			LOG.error("Error in the main class!", e);
+			LOG.error("Error in the General class!", e);
 		}
 	}
 }

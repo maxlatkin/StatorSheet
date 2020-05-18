@@ -13,6 +13,7 @@ import com.ptc.pfc.pfcSolid.Solid;
 import com.ptc.wfc.wfcGeometry.WSurface;
 
 import ru.externaldata.DataStore;
+import ru.general.ModelFeat;
 import ru.parameters.ModelParamNames;
 import ru.ruselprom.parameters.Parameters;
 
@@ -36,7 +37,9 @@ public class AuxiliaryParams implements ParamsSetting {
 			Parameters.setBoolParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_06_CORNER.name(), true, currModel);
 			Parameters.setBoolParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_07_CORNER.name(), true, currModel);
 			Parameters.setStringParamValue(ModelParamNames.AA_STATOR_CORE_SEGM_ROLLING.name(), DataStore.getSegmRolling(), currModel);
-			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_WDG_FLT_W.name(), getSlotWdgFltW(currModel), currModel);
+			if (DataStore.isSlotWithRound()) {
+				Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_WDG_FLT_W.name(), getSlotWdgFltW(currModel), currModel);
+			}
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SHEET_AREA.name(), getSheetArea(currModel), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SHEET_PERIMETER.name(), getSheetPerimeter(currModel), currModel);
 			LOG.info("Auxiliary parameters set");
@@ -45,17 +48,17 @@ public class AuxiliaryParams implements ParamsSetting {
 		} 
 	}
 	private double getSlotWdgFltW(Model currModel) throws jxthrowable {
-		double distBetwCenters = ((Dimension)((Solid)currModel).GetFeatureByName("SLOT_WITH_ROUND").
+		double distBetwCenters = ((Dimension)((Solid)currModel).GetFeatureByName(ModelFeat.SLOT_WITH_ROUND.name()).
 				ListSubItems(ModelItemType.ITEM_DIMENSION).get(6)).GetDimValue();
 		return distBetwCenters + DataStore.getSlotRoundBottom();
 	}
 	private double getSheetArea(Model currModel) throws jxthrowable {
-		return ((Surface)((Solid)currModel).GetFeatureByName("EXT_SHEET").
+		return ((Surface)((Solid)currModel).GetFeatureByName(ModelFeat.EXT_SHEET.name()).
 				ListSubItems(ModelItemType.ITEM_SURFACE).get(0)).EvalArea() / 1e+6;
 	}
 	private double getSheetPerimeter(Model currModel) throws jxthrowable {
 		double value = 0;
-		Edges edges = ((WSurface)((Solid)currModel).GetFeatureByName("EXT_SHEET").
+		Edges edges = ((WSurface)((Solid)currModel).GetFeatureByName(ModelFeat.EXT_SHEET.name()).
 				ListSubItems(ModelItemType.ITEM_SURFACE).get(0)).ListContours().get(0).ListElements();
 		for (int i = 0; i < edges.getarraysize(); i++) {
 			value += edges.get(i).EvalLength();

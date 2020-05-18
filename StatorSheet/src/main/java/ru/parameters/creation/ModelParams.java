@@ -44,8 +44,9 @@ public final class ModelParams {
 					Parameters.createStringParam(paramName.name(), "NONE", currModel);
 					break;
 				default:
-					LOG.error("Unknown parameter type when creating it");
-					break;
+					IllegalArgumentException e = new IllegalArgumentException("Unknown type of param!");
+					LOG.error("ModelParams - incorrect param type entered", e);
+					throw e;
 				}
 			}
 			LOG.info("Model parameters created");

@@ -28,7 +28,7 @@ public class Screw05DimAssignment extends DimAssignment {
 			screwSolidIndexAndValue.put(0, DataStore.getScrew05Wdth());
 			screwSolidIndexAndValue.put(1, DataStore.getScrew05Hght());
 			screwSolidIndexAndValue.put(2, DataStore.getExtDiam()/2);
-			screwSolidIndexAndValue.put(3, 360.0 / DataStore.getSegmQty() / 2);
+			screwSolidIndexAndValue.put(3, DataStore.getScrewShift());
 			setArrayOfDimValue(ModelFeat.SCREW_05_HOLE, screwSolidIndexAndValue);
 			setDimValue(ModelFeat.MARK, 2, DataStore.getMarkShift() + DataStore.getScrew05Hght());
 			LOG.info("Dimensions for the Screw05 assigned");

@@ -27,7 +27,7 @@ public class Screw06DimAssignment extends DimAssignment {
 			Map<Integer, Double> screwSolidIndexAndValue = new HashMap<>();
 			screwSolidIndexAndValue.put(0, DataStore.getScrew06Wdth());
 			screwSolidIndexAndValue.put(1, DataStore.getExtDiam()/2);
-			screwSolidIndexAndValue.put(2, 360.0 / DataStore.getSegmQty() / 2);
+			screwSolidIndexAndValue.put(2, DataStore.getScrewShift());
 			setArrayOfDimValue(ModelFeat.SCREW_06_HOLE, screwSolidIndexAndValue);
 			setDimValue(ModelFeat.MARK, 2, 
 					DataStore.getMarkShift() + DataStore.getExtDiam()/2 - 
