@@ -157,7 +157,7 @@ public final class DataStore {
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 7;
+		typeOfScrew = 1;
 		return typeOfScrew;
 	}
 
@@ -167,7 +167,7 @@ public final class DataStore {
 	}
 
 	public static int getScrewQty() {
-		screwQty = 4;
+		screwQty = 2;
 		return screwQty;
 	}
 
@@ -196,12 +196,12 @@ public final class DataStore {
 	}
 
 	public static double getExtDiam() {
-		extDiam = 2500;
+		extDiam = 700;
 		return extDiam;
 	}
 
 	public static double getIntDiam() {
-		intDiam = 2000;
+		intDiam = 500;
 		return intDiam;
 	}
 
@@ -210,7 +210,7 @@ public final class DataStore {
 	}
 
 	public static int getSegmQty() {
-		segmQty = 20;
+		segmQty = 4;
 		return segmQty;
 	}
 

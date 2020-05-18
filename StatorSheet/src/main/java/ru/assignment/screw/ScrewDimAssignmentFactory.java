@@ -38,8 +38,9 @@ public class ScrewDimAssignmentFactory {
 			screwDimAssignment = new Screw07DimAssignment(currSolid);
 			break;
 		default:
-			LOG.error("ScrewDimAssignmentFactory - incorrect screw type entered");
-			break;
+			IllegalArgumentException e = new IllegalArgumentException("Unknown type of screw!");
+			LOG.error("ScrewDimAssignmentFactory - incorrect screw type entered", e);
+			throw e;
 		}
 		LOG.info("ScrewDimAssignment got from ScrewDimAssignmentFactory");
 		return screwDimAssignment;

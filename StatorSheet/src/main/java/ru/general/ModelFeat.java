@@ -1,6 +1,7 @@
 package ru.general;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -81,6 +82,8 @@ public enum ModelFeat {
 			}
 			
 			FetOperations.deleteFeature(currSolid, listNames.toArray(new String[deletedFeatNames.size()]));
+			String notDelFeatNames = Arrays.toString(exceptedFeatNames);
+			LOG.info("All screw features removed except {}", notDelFeatNames);
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in deleteAllSectionExcept(...)", e);
 		}

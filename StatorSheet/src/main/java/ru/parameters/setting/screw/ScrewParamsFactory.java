@@ -36,8 +36,9 @@ public class ScrewParamsFactory {
 			params = new Screw07Params();
 			break;
 		default:
-			LOG.error("ScrewParamsFactory - incorrect screw type entered");
-			break;
+			IllegalArgumentException e = new IllegalArgumentException("Unknown type of screw!");
+			LOG.error("ScrewParamsFactory - incorrect screw type entered", e);
+			throw e;
 		}
 		LOG.info("ScrewParams got from ScrewParamsFactory");
 		return params;
