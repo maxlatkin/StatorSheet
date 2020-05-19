@@ -47,8 +47,20 @@ public final class DataStore {
 	private static double screw07Gap;
 	private static String segmRolling;
 	private static double electSteelRollWidth;
-	
+	private static int slotStep;
+	private static boolean cuttingTurned;
+
+	public static boolean isCuttingTurned() {
+		return cuttingTurned;
+	}
+
+	public static int getSlotStep() {
+		slotStep = 15;
+		return slotStep;
+	}
+
 	public static double getElectSteelRollWidth() {
+		electSteelRollWidth = 990;
 		return electSteelRollWidth;
 	}
 
@@ -117,31 +129,6 @@ public final class DataStore {
 	}
 
 	public static double getScrewShift() {
-		if (getTypeOfScrew() == 1 || getTypeOfScrew() == 2) {
-			if (getScrewQty() == 2) {
-				return 360.0 / DataStore.getSegmQty() / 4;
-			} else if (getScrewQty() == 4) {
-				return 360.0 / (DataStore.getSegmQty() * DataStore.getScrewQty()) * 1.5;
-			}
-		} else if (getTypeOfScrew() == 3) {
-			if (getScrewQty() == 2 && isScrew04Exist()) {
-				return 360.0 / DataStore.getSegmQty() / 3;
-			} else if (getScrewQty() == 2 && !isScrew04Exist()) {
-				return 360.0 / DataStore.getSegmQty() / 4;
-			} else if (getScrewQty() == 4 && isScrew04Exist()) {
-				return 360.0 / (DataStore.getSegmQty() * (DataStore.getScrewQty() + 2)) * 2.5;
-			} else if (getScrewQty() == 4 && !isScrew04Exist()) {
-				return 360.0 / (DataStore.getSegmQty() * DataStore.getScrewQty()) * 1.5;
-			}
-		} else if (getTypeOfScrew() == 5 || getTypeOfScrew() == 6 || getTypeOfScrew() == 7) {
-			if (getSegmQty() == 1) {
-				return 0;
-			} else {
-				return 360.0 / DataStore.getSegmQty() / 2;
-			}
-		} else {
-			throw new IllegalArgumentException("Unknown type of Screw");
-		}
 		return screwShift;
 	}
 
@@ -191,7 +178,7 @@ public final class DataStore {
 	}
 
 	public static boolean isScrew04Exist() {
-		screw04Exist = true;
+		screw04Exist = false;
 		return screw04Exist;
 	}
 
@@ -241,7 +228,6 @@ public final class DataStore {
 	}
 
 	public static int getSegmQty() {
-		segmQty = 6;
 		return segmQty;
 	}
 
@@ -295,5 +281,13 @@ public final class DataStore {
 
 	private DataStore() {
 		throw new IllegalStateException("Utility class");
+	}
+
+	public static void setScrewShift(double screwShift) {
+		DataStore.screwShift = screwShift;
+	}
+
+	public static void setSegmQty(int segmQty) {
+		DataStore.segmQty = segmQty;
 	}
 }

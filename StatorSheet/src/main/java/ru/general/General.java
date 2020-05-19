@@ -14,6 +14,8 @@ import ru.assignment.screw.ScrewDimAssignmentFactory;
 import ru.building.Sheet;
 import ru.building.screw.ScrewFactory;
 import ru.data.DataStore;
+import ru.data.calculation.ScrewShift;
+import ru.data.calculation.SegmQty;
 import ru.parameters.Params;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.templates.TemplateModel;
@@ -30,6 +32,8 @@ public class General {
 		try {
 			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
 			LOG.info("Session received in {}", General.class);
+			SegmQty.getInstance().calculate();
+			ScrewShift.getInstance().calculate();
 			TemplateModel templateModel = new TemplateModel(DataStore.getTempFile(), DataStore.getModelsPath());
 			Solid currSolid = (Solid) templateModel.retrieve();
 			LOG.info("Model is retrieved");
