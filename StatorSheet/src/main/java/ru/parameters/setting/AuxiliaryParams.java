@@ -12,7 +12,7 @@ import com.ptc.pfc.pfcModelItem.ModelItemType;
 import com.ptc.pfc.pfcSolid.Solid;
 import com.ptc.wfc.wfcGeometry.WSurface;
 
-import ru.externaldata.DataStore;
+import ru.data.DataStore;
 import ru.general.ModelFeat;
 import ru.parameters.ModelParamNames;
 import ru.ruselprom.parameters.Parameters;

@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcModel.Model;
 
-import ru.externaldata.DataStore;
+import ru.data.DataStore;
 import ru.parameters.ModelParamNames;
 import ru.ruselprom.parameters.Parameters;
 

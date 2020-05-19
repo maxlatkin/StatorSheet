@@ -10,7 +10,7 @@ import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.assignment.DimAssignment;
-import ru.externaldata.DataStore;
+import ru.data.DataStore;
 import ru.general.ModelFeat;
 
 public class Screw06DimAssignment extends DimAssignment {

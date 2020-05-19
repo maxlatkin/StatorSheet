@@ -1,4 +1,4 @@
-package ru.externaldata;
+package ru.data;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,7 +46,12 @@ public final class DataStore {
 	private static double screw07Hght;
 	private static double screw07Gap;
 	private static String segmRolling;
+	private static double electSteelRollWidth;
 	
+	public static double getElectSteelRollWidth() {
+		return electSteelRollWidth;
+	}
+
 	public static String getSegmRolling() {
 		segmRolling = "VERTICAL"; //"HORIZONTAL"; "NONE"
 		return segmRolling;
@@ -221,12 +226,12 @@ public final class DataStore {
 	}
 
 	public static double getExtDiam() {
-		extDiam = 800;
+		extDiam = 700;
 		return extDiam;
 	}
 
 	public static double getIntDiam() {
-		intDiam = 600;
+		intDiam = 500;
 		return intDiam;
 	}
 

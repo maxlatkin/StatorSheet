@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.assignment.DimAssignment;
-import ru.externaldata.DataStore;
+import ru.data.DataStore;
 
 public class ScrewDimAssignmentFactory {
 	

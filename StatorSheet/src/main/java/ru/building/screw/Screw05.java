@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcSolid.Solid;
 
-import ru.externaldata.DataStore;
+import ru.data.DataStore;
 import ru.general.ModelFeat;
 
 public class Screw05 extends Screw {

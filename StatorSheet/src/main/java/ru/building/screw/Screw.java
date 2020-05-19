@@ -3,7 +3,7 @@ package ru.building.screw;
 import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcSolid.Solid;
 
-import ru.externaldata.DataStore;
+import ru.data.DataStore;
 import ru.general.ModelFeat;
 import ru.ruselprom.fet.extrusions.add.ExtrusionAddSym;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;

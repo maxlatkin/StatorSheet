@@ -3,7 +3,7 @@ package ru.parameters.setting.screw;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ru.externaldata.DataStore;
+import ru.data.DataStore;
 import ru.parameters.setting.ParamsSetting;
 
 public class ScrewParamsFactory {
