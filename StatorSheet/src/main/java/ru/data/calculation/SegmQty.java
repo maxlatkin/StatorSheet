@@ -2,7 +2,7 @@ package ru.data.calculation;
 
 import ru.data.DataStore;
 
-public class SegmQty implements Calculated {
+public class SegmQty implements Calculable {
 	
 	private static SegmQty instance;
     private SegmQty(){}
@@ -17,18 +17,26 @@ public class SegmQty implements Calculated {
 	public void calculate() {
 		int slotQty = DataStore.getSlotQty();
 		int slotStep = DataStore.getSlotStep();
-		boolean cuttingTurned = DataStore.isCuttingTurned();
+		boolean isFlatPatternTurned = DataStore.isFlatPatternTurned();
 		int numbOfPolePairs = Math.floorDiv(slotQty, slotStep);
-		int segmQty = 3;
-		int numbOfFulfilledConditions = 0;
-		while (numbOfFulfilledConditions < 4) {
-			numbOfFulfilledConditions = 0;
-			segmQty++;
-			if (slotQty % segmQty == 0) numbOfFulfilledConditions++;
-			if (numbOfPolePairs % segmQty != 0) numbOfFulfilledConditions++;
-			if (segmQty % numbOfPolePairs != 0) numbOfFulfilledConditions++;
-			if (cuttingTurned || DataStore.getExtDiam() * Math.sin(Math.toRadians(180.0 / segmQty)) 
-					<= DataStore.getElectSteelRollWidth()) numbOfFulfilledConditions++;
+		double extDiam = DataStore.getExtDiam();
+		double electSteelRollWidth = DataStore.getElectSteelRollWidth();
+		
+		int segmQty;
+		if (extDiam >= electSteelRollWidth) {
+			segmQty = 3;
+			int numbOfFulfilledConditions = 0;
+			while (numbOfFulfilledConditions < 4) {
+				numbOfFulfilledConditions = 0;
+				segmQty++;
+				if (slotQty % segmQty == 0) numbOfFulfilledConditions++;
+				if (numbOfPolePairs % segmQty != 0) numbOfFulfilledConditions++;
+				if (segmQty % numbOfPolePairs != 0) numbOfFulfilledConditions++;
+				if (isFlatPatternTurned || extDiam * Math.sin(Math.toRadians(180.0 / segmQty)) 
+						<= electSteelRollWidth) numbOfFulfilledConditions++;
+			}
+		} else {
+			segmQty = 1;
 		}
 		DataStore.setSegmQty(segmQty);
 	}

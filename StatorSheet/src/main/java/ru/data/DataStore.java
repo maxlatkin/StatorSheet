@@ -48,10 +48,10 @@ public final class DataStore {
 	private static String segmRolling;
 	private static double electSteelRollWidth;
 	private static int slotStep;
-	private static boolean cuttingTurned;
+	private static boolean isFlatPatternTurned;
 
-	public static boolean isCuttingTurned() {
-		return cuttingTurned;
+	public static boolean isFlatPatternTurned() {
+		return isFlatPatternTurned;
 	}
 
 	public static int getSlotStep() {
@@ -173,7 +173,7 @@ public final class DataStore {
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 3;
+		typeOfScrew = 1;
 		return typeOfScrew;
 	}
 
@@ -279,15 +279,15 @@ public final class DataStore {
 		return markShift;
 	}
 
-	private DataStore() {
-		throw new IllegalStateException("Utility class");
-	}
-
 	public static void setScrewShift(double screwShift) {
 		DataStore.screwShift = screwShift;
 	}
 
 	public static void setSegmQty(int segmQty) {
 		DataStore.segmQty = segmQty;
+	}
+
+	private DataStore() {
+		throw new IllegalStateException("Utility class");
 	}
 }

@@ -16,6 +16,9 @@ import ru.building.screw.ScrewFactory;
 import ru.data.DataStore;
 import ru.data.calculation.ScrewShift;
 import ru.data.calculation.SegmQty;
+import ru.data.check.ExtAndIntDiams;
+import ru.data.check.SlotStepAndQty;
+import ru.exceptions.InputCheckException;
 import ru.parameters.Params;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.templates.TemplateModel;
@@ -32,8 +35,13 @@ public class General {
 		try {
 			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
 			LOG.info("Session received in {}", General.class);
+			
+			new ExtAndIntDiams().check();
+			new SlotStepAndQty().check();
 			SegmQty.getInstance().calculate();
 			ScrewShift.getInstance().calculate();
+			
+			
 			TemplateModel templateModel = new TemplateModel(DataStore.getTempFile(), DataStore.getModelsPath());
 			Solid currSolid = (Solid) templateModel.retrieve();
 			LOG.info("Model is retrieved");
@@ -54,7 +62,7 @@ public class General {
 			Params.createAllParams(currSolid);
 			Params.setAllParams(currSolid);
 			session.CreateModelWindow(currSolid).Activate();
-		} catch (NullPointerException | jxthrowable e) {
+		} catch (InputCheckException | NullPointerException | jxthrowable e) {
 			LOG.error("Error in the General class!", e);
 		}
 	}

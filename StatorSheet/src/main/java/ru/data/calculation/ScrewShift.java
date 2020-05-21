@@ -2,7 +2,7 @@ package ru.data.calculation;
 
 import ru.data.DataStore;
 
-public class ScrewShift implements Calculated {
+public class ScrewShift implements Calculable {
 
 	private static ScrewShift instance;
     private ScrewShift(){}

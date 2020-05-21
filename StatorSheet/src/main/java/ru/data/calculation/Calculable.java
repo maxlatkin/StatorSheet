@@ -1,5 +1,5 @@
 package ru.data.calculation;
 
-public interface Calculated {
+public interface Calculable {
 	public void calculate();
 }
