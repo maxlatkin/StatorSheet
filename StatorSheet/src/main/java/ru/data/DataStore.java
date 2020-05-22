@@ -173,7 +173,7 @@ public final class DataStore {
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 1;
+		typeOfScrew = 5;
 		return typeOfScrew;
 	}
 
@@ -208,17 +208,17 @@ public final class DataStore {
 	}
 
 	public static boolean isSlotWithRound() {
-		slotWithRound = false;
+		slotWithRound = true;
 		return slotWithRound;
 	}
 
 	public static double getExtDiam() {
-		extDiam = 700;
+		extDiam = 1100;
 		return extDiam;
 	}
 
 	public static double getIntDiam() {
-		intDiam = 500;
+		intDiam = 800;
 		return intDiam;
 	}
 

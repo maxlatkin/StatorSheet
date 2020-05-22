@@ -1,5 +1,8 @@
 package ru.data.calculation;
 
+import static ru.data.DataStore.getScrewQty;
+import static ru.data.DataStore.getSegmQty;
+import static ru.data.DataStore.isScrew04Exist;
 import ru.data.DataStore;
 
 public class ScrewShift implements Calculable {
@@ -15,31 +18,51 @@ public class ScrewShift implements Calculable {
 	
 	@Override
 	public void calculate() {
-		if (DataStore.getTypeOfScrew() == 1 || DataStore.getTypeOfScrew() == 2) {
-			if (DataStore.getScrewQty() == 2) {
-				DataStore.setScrewShift(360.0 / DataStore.getSegmQty() / 4);
-			} else if (DataStore.getScrewQty() == 4) {
-				DataStore.setScrewShift(360.0 / (DataStore.getSegmQty() * DataStore.getScrewQty()) * 1.5);
-			}
-		} else if (DataStore.getTypeOfScrew() == 3) {
-			if (DataStore.getScrewQty() == 2 && DataStore.isScrew04Exist()) {
-				DataStore.setScrewShift(360.0 / DataStore.getSegmQty() / 3);
-			} else if (DataStore.getScrewQty() == 2 && !DataStore.isScrew04Exist()) {
-				DataStore.setScrewShift(360.0 / DataStore.getSegmQty() / 4);
-			} else if (DataStore.getScrewQty() == 4 && DataStore.isScrew04Exist()) {
-				DataStore.setScrewShift(360.0 / (DataStore.getSegmQty() * (DataStore.getScrewQty() + 2)) * 2.5);
-			} else if (DataStore.getScrewQty() == 4 && !DataStore.isScrew04Exist()) {
-				DataStore.setScrewShift(360.0 / (DataStore.getSegmQty() * DataStore.getScrewQty()) * 1.5);
-			}
-		} else if (DataStore.getTypeOfScrew() == 5 || DataStore.getTypeOfScrew() == 6 || DataStore.getTypeOfScrew() == 7) {
-			if (DataStore.getSegmQty() == 1) {
-				DataStore.setScrewShift(0);
-			} else {
-				DataStore.setScrewShift(360.0 / DataStore.getSegmQty() / 2);
-			}
-		} else {
-			throw new IllegalArgumentException("Unknown type of Screw");
+		DataStore.setScrewShift(getScrewShiftByType());
+	}
+	
+	private double getScrewShiftByType() {
+		switch (DataStore.getTypeOfScrew()) {
+		case 1:
+			return getShiftForScrew0102();
+		case 2:
+			return getShiftForScrew0102();
+		case 3:
+			return getShiftForScrew03();
+		case 5:
+			return getShiftForScrew050607();
+		case 6:
+			return getShiftForScrew050607();
+		case 7:
+			return getShiftForScrew050607();
+		default:
+			break;	
 		}
+		throw new IllegalArgumentException("Unknown type of Screw");
 	}
  
+	private double getShiftForScrew0102() {
+		if (getScrewQty() == 2) {
+            return 360.0 / getSegmQty() / 4;
+        } else if (getScrewQty() == 4) {
+            return  360.0 / (getSegmQty() * getScrewQty()) * 1.5;
+        }
+        throw new IllegalArgumentException("Wrong number of screw");
+	}
+	
+	private double getShiftForScrew03() {
+		if (getScrewQty() == 2) {
+            if (isScrew04Exist()) return 360.0 / getSegmQty() / 3;
+            else return 360.0 / getSegmQty() / 4;
+        } else if (getScrewQty() == 4) {
+            if (isScrew04Exist()) return 360.0 / (getSegmQty() * (getScrewQty() + 2)) * 2.5;
+            else return 360.0 / (getSegmQty() * getScrewQty()) * 1.5;
+        }
+        throw new IllegalArgumentException("Wrong number of screw");
+	}
+	
+	private double getShiftForScrew050607() {
+		if (getSegmQty() == 1) return 0;
+		else return 360.0 / getSegmQty() / 2;
+	}
 }
