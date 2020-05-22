@@ -204,11 +204,12 @@ public final class DataStore {
 	}
 
 	public static int getSlotQty() {
+		slotQty = 96;
 		return slotQty;
 	}
 
 	public static boolean isSlotWithRound() {
-		slotWithRound = true;
+		slotWithRound = false;
 		return slotWithRound;
 	}
 

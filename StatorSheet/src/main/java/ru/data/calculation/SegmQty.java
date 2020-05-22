@@ -1,11 +1,17 @@
 package ru.data.calculation;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import ru.data.DataStore;
 
 public class SegmQty implements Calculable {
 	
+	private static final Logger LOG = LoggerFactory.getLogger(SegmQty.class);
 	private static SegmQty instance;
+	
     private SegmQty(){}
+    
     public static SegmQty getInstance() {
         if (instance == null) {
             instance = new SegmQty();
@@ -39,5 +45,6 @@ public class SegmQty implements Calculable {
 			segmQty = 1;
 		}
 		DataStore.setSegmQty(segmQty);
+		LOG.info("SegmQty was calculated: {}", segmQty);
 	}
 }
