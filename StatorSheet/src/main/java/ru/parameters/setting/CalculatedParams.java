@@ -33,7 +33,6 @@ public class CalculatedParams implements ParamsSetting {
 	@Override
 	public void setValue(Model currModel) {
 		try {
-			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_HGHT_TOTAL.name(), getSlotHghtTotal(), currModel);
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_WDG_WDTH.name(), getSlotWdgWdth(), currModel);
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_HGHT_ADD.name(), getSlotHghtAdd(), currModel);
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLT_PER_SEGM.name(), getSltPerSegm(), currModel);
@@ -72,9 +71,6 @@ public class CalculatedParams implements ParamsSetting {
 		}
 	}
 	
-	private double getSlotHghtTotal() {
-		return DataStore.getSlotHghtToWdg() + DataStore.getWedgeThck() + DataStore.getWedgeGap();
-	}
 	private double getSlotWdgWdth() {
 		double triangleHeight = DataStore.getWedgeThck()*sin(toRadians(DataStore.getWedgeAngleTop()))*
 				cos(toRadians(DataStore.getWedgeAngleTop()));
@@ -99,9 +95,9 @@ public class CalculatedParams implements ParamsSetting {
 		return DataStore.getIntDiam() * sin(toRadians(getHAnglPerSegm()));
 	}
 	private double getChordSlot() {
-		double intRadAndSlotHght = DataStore.getIntDiam()/2 + getSlotHghtTotal();
+		double intRadAndSlotHght = DataStore.getIntDiam()/2 + DataStore.getTotalSlotHght();
 		double twoSin = 2*sin(toRadians(getAnglPerSegm()*intRadAndSlotHght/(DataStore.getIntDiam() + 2*
-				getSlotHghtTotal())));
+				DataStore.getTotalSlotHght())));
 		return twoSin * intRadAndSlotHght - 2*DataStore.getSegmPruning() *
 				cos(toRadians(getHAnglPerSegm()));
 	}

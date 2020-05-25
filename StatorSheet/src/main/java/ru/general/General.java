@@ -14,8 +14,10 @@ import ru.assignment.screw.ScrewDimAssignmentFactory;
 import ru.building.Sheet;
 import ru.building.screw.ScrewFactory;
 import ru.data.DataStore;
+import ru.data.DocumentsList;
 import ru.data.calculation.ScrewShift;
 import ru.data.calculation.SegmQty;
+import ru.data.calculation.SlotHghtToWdg;
 import ru.data.check.ExtAndIntDiams;
 import ru.data.check.SlotStepAndQty;
 import ru.exceptions.InputCheckException;
@@ -36,11 +38,12 @@ public class General {
 			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
 			LOG.info("Session received in {}", General.class);
 			
+			DocumentsList.assignDataToDataStoreByDoc("Creo_1");
 			new ExtAndIntDiams().check();
 			new SlotStepAndQty().check();
 			SegmQty.getInstance().calculate();
 			ScrewShift.getInstance().calculate();
-			
+			SlotHghtToWdg.getInstance().calculate();
 			
 			TemplateModel templateModel = new TemplateModel(DataStore.getTempFile(), DataStore.getModelsPath());
 			Solid currSolid = (Solid) templateModel.retrieve();
@@ -62,6 +65,9 @@ public class General {
 			Params.createAllParams(currSolid);
 			Params.setAllParams(currSolid);
 			session.CreateModelWindow(currSolid).Activate();
+			
+			ProProgram.getInstance().addConditions(currSolid);
+			
 		} catch (InputCheckException | NullPointerException | jxthrowable e) {
 			LOG.error("Error in the General class!", e);
 		}

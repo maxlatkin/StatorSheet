@@ -15,12 +15,12 @@ public final class DataStore {
 	private static double intDiam;
 	private static double segmPruning = 0.2;
 	private static int segmQty;
-	private static double slotHghtToWdg = 44;
+	private static double slotHghtToWdg;
 	private static double wedgeThck = 5;
 	private static double wedgeGap = 1;
 	private static double wedgeAngleTop = 30;
 	private static double wedgeAngleBottom = 60;
-	private static double slotWdth = 12;
+	private static double slotWdth;
 	private static double slotRoundBottom;
 	private static double slotRoundTop;
 	private static double markRound = 0.4;
@@ -49,13 +49,17 @@ public final class DataStore {
 	private static double electSteelRollWidth;
 	private static int slotStep;
 	private static boolean isFlatPatternTurned;
+	private static double totalSlotHght;
+	
+	public static double getTotalSlotHght() {
+		return totalSlotHght;
+	}
 
 	public static boolean isFlatPatternTurned() {
 		return isFlatPatternTurned;
 	}
 
 	public static int getSlotStep() {
-		slotStep = 15;
 		return slotStep;
 	}
 
@@ -65,7 +69,7 @@ public final class DataStore {
 	}
 
 	public static String getSegmRolling() {
-		segmRolling = "VERTICAL"; //"HORIZONTAL"; "NONE"
+		//"VERTICAL"; //"HORIZONTAL"; "NONE"
 		return segmRolling;
 	}
 
@@ -178,7 +182,7 @@ public final class DataStore {
 	}
 
 	public static boolean isScrew04Exist() {
-		screw04Exist = false;
+		screw04Exist = true;
 		return screw04Exist;
 	}
 
@@ -204,7 +208,6 @@ public final class DataStore {
 	}
 
 	public static int getSlotQty() {
-		slotQty = 96;
 		return slotQty;
 	}
 
@@ -214,12 +217,10 @@ public final class DataStore {
 	}
 
 	public static double getExtDiam() {
-		extDiam = 1100;
 		return extDiam;
 	}
 
 	public static double getIntDiam() {
-		intDiam = 800;
 		return intDiam;
 	}
 
@@ -233,7 +234,6 @@ public final class DataStore {
 	}
 
 	public static double getSlotHghtToWdg() {
-		slotHghtToWdg = 44;
 		return slotHghtToWdg;
 	}
 
@@ -254,7 +254,6 @@ public final class DataStore {
 	}
 
 	public static double getSlotWdth() {
-		slotWdth = 12;
 		return slotWdth;
 	}
 
@@ -286,6 +285,38 @@ public final class DataStore {
 
 	public static void setSegmQty(int segmQty) {
 		DataStore.segmQty = segmQty;
+	}
+
+	public static void setExtDiam(double extDiam) {
+		DataStore.extDiam = extDiam;
+	}
+
+	public static void setSlotQty(int slotQty) {
+		DataStore.slotQty = slotQty;
+	}
+
+	public static void setIntDiam(double intDiam) {
+		DataStore.intDiam = intDiam;
+	}
+	
+	public static void setTotalSlotHght(double totalSlotHght) {
+		DataStore.totalSlotHght = totalSlotHght;
+	}
+
+	public static void setSlotWdth(double slotWdth) {
+		DataStore.slotWdth = slotWdth;
+	}
+
+	public static void setSlotStep(int slotStep) {
+		DataStore.slotStep = slotStep;
+	}
+
+	public static void setSegmRolling(String segmRolling) {
+		DataStore.segmRolling = segmRolling;
+	}
+
+	public static void setSlotHghtToWdg(double slotHghtToWdg) {
+		DataStore.slotHghtToWdg = slotHghtToWdg;
 	}
 
 	private DataStore() {

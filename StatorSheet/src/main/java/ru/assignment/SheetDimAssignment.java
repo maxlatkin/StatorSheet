@@ -26,24 +26,12 @@ public class SheetDimAssignment extends DimAssignment {
 			setDimValue(ModelFeat.SHEET, 0, DataStore.getExtDiam());
 			setDimValue(ModelFeat.SHEET, 1, DataStore.getIntDiam());
 			
-			if (DataStore.isSlotWithRound()) {
-				setArrayOfDimValue(ModelFeat.SLOT_WITH_ROUND, getSlotWithRoundIndexAndValue());
-				if (DataStore.getSegmQty() != 1) {
-					setDimValue(ModelFeat.SLOT_WITH_ROUND, 10, getHalfSegmAngle());
-				} else {
-					setDimValue(ModelFeat.SLOT_WITH_ROUND, 10, 0);
-				}
-			} else {
-				setArrayOfDimValue(ModelFeat.SLOT_WITHOUT_ROUND, getSlotWithoutRoundIndexAndValue());
-				if (DataStore.getSegmQty() != 1) {
-					setDimValue(ModelFeat.SLOT_WITHOUT_ROUND, 8, getHalfSegmAngle());
-				} else {
-					setDimValue(ModelFeat.SLOT_WITHOUT_ROUND, 8, 0);
-				}
-			}
-
+			setArrayOfDimValue(ModelFeat.SLOT_WITHOUT_ROUND, getSlotWithoutRoundIndexAndValue());
 			if (DataStore.getSegmQty() != 1) {
+				setDimValue(ModelFeat.SLOT_WITHOUT_ROUND, 8, getHalfSegmAngle());
 				setArrayOfDimValue(ModelFeat.TRANSFORM_CORE_TO_SHEET, getTransformCoreToSheetIndexAndValue());
+			} else {
+				setDimValue(ModelFeat.SLOT_WITHOUT_ROUND, 8, 0);
 			}
 			
 			setDimValue(ModelFeat.MARK, 0, DataStore.getMarkRound());
@@ -62,31 +50,17 @@ public class SheetDimAssignment extends DimAssignment {
 		return transformCoreToSheetIndexAndValue;
 	}
 
-	private Map<Integer, Double> getSlotWithRoundIndexAndValue() {
-		Map<Integer, Double> slotWithRoundIndexAndValue = new HashMap<>();
-		setCommonSlotIndexAndValue(slotWithRoundIndexAndValue);
-		slotWithRoundIndexAndValue.put(7, DataStore.getSlotRoundBottom());
-		slotWithRoundIndexAndValue.put(8, DataStore.getSlotWdth());
-		slotWithRoundIndexAndValue.put(9, DataStore.getSlotRoundTop());
-		return slotWithRoundIndexAndValue;
-	}
-	
 	private Map<Integer, Double> getSlotWithoutRoundIndexAndValue() {
 		Map<Integer, Double> slotWithoutRoundIndexAndValue = new HashMap<>();
-		setCommonSlotIndexAndValue(slotWithoutRoundIndexAndValue);
+		slotWithoutRoundIndexAndValue.put(0, DataStore.getSlotHghtToWdg());
+		slotWithoutRoundIndexAndValue.put(1, DataStore.getWedgeThck());
+		slotWithoutRoundIndexAndValue.put(2, DataStore.getWedgeGap());
+		slotWithoutRoundIndexAndValue.put(3, DataStore.getWedgeAngleTop());
+		slotWithoutRoundIndexAndValue.put(4, DataStore.getWedgeAngleBottom());
 		slotWithoutRoundIndexAndValue.put(5, DataStore.getSlotWdth());
 		return slotWithoutRoundIndexAndValue;
 	}
 	
-	private Map<Integer, Double> setCommonSlotIndexAndValue(Map<Integer, Double> commonSlotIndexAndValue) {
-		commonSlotIndexAndValue.put(0, DataStore.getSlotHghtToWdg());
-		commonSlotIndexAndValue.put(1, DataStore.getWedgeThck());
-		commonSlotIndexAndValue.put(2, DataStore.getWedgeGap());
-		commonSlotIndexAndValue.put(3, DataStore.getWedgeAngleTop());
-		commonSlotIndexAndValue.put(4, DataStore.getWedgeAngleBottom());
-		return commonSlotIndexAndValue;
-	}
-
 	private double getHalfSegmAngle() {
 		return 360.0 / DataStore.getSegmQty() / 2;
 	}

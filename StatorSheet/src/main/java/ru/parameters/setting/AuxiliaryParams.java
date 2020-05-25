@@ -37,9 +37,7 @@ public class AuxiliaryParams implements ParamsSetting {
 			Parameters.setBoolParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_06_CORNER.name(), true, currModel);
 			Parameters.setBoolParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_07_CORNER.name(), true, currModel);
 			Parameters.setStringParamValue(ModelParamNames.AA_STATOR_CORE_SEGM_ROLLING.name(), DataStore.getSegmRolling(), currModel);
-			if (DataStore.isSlotWithRound()) {
-				Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_WDG_FLT_W.name(), getSlotWdgFltW(currModel), currModel);
-			}
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_WDG_FLT_W.name(), getSlotWdgFltW(currModel), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SHEET_AREA.name(), getSheetArea(currModel), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SHEET_PERIMETER.name(), getSheetPerimeter(currModel), currModel);
 			LOG.info("Auxiliary parameters set");
@@ -48,8 +46,8 @@ public class AuxiliaryParams implements ParamsSetting {
 		} 
 	}
 	private double getSlotWdgFltW(Model currModel) throws jxthrowable {
-		double distBetwCenters = ((Dimension)((Solid)currModel).GetFeatureByName(ModelFeat.SLOT_WITH_ROUND.name()).
-				ListSubItems(ModelItemType.ITEM_DIMENSION).get(6)).GetDimValue();
+		double distBetwCenters = ((Dimension)((Solid)currModel).GetFeatureByName(ModelFeat.SLOT_WITHOUT_ROUND.name()).
+				ListSubItems(ModelItemType.ITEM_DIMENSION).get(7)).GetDimValue();
 		return distBetwCenters + DataStore.getSlotRoundBottom();
 	}
 	private double getSheetArea(Model currModel) throws jxthrowable {
