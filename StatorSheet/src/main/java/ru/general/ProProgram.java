@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.slf4j.Logger;
@@ -20,6 +22,7 @@ import com.ptc.pfc.pfcModel.ProgramImportInstructions;
 import com.ptc.pfc.pfcModel.pfcModel;
 import com.ptc.pfc.pfcSolid.Solid;
 
+import ru.data.DataStore;
 import ru.ruselprom.base.Regeneration;
 
 public class ProProgram {
@@ -29,6 +32,7 @@ public class ProProgram {
 	private String endOfCondition = "ENDIF";
 	private String startOfBlock = "ADD FEATURE";
 	private String endOfBlock = "END ADD";
+	private String endOfRoundCode = "REF GENERAL PATTERN";
 	private static ProProgram instance;
 	private static final Logger LOG = LoggerFactory.getLogger(ProProgram.class);
 	
@@ -47,8 +51,9 @@ public class ProProgram {
 			overwriteFile();
 			importFile(currSolid);
 			Regeneration.regenerateSolid(currSolid);
+			Files.delete(Paths.get(fileName));
 			LOG.info("Conditions added to the ProProgram file");
-		} catch (Exception e) {
+		} catch (NullPointerException | IOException | jxthrowable e) {
 			LOG.error("Error adding conditions", e);
 		}
 	}
@@ -68,6 +73,7 @@ public class ProProgram {
 			int lineNumber = 0;
 			int transNumber = 0;
 			int markNumber = 0;
+			int roundStartNumber = 0;
 			ArrayList<String> text = new ArrayList<>(4000);
 			while((line = reader.readLine()) != null ) {
 				text.add(line);
@@ -77,14 +83,38 @@ public class ProProgram {
 				if (line.contains(ModelFeat.EXT_MARK.name())) {
 					markNumber = lineNumber;
 				}
+				if (line.contains(ModelFeat.AR_ROUND.name())) {
+					roundStartNumber = lineNumber;
+				}
 				lineNumber++;
 			}
 			addCodeBlockToCondition(transNumber, text);
 			addCodeBlockToCondition(markNumber, text);
+			if (DataStore.isSlotWithRound()) {
+				addRoundCodeToCondition(roundStartNumber, text);
+			}
 			writeToFile(file, text);
 		} catch (IOException | IndexOutOfBoundsException e) {
 			LOG.error("File overwrite error", e);
 		}
+	}
+
+	private void addRoundCodeToCondition(int roundStartNumber, ArrayList<String> text) {
+		while(!text.get(roundStartNumber).contains(startOfBlock)) {
+			roundStartNumber--;
+		}
+		text.add(roundStartNumber, startOfCondition);
+		int roundEndNumber = 0;
+		for (int i = text.size() - 1; i >= 0; i--) {
+			if (text.get(i).contains(endOfRoundCode)) {
+				roundEndNumber = i;
+				break;
+			}
+		}
+		while(!text.get(roundEndNumber).contains(endOfBlock)) {
+			roundEndNumber++;
+		}
+		text.add(roundEndNumber + 1, endOfCondition);
 	}
 	private void addCodeBlockToCondition(int transNumber, ArrayList<String> text) {
 		while(!text.get(transNumber).contains(startOfBlock)) {

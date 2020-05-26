@@ -177,7 +177,7 @@ public final class DataStore {
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 5;
+		typeOfScrew = 1;
 		return typeOfScrew;
 	}
 
@@ -212,7 +212,7 @@ public final class DataStore {
 	}
 
 	public static boolean isSlotWithRound() {
-		slotWithRound = false;
+		slotWithRound = true;
 		return slotWithRound;
 	}
 
