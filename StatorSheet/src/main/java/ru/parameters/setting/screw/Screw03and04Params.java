@@ -26,7 +26,7 @@ public class Screw03and04Params implements ParamsSetting {
 			if (DataStore.isScrew04Exist()) {
 				Parameters.setBoolParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_04_EXIST.name(), true, currModel);
 				Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_04_DIAM.name(), DataStore.getScrewDiam(), currModel);
-				Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_04_SHIFT.name(), Math.toRadians(DataStore.getScrewShift()), currModel);
+				Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_04_SHIFT.name(), Math.toRadians(DataStore.getScrew04Shift()), currModel);
 				Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_04_QTY.name(), DataStore.getTotalScrewQty() / 2.0, currModel);
 				LOG.info("Screw04 parameters set");
 			}

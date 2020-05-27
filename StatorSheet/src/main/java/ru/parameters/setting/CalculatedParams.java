@@ -51,8 +51,13 @@ public class CalculatedParams implements ParamsSetting {
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_01_ANGL2.name(), toRadians(getScrew010203Angl2()), currModel);
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_02_ANGL1.name(), toRadians(getScrew010203Angl1()), currModel);
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_02_ANGL2.name(), toRadians(getScrew010203Angl2()), currModel);
-			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_03_ANGL1.name(), toRadians(getScrew010203Angl1()), currModel);
-			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_03_ANGL2.name(), toRadians(getScrew010203Angl2()), currModel);
+			if (DataStore.isScrew04Exist()) {
+				setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_03_ANGL1.name(), toRadians(getScrew03Angl1()), currModel);
+				setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_03_ANGL2.name(), toRadians(getScrew03Angl2()), currModel);
+			} else {
+				setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_03_ANGL1.name(), toRadians(getScrew010203Angl1()), currModel);
+				setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_03_ANGL2.name(), toRadians(getScrew010203Angl2()), currModel);
+			}
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_CHORD_SCREW_05.name(), getChordScrew05(), currModel);
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_05_STEP.name(), getScrew05067Step(), currModel);
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_05_H_STEP.name(), getScrew05067HStep(), currModel);
@@ -69,6 +74,14 @@ public class CalculatedParams implements ParamsSetting {
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in setting calculated parameters", e);
 		}
+	}
+
+	private double getScrew03Angl2() {
+		return DataStore.getScrewShift() - DataStore.getScrew04Shift() - getScrew03Angl1();
+	}
+
+	private double getScrew03Angl1() {
+		return 2 * (360.0 / DataStore.getSegmQty() / 2 - DataStore.getScrewShift());
 	}
 	
 	private double getSlotWdgWdth() {

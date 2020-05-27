@@ -51,7 +51,13 @@ public final class DataStore {
 	private static boolean isFlatPatternTurned;
 	private static double totalSlotHght;
 	private static int totalScrewQty;
+	private static double screw04Shift;
 	
+	public static double getScrew04Shift() {
+		screw04Shift = getScrewShift() - 120.0 / getSegmQty();
+		return screw04Shift;
+	}
+
 	public static int getTotalScrewQty() {
 		totalScrewQty = getScrewQty() * getSegmQty();
 		return totalScrewQty;
@@ -183,7 +189,7 @@ public final class DataStore {
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 1;
+		typeOfScrew = 3;
 		return typeOfScrew;
 	}
 
@@ -218,7 +224,7 @@ public final class DataStore {
 	}
 
 	public static boolean isSlotWithRound() {
-		slotWithRound = true;
+		slotWithRound = false;
 		return slotWithRound;
 	}
 
