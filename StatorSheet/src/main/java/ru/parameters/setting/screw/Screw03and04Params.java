@@ -21,13 +21,13 @@ public class Screw03and04Params implements ParamsSetting {
 			Parameters.setBoolParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_03_EXIST.name(), true, currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_03_DIAM.name(), DataStore.getScrewDiam(), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_03_SHIFT.name(), Math.toRadians(DataStore.getScrewShift()), currModel);
-			Parameters.setIntParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_03_QTY.name(), DataStore.getScrewQty(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_03_QTY.name(), DataStore.getTotalScrewQty(), currModel);
 			LOG.info("Screw03 parameters set");
 			if (DataStore.isScrew04Exist()) {
 				Parameters.setBoolParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_04_EXIST.name(), true, currModel);
 				Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_04_DIAM.name(), DataStore.getScrewDiam(), currModel);
 				Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_04_SHIFT.name(), Math.toRadians(DataStore.getScrewShift()), currModel);
-				Parameters.setIntParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_04_QTY.name(), DataStore.getScrewQty(), currModel);
+				Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_04_QTY.name(), DataStore.getTotalScrewQty() / 2.0, currModel);
 				LOG.info("Screw04 parameters set");
 			}
 		} catch (NullPointerException | jxthrowable e) {

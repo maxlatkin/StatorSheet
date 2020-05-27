@@ -62,7 +62,7 @@ public class General {
 				mark.build(ModelFeat.EXT_MARK.name(), ModelFeat.MARK.name(), currSolid);
 				LOG.info("mark is built");
 			}
-			Params.createAllParams(currSolid);
+			
 			Params.setAllParams(currSolid);
 			session.CreateModelWindow(currSolid).Activate();
 			

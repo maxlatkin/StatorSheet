@@ -5,7 +5,7 @@ import java.util.Map;
 
 public final class DataStore {
 	
-	private static String tempFile = "stator_sheet.prt";
+	private static String tempFile = "ev_20200219_stator_sheet.prt";//"stator_sheet.prt";
 	private static String modelsPath = "D:\\Project\\pro\\models\\StatorSheet";
 	private static String modelName = "sheet";
 	private static double sheetThck = 0.5;
@@ -50,7 +50,13 @@ public final class DataStore {
 	private static int slotStep;
 	private static boolean isFlatPatternTurned;
 	private static double totalSlotHght;
+	private static int totalScrewQty;
 	
+	public static int getTotalScrewQty() {
+		totalScrewQty = getScrewQty() * getSegmQty();
+		return totalScrewQty;
+	}
+
 	public static double getTotalSlotHght() {
 		return totalSlotHght;
 	}
@@ -187,7 +193,7 @@ public final class DataStore {
 	}
 
 	public static int getScrewQty() {
-		screwQty = 4;
+		screwQty = 4; 
 		return screwQty;
 	}
 

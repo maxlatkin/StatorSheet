@@ -22,7 +22,7 @@ public class Screw05Params implements ParamsSetting {
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_05_WDTH.name(), DataStore.getScrew05Wdth(), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_05_HGHT.name(), DataStore.getScrew05Hght(), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_05_SHIFT.name(), Math.toRadians(DataStore.getScrewShift()), currModel);
-			Parameters.setIntParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_05_QTY.name(), DataStore.getScrewQty(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_05_QTY.name(), DataStore.getTotalScrewQty(), currModel);
 			LOG.info("Screw05 parameters set");
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in setting Screw05 parameters", e);

@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 
 import com.ptc.pfc.pfcModel.Model;
 
-import ru.parameters.creation.ModelParams;
 import ru.parameters.setting.AuxiliaryParams;
 import ru.parameters.setting.CalculatedParams;
 import ru.parameters.setting.SheetParams;
@@ -18,11 +17,6 @@ public final class Params {
 	
 	private Params() {
 		throw new IllegalStateException("Utility class");
-	}
-	
-	public static void createAllParams(Model currModel) {
-		ModelParams.create(currModel);
-		LOG.info("All parameters created");
 	}
 	
 	public static void setAllParams(Model currModel) {
