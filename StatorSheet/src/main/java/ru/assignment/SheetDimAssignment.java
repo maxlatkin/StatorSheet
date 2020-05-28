@@ -26,6 +26,7 @@ public class SheetDimAssignment extends DimAssignment {
 			setDimValue(ModelFeat.SHEET, 0, DataStore.getExtDiam());
 			setDimValue(ModelFeat.SHEET, 1, DataStore.getIntDiam());
 			
+			
 			setArrayOfDimValue(ModelFeat.SLOT_WITHOUT_ROUND, getSlotWithoutRoundIndexAndValue());
 			if (DataStore.getSegmQty() != 1) {
 				setDimValue(ModelFeat.SLOT_WITHOUT_ROUND, 8, getHalfSegmAngle());
@@ -33,7 +34,6 @@ public class SheetDimAssignment extends DimAssignment {
 			} else {
 				setDimValue(ModelFeat.SLOT_WITHOUT_ROUND, 8, 0);
 			}
-			
 			setDimValue(ModelFeat.MARK, 0, DataStore.getMarkRound());
 			setDimValue(ModelFeat.MARK, 1, DataStore.getMarkRadius());
 			LOG.info("Dimensions for the Sheet assigned");
@@ -58,6 +58,7 @@ public class SheetDimAssignment extends DimAssignment {
 		slotWithoutRoundIndexAndValue.put(3, DataStore.getWedgeAngleTop());
 		slotWithoutRoundIndexAndValue.put(4, DataStore.getWedgeAngleBottom());
 		slotWithoutRoundIndexAndValue.put(5, DataStore.getSlotWdth());
+		slotWithoutRoundIndexAndValue.put(6, DataStore.getSlotRoundBottom() / 2);
 		return slotWithoutRoundIndexAndValue;
 	}
 	
