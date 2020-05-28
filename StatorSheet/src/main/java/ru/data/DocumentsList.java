@@ -34,6 +34,8 @@ public class DocumentsList {
 						DataStore.setSlotQty(Integer.parseInt(cols.get(6).text()));
 						DataStore.setSlotStep(Integer.parseInt(cols.get(7).text()));
 						DataStore.setSegmRolling(cols.get(8).text());
+						DataStore.setSegmQty(Integer.parseInt(cols.get(9).text()));
+						DataStore.setPoleQty(Integer.parseInt(cols.get(10).text()));
 					}
 				}
 			}

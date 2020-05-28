@@ -48,11 +48,15 @@ public final class DataStore {
 	private static String segmRolling;
 	private static double electSteelRollWidth;
 	private static int slotStep;
-	private static boolean isFlatPatternTurned;
 	private static double totalSlotHght;
 	private static int totalScrewQty;
 	private static double screw04Shift;
+	private static int poleQty;
 	
+	public static int getPoleQty() {
+		return poleQty;
+	}
+
 	public static double getScrew04Shift() {
 		screw04Shift = getScrewShift() - 120.0 / getSegmQty();
 		return screw04Shift;
@@ -65,10 +69,6 @@ public final class DataStore {
 
 	public static double getTotalSlotHght() {
 		return totalSlotHght;
-	}
-
-	public static boolean isFlatPatternTurned() {
-		return isFlatPatternTurned;
 	}
 
 	public static int getSlotStep() {
@@ -224,7 +224,7 @@ public final class DataStore {
 	}
 
 	public static boolean isSlotWithRound() {
-		slotWithRound = true;
+		slotWithRound = false;
 		return slotWithRound;
 	}
 
@@ -329,6 +329,10 @@ public final class DataStore {
 
 	public static void setSlotHghtToWdg(double slotHghtToWdg) {
 		DataStore.slotHghtToWdg = slotHghtToWdg;
+	}
+
+	public static void setPoleQty(int poleQty) {
+		DataStore.poleQty = poleQty;
 	}
 
 	private DataStore() {

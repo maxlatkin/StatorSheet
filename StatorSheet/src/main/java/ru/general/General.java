@@ -16,7 +16,6 @@ import ru.building.screw.ScrewFactory;
 import ru.data.DataStore;
 import ru.data.DocumentsList;
 import ru.data.calculation.ScrewShift;
-import ru.data.calculation.SegmQty;
 import ru.data.calculation.SlotHghtToWdg;
 import ru.data.check.ExtAndIntDiams;
 import ru.data.check.SlotStepAndQty;
@@ -41,7 +40,6 @@ public class General {
 			DocumentsList.assignDataToDataStoreByDoc("Creo_1");
 			new ExtAndIntDiams().check();
 			new SlotStepAndQty().check();
-			SegmQty.getInstance().calculate();
 			ScrewShift.getInstance().calculate();
 			SlotHghtToWdg.getInstance().calculate();
 			
