@@ -5,7 +5,7 @@ import java.util.Map;
 
 public final class DataStore {
 	
-	private static String tempFile = "ev_20200219_stator_sheet.prt";//"stator_sheet.prt";
+	private static String tempFile = "dv_20200529_stator_sheet.prt";//"stator_sheet.prt";
 	private static String modelsPath = "D:\\Project\\pro\\models\\StatorSheet";
 	private static String modelName = "sheet";
 	private static double sheetThck = 0.5;
@@ -21,8 +21,9 @@ public final class DataStore {
 	private static double wedgeAngleTop = 30;
 	private static double wedgeAngleBottom = 60;
 	private static double slotWdth;
-	private static double slotRoundBottom;
-	private static double slotRoundTop;
+	private static double roundAtBottomOfSlot;
+	private static double roundWedgeOfSlot;
+	private static double roundAtTopOfSlot;
 	private static double markRound = 0.4;
 	private static double markRadius = 1.5;
 	private static double markShift = 15;
@@ -269,14 +270,19 @@ public final class DataStore {
 		return slotWdth;
 	}
 
-	public static double getSlotRoundBottom() {
-		slotRoundBottom = 2;
-		return slotRoundBottom;
+	public static double getRoundAtBottomOfSlot() {
+		roundAtBottomOfSlot = 0.25;
+		return roundAtBottomOfSlot;
 	}
 
-	public static double getSlotRoundTop() {
-		slotRoundTop = 0.4;
-		return slotRoundTop;
+	public static double getRoundWedgeOfSlot() {
+		roundWedgeOfSlot = 1;
+		return roundWedgeOfSlot;
+	}
+
+	public static double getRoundAtTopOfSlot() {
+		roundAtTopOfSlot = 0.2;
+		return roundAtTopOfSlot;
 	}
 
 	public static double getMarkRound() {

@@ -35,11 +35,13 @@ public final class Sheet {
 			
 			if (DataStore.isSlotWithRound()) {
 				int[] firstEdgeIndices = {48,49,54,61};
-				int[] secondEdgeIndices = {55,56,57,58,59,60};
+				int[] secondEdgeIndices = {55,56,59,60};
+				int[] thirdEdgeIndices = {57,58};
 				Round round = new Round();
-				RadiusAndEdgeIndices firstSetOfRounds = new RadiusAndEdgeIndices(DataStore.getSlotRoundTop()/2, firstEdgeIndices);
-				RadiusAndEdgeIndices secondSetOfRounds = new RadiusAndEdgeIndices(DataStore.getSlotRoundBottom()/2, secondEdgeIndices);
-				RadiusAndEdgeIndices[] setsOfRounds = {firstSetOfRounds, secondSetOfRounds};
+				RadiusAndEdgeIndices firstSetOfRounds = new RadiusAndEdgeIndices(DataStore.getRoundAtTopOfSlot(), firstEdgeIndices);
+				RadiusAndEdgeIndices secondSetOfRounds = new RadiusAndEdgeIndices(DataStore.getRoundWedgeOfSlot(), secondEdgeIndices);
+				RadiusAndEdgeIndices thirdSetOfRounds = new RadiusAndEdgeIndices(DataStore.getRoundAtBottomOfSlot(), thirdEdgeIndices);
+				RadiusAndEdgeIndices[] setsOfRounds = {firstSetOfRounds, secondSetOfRounds, thirdSetOfRounds};
 				round.build(ModelFeat.ROUND.name(), ModelFeat.EXT_SLOT.name(), currSolid, setsOfRounds);
 				
 				slotPattern.patternBuild(DataStore.getSlotQty(), 1, ModelFeat.AR_SLOT.name(), ModelFeat.EXT_SLOT.name(), currSolid);

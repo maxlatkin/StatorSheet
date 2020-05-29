@@ -19,6 +19,7 @@ import ru.data.calculation.ScrewShift;
 import ru.data.calculation.SlotHghtToWdg;
 import ru.data.check.ExtAndIntDiams;
 import ru.data.check.SlotStepAndQty;
+import ru.drawing.DrawingDimensions;
 import ru.exceptions.InputCheckException;
 import ru.parameters.Params;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
@@ -66,6 +67,7 @@ public class General {
 			
 			ProProgram.getInstance().addConditions(currSolid);
 			
+			new DrawingDimensions().set();
 		} catch (InputCheckException | NullPointerException | jxthrowable e) {
 			LOG.error("Error in the General class!", e);
 		}

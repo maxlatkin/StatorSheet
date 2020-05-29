@@ -58,7 +58,7 @@ public class SheetDimAssignment extends DimAssignment {
 		slotWithoutRoundIndexAndValue.put(3, DataStore.getWedgeAngleTop());
 		slotWithoutRoundIndexAndValue.put(4, DataStore.getWedgeAngleBottom());
 		slotWithoutRoundIndexAndValue.put(5, DataStore.getSlotWdth());
-		slotWithoutRoundIndexAndValue.put(6, DataStore.getSlotRoundBottom() / 2);
+		slotWithoutRoundIndexAndValue.put(6, DataStore.getRoundWedgeOfSlot());
 		return slotWithoutRoundIndexAndValue;
 	}
 	

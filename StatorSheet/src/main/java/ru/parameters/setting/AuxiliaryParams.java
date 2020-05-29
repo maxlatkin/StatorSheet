@@ -48,7 +48,7 @@ public class AuxiliaryParams implements ParamsSetting {
 	private double getSlotWdgFltW(Model currModel) throws jxthrowable {
 		double distBetwCenters = ((Dimension)((Solid)currModel).GetFeatureByName(ModelFeat.SLOT_WITHOUT_ROUND.name()).
 				ListSubItems(ModelItemType.ITEM_DIMENSION).get(7)).GetDimValue();
-		return distBetwCenters + DataStore.getSlotRoundBottom();
+		return distBetwCenters + 2 * DataStore.getRoundWedgeOfSlot();
 	}
 	private double getSheetArea(Model currModel) throws jxthrowable {
 		return ((Surface)((Solid)currModel).GetFeatureByName(ModelFeat.EXT_SHEET.name()).

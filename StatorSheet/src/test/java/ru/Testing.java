@@ -2,8 +2,10 @@ package ru;
 
 import org.junit.Test;
 
-public class LibraryTest {
+public class Testing {
 
+	public static void main(String[] args) {
+	}
 	@Test
 	public void sumWorksFine() {
 //		Library lib = new Library();
