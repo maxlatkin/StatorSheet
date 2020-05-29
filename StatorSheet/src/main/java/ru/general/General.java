@@ -44,7 +44,7 @@ public class General {
 			ScrewShift.getInstance().calculate();
 			SlotHghtToWdg.getInstance().calculate();
 			
-			TemplateModel templateModel = new TemplateModel(DataStore.getTempFile(), DataStore.getModelsPath());
+			TemplateModel templateModel = new TemplateModel(DataStore.getTempPart(), DataStore.getModelsPath());
 			Solid currSolid = (Solid) templateModel.retrieve();
 			LOG.info("Model is retrieved");
 			new SheetDimAssignment(currSolid).assign();

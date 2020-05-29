@@ -5,7 +5,8 @@ import java.util.Map;
 
 public final class DataStore {
 	
-	private static String tempFile = "dv_20200529_stator_sheet.prt";//"stator_sheet.prt";
+	private static String tempPart = "dv_20200529_stator_sheet.prt";//"stator_sheet.prt";
+	private static String tempDrw = "dv_20200529_stator_sheet.drw";
 	private static String modelsPath = "D:\\Project\\pro\\models\\StatorSheet";
 	private static String modelName = "sheet";
 	private static double sheetThck = 0.5;
@@ -54,6 +55,10 @@ public final class DataStore {
 	private static double screw04Shift;
 	private static int poleQty;
 	
+	public static String getTempDrw() {
+		return tempDrw;
+	}
+
 	public static int getPoleQty() {
 		return poleQty;
 	}
@@ -204,8 +209,8 @@ public final class DataStore {
 		return screwQty;
 	}
 
-	public static String getTempFile() {
-		return tempFile;
+	public static String getTempPart() {
+		return tempPart;
 	}
 
 	public static String getModelsPath() {

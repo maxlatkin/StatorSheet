@@ -18,13 +18,14 @@ public class DrawingDimensions {
 	
 	public void set() {
 		try {
-			TemplateModel templateDrw = new TemplateModel("dv_20200529_stator_sheet.drw", DataStore.getModelsPath());
+			TemplateModel templateDrw = new TemplateModel(DataStore.getTempDrw(), DataStore.getModelsPath());
 			drw = templateDrw.retrieve();
 			getDimById(0).SetOverrideValue(DataStore.getRoundWedgeOfSlot());
 			getDimById(1).SetOverrideValue(DataStore.getRoundWedgeOfSlot());
 			getDimById(4).SetOverrideValue(DataStore.getRoundAtTopOfSlot());
 			getDimById(5).SetOverrideValue(DataStore.getRoundAtTopOfSlot());
 			getDimById(14).SetOverrideValue(DataStore.getRoundAtBottomOfSlot());
+			LOG.info("Dimensions are set");
 		} catch (jxthrowable e) {
 			LOG.error("Setting dimensions error", e);
 		}
