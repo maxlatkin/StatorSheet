@@ -19,7 +19,7 @@ public class Screw01Params implements ParamsSetting {
 	public void setValue(Model currModel) {
 		try {
 			Parameters.setBoolParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_01_EXIST.name(), true, currModel);
-			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_01_DIAM.name(), DataStore.getScrewDiam(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_01_DIAM.name(), DataStore.getStudHoleDiam(), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_01_SHIFT.name(), Math.toRadians(DataStore.getScrewShift()), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_01_QTY.name(), DataStore.getTotalScrewQty(), currModel);
 			LOG.info("Screw01 parameters set");

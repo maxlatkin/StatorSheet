@@ -20,15 +20,22 @@ public class DrawingDimensions {
 		try {
 			TemplateModel templateDrw = new TemplateModel(DataStore.getTempDrw(), DataStore.getModelsPath());
 			drw = templateDrw.retrieve();
-			getDimById(0).SetOverrideValue(DataStore.getRoundWedgeOfSlot());
-			getDimById(1).SetOverrideValue(DataStore.getRoundWedgeOfSlot());
-			getDimById(4).SetOverrideValue(DataStore.getRoundAtTopOfSlot());
-			getDimById(5).SetOverrideValue(DataStore.getRoundAtTopOfSlot());
-			getDimById(14).SetOverrideValue(DataStore.getRoundAtBottomOfSlot());
+			setSlotDims();
+			setMarkDim();
 			LOG.info("Dimensions are set");
 		} catch (jxthrowable e) {
 			LOG.error("Setting dimensions error", e);
 		}
+	}
+	private void setMarkDim() throws jxthrowable {
+		getDimById(43).SetOverrideValue(DataStore.getMarkRound());
+	}
+	private void setSlotDims() throws jxthrowable {
+		getDimById(0).SetOverrideValue(DataStore.getRoundWedgeOfSlot());
+		getDimById(1).SetOverrideValue(DataStore.getRoundWedgeOfSlot());
+		getDimById(4).SetOverrideValue(DataStore.getRoundAtTopOfSlot());
+		getDimById(5).SetOverrideValue(DataStore.getRoundAtTopOfSlot());
+		getDimById(14).SetOverrideValue(DataStore.getRoundAtBottomOfSlot());
 	}
 	private WDimension getDimById(int id) throws jxthrowable {
 		return (WDimension)drw.GetItemById(ModelItemType.ITEM_DIMENSION, id);

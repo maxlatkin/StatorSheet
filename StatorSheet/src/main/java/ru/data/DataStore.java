@@ -39,7 +39,7 @@ public final class DataStore {
 	private static Map<Double, Double> screw03IntRads = new HashMap<>();
 	private static Map<Double, Double> screw01FarTopPoints = new HashMap<>();
 	private static Map<Double, Double> screw01FarBottomPoints = new HashMap<>();
-	private static double screwDiam;
+	private static double studHoleDiam;
 	private static double screwShift;
 	private static double screw05Wdth;
 	private static double screw05Hght;
@@ -54,7 +54,12 @@ public final class DataStore {
 	private static int totalScrewQty;
 	private static double screw04Shift;
 	private static int poleQty;
+	private static double difBetwDiamOfStudAndDiamOfHole;
 	
+	public static double getDifBetwDiamOfStudAndDiamOfHole() {
+		return difBetwDiamOfStudAndDiamOfHole;
+	}
+
 	public static String getTempDrw() {
 		return tempDrw;
 	}
@@ -145,9 +150,9 @@ public final class DataStore {
 		return screw0203NearestPoints;
 	}
 
-	public static double getScrewDiam() {
-		screwDiam = 24.3;
-		return screwDiam;
+	public static double getStudHoleDiam() {
+		studHoleDiam = 24.3;
+		return studHoleDiam;
 	}
 
 	public static double getScrewShift() {
@@ -291,6 +296,7 @@ public final class DataStore {
 	}
 
 	public static double getMarkRound() {
+		markRound = 0.2;
 		return markRound;
 	}
 

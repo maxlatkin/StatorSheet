@@ -55,10 +55,10 @@ public class Screw02DimAssignment extends DimAssignment {
 	}
 
 	private void setCommonScrewHoleIndexAndValue(Map<Integer, Double> screwHoleIndexAndValue) {
-		screwHoleIndexAndValue.put(0, DataStore.getScrewDiam());
+		screwHoleIndexAndValue.put(0, DataStore.getStudHoleDiam());
 		screwHoleIndexAndValue.put(1, DataStore.getExtDiam()/2);
-		screwHoleIndexAndValue.put(2, DataStore.getScrew0203NearestPoints().get(DataStore.getScrewDiam()));
-		screwHoleIndexAndValue.put(3, DataStore.getScrew02ExtRads().get(DataStore.getScrewDiam()));
+		screwHoleIndexAndValue.put(2, DataStore.getScrew0203NearestPoints().get(DataStore.getStudHoleDiam()));
+		screwHoleIndexAndValue.put(3, DataStore.getScrew02ExtRads().get(DataStore.getStudHoleDiam()));
 	}
 	
 	private Map<Integer, Double> getScrewSolid04IndexAndValue() {
@@ -78,14 +78,14 @@ public class Screw02DimAssignment extends DimAssignment {
 	}
 
 	private void setCommonScrewSolidIndexAndValue(Map<Integer, Double> screwSolidIndexAndValue) {
-		screwSolidIndexAndValue.put(0, DataStore.getScrewDiam());
+		screwSolidIndexAndValue.put(0, DataStore.getStudHoleDiam());
 		screwSolidIndexAndValue.put(1, DataStore.getExtDiam()/2);
-		screwSolidIndexAndValue.put(2, DataStore.getScrew010203NearestPoints().get(DataStore.getScrewDiam()));
-		screwSolidIndexAndValue.put(3, DataStore.getScrew0203NearestPoints().get(DataStore.getScrewDiam()));
-		screwSolidIndexAndValue.put(4, DataStore.getScrew01FarTopPoints().get(DataStore.getScrewDiam()));
-		screwSolidIndexAndValue.put(5, DataStore.getScrew01FarTopPoints().get(DataStore.getScrewDiam()));
-		screwSolidIndexAndValue.put(6, DataStore.getScrew01FarBottomPoints().get(DataStore.getScrewDiam()));
-		screwSolidIndexAndValue.put(7, DataStore.getScrew01FarBottomPoints().get(DataStore.getScrewDiam()));
-		screwSolidIndexAndValue.put(8, DataStore.getScrew02ExtRads().get(DataStore.getScrewDiam()));
+		screwSolidIndexAndValue.put(2, DataStore.getScrew010203NearestPoints().get(DataStore.getStudHoleDiam()));
+		screwSolidIndexAndValue.put(3, DataStore.getScrew0203NearestPoints().get(DataStore.getStudHoleDiam()));
+		screwSolidIndexAndValue.put(4, DataStore.getScrew01FarTopPoints().get(DataStore.getStudHoleDiam()));
+		screwSolidIndexAndValue.put(5, DataStore.getScrew01FarTopPoints().get(DataStore.getStudHoleDiam()));
+		screwSolidIndexAndValue.put(6, DataStore.getScrew01FarBottomPoints().get(DataStore.getStudHoleDiam()));
+		screwSolidIndexAndValue.put(7, DataStore.getScrew01FarBottomPoints().get(DataStore.getStudHoleDiam()));
+		screwSolidIndexAndValue.put(8, DataStore.getScrew02ExtRads().get(DataStore.getStudHoleDiam()));
 	}
 }

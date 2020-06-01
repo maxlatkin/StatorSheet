@@ -54,20 +54,20 @@ public class Screw03And04DimAssignment extends DimAssignment {
 
 	private Map<Integer, Double> getScrew04IndexAndValue() {
 		Map<Integer, Double> screwHoleIndexAndValue = new HashMap<>();
-		screwHoleIndexAndValue.put(0, DataStore.getScrewDiam());
-		screwHoleIndexAndValue.put(1, DataStore.getScrew03IntRads().get(DataStore.getScrewDiam()));
+		screwHoleIndexAndValue.put(0, DataStore.getStudHoleDiam());
+		screwHoleIndexAndValue.put(1, DataStore.getScrew03IntRads().get(DataStore.getStudHoleDiam()));
 		screwHoleIndexAndValue.put(2, DataStore.getExtDiam()/2);
-		screwHoleIndexAndValue.put(3, DataStore.getScrew0203NearestPoints().get(DataStore.getScrewDiam()));
+		screwHoleIndexAndValue.put(3, DataStore.getScrew0203NearestPoints().get(DataStore.getStudHoleDiam()));
 		return screwHoleIndexAndValue;
 	}
 
 	private Map<Integer, Double> getCommonScrew03IndexAndValue() {
 		Map<Integer, Double> screwHoleIndexAndValue = new HashMap<>();
-		screwHoleIndexAndValue.put(0, DataStore.getScrew03IntRads().get(DataStore.getScrewDiam()));
+		screwHoleIndexAndValue.put(0, DataStore.getScrew03IntRads().get(DataStore.getStudHoleDiam()));
 		screwHoleIndexAndValue.put(1, DataStore.getExtDiam()/2);
-		screwHoleIndexAndValue.put(2, DataStore.getScrewDiam());
-		screwHoleIndexAndValue.put(3, DataStore.getScrew010203NearestPoints().get(DataStore.getScrewDiam()));
-		screwHoleIndexAndValue.put(4, DataStore.getScrew0203NearestPoints().get(DataStore.getScrewDiam()));
+		screwHoleIndexAndValue.put(2, DataStore.getStudHoleDiam());
+		screwHoleIndexAndValue.put(3, DataStore.getScrew010203NearestPoints().get(DataStore.getStudHoleDiam()));
+		screwHoleIndexAndValue.put(4, DataStore.getScrew0203NearestPoints().get(DataStore.getStudHoleDiam()));
 		return screwHoleIndexAndValue;
 	}
 }
