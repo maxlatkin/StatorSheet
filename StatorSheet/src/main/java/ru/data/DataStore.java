@@ -207,7 +207,7 @@ public final class DataStore {
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 3;
+		typeOfScrew = 7;
 		return typeOfScrew;
 	}
 

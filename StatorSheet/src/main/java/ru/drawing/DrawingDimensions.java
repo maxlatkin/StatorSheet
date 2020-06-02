@@ -23,6 +23,7 @@ public class DrawingDimensions {
 			setScrew01Dims();
 			setScrew02Dims();
 			setScrew03And04Dims();
+			setScrew07Dims();
 			setSlotDims();
 			setMarkDim();
 			LOG.info("Dimensions are set");
@@ -57,6 +58,10 @@ public class DrawingDimensions {
 		setValueToDimById(313, DataStore.getScrew020304NearestPoints().get(DataStore.getStudHoleDiam()), pfcDimension.DimTolSymmetric_Create(0.5));
 		setValueToDimById(315, DataStore.getScrew0304IntRads().get(DataStore.getStudHoleDiam()), null);
 		getDimById(315).SetAsBasic(true);
+	}
+	private void setScrew07Dims() throws jxthrowable {
+		setValueToDimById(245, 60, pfcDimension.DimTolSymmetric_Create(1.0 / 12));
+		setValueToDimById(249, DataStore.getScrew07Hght() + DataStore.getScrew07Gap(), pfcDimension.DimTolSymmetric_Create(0.1));
 	}
 	private void setSlotDims() throws jxthrowable {
 		setValueToDimById(0, DataStore.getRoundWedgeOfSlot(), null);
