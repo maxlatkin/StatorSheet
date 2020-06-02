@@ -32,11 +32,11 @@ public final class DataStore {
 	private static boolean screw04Exist;
 	private static int typeOfScrew;
 	private static Map<Double, Double> screw010203NearestPoints = new HashMap<>();
-	private static Map<Double, Double> screw0203NearestPoints = new HashMap<>();
+	private static Map<Double, Double> screw020304NearestPoints = new HashMap<>();
 	private static Map<Double, Double> screw01ExtRads = new HashMap<>();
 	private static Map<Double, Double> screw01MidRads = new HashMap<>();
 	private static Map<Double, Double> screw02ExtRads = new HashMap<>();
-	private static Map<Double, Double> screw03IntRads = new HashMap<>();
+	private static Map<Double, Double> screw0304IntRads = new HashMap<>();
 	private static Map<Double, Double> screw0102FarTopPoints = new HashMap<>();
 	private static Map<Double, Double> screw0102FarBottomPoints = new HashMap<>();
 	private static double studDiam;
@@ -133,12 +133,12 @@ public final class DataStore {
 		return screw05Hght;
 	}
 
-	public static Map<Double, Double> getScrew03IntRads() {
-		screw03IntRads.put(20.3, getExtDiam()/2 - 8);
-		screw03IntRads.put(24.3, getExtDiam()/2 - 10);
-		screw03IntRads.put(30.3, getExtDiam()/2 - 12);
-		screw03IntRads.put(36.3, getExtDiam()/2 - 14);
-		return screw03IntRads;
+	public static Map<Double, Double> getScrew0304IntRads() {
+		screw0304IntRads.put(20.3, getExtDiam()/2 - 8);
+		screw0304IntRads.put(24.3, getExtDiam()/2 - 10);
+		screw0304IntRads.put(30.3, getExtDiam()/2 - 12);
+		screw0304IntRads.put(36.3, getExtDiam()/2 - 14);
+		return screw0304IntRads;
 	}
 
 	public static Map<Double, Double> getScrew02ExtRads() {
@@ -149,12 +149,12 @@ public final class DataStore {
 		return screw02ExtRads;
 	}
 
-	public static Map<Double, Double> getScrew0203NearestPoints() {
-		screw0203NearestPoints.put(20.3, 20.0);
-		screw0203NearestPoints.put(24.3, 22.0);
-		screw0203NearestPoints.put(30.3, 29.0);
-		screw0203NearestPoints.put(36.3, 35.0);
-		return screw0203NearestPoints;
+	public static Map<Double, Double> getScrew020304NearestPoints() {
+		screw020304NearestPoints.put(20.3, 20.0);
+		screw020304NearestPoints.put(24.3, 22.0);
+		screw020304NearestPoints.put(30.3, 29.0);
+		screw020304NearestPoints.put(36.3, 35.0);
+		return screw020304NearestPoints;
 	}
 
 	public static double getStudHoleDiam() {
@@ -212,7 +212,7 @@ public final class DataStore {
 	}
 
 	public static boolean isScrew04Exist() {
-		screw04Exist = false;
+		screw04Exist = true;
 		return screw04Exist;
 	}
 

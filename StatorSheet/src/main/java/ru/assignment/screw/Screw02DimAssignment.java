@@ -57,7 +57,7 @@ public class Screw02DimAssignment extends DimAssignment {
 	private void setCommonScrewHoleIndexAndValue(Map<Integer, Double> screwHoleIndexAndValue) {
 		screwHoleIndexAndValue.put(0, DataStore.getStudHoleDiam());
 		screwHoleIndexAndValue.put(1, DataStore.getExtDiam()/2);
-		screwHoleIndexAndValue.put(2, DataStore.getScrew0203NearestPoints().get(DataStore.getStudHoleDiam()));
+		screwHoleIndexAndValue.put(2, DataStore.getScrew020304NearestPoints().get(DataStore.getStudHoleDiam()));
 		screwHoleIndexAndValue.put(3, DataStore.getScrew02ExtRads().get(DataStore.getStudHoleDiam()));
 	}
 	
@@ -81,7 +81,7 @@ public class Screw02DimAssignment extends DimAssignment {
 		screwSolidIndexAndValue.put(0, DataStore.getStudHoleDiam());
 		screwSolidIndexAndValue.put(1, DataStore.getExtDiam()/2);
 		screwSolidIndexAndValue.put(2, DataStore.getScrew010203NearestPoints().get(DataStore.getStudHoleDiam()));
-		screwSolidIndexAndValue.put(3, DataStore.getScrew0203NearestPoints().get(DataStore.getStudHoleDiam()));
+		screwSolidIndexAndValue.put(3, DataStore.getScrew020304NearestPoints().get(DataStore.getStudHoleDiam()));
 		screwSolidIndexAndValue.put(4, DataStore.getScrew0102FarTopPoints().get(DataStore.getStudHoleDiam()));
 		screwSolidIndexAndValue.put(5, DataStore.getScrew0102FarTopPoints().get(DataStore.getStudHoleDiam()));
 		screwSolidIndexAndValue.put(6, DataStore.getScrew0102FarBottomPoints().get(DataStore.getStudHoleDiam()));

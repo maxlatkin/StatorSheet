@@ -41,7 +41,7 @@ public class DrawingDimensions {
 	private void setScrew02Dims() throws jxthrowable {
 		setValueToDimById(146, DataStore.getScrew010203NearestPoints().get(DataStore.getStudHoleDiam()),pfcDimension.DimTolSymmetric_Create(0.1));
 		setValueToDimById(149, DataStore.getScrew0102FarTopPoints().get(DataStore.getStudHoleDiam()), pfcDimension.DimTolSymmetric_Create(0.5));
-		setValueToDimById(152, DataStore.getScrew0203NearestPoints().get(DataStore.getStudHoleDiam()), pfcDimension.DimTolSymmetric_Create(0.5));
+		setValueToDimById(152, DataStore.getScrew020304NearestPoints().get(DataStore.getStudHoleDiam()), pfcDimension.DimTolSymmetric_Create(0.5));
 		setValueToDimById(155, DataStore.getScrew0102FarTopPoints().get(DataStore.getStudHoleDiam()), pfcDimension.DimTolSymmetric_Create(0.5));
 		setValueToDimById(159, DataStore.getScrew0102FarBottomPoints().get(DataStore.getStudHoleDiam()), null);
 		setValueToDimById(162, DataStore.getScrew0102FarBottomPoints().get(DataStore.getStudHoleDiam()), null);
@@ -49,10 +49,14 @@ public class DrawingDimensions {
 		setValueToDimById(164, DataStore.getScrew02ExtRads().get(DataStore.getStudHoleDiam()), pfcDimension.DimTolSymmetric_Create(0.1));
 	}
 	private void setScrew03And04Dims() throws jxthrowable {
-		setValueToDimById(278, DataStore.getScrew0203NearestPoints().get(DataStore.getStudHoleDiam()), pfcDimension.DimTolSymmetric_Create(0.1));
+		setValueToDimById(278, DataStore.getScrew020304NearestPoints().get(DataStore.getStudHoleDiam()), pfcDimension.DimTolSymmetric_Create(0.5));
 		setValueToDimById(281, DataStore.getScrew010203NearestPoints().get(DataStore.getStudHoleDiam()), pfcDimension.DimTolSymmetric_Create(0.1));
-		setValueToDimById(282, DataStore.getScrew03IntRads().get(DataStore.getStudHoleDiam()), null);
+		setValueToDimById(282, DataStore.getScrew0304IntRads().get(DataStore.getStudHoleDiam()), null);
 		getDimById(282).SetAsBasic(true);
+		setValueToDimById(310, DataStore.getScrew020304NearestPoints().get(DataStore.getStudHoleDiam()), pfcDimension.DimTolSymmetric_Create(0.5));
+		setValueToDimById(313, DataStore.getScrew020304NearestPoints().get(DataStore.getStudHoleDiam()), pfcDimension.DimTolSymmetric_Create(0.5));
+		setValueToDimById(315, DataStore.getScrew0304IntRads().get(DataStore.getStudHoleDiam()), null);
+		getDimById(315).SetAsBasic(true);
 	}
 	private void setSlotDims() throws jxthrowable {
 		setValueToDimById(0, DataStore.getRoundWedgeOfSlot(), null);
