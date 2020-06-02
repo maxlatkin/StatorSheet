@@ -82,10 +82,10 @@ public class Screw02DimAssignment extends DimAssignment {
 		screwSolidIndexAndValue.put(1, DataStore.getExtDiam()/2);
 		screwSolidIndexAndValue.put(2, DataStore.getScrew010203NearestPoints().get(DataStore.getStudHoleDiam()));
 		screwSolidIndexAndValue.put(3, DataStore.getScrew0203NearestPoints().get(DataStore.getStudHoleDiam()));
-		screwSolidIndexAndValue.put(4, DataStore.getScrew01FarTopPoints().get(DataStore.getStudHoleDiam()));
-		screwSolidIndexAndValue.put(5, DataStore.getScrew01FarTopPoints().get(DataStore.getStudHoleDiam()));
-		screwSolidIndexAndValue.put(6, DataStore.getScrew01FarBottomPoints().get(DataStore.getStudHoleDiam()));
-		screwSolidIndexAndValue.put(7, DataStore.getScrew01FarBottomPoints().get(DataStore.getStudHoleDiam()));
+		screwSolidIndexAndValue.put(4, DataStore.getScrew0102FarTopPoints().get(DataStore.getStudHoleDiam()));
+		screwSolidIndexAndValue.put(5, DataStore.getScrew0102FarTopPoints().get(DataStore.getStudHoleDiam()));
+		screwSolidIndexAndValue.put(6, DataStore.getScrew0102FarBottomPoints().get(DataStore.getStudHoleDiam()));
+		screwSolidIndexAndValue.put(7, DataStore.getScrew0102FarBottomPoints().get(DataStore.getStudHoleDiam()));
 		screwSolidIndexAndValue.put(8, DataStore.getScrew02ExtRads().get(DataStore.getStudHoleDiam()));
 	}
 }

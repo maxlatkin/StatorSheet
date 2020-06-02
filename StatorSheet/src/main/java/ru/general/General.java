@@ -23,7 +23,7 @@ import ru.drawing.DrawingDimensions;
 import ru.exceptions.InputCheckException;
 import ru.parameters.Params;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
-import ru.ruselprom.templates.TemplateModel;
+import ru.wnc.Models;
 
 public class General {
 	
@@ -44,8 +44,8 @@ public class General {
 			ScrewShift.getInstance().calculate();
 			SlotHghtToWdg.getInstance().calculate();
 			
-			TemplateModel templateModel = new TemplateModel(DataStore.getTempPart(), DataStore.getModelsPath());
-			Solid currSolid = (Solid) templateModel.retrieve();
+			Models.getInstance().retrieve();
+			Solid currSolid = (Solid) Models.getInstance().getPart();
 			LOG.info("Model is retrieved");
 			new SheetDimAssignment(currSolid).assign();
 			Sheet.build(currSolid);
@@ -67,7 +67,7 @@ public class General {
 			
 			ProProgram.getInstance().addConditions(currSolid);
 			
-			new DrawingDimensions().set();
+			new DrawingDimensions().set(Models.getInstance().getDrw());
 		} catch (InputCheckException | NullPointerException | jxthrowable e) {
 			LOG.error("Error in the General class!", e);
 		}

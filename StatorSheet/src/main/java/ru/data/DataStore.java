@@ -5,8 +5,8 @@ import java.util.Map;
 
 public final class DataStore {
 	
-	private static String tempPart = "dv_20200529_stator_sheet.prt";//"stator_sheet.prt";
-	private static String tempDrw = "dv_20200529_stator_sheet.drw";
+	private static String tempPart = "dv_20200602_stator_sheet.prt";
+	private static String tempDrw = "dv_20200602_stator_sheet.drw";
 	private static String modelsPath = "D:\\Project\\pro\\models\\StatorSheet";
 	private static String modelName = "sheet";
 	private static double sheetThck = 0.5;
@@ -37,8 +37,9 @@ public final class DataStore {
 	private static Map<Double, Double> screw01MidRads = new HashMap<>();
 	private static Map<Double, Double> screw02ExtRads = new HashMap<>();
 	private static Map<Double, Double> screw03IntRads = new HashMap<>();
-	private static Map<Double, Double> screw01FarTopPoints = new HashMap<>();
-	private static Map<Double, Double> screw01FarBottomPoints = new HashMap<>();
+	private static Map<Double, Double> screw0102FarTopPoints = new HashMap<>();
+	private static Map<Double, Double> screw0102FarBottomPoints = new HashMap<>();
+	private static double studDiam;
 	private static double studHoleDiam;
 	private static double screwShift;
 	private static double screw05Wdth;
@@ -56,7 +57,13 @@ public final class DataStore {
 	private static int poleQty;
 	private static double difBetwDiamOfStudAndDiamOfHole;
 	
+	public static double getStudDiam() {
+		studDiam = 20;
+		return studDiam;
+	}
+
 	public static double getDifBetwDiamOfStudAndDiamOfHole() {
+		difBetwDiamOfStudAndDiamOfHole = 0.3;
 		return difBetwDiamOfStudAndDiamOfHole;
 	}
 
@@ -151,7 +158,7 @@ public final class DataStore {
 	}
 
 	public static double getStudHoleDiam() {
-		studHoleDiam = 24.3;
+		studHoleDiam = getStudDiam() + getDifBetwDiamOfStudAndDiamOfHole();
 		return studHoleDiam;
 	}
 
@@ -159,20 +166,20 @@ public final class DataStore {
 		return screwShift;
 	}
 
-	public static Map<Double, Double> getScrew01FarBottomPoints() {
-		screw01FarBottomPoints.put(20.3, 35.0);
-		screw01FarBottomPoints.put(24.3, 40.0);
-		screw01FarBottomPoints.put(30.3, 50.0);
-		screw01FarBottomPoints.put(36.3, 60.0);
-		return screw01FarBottomPoints;
+	public static Map<Double, Double> getScrew0102FarBottomPoints() {
+		screw0102FarBottomPoints.put(20.3, 35.0);
+		screw0102FarBottomPoints.put(24.3, 40.0);
+		screw0102FarBottomPoints.put(30.3, 50.0);
+		screw0102FarBottomPoints.put(36.3, 60.0);
+		return screw0102FarBottomPoints;
 	}
 
-	public static Map<Double, Double> getScrew01FarTopPoints() {
-		screw01FarTopPoints.put(20.3, 30.0);
-		screw01FarTopPoints.put(24.3, 35.0);
-		screw01FarTopPoints.put(30.3, 45.0);
-		screw01FarTopPoints.put(36.3, 55.0);
-		return screw01FarTopPoints;
+	public static Map<Double, Double> getScrew0102FarTopPoints() {
+		screw0102FarTopPoints.put(20.3, 30.0);
+		screw0102FarTopPoints.put(24.3, 35.0);
+		screw0102FarTopPoints.put(30.3, 45.0);
+		screw0102FarTopPoints.put(36.3, 55.0);
+		return screw0102FarTopPoints;
 	}
 
 	public static Map<Double, Double> getScrew01MidRads() {
@@ -200,17 +207,17 @@ public final class DataStore {
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 7;
+		typeOfScrew = 3;
 		return typeOfScrew;
 	}
 
 	public static boolean isScrew04Exist() {
-		screw04Exist = true;
+		screw04Exist = false;
 		return screw04Exist;
 	}
 
 	public static int getScrewQty() {
-		screwQty = 4; 
+		screwQty = 2; 
 		return screwQty;
 	}
 
