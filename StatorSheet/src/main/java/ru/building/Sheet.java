@@ -15,15 +15,21 @@ import ru.ruselprom.fet.patterns.RotatPattern360;
 import ru.ruselprom.fet.round.RadiusAndEdgeIndices;
 import ru.ruselprom.fet.round.Round;
 
-public final class Sheet {
+public final class Sheet implements Buildable {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(Sheet.class);
+	private static Sheet instance;
 	
-	private Sheet() {
-	    throw new IllegalStateException("Utility class");
-	}
+	private Sheet() {}
 	
-	public static void build(Solid currSolid) {
+	public static Sheet getInstance() {
+        if (instance == null) {
+            instance = new Sheet();
+        }
+        return instance;
+    }
+	
+	public void build(Solid currSolid) {
 		try {
 			ExtrusionAddSym sheet = new ExtrusionAddSym();
 			sheet.build(DataStore.getSheetThck(), ModelFeat.EXT_SHEET.name(), ModelFeat.SHEET.name(), currSolid);
@@ -50,7 +56,7 @@ public final class Sheet {
 			} else {
 				slotPattern.patternBuild(DataStore.getSlotQty(), 1, ModelFeat.AR_SLOT.name(), ModelFeat.EXT_SLOT.name(), currSolid);
 			}
-			LOG.info("Sheet was built");
+			LOG.info("Sheet is built");
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in creating sheet!", e);
 		}

@@ -17,7 +17,7 @@ public class DrawingDimensions {
 	private static final Logger LOG = LoggerFactory.getLogger(DrawingDimensions.class);
 	private Model drw;
 	
-	public void set(Model currDrw) {
+	public void setTo(Model currDrw) {
 		try {
 			drw = currDrw;
 			setScrew01Dims();

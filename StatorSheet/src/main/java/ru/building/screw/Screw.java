@@ -3,6 +3,7 @@ package ru.building.screw;
 import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcSolid.Solid;
 
+import ru.building.Buildable;
 import ru.data.DataStore;
 import ru.general.ModelFeat;
 import ru.ruselprom.fet.extrusions.add.ExtrusionAddSym;
@@ -10,9 +11,7 @@ import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.fet.patterns.RotatPattern360;
 import ru.ruselprom.fet.patterns.TwoRotatPattern;
 
-public abstract class Screw {
-	public abstract void build(Solid currSolid);
-	
+public abstract class Screw implements Buildable {
 	protected void buildScrew0102(Solid currSolid, ModelFeat solid, ModelFeat extSolid, ModelFeat arSolid,
 			ModelFeat hole, ModelFeat extHole, ModelFeat arHole) throws jxthrowable {
 		ExtrusionAddSym screwSolid = new ExtrusionAddSym();
