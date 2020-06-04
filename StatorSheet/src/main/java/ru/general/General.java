@@ -45,9 +45,9 @@ public class General {
 			ScrewShift.getInstance().calculate();
 			SlotHghtToWdg.getInstance().calculate();
 			
-			Models.getInstance().retrieve();
-			Solid currSolid = (Solid) Models.getInstance().getPart();
-			Model currDrw =  Models.getInstance().getDrw();
+			Models.getInstance().retrieveToSessionWithRename();
+			Solid currSolid = (Solid) Models.getInstance().getPartFromSession();
+			Model currDrw =  Models.getInstance().getDrwFromSession();
 			
 			new SheetDimAssignment(currSolid).assign();
 			Sheet.getInstance().build(currSolid);

@@ -21,9 +21,10 @@ import ru.ruselprom.parameters.Parameters;
 public class Models {
 	
 	private static Models instance;
-	private Session session;
 	private String modelName;
 	private String partOfModelNumber;
+	private Model part;
+	private Model drw;
 	private static final Logger LOG = LoggerFactory.getLogger(Models.class);
 	private Models(){}
 	
@@ -34,43 +35,31 @@ public class Models {
         return instance;
     }
 	
-	public void retrieve() {
+	public void retrieveToSessionWithRename() {
 		try {
 			modelName = null;
 			partOfModelNumber = null;
-			session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
+			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
 			ModelDescriptor modelDescriptor = pfcModel.ModelDescriptor_Create(ModelType.MDL_DRAWING, DataStore.getTempDrw(), null);
 			session.RetrieveModel(modelDescriptor);
-			String partName = getModelName() + ".prt";
-			session.GetModelFromFileName(DataStore.getTempPart()).Rename(partName, false);
-			String drwName = getModelName() + ".drw";
-			session.GetModelFromFileName(DataStore.getTempDrw()).Rename(drwName, false);
-			LOG.info("Models is retrieved");
+			part = session.GetModelFromFileName(DataStore.getTempPart());
+			part.Rename(getModelName(), false);
+			drw = session.GetModelFromFileName(DataStore.getTempDrw());
+			drw.Rename(getModelName(), false);
+			LOG.info("Models is retrieved and renamed");
 		} catch (jxthrowable e) {
 			LOG.error("Error retrieving models", e);
 		}
 	}
 	
-	public Model getPart() {
-		try {
-			Model part = session.GetModel(getModelName(), ModelType.MDL_PART);
-			LOG.info("Part is got");
-			return part;
-		} catch (jxthrowable e) {
-			LOG.error("Error getting part", e);
-			return null;
-		}
+	public Model getPartFromSession() {
+		LOG.info("Part is got");
+		return part;
 	}
 	
-	public Model getDrw() {
-		try {
-			Model drw = session.GetModel(getModelName(), ModelType.MDL_DRAWING);
-			LOG.info("Drw is got");
-			return drw;
-		} catch (jxthrowable e) {
-			LOG.error("Error getting drw", e);
-			return null;
-		}
+	public Model getDrwFromSession() {
+		LOG.info("Drw is got");
+		return drw;
 	}
 	
 	public void saveWithNewNumber(Model currModel) {
@@ -78,10 +67,10 @@ public class Models {
 			Parameters.setStringParamValue("ОБОЗНАЧЕНИЕ", getModelNumder(), currModel);
 			currModel.Save();
 			if (LOG.isInfoEnabled()) {
-				LOG.info("{} is saved", currModel.GetFileName());
+				LOG.info("{} is saved with new number", currModel.GetFileName());
 			}
 		} catch (jxthrowable e) {
-			LOG.error("Error in checkInModel", e);
+			LOG.error("Error in saveWithNewNumber", e);
 		}
 	}
 	private String getModelNumder() {
