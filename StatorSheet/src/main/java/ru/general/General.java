@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ptc.cipjava.jxthrowable;
+import com.ptc.pfc.pfcModel.Model;
 import com.ptc.pfc.pfcSession.CreoCompatibility;
 import com.ptc.pfc.pfcSession.Session;
 import com.ptc.pfc.pfcSession.pfcSession;
@@ -46,6 +47,7 @@ public class General {
 			
 			Models.getInstance().retrieve();
 			Solid currSolid = (Solid) Models.getInstance().getPart();
+			Model currDrw =  Models.getInstance().getDrw();
 			
 			new SheetDimAssignment(currSolid).assign();
 			Sheet.getInstance().build(currSolid);
@@ -62,7 +64,10 @@ public class General {
 			
 			ProProgram.getInstance().addConditions(currSolid);
 			
-			new DrawingDimensions().setTo(Models.getInstance().getDrw());
+			new DrawingDimensions().setTo(currDrw);
+			
+			Models.getInstance().saveWithNewNumber(currSolid);
+			Models.getInstance().saveWithNewNumber(currDrw);
 		} catch (InputCheckException | NullPointerException | jxthrowable e) {
 			LOG.error("Error in the General class!", e);
 		}

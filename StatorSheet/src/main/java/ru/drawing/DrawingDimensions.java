@@ -60,7 +60,7 @@ public class DrawingDimensions {
 		getDimById(315).SetAsBasic(true);
 	}
 	private void setScrew07Dims() throws jxthrowable {
-		setValueToDimById(245, 60, pfcDimension.DimTolSymmetric_Create(1.0 / 12));
+		setValueToDimById(245, 60, null);
 		setValueToDimById(249, DataStore.getScrew07Hght() + DataStore.getScrew07Gap(), pfcDimension.DimTolSymmetric_Create(0.1));
 	}
 	private void setSlotDims() throws jxthrowable {
