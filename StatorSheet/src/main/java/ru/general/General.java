@@ -15,12 +15,9 @@ import ru.assignment.screw.ScrewDimAssignmentFactory;
 import ru.building.Sheet;
 import ru.building.TransformAndMark;
 import ru.building.screw.ScrewFactory;
+import ru.data.DataOperations;
 import ru.data.DataStore;
 import ru.data.DocumentsList;
-import ru.data.calculation.ScrewShift;
-import ru.data.calculation.SlotHghtToWdg;
-import ru.data.check.ExtAndIntDiams;
-import ru.data.check.SlotStepAndQty;
 import ru.drawing.DrawingDimensions;
 import ru.exceptions.InputCheckException;
 import ru.parameters.Params;
@@ -39,11 +36,10 @@ public class General {
 			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
 			LOG.info("Session received in {}", General.class);
 			
-			DocumentsList.assignDataToDataStoreByDoc("Creo_1");
-			new ExtAndIntDiams().check();
-			new SlotStepAndQty().check();
-			ScrewShift.getInstance().calculate();
-			SlotHghtToWdg.getInstance().calculate();
+			DocumentsList.assignVarsToDataStoreByDoc("Creo_1");
+			
+			DataOperations.checkVars();
+			DataOperations.calculateVars();
 			
 			Models.getInstance().retrieveToSessionWithRename();
 			Solid currSolid = (Solid) Models.getInstance().getPartFromSession();

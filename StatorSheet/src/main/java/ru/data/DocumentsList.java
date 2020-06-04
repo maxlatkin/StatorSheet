@@ -19,7 +19,7 @@ public class DocumentsList {
 	    throw new IllegalStateException("Utility class");
 	}
 	
-	public static void assignDataToDataStoreByDoc(String number) {
+	public static void assignVarsToDataStoreByDoc(String number) {
 		try {
 			Elements rows = getTrElements();
 			Elements cols = null;
