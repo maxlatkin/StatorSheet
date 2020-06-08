@@ -17,7 +17,8 @@ import ru.building.TransformAndMark;
 import ru.building.screw.ScrewFactory;
 import ru.data.DataOperations;
 import ru.data.DataStore;
-import ru.data.DocumentsList;
+import ru.data.assignment.DocFactory;
+import ru.data.assignment.DocumentTypes;
 import ru.drawing.DrawingDimensions;
 import ru.exceptions.InputCheckException;
 import ru.parameters.Params;
@@ -36,7 +37,9 @@ public class General {
 			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
 			LOG.info("Session received in {}", General.class);
 			
-			DocumentsList.assignVarsToDataStoreByDoc("Creo_1");
+			DocFactory docFactory = new DocFactory();
+			docFactory.getDocument(DocumentTypes.CALC_AND_WIND_NOTE).assignVarsToDataStore("Creo_1");
+			docFactory.getDocument(DocumentTypes.STO).assignVarsToDataStore("СТО_1");
 			
 			DataOperations.checkVars();
 			DataOperations.calculateVars();

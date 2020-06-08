@@ -9,16 +9,16 @@ public final class DataStore {
 	private static String tempDrw = "dv_20200602_stator_sheet.drw";
 	private static String modelsPath = "D:\\Project\\pro\\models\\StatorSheet";
 	private static String modelName = "sheet";
-	private static double sheetThck = 0.5;
+	private static double sheetThck;
 	private static int slotQty = 72;
 	private static boolean slotWithRound = true;
 	private static double extDiam;
 	private static double intDiam;
-	private static double segmPruning = 0.2;
+	private static double segmPruning;
 	private static int segmQty;
 	private static double slotHghtToWdg;
-	private static double wedgeThck = 5;
-	private static double wedgeGap = 1;
+	private static double wedgeThck;
+	private static double wedgeGap;
 	private static double wedgeAngleTop = 30;
 	private static double wedgeAngleBottom = 60;
 	private static double slotWdth;
@@ -255,7 +255,6 @@ public final class DataStore {
 	}
 
 	public static double getSegmPruning() {
-		segmPruning = 0.2;
 		return segmPruning;
 	}
 
@@ -357,6 +356,22 @@ public final class DataStore {
 
 	public static void setPoleQty(int poleQty) {
 		DataStore.poleQty = poleQty;
+	}
+
+	public static void setSheetThck(double sheetThck) {
+		DataStore.sheetThck = sheetThck;
+	}
+
+	public static void setSegmPruning(double segmPruning) {
+		DataStore.segmPruning = segmPruning;
+	}
+
+	public static void setWedgeThck(double wedgeThck) {
+		DataStore.wedgeThck = wedgeThck;
+	}
+
+	public static void setWedgeGap(double wedgeGap) {
+		DataStore.wedgeGap = wedgeGap;
 	}
 
 	private DataStore() {
