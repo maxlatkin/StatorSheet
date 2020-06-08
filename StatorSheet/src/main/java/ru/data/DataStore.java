@@ -10,7 +10,7 @@ public final class DataStore {
 	private static String modelsPath = "D:\\Project\\pro\\models\\StatorSheet";
 	private static String modelName = "sheet";
 	private static double sheetThck;
-	private static int slotQty = 72;
+	private static int slotQty;
 	private static boolean slotWithRound = true;
 	private static double extDiam;
 	private static double intDiam;
@@ -19,15 +19,15 @@ public final class DataStore {
 	private static double slotHghtToWdg;
 	private static double wedgeThck;
 	private static double wedgeGap;
-	private static double wedgeAngleTop = 30;
-	private static double wedgeAngleBottom = 60;
+	private static double wedgeAngleTop;
+	private static double wedgeAngleBottom;
 	private static double slotWdth;
 	private static double roundAtBottomOfSlot;
 	private static double roundWedgeOfSlot;
 	private static double roundAtTopOfSlot;
-	private static double markRound = 0.4;
-	private static double markRadius = 1.5;
-	private static double markShift = 15;
+	private static double markRound;
+	private static double markRadius;
+	private static double markShift;
 	private static int screwQty;
 	private static boolean screw04Exist;
 	private static int typeOfScrew;
@@ -49,7 +49,6 @@ public final class DataStore {
 	private static double screw07Hght;
 	private static double screw07Gap;
 	private static String segmRolling;
-	private static double electSteelRollWidth;
 	private static int slotStep;
 	private static double totalSlotHght;
 	private static int totalScrewQty;
@@ -58,12 +57,10 @@ public final class DataStore {
 	private static double difBetwDiamOfStudAndDiamOfHole;
 	
 	public static double getStudDiam() {
-		studDiam = 20;
 		return studDiam;
 	}
 
 	public static double getDifBetwDiamOfStudAndDiamOfHole() {
-		difBetwDiamOfStudAndDiamOfHole = 0.3;
 		return difBetwDiamOfStudAndDiamOfHole;
 	}
 
@@ -81,7 +78,6 @@ public final class DataStore {
 	}
 
 	public static int getTotalScrewQty() {
-		totalScrewQty = getScrewQty() * getSegmQty();
 		return totalScrewQty;
 	}
 
@@ -93,28 +89,20 @@ public final class DataStore {
 		return slotStep;
 	}
 
-	public static double getElectSteelRollWidth() {
-		electSteelRollWidth = 990;
-		return electSteelRollWidth;
-	}
-
 	public static String getSegmRolling() {
 		//"VERTICAL"; //"HORIZONTAL"; "NONE"
 		return segmRolling;
 	}
 
 	public static double getScrew07Gap() {
-		screw07Gap = 1;
 		return screw07Gap;
 	}
 
 	public static double getScrew07Wdth() {
-		screw07Wdth = 27;
 		return screw07Wdth;
 	}
 
 	public static double getScrew07Hght() {
-		screw07Hght = 9;
 		return screw07Hght;
 	}
 
@@ -124,36 +112,22 @@ public final class DataStore {
 	}
 
 	public static double getScrew05Wdth() {
-		screw05Wdth = 20;
 		return screw05Wdth;
 	}
 
 	public static double getScrew05Hght() {
-		screw05Hght = 5;
 		return screw05Hght;
 	}
 
 	public static Map<Double, Double> getScrew0304IntRads() {
-		screw0304IntRads.put(20.3, getExtDiam()/2 - 8);
-		screw0304IntRads.put(24.3, getExtDiam()/2 - 10);
-		screw0304IntRads.put(30.3, getExtDiam()/2 - 12);
-		screw0304IntRads.put(36.3, getExtDiam()/2 - 14);
 		return screw0304IntRads;
 	}
 
 	public static Map<Double, Double> getScrew02ExtRads() {
-		screw02ExtRads.put(20.3, getExtDiam()/2 + 8);
-		screw02ExtRads.put(24.3, getExtDiam()/2 + 10);
-		screw02ExtRads.put(30.3, getExtDiam()/2 + 12);
-		screw02ExtRads.put(36.3, getExtDiam()/2 + 14);
 		return screw02ExtRads;
 	}
 
 	public static Map<Double, Double> getScrew020304NearestPoints() {
-		screw020304NearestPoints.put(20.3, 20.0);
-		screw020304NearestPoints.put(24.3, 22.0);
-		screw020304NearestPoints.put(30.3, 29.0);
-		screw020304NearestPoints.put(36.3, 35.0);
 		return screw020304NearestPoints;
 	}
 
@@ -167,42 +141,22 @@ public final class DataStore {
 	}
 
 	public static Map<Double, Double> getScrew0102FarBottomPoints() {
-		screw0102FarBottomPoints.put(20.3, 35.0);
-		screw0102FarBottomPoints.put(24.3, 40.0);
-		screw0102FarBottomPoints.put(30.3, 50.0);
-		screw0102FarBottomPoints.put(36.3, 60.0);
 		return screw0102FarBottomPoints;
 	}
 
 	public static Map<Double, Double> getScrew0102FarTopPoints() {
-		screw0102FarTopPoints.put(20.3, 30.0);
-		screw0102FarTopPoints.put(24.3, 35.0);
-		screw0102FarTopPoints.put(30.3, 45.0);
-		screw0102FarTopPoints.put(36.3, 55.0);
 		return screw0102FarTopPoints;
 	}
 
 	public static Map<Double, Double> getScrew01MidRads() {
-		screw01MidRads.put(20.3, getExtDiam()/2 + 7);
-		screw01MidRads.put(24.3, getExtDiam()/2 + 8);
-		screw01MidRads.put(30.3, getExtDiam()/2 + 10);
-		screw01MidRads.put(36.3, getExtDiam()/2 + 12);
 		return screw01MidRads;
 	}
 
 	public static Map<Double, Double> getScrew01ExtRads() {
-		screw01ExtRads.put(20.3, getExtDiam()/2 + 15);
-		screw01ExtRads.put(24.3, getExtDiam()/2 + 18);
-		screw01ExtRads.put(30.3, getExtDiam()/2 + 22);
-		screw01ExtRads.put(36.3, getExtDiam()/2 + 26);
 		return screw01ExtRads;
 	}
 
 	public static Map<Double, Double> getScrew010203NearestPoints() {
-		screw010203NearestPoints.put(20.3, 8.0);
-		screw010203NearestPoints.put(24.3, 10.0);
-		screw010203NearestPoints.put(30.3, 12.0);
-		screw010203NearestPoints.put(36.3, 14.0);
 		return screw010203NearestPoints;
 	}
 
@@ -217,7 +171,7 @@ public final class DataStore {
 	}
 
 	public static int getScrewQty() {
-		screwQty = 2; 
+		screwQty = getTotalScrewQty() / getSegmQty();
 		return screwQty;
 	}
 
@@ -287,22 +241,18 @@ public final class DataStore {
 	}
 
 	public static double getRoundAtBottomOfSlot() {
-		roundAtBottomOfSlot = 0.25;
 		return roundAtBottomOfSlot;
 	}
 
 	public static double getRoundWedgeOfSlot() {
-		roundWedgeOfSlot = 1;
 		return roundWedgeOfSlot;
 	}
 
 	public static double getRoundAtTopOfSlot() {
-		roundAtTopOfSlot = 0.2;
 		return roundAtTopOfSlot;
 	}
 
 	public static double getMarkRound() {
-		markRound = 0.2;
 		return markRound;
 	}
 
@@ -372,6 +322,70 @@ public final class DataStore {
 
 	public static void setWedgeGap(double wedgeGap) {
 		DataStore.wedgeGap = wedgeGap;
+	}
+
+	public static void setWedgeAngleTop(double wedgeAngleTop) {
+		DataStore.wedgeAngleTop = wedgeAngleTop;
+	}
+
+	public static void setWedgeAngleBottom(double wedgeAngleBottom) {
+		DataStore.wedgeAngleBottom = wedgeAngleBottom;
+	}
+
+	public static void setRoundAtBottomOfSlot(double roundAtBottomOfSlot) {
+		DataStore.roundAtBottomOfSlot = roundAtBottomOfSlot;
+	}
+
+	public static void setRoundWedgeOfSlot(double roundWedgeOfSlot) {
+		DataStore.roundWedgeOfSlot = roundWedgeOfSlot;
+	}
+
+	public static void setRoundAtTopOfSlot(double roundAtTopOfSlot) {
+		DataStore.roundAtTopOfSlot = roundAtTopOfSlot;
+	}
+
+	public static void setMarkRound(double markRound) {
+		DataStore.markRound = markRound;
+	}
+
+	public static void setMarkRadius(double markRadius) {
+		DataStore.markRadius = markRadius;
+	}
+
+	public static void setMarkShift(double markShift) {
+		DataStore.markShift = markShift;
+	}
+
+	public static void setDifBetwDiamOfStudAndDiamOfHole(double difBetwDiamOfStudAndDiamOfHole) {
+		DataStore.difBetwDiamOfStudAndDiamOfHole = difBetwDiamOfStudAndDiamOfHole;
+	}
+
+	public static void setTotalScrewQty(int totalScrewQty) {
+		DataStore.totalScrewQty = totalScrewQty;
+	}
+
+	public static void setStudDiam(double studDiam) {
+		DataStore.studDiam = studDiam;
+	}
+
+	public static void setScrew05Wdth(double screw05Wdth) {
+		DataStore.screw05Wdth = screw05Wdth;
+	}
+
+	public static void setScrew05Hght(double screw05Hght) {
+		DataStore.screw05Hght = screw05Hght;
+	}
+
+	public static void setScrew07Wdth(double screw07Wdth) {
+		DataStore.screw07Wdth = screw07Wdth;
+	}
+
+	public static void setScrew07Hght(double screw07Hght) {
+		DataStore.screw07Hght = screw07Hght;
+	}
+
+	public static void setScrew07Gap(double screw07Gap) {
+		DataStore.screw07Gap = screw07Gap;
 	}
 
 	private DataStore() {

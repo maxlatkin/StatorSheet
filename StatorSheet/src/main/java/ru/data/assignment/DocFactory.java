@@ -1,6 +1,12 @@
 package ru.data.assignment;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class DocFactory {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(DocFactory.class);
+	
 	public DocumentOfWnc getDocument(DocumentTypes type) {
 		DocumentOfWnc document = null;
 		switch (type) {
@@ -16,6 +22,7 @@ public class DocFactory {
 		default:
 			throw new IllegalArgumentException("Wrong document type:" + type);
 		}
+		LOG.info("Document is got");
 		return document;
 	}
 }

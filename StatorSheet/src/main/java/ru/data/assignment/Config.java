@@ -26,7 +26,7 @@ public class Config {
 			try (InputStream propertiesFile = Config.class.getResourceAsStream("/wnc.properties")) {
 				properties.load(propertiesFile);
 			} catch (IOException e) {
-				LOG.error("Error loading wnc .properties", e);
+				LOG.error("Error loading wnc.properties", e);
 			}
 		}
 		return properties.getProperty(name);

@@ -7,14 +7,25 @@ import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcCommand.DefaultUICommandActionListener;
 
 import ru.general.General;
+import ru.ui.UiCancelListener;
+import ru.ui.UiDialog;
 
 public class StatorSheetButtonListener extends DefaultUICommandActionListener {
     private static final Logger LOG = LoggerFactory.getLogger(StatorSheetButtonListener.class);
     
 	@Override
 	public void OnCommand() throws jxthrowable {
-		LOG.info("The button has been pressed!");
-		General.execute();
-		LOG.info("The StatorSheet application completed.\n");
+		try {
+			LOG.info("The button has been pressed!");
+			UiDialog.getInstance().showDialog();
+			if (UiCancelListener.getInstance().isCancelPressed()) {
+				UiCancelListener.getInstance().setCancelPressed(false);
+				return;
+			}
+			General.execute();
+			LOG.info("The StatorSheet application completed.\n");
+		} catch (Exception e) {
+			LOG.error("Error in button listener", e);
+		}
 	}
 }
