@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 
 import ru.data.DataStore;
 import ru.exceptions.InputCheckException;
+import ru.wnc.documents.DocumentOfWnc;
+import ru.wnc.documents.DocumentTypes;
 
 public class Sto extends DocumentOfWnc {
 	

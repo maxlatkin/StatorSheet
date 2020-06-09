@@ -1,4 +1,4 @@
-package ru.data.assignment;
+package ru.wnc.documents;
 
 import java.io.IOException;
 import java.io.InputStream;

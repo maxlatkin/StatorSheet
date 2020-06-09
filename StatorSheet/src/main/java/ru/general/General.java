@@ -17,12 +17,12 @@ import ru.building.TransformAndMark;
 import ru.building.screw.ScrewFactory;
 import ru.data.DataOperations;
 import ru.data.DataStore;
-import ru.data.assignment.DocFactory;
-import ru.data.assignment.DocumentTypes;
 import ru.drawing.DrawingDimensions;
 import ru.exceptions.InputCheckException;
 import ru.parameters.Params;
 import ru.wnc.Models;
+import ru.wnc.documents.DocFactory;
+import ru.wnc.documents.DocumentTypes;
 
 public class General {
 	

@@ -1,7 +1,11 @@
-package ru.data.assignment;
+package ru.wnc.documents;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import ru.data.assignment.CalcAndWindNote;
+import ru.data.assignment.MechCalcResults;
+import ru.data.assignment.Sto;
 
 public class DocFactory {
 	

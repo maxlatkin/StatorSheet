@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ptc.cipjava.jxthrowable;
+import com.ptc.cipjava.stringseq;
 import com.ptc.pfc.pfcCommand.DefaultUICommandActionListener;
+import com.ptc.uifc.uifcCheckButton.uifcCheckButton;
 import com.ptc.uifc.uifcComponent.uifcComponent;
 import com.ptc.uifc.uifcLabel.uifcLabel;
 import com.ptc.uifc.uifcOptionMenu.uifcOptionMenu;
@@ -19,6 +21,8 @@ public class UiDialog extends DefaultUICommandActionListener {
 	public static final String CANCEL_BUTTON = "CommitCancel";
 	public static final String SCREWS_OM = "OM_Screws";
 	public static final String SCREWS_T = "T_Screws";
+	public static final String SCREW_4_CB = "CB_S34_Screw_4";
+	public static final String SCREW_4_T = "T_S34_Images";
 	private static UiDialog instance;
 
 	private UiDialog(){}
@@ -40,6 +44,12 @@ public class UiDialog extends DefaultUICommandActionListener {
 			uifcPushButton.PushButtonFind(DIALOG, CANCEL_BUTTON).AddActionListener(UiCancelListener.getInstance());		
 			uifcPushButton.PushButtonFind(DIALOG, OK_BUTTON).AddActionListener(UiOkListener.getInstance());
 			uifcOptionMenu.OptionMenuFind(DIALOG, SCREWS_OM).AddActionListener(new UiScrewsOMListener());
+			uifcCheckButton.CheckButtonFind(DIALOG, SCREW_4_CB).AddActionListener(new UiFourthScrewCBListener());
+			
+			stringseq noteNames = stringseq.create();
+			noteNames.append("kek");
+			noteNames.append("lol");
+			uifcOptionMenu.OptionMenuFind(DIALOG, "OM_Note").SetStringValueArray(noteNames);
 			
 			uifcLabel.LabelFind(DIALOG, "L_S1_Image").SetImage("Screw\\s1.png");
 			uifcLabel.LabelFind(DIALOG, "L_S2_Image").SetImage("Screw\\s2.png");

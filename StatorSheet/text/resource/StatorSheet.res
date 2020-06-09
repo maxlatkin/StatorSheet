@@ -57,7 +57,7 @@
     (Resources
         (Separator1.TopOffset 7)
         (Separator1.BottomOffset 7)
-        (L_Round.Label "Пазы со скруглениями")
+        (L_Round.Label "Добавить скругления в пазах под катушки")
         (L_Round.AttachLeft True)
         (L_Round.TopOffset 6)
         (L_Round.BottomOffset 0)
@@ -121,6 +121,7 @@
         (OM_Note.BottomOffset 2)
         (OM_Note.LeftOffset 10)
         (OM_Note.RightOffset 0)
+        (OM_Note.InputType 0)
         (L_STO.Label "Выберите стандарт организации")
         (L_STO.AttachLeft True)
         (L_STO.TopOffset 1)
@@ -172,7 +173,7 @@
         (Tab T_Screws LO_Screw_1 LO_Screw_2 LO_Screw_3and4 LO_Screw_5 LO_Screw_6 LO_Screw_7)
     )
     (Resources
-        (L_Screws.Label "Крепежи")
+        (L_Screws.Label "Крепеж")
         (L_Screws.AttachLeft True)
         (L_Screws.ResourceHints "Template:Group.GroupHeader")
         (L_Screws.TopOffset 0)
@@ -268,7 +269,7 @@
         (Tab T_S34_Images LO_S34_Image_1 LO_S34_Image_2)
     )
     (Resources
-        (L_S34_Screw_4.Label "Добавить открытые пазы")
+        (L_S34_Screw_4.Label "Добавить открытые пазы под шпильки")
         (L_S34_Screw_4.ResourceHints "UserOverrideAttrs:AttachLeft,TopOffset,BottomOffset,LeftOffset,RightOffset")
         (L_S34_Screw_4.Alignment 0)
         (CB_S34_Screw_4.LeftOffset 10)

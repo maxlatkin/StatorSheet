@@ -1,4 +1,4 @@
-package ru.data.assignment;
+package ru.wnc.documents;
 
 public enum DocumentTypes {
 	CALC_AND_WIND_NOTE,
