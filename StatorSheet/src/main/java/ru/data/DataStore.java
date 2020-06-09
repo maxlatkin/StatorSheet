@@ -107,7 +107,7 @@ public final class DataStore {
 	}
 
 	public static double getScrew06Wdth() {
-		screw06Wdth = 80;
+		screw06Wdth = getScrew05Wdth() + 20;
 		return screw06Wdth;
 	}
 
