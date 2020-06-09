@@ -12,6 +12,9 @@ import com.ptc.uifc.uifcLabel.uifcLabel;
 import com.ptc.uifc.uifcOptionMenu.uifcOptionMenu;
 import com.ptc.uifc.uifcPushButton.uifcPushButton;
 
+import ru.wnc.documents.DocNumbers;
+import ru.wnc.documents.DocumentTypes;
+
 
 public class UiDialog extends DefaultUICommandActionListener {
 	
@@ -46,10 +49,9 @@ public class UiDialog extends DefaultUICommandActionListener {
 			uifcOptionMenu.OptionMenuFind(DIALOG, SCREWS_OM).AddActionListener(new UiScrewsOMListener());
 			uifcCheckButton.CheckButtonFind(DIALOG, SCREW_4_CB).AddActionListener(new UiFourthScrewCBListener());
 			
-			stringseq noteNames = stringseq.create();
-			noteNames.append("kek");
-			noteNames.append("lol");
-			uifcOptionMenu.OptionMenuFind(DIALOG, "OM_Note").SetStringValueArray(noteNames);
+			setNumbersToOM("OM_Note", DocumentTypes.CALC_AND_WIND_NOTE);
+			setNumbersToOM("OM_STO", DocumentTypes.STO);
+			setNumbersToOM("OM_Results", DocumentTypes.MECH_CALC_RESULTS);
 			
 			uifcLabel.LabelFind(DIALOG, "L_S1_Image").SetImage("Screw\\s1.png");
 			uifcLabel.LabelFind(DIALOG, "L_S2_Image").SetImage("Screw\\s2.png");
@@ -64,5 +66,14 @@ public class UiDialog extends DefaultUICommandActionListener {
 		} catch (Exception e) {
 			LOG.error("Error in showDialog()", e);
 		}
+	}
+
+	private void setNumbersToOM(String omName, DocumentTypes type) throws jxthrowable {
+		stringseq numbers = stringseq.create();
+		DocNumbers docNumbers = new DocNumbers(type);
+		for (String number: docNumbers.getSetOfDocNumbers()) {
+			numbers.append(number);				
+		}
+		uifcOptionMenu.OptionMenuFind(DIALOG, omName).SetStringValueArray(numbers);
 	}
 }

@@ -38,9 +38,9 @@ public class General {
 			LOG.info("Session received in {}", General.class);
 			
 			DocFactory docFactory = new DocFactory();
-			docFactory.getDocument(DocumentTypes.CALC_AND_WIND_NOTE).assignVarsToDataStore("Creo_1");
-			docFactory.getDocument(DocumentTypes.STO).assignVarsToDataStore("СТО_1");
-			docFactory.getDocument(DocumentTypes.MECH_CALC_RESULTS).assignVarsToDataStore("MECH_CALC_RESULTS_1");
+			docFactory.getDocument(DocumentTypes.CALC_AND_WIND_NOTE).assignToDataStore("Creo_1");
+			docFactory.getDocument(DocumentTypes.STO).assignToDataStore("СТО_1");
+			docFactory.getDocument(DocumentTypes.MECH_CALC_RESULTS).assignToDataStore("MECH_CALC_RESULTS_1");
 			
 			DataOperations.checkVars();
 			DataOperations.calculateVars();

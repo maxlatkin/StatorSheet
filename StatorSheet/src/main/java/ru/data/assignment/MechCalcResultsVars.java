@@ -8,14 +8,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ru.data.DataStore;
-import ru.wnc.documents.DocumentOfWnc;
+import ru.wnc.documents.DocVars;
 import ru.wnc.documents.DocumentTypes;
 
-public class MechCalcResults extends DocumentOfWnc {
+public class MechCalcResultsVars extends DocVars {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(MechCalcResults.class);
+	private static final Logger LOG = LoggerFactory.getLogger(MechCalcResultsVars.class);
 	
-	public MechCalcResults() {
+	public MechCalcResultsVars() {
 		type = DocumentTypes.MECH_CALC_RESULTS;
 	}
 

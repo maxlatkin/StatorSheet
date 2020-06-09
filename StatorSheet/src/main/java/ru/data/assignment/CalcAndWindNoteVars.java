@@ -6,14 +6,14 @@ import org.slf4j.LoggerFactory;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import ru.data.DataStore;
-import ru.wnc.documents.DocumentOfWnc;
+import ru.wnc.documents.DocVars;
 import ru.wnc.documents.DocumentTypes;
 
-public class CalcAndWindNote extends DocumentOfWnc {
+public class CalcAndWindNoteVars extends DocVars {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(CalcAndWindNote.class);
+	private static final Logger LOG = LoggerFactory.getLogger(CalcAndWindNoteVars.class);
 	
-	public CalcAndWindNote() {
+	public CalcAndWindNoteVars() {
 		type = DocumentTypes.CALC_AND_WIND_NOTE;
 	}
 

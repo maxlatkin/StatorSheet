@@ -4,11 +4,11 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class DocumentOfWnc {
-	private static final Logger LOG = LoggerFactory.getLogger(DocumentOfWnc.class);
+public abstract class DocVars {
+	private static final Logger LOG = LoggerFactory.getLogger(DocVars.class);
 	protected DocumentTypes type;
 	
-	public void assignVarsToDataStore(String number) {
+	public void assignToDataStore(String number) {
 		try {
 			DocsConnection docsConnection = new DocsConnection(type);
 			Elements rows = docsConnection.getTrElements();

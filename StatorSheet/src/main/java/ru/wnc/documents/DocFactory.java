@@ -3,25 +3,25 @@ package ru.wnc.documents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ru.data.assignment.CalcAndWindNote;
-import ru.data.assignment.MechCalcResults;
-import ru.data.assignment.Sto;
+import ru.data.assignment.CalcAndWindNoteVars;
+import ru.data.assignment.MechCalcResultsVars;
+import ru.data.assignment.StoVars;
 
 public class DocFactory {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(DocFactory.class);
 	
-	public DocumentOfWnc getDocument(DocumentTypes type) {
-		DocumentOfWnc document = null;
+	public DocVars getDocument(DocumentTypes type) {
+		DocVars document = null;
 		switch (type) {
 		case CALC_AND_WIND_NOTE:
-			document = new CalcAndWindNote();
+			document = new CalcAndWindNoteVars();
 			break;
 		case STO:
-			document = new Sto();
+			document = new StoVars();
 			break;
 		case MECH_CALC_RESULTS:
-			document = new MechCalcResults();
+			document = new MechCalcResultsVars();
 			break;
 		default:
 			throw new IllegalArgumentException("Wrong document type:" + type);

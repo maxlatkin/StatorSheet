@@ -11,18 +11,18 @@ import org.slf4j.LoggerFactory;
 
 import ru.data.DataStore;
 import ru.exceptions.InputCheckException;
-import ru.wnc.documents.DocumentOfWnc;
+import ru.wnc.documents.DocVars;
 import ru.wnc.documents.DocumentTypes;
 
-public class Sto extends DocumentOfWnc {
+public class StoVars extends DocVars {
 	
 	private double[] studHoleDiams;
 	private Elements columns;
 	private double difBetwDiamOfStudAndDiamOfHole;
 	
-	private static final Logger LOG = LoggerFactory.getLogger(Sto.class);
+	private static final Logger LOG = LoggerFactory.getLogger(StoVars.class);
 	
-	public Sto() {
+	public StoVars() {
 		type = DocumentTypes.STO;
 	}
 
