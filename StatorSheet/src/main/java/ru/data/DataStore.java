@@ -11,7 +11,7 @@ public final class DataStore {
 	private static String modelName = "sheet";
 	private static double sheetThck;
 	private static int slotQty;
-	private static boolean slotWithRound = true;
+	private static boolean slotWithRound;
 	private static double extDiam;
 	private static double intDiam;
 	private static double segmPruning;
@@ -161,12 +161,10 @@ public final class DataStore {
 	}
 
 	public static int getTypeOfScrew() {
-		typeOfScrew = 7;
 		return typeOfScrew;
 	}
 
 	public static boolean isScrew04Exist() {
-		screw04Exist = true;
 		return screw04Exist;
 	}
 
@@ -196,7 +194,6 @@ public final class DataStore {
 	}
 
 	public static boolean isSlotWithRound() {
-		slotWithRound = false;
 		return slotWithRound;
 	}
 
@@ -386,6 +383,18 @@ public final class DataStore {
 
 	public static void setScrew07Gap(double screw07Gap) {
 		DataStore.screw07Gap = screw07Gap;
+	}
+
+	public static void setSlotWithRound(boolean slotWithRound) {
+		DataStore.slotWithRound = slotWithRound;
+	}
+
+	public static void setTypeOfScrew(int typeOfScrew) {
+		DataStore.typeOfScrew = typeOfScrew;
+	}
+	
+	public static void setScrew04Exist(boolean screw04Exist) {
+		DataStore.screw04Exist = screw04Exist;
 	}
 
 	private DataStore() {

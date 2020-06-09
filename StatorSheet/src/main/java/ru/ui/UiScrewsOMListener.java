@@ -51,22 +51,22 @@ public class UiScrewsOMListener extends OptionMenuListener_u {
 			String value = selectedItem.get(0);
 			stringseq screw = stringseq.create();
 			switch (value) {
-			case "Screw 1":
+			case "1":
 				screw.append("LO_Screw_1");
 				break;
-			case "Screw 2":
+			case "2":
 				screw.append("LO_Screw_2");
 				break;
-			case "Screw 3_4":
+			case "3":
 				screw.append("LO_Screw_3and4");
 				break;
-			case "Screw 5":
+			case "5":
 				screw.append("LO_Screw_5");
 				break;
-			case "Screw 6":
+			case "6":
 				screw.append("LO_Screw_6");
 				break;
-			case "Screw 7":
+			case "7":
 				screw.append("LO_Screw_7");
 				break;
 			default:

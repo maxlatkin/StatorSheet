@@ -27,7 +27,22 @@ import ru.wnc.documents.DocumentTypes;
 public class General {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(General.class);
+	private static String noteName = null; 
+	private static String stoName = null; 
+	private static String resultsName = null; 
 	
+	public static void setNoteName(String noteName) {
+		General.noteName = noteName;
+	}
+
+	public static void setStoName(String stoName) {
+		General.stoName = stoName;
+	}
+
+	public static void setResultsName(String resultsName) {
+		General.resultsName = resultsName;
+	}
+
 	private General() {
 		throw new IllegalStateException("Utility class");
 	}
@@ -38,9 +53,9 @@ public class General {
 			LOG.info("Session received in {}", General.class);
 			
 			DocFactory docFactory = new DocFactory();
-			docFactory.getDocument(DocumentTypes.CALC_AND_WIND_NOTE).assignToDataStore("Creo_1");
-			docFactory.getDocument(DocumentTypes.STO).assignToDataStore("СТО_1");
-			docFactory.getDocument(DocumentTypes.MECH_CALC_RESULTS).assignToDataStore("MECH_CALC_RESULTS_1");
+			docFactory.getDocument(DocumentTypes.CALC_AND_WIND_NOTE).assignToDataStore(noteName);
+			docFactory.getDocument(DocumentTypes.STO).assignToDataStore(stoName);
+			docFactory.getDocument(DocumentTypes.MECH_CALC_RESULTS).assignToDataStore(resultsName);
 			
 			DataOperations.checkVars();
 			DataOperations.calculateVars();

@@ -29,6 +29,7 @@
         (.Label "Лист статора")
         (.AttachLeft True)
         (.Columns 35)
+        (.CloseButton 0)
         (.Layout
             (Grid
                 (Rows 1 0 0)
@@ -132,6 +133,7 @@
         (OM_STO.BottomOffset 2)
         (OM_STO.LeftOffset 10)
         (OM_STO.RightOffset 0)
+        (OM_STO.InputType 0)
         (L_Results.Label "Выберите результаты механического расчета")
         (L_Results.AttachLeft True)
         (L_Results.TopOffset 1)
@@ -142,6 +144,7 @@
         (OM_Results.BottomOffset 0)
         (OM_Results.LeftOffset 10)
         (OM_Results.RightOffset 0)
+        (OM_Results.InputType 0)
         (.AttachLeft True)
         (.AttachRight True)
         (.AttachTop True)
@@ -187,7 +190,7 @@
         (L_Screw.BottomOffset 2)
         (L_Screw.LeftOffset 10)
         (L_Screw.RightOffset 0)
-        (OM_Screws.Names "Screw 1" "Screw 2" "Screw 3_4" "Screw 5" "Screw 6" "Screw 7")
+        (OM_Screws.Names "1" "2" "3" "5" "6" "7")
         (OM_Screws.Labels "Пазы под шпильки с обниженным базовым радиусом" "Пазы под шпильки с частично обниженным базовым радиусом" "Пазы под шпильки без обнижения базового радиуса" "Пазы под ребра" "Лыски под ребра" "Пазы под ласточкин хвост")
         (OM_Screws.TopOffset 1)
         (OM_Screws.BottomOffset 2)
