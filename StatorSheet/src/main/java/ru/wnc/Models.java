@@ -35,7 +35,7 @@ public class Models {
         return instance;
     }
 	
-	public void retrieveToSessionWithRename() {
+	public void retrieveToSessionWithRenameAndRenumber() {
 		try {
 			modelName = null;
 			partOfModelNumber = null;
@@ -46,7 +46,9 @@ public class Models {
 			part.Rename(getModelName(), false);
 			drw = session.GetModelFromFileName(DataStore.getTempDrw());
 			drw.Rename(getModelName(), false);
-			LOG.info("Models is retrieved and renamed");
+			Parameters.setStringParamValue("ОБОЗНАЧЕНИЕ", getModelNumder(), part);
+			Parameters.setStringParamValue("ОБОЗНАЧЕНИЕ", getModelNumder(), drw);
+			LOG.info("Models is retrieved, renamed and renumbered");
 		} catch (jxthrowable e) {
 			LOG.error("Error retrieving models", e);
 		}
@@ -62,17 +64,6 @@ public class Models {
 		return drw;
 	}
 	
-	public void saveWithNewNumber(Model currModel) {
-		try {
-			Parameters.setStringParamValue("ОБОЗНАЧЕНИЕ", getModelNumder(), currModel);
-			currModel.Save();
-			if (LOG.isInfoEnabled()) {
-				LOG.info("{} is saved with new number", currModel.GetFileName());
-			}
-		} catch (jxthrowable e) {
-			LOG.error("Error in saveWithNewNumber", e);
-		}
-	}
 	private String getModelNumder() {
 		if (partOfModelNumber == null) {
 			partOfModelNumber = getDate("mmssSS");

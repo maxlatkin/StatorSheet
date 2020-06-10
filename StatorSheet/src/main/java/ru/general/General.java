@@ -18,6 +18,7 @@ import ru.building.screw.ScrewFactory;
 import ru.data.DataOperations;
 import ru.data.DataStore;
 import ru.drawing.DrawingDimensions;
+import ru.dxf.Dxf;
 import ru.exceptions.InputCheckException;
 import ru.parameters.Params;
 import ru.wnc.Models;
@@ -60,7 +61,7 @@ public class General {
 			DataOperations.checkVars();
 			DataOperations.calculateVars();
 			
-			Models.getInstance().retrieveToSessionWithRename();
+			Models.getInstance().retrieveToSessionWithRenameAndRenumber();
 			Solid currSolid = (Solid) Models.getInstance().getPartFromSession();
 			Model currDrw =  Models.getInstance().getDrwFromSession();
 			
@@ -81,8 +82,10 @@ public class General {
 			
 			new DrawingDimensions().setTo(currDrw);
 			
-			Models.getInstance().saveWithNewNumber(currSolid);
-			Models.getInstance().saveWithNewNumber(currDrw);
+//			currSolid.Save();
+//			currDrw.Save();
+			
+//			new Dxf().create(currSolid);
 		} catch (InputCheckException | NullPointerException | jxthrowable e) {
 			LOG.error("Error in the General class!", e);
 		}

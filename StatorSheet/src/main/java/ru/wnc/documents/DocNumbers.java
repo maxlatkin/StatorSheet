@@ -30,6 +30,7 @@ public class DocNumbers {
 					listNumbers.add(cols.get(0).text());
 				}
 			}
+			Collections.sort(listNumbers);
 			return new LinkedHashSet<>(listNumbers);
 		} catch (Exception e) {
 			LOG.error("Error getting document numbers", e);
