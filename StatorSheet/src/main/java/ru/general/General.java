@@ -85,7 +85,7 @@ public class General {
 //			currSolid.Save();
 //			currDrw.Save();
 			
-			new Dxf().create(currSolid);
+			new Dxf().createWithNameOf(currSolid);
 		} catch (InputCheckException | NullPointerException | jxthrowable e) {
 			LOG.error("Error in the General class!", e);
 		}

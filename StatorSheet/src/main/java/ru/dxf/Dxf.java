@@ -24,7 +24,7 @@ public class Dxf {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(Dxf.class);
 	
-	public void create(Model currModel) {
+	public void createWithNameOf(Model currModel) {
 		try {
 			Drawing drawOfSegm = (Drawing)Models.getInstance().getDxfTempFromSession();
 	        DXFExportInstructions exportInstructions = pfcModel.DXFExportInstructions_Create();
