@@ -1,5 +1,6 @@
 package ru.wnc.documents;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
 
@@ -22,7 +23,8 @@ public class DocsConnection {
 
 	public Elements getTrElements() {
 		try {
-			Document document = getConnection().get();
+//			Document document = getConnection().get();
+			Document document = getDoc();
 			if (document != null) {
 				Element table = document.select("TABLE").get(0);
 				Elements elements = table.select("TR");
@@ -37,8 +39,13 @@ public class DocsConnection {
 		return null;
 	}
 
+	private Document getDoc() throws IOException {
+		File file = new File("D:\\Program Data\\JSP\\" + Config.getProperty(getKeyOfProperty()));
+		return Jsoup.parse(file, "utf-8");
+	}
+	
 	private Connection getConnection() {
-		String url = Config.getProperty(getUrlOfDocument());
+		String url = Config.getProperty(getKeyOfProperty());
 		String username = Config.getProperty(Config.DB_USERNAME);
 		String password = Config.getProperty(Config.DB_PASSWORD);
 		String login = username + ":" + password;
@@ -49,17 +56,17 @@ public class DocsConnection {
 		}
 		return connection;
 	}
-	private String getUrlOfDocument() {
-		String url = null;
+	private String getKeyOfProperty() {
+		String key = null;
 		switch (type) {
 		case CALC_AND_WIND_NOTE:
-			url = Config.DB_NOTE_URL;
+			key = Config.DB_NOTE_URL;
 			break;
 		case STO:
-			url = Config.DB_STO_URL;
+			key = Config.DB_STO_URL;
 			break;
 		case MECH_CALC_RESULTS:
-			url = Config.DB_MECH_CALC_RESULTS;
+			key = Config.DB_MECH_CALC_RESULTS;
 			break;
 		default:
 			throw new IllegalArgumentException("Wrong document type:" + type);
@@ -67,6 +74,6 @@ public class DocsConnection {
 		if (LOG.isInfoEnabled()) {
 			LOG.info("URL of JSP received in {}", type.name());
 		}
-		return url;
+		return key;
 	}
 }

@@ -86,6 +86,11 @@ public class General {
 //			currDrw.Save();
 			
 			new Dxf().createWithNameOf(currSolid);
+			
+			session.UIShowMessageDialog(session.GetActiveServer().GetAlias(), null);
+			session.UIShowMessageDialog(session.GetConfigOption("allow_import_file_extension"), null);
+			session.CopyFileToWS("drw_temp.drw", 
+					"Workspace on Лаборатория", null);
 		} catch (InputCheckException | NullPointerException | jxthrowable e) {
 			LOG.error("Error in the General class!", e);
 		}

@@ -31,6 +31,7 @@ public class Dxf {
 	        String dxfName = AppProperties.DXF_PATH + File.separator + currModel.GetFullName();
 	        drawOfSegm.Export(dxfName, exportInstructions);
 	        deleteLogOfDxf(dxfName);
+	        drawOfSegm.Erase();
 		} catch (jxthrowable e) {
 			LOG.error("Error creating dxf", e);
 		}
