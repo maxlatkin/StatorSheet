@@ -1,10 +1,13 @@
 package ru.general;
 
+import java.io.File;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcModel.Model;
+import com.ptc.pfc.pfcServer.Server;
 import com.ptc.pfc.pfcSession.CreoCompatibility;
 import com.ptc.pfc.pfcSession.Session;
 import com.ptc.pfc.pfcSession.pfcSession;
@@ -82,15 +85,18 @@ public class General {
 			
 			new DrawingDimensions().setTo(currDrw);
 			
-//			currSolid.Save();
-//			currDrw.Save();
+			currSolid.Save();
+			currDrw.Save();
 			
 			new Dxf().createWithNameOf(currSolid);
 			
-			session.UIShowMessageDialog(session.GetActiveServer().GetAlias(), null);
-			session.UIShowMessageDialog(session.GetConfigOption("allow_import_file_extension"), null);
-			session.CopyFileToWS("drw_temp.drw", 
-					"Workspace on Лаборатория", null);
+			
+//			session.GetCurrentDirectory()
+			Server server = session.GetActiveServer();
+			String file2Copy = AppProperties.DXF_PATH + File.separator + currSolid.GetFullName() + ".dxf";
+			session.SetConfigOption("allow_import_file_extension", "dxf");
+			String targetWorkspace = "wtws://" + server.GetAlias() + "/" + server.GetActiveWorkspace() + "/";
+			session.CopyFileToWS(file2Copy, targetWorkspace, currSolid.GetFileName());
 		} catch (InputCheckException | NullPointerException | jxthrowable e) {
 			LOG.error("Error in the General class!", e);
 		}
