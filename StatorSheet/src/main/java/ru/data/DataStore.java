@@ -5,10 +5,6 @@ import java.util.Map;
 
 public final class DataStore {
 	
-	private static String tempPart = "dv_20200602_stator_sheet.prt";
-	private static String tempDrw = "dv_20200602_stator_sheet.drw";
-	private static String modelsPath = "D:\\Project\\pro\\models\\StatorSheet";
-	private static String modelName = "sheet";
 	private static double sheetThck;
 	private static int slotQty;
 	private static boolean slotWithRound;
@@ -62,10 +58,6 @@ public final class DataStore {
 
 	public static double getDifBetwDiamOfStudAndDiamOfHole() {
 		return difBetwDiamOfStudAndDiamOfHole;
-	}
-
-	public static String getTempDrw() {
-		return tempDrw;
 	}
 
 	public static int getPoleQty() {
@@ -171,18 +163,6 @@ public final class DataStore {
 	public static int getScrewQty() {
 		screwQty = getTotalScrewQty() / getSegmQty();
 		return screwQty;
-	}
-
-	public static String getTempPart() {
-		return tempPart;
-	}
-
-	public static String getModelsPath() {
-		return modelsPath;
-	}
-
-	public static String getModelName() {
-		return modelName;
 	}
 
 	public static double getSheetThck() {

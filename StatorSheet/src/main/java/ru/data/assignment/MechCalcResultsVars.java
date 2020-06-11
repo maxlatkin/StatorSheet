@@ -23,6 +23,6 @@ public class MechCalcResultsVars extends DocVars {
 	protected void setDataFromColsToDataStore(Elements cols) {
 		DataStore.setTotalScrewQty(parseInt(cols.get(2).text()));
 		DataStore.setStudDiam(parseDouble(cols.get(3).text()));
-		LOG.info("Data assigned in MechCalcResults");
+		LOG.info("Data assigned to DataStore from MechCalcResults");
 	}
 }

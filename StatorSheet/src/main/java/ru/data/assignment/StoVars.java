@@ -57,7 +57,7 @@ public class StoVars extends DocVars {
 		DataStore.setScrew07Wdth(parseDouble(cols.get(27).text()));
 		DataStore.setScrew07Hght(parseDouble(cols.get(28).text()));
 		DataStore.setScrew07Gap(parseDouble(cols.get(29).text()));
-		LOG.info("Data assigned in Sto");
+		LOG.info("Data assigned to DataStore from Sto");
 	}
 	private void setIntRadsToMapByIndex(int index, Map<Double, Double> map) {
 		double[] array = getArray(index);

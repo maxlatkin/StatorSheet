@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 
 import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcModel.Model;
-import com.ptc.pfc.pfcModel.ModelDescriptor;
 import com.ptc.pfc.pfcModel.ModelType;
 import com.ptc.pfc.pfcModel.pfcModel;
 import com.ptc.pfc.pfcSession.CreoCompatibility;
@@ -16,6 +15,7 @@ import com.ptc.pfc.pfcSession.Session;
 import com.ptc.pfc.pfcSession.pfcSession;
 
 import ru.data.DataStore;
+import ru.general.AppProperties;
 import ru.ruselprom.parameters.Parameters;
 
 public class Models {
@@ -25,6 +25,7 @@ public class Models {
 	private String partOfModelNumber;
 	private Model part;
 	private Model drw;
+	private Model dxfTemp;
 	private static final Logger LOG = LoggerFactory.getLogger(Models.class);
 	private Models(){}
 	
@@ -40,12 +41,12 @@ public class Models {
 			modelName = null;
 			partOfModelNumber = null;
 			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
-			ModelDescriptor modelDescriptor = pfcModel.ModelDescriptor_Create(ModelType.MDL_DRAWING, DataStore.getTempDrw(), null);
-			session.RetrieveModel(modelDescriptor);
-			part = session.GetModelFromFileName(DataStore.getTempPart());
-			part.Rename(getModelName(), false);
-			drw = session.GetModelFromFileName(DataStore.getTempDrw());
+			drw = session.RetrieveModel(pfcModel.ModelDescriptor_Create(ModelType.MDL_DRAWING, AppProperties.DRW_TEMP, null));
 			drw.Rename(getModelName(), false);
+			dxfTemp = session.RetrieveModel(pfcModel.ModelDescriptor_Create(ModelType.MDL_DRAWING, AppProperties.DXF_TEMP, null));
+			dxfTemp.Rename(getDate("HHmmss") + "_dxf_temp",  false);
+			part = session.GetModel(AppProperties.PART_TEMP, ModelType.MDL_PART);
+			part.Rename(getModelName(), false);
 			Parameters.setStringParamValue("ОБОЗНАЧЕНИЕ", getModelNumder(), part);
 			Parameters.setStringParamValue("ОБОЗНАЧЕНИЕ", getModelNumder(), drw);
 			LOG.info("Models is retrieved, renamed and renumbered");
@@ -54,6 +55,10 @@ public class Models {
 		}
 	}
 	
+	public Model getDxfTempFromSession() {
+		LOG.info("dxfTemp is got");
+		return dxfTemp;
+	}
 	public Model getPartFromSession() {
 		LOG.info("Part is got");
 		return part;
