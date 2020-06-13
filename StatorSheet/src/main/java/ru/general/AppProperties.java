@@ -19,7 +19,6 @@ public final class AppProperties {
 	public static final String PART_TEMP;
     public static final String DRW_TEMP;
     public static final String DXF_TEMP;
-    public static final String DXF_PATH;
     
     private AppProperties() {}
     
@@ -28,7 +27,6 @@ public final class AppProperties {
         PART_TEMP = prop.getProperty("part.temp");
         DRW_TEMP = prop.getProperty("drw.temp");
         DXF_TEMP = prop.getProperty("dxf.temp");
-        DXF_PATH = prop.getProperty("dxf.path");
     }
     
     private static String getFileName() {
