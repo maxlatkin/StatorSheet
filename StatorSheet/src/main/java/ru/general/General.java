@@ -20,6 +20,7 @@ import ru.data.DataStore;
 import ru.drawing.DrawingDimensions;
 import ru.dxf.Dxf;
 import ru.exceptions.InputCheckException;
+import ru.exceptions.RetrieveModelException;
 import ru.parameters.Params;
 import ru.wnc.Models;
 import ru.wnc.documents.DocFactory;
@@ -85,10 +86,13 @@ public class General {
 			currSolid.Save();
 			currDrw.Save();
 			
-			Dxf dxf = new Dxf(session, currSolid);
-			dxf.createWithNameOfModel();
-			dxf.addToModelInWS();
-		} catch (InputCheckException | NullPointerException | jxthrowable e) {
+			if (DataStore.isSlotWithRound()) {
+				Dxf dxf = new Dxf(session, currSolid);
+				dxf.createWithNameOfModel();
+				dxf.addToModelInWS();
+			}
+			Models.getInstance().getDxfTempFromSession().Erase();
+		} catch (InputCheckException | RetrieveModelException | NullPointerException | jxthrowable e) {
 			LOG.error("Error in the General class!", e);
 		}
 	}

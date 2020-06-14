@@ -39,7 +39,6 @@ public class Dxf {
 	        drawOfSegm.Export(dxfName, exportInstructions);
 	        String dxfLog = dxfName + "_dxf__out.log.1";
 	        deleteFile(dxfLog);
-	        drawOfSegm.Erase();
 	        LOG.info("dxf is created");
 		} catch (jxthrowable e) {
 			LOG.error("Error creating dxf", e);

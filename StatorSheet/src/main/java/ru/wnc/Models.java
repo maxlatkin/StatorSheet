@@ -7,14 +7,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ptc.cipjava.jxthrowable;
+import com.ptc.pfc.pfcExceptions.XToolkitGeneralError;
 import com.ptc.pfc.pfcModel.Model;
 import com.ptc.pfc.pfcModel.ModelType;
 import com.ptc.pfc.pfcModel.pfcModel;
 import com.ptc.pfc.pfcSession.CreoCompatibility;
 import com.ptc.pfc.pfcSession.Session;
 import com.ptc.pfc.pfcSession.pfcSession;
+import com.ptc.pfc.pfcUI.MessageDialogOptions;
+import com.ptc.pfc.pfcUI.MessageDialogType;
+import com.ptc.pfc.pfcUI.pfcUI;
 
 import ru.data.DataStore;
+import ru.exceptions.RetrieveModelException;
 import ru.general.AppProperties;
 import ru.ruselprom.parameters.Parameters;
 
@@ -50,6 +55,8 @@ public class Models {
 			Parameters.setStringParamValue("ОБОЗНАЧЕНИЕ", getModelNumder(), part);
 			Parameters.setStringParamValue("ОБОЗНАЧЕНИЕ", getModelNumder(), drw);
 			LOG.info("Models is retrieved, renamed and renumbered");
+		} catch (XToolkitGeneralError e) {
+			handleGeneralError();
 		} catch (jxthrowable e) {
 			LOG.error("Error retrieving models", e);
 		}
@@ -67,6 +74,20 @@ public class Models {
 	public Model getDrwFromSession() {
 		LOG.info("Drw is got");
 		return drw;
+	}
+	
+	private void handleGeneralError() {
+		try {
+			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
+			MessageDialogOptions dialogOptions = pfcUI.MessageDialogOptions_Create();
+			dialogOptions.SetDialogLabel("Ошибка при получении шаблонов моделей");
+			dialogOptions.SetMessageDialogType(MessageDialogType.MESSAGE_ERROR);
+			session.UIShowMessageDialog("Ошибка: модели не были найдены в локальном кэше, рабочей области и сервере!"
+					+ "\nВозможно, Вы не подключены к серверу.", dialogOptions);
+			throw new RetrieveModelException("wnc is offline");
+		} catch (jxthrowable e) {
+			LOG.error(e.toString());
+		}
 	}
 	
 	private String getModelNumder() {

@@ -21,8 +21,8 @@ public class ExtAndIntDiams implements Checkable {
 	@Override
 	public void check() {
 		try {
-			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
 			if (DataStore.getIntDiam() >= DataStore.getExtDiam()) {
+				Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
 				MessageDialogOptions dialogOptions = pfcUI.MessageDialogOptions_Create();
 				dialogOptions.SetDialogLabel("Ошибка при получении данных");
 				dialogOptions.SetMessageDialogType(MessageDialogType.MESSAGE_ERROR);
