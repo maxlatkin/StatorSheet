@@ -33,6 +33,18 @@ public class General {
 	private static String stoName = null; 
 	private static String resultsName = null; 
 	
+	public static String getNoteName() {
+		return noteName;
+	}
+
+	public static String getStoName() {
+		return stoName;
+	}
+
+	public static String getResultsName() {
+		return resultsName;
+	}
+
 	public static void setNoteName(String noteName) {
 		General.noteName = noteName;
 	}

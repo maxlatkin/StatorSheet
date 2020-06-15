@@ -13,6 +13,7 @@ import com.ptc.pfc.pfcSolid.Solid;
 import com.ptc.wfc.wfcGeometry.WSurface;
 
 import ru.data.DataStore;
+import ru.general.General;
 import ru.general.ModelFeat;
 import ru.parameters.ModelParamNames;
 import ru.ruselprom.parameters.Parameters;
@@ -37,6 +38,9 @@ public class AuxiliaryParams implements ParamsSetting {
 			Parameters.setBoolParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_06_CORNER.name(), true, currModel);
 			Parameters.setBoolParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_07_CORNER.name(), true, currModel);
 			Parameters.setStringParamValue(ModelParamNames.AA_STATOR_CORE_SEGM_ROLLING.name(), DataStore.getSegmRolling(), currModel);
+			Parameters.setStringParamValue(ModelParamNames.AA_STATOR_CORE_NOTE.name(), General.getNoteName(), currModel);
+			Parameters.setStringParamValue(ModelParamNames.AA_STATOR_CORE_STO.name(), General.getStoName(), currModel);
+			Parameters.setStringParamValue(ModelParamNames.AA_STATOR_CORE_MECH_RESULTS.name(), General.getResultsName(), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_WDG_FLT_W.name(), getSlotWdgFltW(currModel), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SHEET_AREA.name(), getSheetArea(currModel), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SHEET_PERIMETER.name(), getSheetPerimeter(currModel), currModel);

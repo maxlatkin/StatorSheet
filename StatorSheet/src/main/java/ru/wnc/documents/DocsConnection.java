@@ -1,6 +1,5 @@
 package ru.wnc.documents;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
 
@@ -23,8 +22,7 @@ public class DocsConnection {
 
 	public Elements getTrElements() {
 		try {
-//			Document document = getConnection().get();
-			Document document = getDoc();
+			Document document = getConnection().get();
 			if (document != null) {
 				Element table = document.select("TABLE").get(0);
 				Elements elements = table.select("TR");
@@ -39,10 +37,10 @@ public class DocsConnection {
 		return null;
 	}
 
-	private Document getDoc() throws IOException {
-		File file = new File("D:\\Program Data\\JSP\\" + Config.getProperty(getKeyOfProperty()));
-		return Jsoup.parse(file, "utf-8");
-	}
+//	private Document getDoc() throws IOException {
+//		File file = new File("D:\\Program Data\\JSP\\" + Config.getProperty(getKeyOfProperty()));
+//		return Jsoup.parse(file, "utf-8");
+//	}
 	
 	private Connection getConnection() {
 		String url = Config.getProperty(getKeyOfProperty());
