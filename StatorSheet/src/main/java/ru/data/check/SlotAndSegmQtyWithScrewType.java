@@ -42,13 +42,13 @@ public class SlotAndSegmQtyWithScrewType implements Checkable {
 				if (typeOfScrew == 3 && isScrew04Exist) {
 					session.UIShowMessageDialog("Ошибка: крепеж с открытыми пазами под шпильки укладывают с перекрытием 1/3."
 							+ "\nПри текущем числе пазов и сегментов необходимо укладывать с перекрытием 1/2."
-							+ "\nОбратитесь к расчётчику.", dialogOptions);
+							+ "\nВыберите другой тип крепежа или обратитесь к расчётчику.", dialogOptions);
 					throw new InputCheckException("screw03and04 with overlap 1/2");
 				} else if ((typeOfScrew == 5 || typeOfScrew == 6 || typeOfScrew == 7) && screwQty % 2 != 0) {
 					session.UIShowMessageDialog("Ошибка: данный тип крепежа при нечетном числе на сегмент "
 							+ "укладывают с перекрытием 1/3."
 							+ "\nПри текущем числе пазов и сегментов необходимо укладывать с перекрытием 1/2."
-							+ "\nОбратитесь к расчётчику.", dialogOptions);
+							+ "\nВыберите другой тип крепежа или обратитесь к расчётчику.", dialogOptions);
 					throw new InputCheckException("screw050607 with odd screwQty with overlap 1/2");
 				}
 			}
@@ -56,13 +56,13 @@ public class SlotAndSegmQtyWithScrewType implements Checkable {
 				if (typeOfScrew == 1 || typeOfScrew == 2 || (typeOfScrew == 3 && !isScrew04Exist)) {
 					session.UIShowMessageDialog("Ошибка: данный тип крепежа укладывают с перекрытием 1/2."
 							+ "\nПри текущем числе пазов и сегментов необходимо укладывать с перекрытием 1/3."
-							+ "\nОбратитесь к расчётчику.", dialogOptions);
+							+ "\nВыберите другой тип крепежа или обратитесь к расчётчику.", dialogOptions);
 					throw new InputCheckException("screw010203 with overlap 1/3");
 				} else if ((typeOfScrew == 5 || typeOfScrew == 6 || typeOfScrew == 7) && screwQty % 2 == 0) {
 					session.UIShowMessageDialog("Ошибка: данный тип крепежа при четном числе на сегмент "
 							+ "укладывают с перекрытием 1/2."
 							+ "\nПри текущем числе пазов и сегментов необходимо укладывать с перекрытием 1/3."
-							+ "\nОбратитесь к расчётчику.", dialogOptions);
+							+ "\nВыберите другой тип крепежа или обратитесь к расчётчику.", dialogOptions);
 					throw new InputCheckException("screw050607 with even screwQty with overlap 1/3");
 				}
 			}

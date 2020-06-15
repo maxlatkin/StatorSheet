@@ -17,13 +17,12 @@ import ru.exceptions.InputCheckException;
 public class ScrewQty implements Checkable {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ScrewQty.class);
-	private double screwQty;
 	private double segmQty;
 	
 	@Override
 	public void check() {
 		try {
-			screwQty = DataStore.getScrewQty();
+			int screwQty = DataStore.getScrewQty();
 			segmQty = DataStore.getSegmQty();
 			int typeOfScrew = DataStore.getTypeOfScrew();
 			boolean isScrew04Exist = DataStore.isScrew04Exist();
@@ -34,9 +33,9 @@ public class ScrewQty implements Checkable {
 			if (!isRemainderZero()) {
 				session.UIShowMessageDialog("Ошибка: на сегмент приходится нецелое число крепежей"
 						+ "\nОбратитесь к расчётчику.", dialogOptions);
-				throw new InputCheckException("Remainder of slotQty/segmQty is not zero");
+				throw new InputCheckException("Remainder of screwQty/segmQty is not zero");
 			}
-			if ((screwQty != 2 || screwQty != 4) && (typeOfScrew == 1 || typeOfScrew == 2 || (typeOfScrew == 3 && !isScrew04Exist))) {
+			if ((screwQty != 2 && screwQty != 4) && (typeOfScrew == 1 || typeOfScrew == 2 || (typeOfScrew == 3 && !isScrew04Exist))) {
 				session.UIShowMessageDialog("Ошибка: неправильное число крепежей на сегмент для данного типа!"
 						+ "\nВыберите другой тип крепежа или обратитесь к расчётчику.", dialogOptions);
 				throw new InputCheckException("Wrong screwQty for this screw type");
@@ -46,6 +45,6 @@ public class ScrewQty implements Checkable {
 		}
 	}
 	private boolean isRemainderZero() {
-		return screwQty % segmQty == 0;
+		return DataStore.getTotalScrewQty() % segmQty == 0;
 	}
 }
