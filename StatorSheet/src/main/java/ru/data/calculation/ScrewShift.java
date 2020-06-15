@@ -29,7 +29,7 @@ public class ScrewShift implements Calculable {
 			DataStore.setScrewShift(screwShift);
 			LOG.info("ScrewShift was calculated: {}", screwShift);
 		} catch (IllegalArgumentException e) {
-			LOG.error(e.toString());
+			LOG.error("Error calculating screwShift", e);
 		}
 	}
 	

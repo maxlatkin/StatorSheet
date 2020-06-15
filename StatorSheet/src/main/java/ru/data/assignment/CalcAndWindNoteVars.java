@@ -27,7 +27,6 @@ public class CalcAndWindNoteVars extends DocVars {
 		DataStore.setSlotStep(parseInt(cols.get(7).text()));
 		DataStore.setSegmRolling(cols.get(8).text());
 		DataStore.setSegmQty(parseInt(cols.get(9).text()));
-		DataStore.setPoleQty(parseInt(cols.get(10).text()));
 		LOG.info("Data assigned to DataStore from CalcAndWindNote");
 	}
 }

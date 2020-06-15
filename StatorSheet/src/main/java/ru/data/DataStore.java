@@ -49,7 +49,6 @@ public final class DataStore {
 	private static double totalSlotHght;
 	private static int totalScrewQty;
 	private static double screw04Shift;
-	private static int poleQty;
 	private static double difBetwDiamOfStudAndDiamOfHole;
 	
 	public static double getStudDiam() {
@@ -58,10 +57,6 @@ public final class DataStore {
 
 	public static double getDifBetwDiamOfStudAndDiamOfHole() {
 		return difBetwDiamOfStudAndDiamOfHole;
-	}
-
-	public static int getPoleQty() {
-		return poleQty;
 	}
 
 	public static double getScrew04Shift() {
@@ -279,10 +274,6 @@ public final class DataStore {
 
 	public static void setSlotHghtToWdg(double slotHghtToWdg) {
 		DataStore.slotHghtToWdg = slotHghtToWdg;
-	}
-
-	public static void setPoleQty(int poleQty) {
-		DataStore.poleQty = poleQty;
 	}
 
 	public static void setSheetThck(double sheetThck) {
