@@ -91,7 +91,9 @@ public class General {
 			Params.setAllParams(currSolid);
 			session.CreateModelWindow(currSolid).Activate();
 			
-			ProProgram.getInstance().addConditions(currSolid);
+			if (DataStore.getSegmQty() != 1) {
+				ProProgram.getInstance().addConditions(currSolid);
+			}
 			
 			new DrawingDimensions().setTo(currDrw);
 			

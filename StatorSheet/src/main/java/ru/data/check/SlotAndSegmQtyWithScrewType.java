@@ -33,10 +33,11 @@ public class SlotAndSegmQtyWithScrewType implements Checkable {
 			dialogOptions.SetMessageDialogType(MessageDialogType.MESSAGE_ERROR);
 			dialogOptions.SetDialogLabel("Ошибка при получении данных");
 			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
-			if (!isRemainderZero()) {
-				session.UIShowMessageDialog("Ошибка: на сегмент приходится нецелое число пазов"
-						+ "\nОбратитесь к расчётчику.", dialogOptions);
-				throw new InputCheckException("Remainder of slotQty/segmQty is not zero");
+			intNumOfGroovesPerSegmCheck(session);
+			if (segmQty == 1 && typeOfScrew != 5 && typeOfScrew != 6) {
+				session.UIShowMessageDialog("Ошибка: данный тип крепежа не существует для цельного листа."
+						+ "\nВыберите другой тип крепежа или обратитесь к расчётчику.", dialogOptions);
+				throw new InputCheckException("This type of screw does not exist for a whole sheet");
 			}
 			if (isRatioOfSlotQtyAndSegmQtyEven()) {
 				if (typeOfScrew == 3 && isScrew04Exist) {
@@ -68,6 +69,14 @@ public class SlotAndSegmQtyWithScrewType implements Checkable {
 			}
 		} catch (jxthrowable e) {
 			LOG.error("Error checking SlotAndSegmQtyWithScrewType", e);
+		}
+	}
+
+	private void intNumOfGroovesPerSegmCheck(Session session) throws jxthrowable {
+		if (!isRemainderZero()) {
+			session.UIShowMessageDialog("Ошибка: на сегмент приходится нецелое число пазов"
+					+ "\nОбратитесь к расчётчику.", dialogOptions);
+			throw new InputCheckException("Remainder of slotQty/segmQty is not zero");
 		}
 	}
 	
