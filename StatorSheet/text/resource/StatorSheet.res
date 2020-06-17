@@ -96,6 +96,8 @@
     (Components
         (Label L_Documents)
         (Label L_Note)
+        (PushButton PB_Note)
+        (InputPanel IP_Note)
         (OptionMenu OM_Note)
         (Label L_STO)
         (OptionMenu OM_STO)
@@ -117,7 +119,20 @@
         (L_Note.BottomOffset 2)
         (L_Note.LeftOffset 10)
         (L_Note.RightOffset 0)
-        (OM_Note.TopOffset 1)
+        (PB_Note.Label "Искать обозначение по части строки:")
+        (PB_Note.ButtonStyle 2)
+        (PB_Note.AttachLeft True)
+        (PB_Note.ResourceHints "UserOverrideAttrs:ButtonStyle")
+        (PB_Note.TopOffset 1)
+        (PB_Note.BottomOffset 3)
+        (PB_Note.LeftOffset 10)
+        (PB_Note.RightOffset 4)
+        (IP_Note.TopOffset 1)
+        (IP_Note.BottomOffset 3)
+        (IP_Note.LeftOffset 3)
+        (IP_Note.RightOffset 0)
+        (IP_Note.InputType 0)
+        (OM_Note.TopOffset 3)
         (OM_Note.BottomOffset 2)
         (OM_Note.LeftOffset 10)
         (OM_Note.RightOffset 0)
@@ -159,9 +174,20 @@
                 (Cols 1)
                 L_Documents
                 (Grid
-                    (Rows 0 0 0 0 0 0)
-                    (Cols 1)
-                    L_Note OM_Note L_STO OM_STO L_Results OM_Results
+                    (Rows 0 0 0 0 0 0 0)
+                    (Cols 0 1)
+                    (Size 1 2)
+                    L_Note PB_Note IP_Note
+                    (Size 1 2)
+                    OM_Note
+                    (Size 1 2)
+                    L_STO
+                    (Size 1 2)
+                    OM_STO
+                    (Size 1 2)
+                    L_Results
+                    (Size 1 2)
+                    OM_Results
                 )
             )
         )

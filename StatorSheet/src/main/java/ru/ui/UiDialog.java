@@ -53,7 +53,7 @@ public class UiDialog extends DefaultUICommandActionListener {
 			uifcCheckButton.CheckButtonFind(DIALOG, SCREW_4_CB).AddActionListener(new UiFourthScrewCBListener());
 			
 			
-			setNumbersToOM("","OM_Note", DocumentTypes.CALC_AND_WIND_NOTE);
+//			setNumbersToOM("","OM_Note", DocumentTypes.CALC_AND_WIND_NOTE);
 			setNumbersToOM("","OM_STO", DocumentTypes.STO);
 			setNumbersToOM("","OM_Results", DocumentTypes.MECH_CALC_RESULTS);
 			filterNoteNumber();
