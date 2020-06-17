@@ -8,8 +8,11 @@ import com.ptc.cipjava.stringseq;
 import com.ptc.pfc.pfcCommand.DefaultUICommandActionListener;
 import com.ptc.uifc.uifcCheckButton.uifcCheckButton;
 import com.ptc.uifc.uifcComponent.uifcComponent;
+import com.ptc.uifc.uifcInputPanel.uifcInputPanel;
 import com.ptc.uifc.uifcLabel.uifcLabel;
 import com.ptc.uifc.uifcOptionMenu.uifcOptionMenu;
+import com.ptc.uifc.uifcPushButton.PushButton;
+import com.ptc.uifc.uifcPushButton.PushButtonListener_u;
 import com.ptc.uifc.uifcPushButton.uifcPushButton;
 
 import ru.wnc.documents.DocNumbers;
@@ -49,9 +52,11 @@ public class UiDialog extends DefaultUICommandActionListener {
 			uifcOptionMenu.OptionMenuFind(DIALOG, SCREWS_OM).AddActionListener(new UiScrewsOMListener());
 			uifcCheckButton.CheckButtonFind(DIALOG, SCREW_4_CB).AddActionListener(new UiFourthScrewCBListener());
 			
-			setNumbersToOM("OM_Note", DocumentTypes.CALC_AND_WIND_NOTE);
-			setNumbersToOM("OM_STO", DocumentTypes.STO);
-			setNumbersToOM("OM_Results", DocumentTypes.MECH_CALC_RESULTS);
+			
+			setNumbersToOM("","OM_Note", DocumentTypes.CALC_AND_WIND_NOTE);
+			setNumbersToOM("","OM_STO", DocumentTypes.STO);
+			setNumbersToOM("","OM_Results", DocumentTypes.MECH_CALC_RESULTS);
+			filterNoteNumber();
 			
 			uifcLabel.LabelFind(DIALOG, "L_S1_Image").SetImage("Screw\\s1.png");
 			uifcLabel.LabelFind(DIALOG, "L_S2_Image").SetImage("Screw\\s2.png");
@@ -68,10 +73,100 @@ public class UiDialog extends DefaultUICommandActionListener {
 		}
 	}
 
-	private void setNumbersToOM(String omName, DocumentTypes type) throws jxthrowable {
+	private void filterNoteNumber() throws jxthrowable {
+		uifcPushButton.PushButtonFind(DIALOG, "PB_Note").AddActionListener(new PushButtonListener_u() {
+			
+			@Override
+			public void OnMouseExit(PushButton arg0) throws jxthrowable {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void OnMouseEnter(PushButton arg0) throws jxthrowable {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void OnHelp(PushButton arg0) throws jxthrowable {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void OnFocusOut(PushButton arg0) throws jxthrowable {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void OnFocusIn(PushButton arg0) throws jxthrowable {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void OnEndDrag(PushButton arg0) throws jxthrowable {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void OnDropNowhere(PushButton arg0) throws jxthrowable {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void OnDrop(PushButton arg0) throws jxthrowable {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void OnDragNowhere(PushButton arg0) throws jxthrowable {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void OnDragMove(PushButton arg0) throws jxthrowable {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void OnDragExit(PushButton arg0) throws jxthrowable {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void OnDragEnter(PushButton arg0) throws jxthrowable {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void OnBeginDrag(PushButton arg0) throws jxthrowable {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void OnActivate(PushButton arg0) throws jxthrowable {
+				// TODO Auto-generated method stub
+				String noteNumberFilter = uifcInputPanel.InputPanelFind(DIALOG, "IP_Note").GetStringValue();
+				setNumbersToOM(noteNumberFilter,"OM_Note", DocumentTypes.CALC_AND_WIND_NOTE);
+			}
+		});
+	}
+
+	private void setNumbersToOM(String numberFilter,String omName, DocumentTypes type) throws jxthrowable {
 		stringseq numbers = stringseq.create();
 		DocNumbers docNumbers = new DocNumbers(type);
-		for (String number: docNumbers.getSetOfDocNumbers()) {
+		for (String number: docNumbers.getSetOfDocNumbers(numberFilter)) {
 			numbers.append(number);				
 		}
 		uifcOptionMenu.OptionMenuFind(DIALOG, omName).SetStringValueArray(numbers);

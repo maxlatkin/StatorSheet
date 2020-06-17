@@ -10,8 +10,7 @@ public abstract class DocVars {
 	
 	public void assignToDataStore(String number) {
 		try {
-			DocsConnection docsConnection = new DocsConnection(type);
-			Elements rows = docsConnection.getTrElements();
+			Elements rows = DocsConnection.getInstance(type).getTrElems();
 			Elements cols = null;
 			if (rows != null) {
 				for (int i = 1; i < rows.size(); i++) {

@@ -21,14 +21,16 @@ public class ExtAndIntDiams implements Checkable {
 	@Override
 	public void check() {
 		try {
-			if (DataStore.getIntDiam() >= DataStore.getExtDiam()) {
+			double intDiam = DataStore.getIntDiam();
+			double extDiam = DataStore.getExtDiam();
+			if (intDiam >= extDiam) {
 				Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
 				MessageDialogOptions dialogOptions = pfcUI.MessageDialogOptions_Create();
 				dialogOptions.SetDialogLabel("Ошибка при получении данных");
 				dialogOptions.SetMessageDialogType(MessageDialogType.MESSAGE_ERROR);
 				session.UIShowMessageDialog("Ошибка: внутренний диаметр сегмента больше или равен внешнему!"
 						+ "\nОбратитесь к расчётчику.", dialogOptions);
-				throw new InputCheckException("intDiam > extDiam");
+				throw new InputCheckException("intDiam(" + intDiam + ") > extDiam(" + extDiam +")");
 			}
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error(e.toString());

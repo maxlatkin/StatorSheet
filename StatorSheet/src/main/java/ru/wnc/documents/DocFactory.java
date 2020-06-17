@@ -26,7 +26,7 @@ public class DocFactory {
 		default:
 			throw new IllegalArgumentException("Wrong document type:" + type);
 		}
-		LOG.info("Document is got");
+		LOG.info("{} document is got", type);
 		return document;
 	}
 }

@@ -1,5 +1,6 @@
 package ru.wnc.documents;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
 
@@ -15,35 +16,72 @@ public class DocsConnection {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(DocsConnection.class);
 	private DocumentTypes type;
+	private Elements noteElements;
+	private Elements stoElements;
+	private Elements resultsElements;
+	private static DocsConnection instance;
+    
+	private DocsConnection() {}
 	
-	public DocsConnection(DocumentTypes type) {
-		this.type = type;
+	public static DocsConnection getInstance(DocumentTypes type) {
+		if (instance == null) {
+			instance = new DocsConnection();
+		}
+		instance.type = type;
+		return instance;
+	}
+	
+	public Elements getTrElems() {
+		return getElemsByType();
 	}
 
-	public Elements getTrElements() {
+	public void setTrElemsByNumberFilter(String numberFilter) {
 		try {
-			Document document = getConnection().get();
+			Document document = getConnection(numberFilter).get();
+//			Document document = getDoc();
 			if (document != null) {
 				Element table = document.select("TABLE").get(0);
-				Elements elements = table.select("TR");
-				if (LOG.isInfoEnabled()) {
-					LOG.info("JSP elements received in {}", type.name());
-				}
-				return elements;
+				setElemsByType(table.select("TR"));
+				LOG.info("JSP elements received in {}", type);
 			}
 		} catch (NullPointerException | IOException e) {
 			LOG.error("Error in getTrElements()", e);
 		}
-		return null;
 	}
-
-//	private Document getDoc() throws IOException {
-//		File file = new File("D:\\Program Data\\JSP\\" + Config.getProperty(getKeyOfProperty()));
-//		return Jsoup.parse(file, "utf-8");
-//	}
+	private Elements getElemsByType() {
+		switch (type) {
+		case CALC_AND_WIND_NOTE:
+			return noteElements;
+		case STO:
+			return stoElements;
+		case MECH_CALC_RESULTS:
+			return resultsElements;
+		default:
+			return null;
+		}
+	}
+	private void setElemsByType(Elements elements) {
+		switch (type) {
+		case CALC_AND_WIND_NOTE:
+			noteElements = elements;
+			break;
+		case STO:
+			stoElements = elements;
+			break;
+		case MECH_CALC_RESULTS:
+			resultsElements = elements;
+			break;
+		default:
+			throw new IllegalArgumentException();
+		}
+	}
+	private Document getDoc() throws IOException {
+		File file = new File("D:\\Program Data\\JSP\\" + Config.getProperty(getKeyOfProperty()));
+		return Jsoup.parse(file, "utf-8");
+	}
 	
-	private Connection getConnection() {
-		String url = Config.getProperty(getKeyOfProperty());
+	private Connection getConnection(String number) {
+		String url = Config.getProperty(getKeyOfProperty()) + number;
 		String username = Config.getProperty(Config.DB_USERNAME);
 		String password = Config.getProperty(Config.DB_PASSWORD);
 		String login = username + ":" + password;
@@ -64,7 +102,7 @@ public class DocsConnection {
 			key = Config.DB_STO_URL;
 			break;
 		case MECH_CALC_RESULTS:
-			key = Config.DB_MECH_CALC_RESULTS;
+			key = Config.DB_MECH_CALC_RESULTS_URL;
 			break;
 		default:
 			throw new IllegalArgumentException("Wrong document type:" + type);

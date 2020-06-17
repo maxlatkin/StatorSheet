@@ -18,11 +18,11 @@ public class DocNumbers {
 		this.type = type;
 	}
 	
-	public Set<String> getSetOfDocNumbers() {
+	public Set<String> getSetOfDocNumbers(String numberFilter) {
 		try {
 			ArrayList<String> listNumbers = new ArrayList<>();
-			DocsConnection docsConnection = new DocsConnection(type);
-			Elements rows = docsConnection.getTrElements();
+			DocsConnection.getInstance(type).setTrElemsByNumberFilter(numberFilter);
+			Elements rows = DocsConnection.getInstance(type).getTrElems();
 			Elements cols = null;
 			if (rows != null) {
 				for (int i = 1; i < rows.size(); i++) {

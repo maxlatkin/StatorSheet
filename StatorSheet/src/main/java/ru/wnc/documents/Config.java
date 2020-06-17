@@ -12,7 +12,7 @@ public class Config {
 	private static final Logger LOG = LoggerFactory.getLogger(Config.class);
 	public static final String DB_NOTE_URL = "db.noteUrl";
 	public static final String DB_STO_URL = "db.stoUrl";
-	public static final String DB_MECH_CALC_RESULTS = "db.MCRUrl";
+	public static final String DB_MECH_CALC_RESULTS_URL = "db.MCRUrl";
 	public static final String DB_USERNAME = "db.username";
 	public static final String DB_PASSWORD = "db.password";
 	private static Properties properties = new Properties();
