@@ -1,12 +1,14 @@
 package ru.building.screw;
 
 import com.ptc.cipjava.jxthrowable;
+import com.ptc.pfc.pfcModelItem.ModelItemType;
+import com.ptc.pfc.pfcModelItem.ModelItems;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.building.Buildable;
 import ru.data.DataStore;
 import ru.general.ModelFeat;
-import ru.ruselprom.fet.extrusions.add.ExtrusionAddSym;
+import ru.ruselprom.fet.extrusions.add.ExtrusionAddRef;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.fet.patterns.RotatPattern360;
 import ru.ruselprom.fet.patterns.TwoRotatPattern;
@@ -14,9 +16,9 @@ import ru.ruselprom.fet.patterns.TwoRotatPattern;
 public abstract class Screw implements Buildable {
 	protected void buildScrew0102(Solid currSolid, ModelFeat solid, ModelFeat extSolid, ModelFeat arSolid,
 			ModelFeat hole, ModelFeat extHole, ModelFeat arHole) throws jxthrowable {
-		ExtrusionAddSym screwSolid = new ExtrusionAddSym();
-		screwSolid.build(DataStore.getSheetThck(), extSolid.name(),
-				solid.name(), currSolid);
+		ExtrusionAddRef screwSolid = new ExtrusionAddRef();
+		ModelItems items = currSolid.GetFeatureByName(ModelFeat.EXT_SHEET.name()).ListSubItems(ModelItemType.ITEM_SURFACE);
+		screwSolid.build(extSolid.name(), solid.name(), items.get(0), items.get(1), currSolid);
 		TwoRotatPattern screwAr = new TwoRotatPattern(ModelFeat.Y.name(), ModelFeat.Z.name());
 		screwAr.patternBuild(2, 180, DataStore.getSegmQty(), 360.0 / DataStore.getSegmQty(),
 				arSolid.name(), extSolid.name(), currSolid);
