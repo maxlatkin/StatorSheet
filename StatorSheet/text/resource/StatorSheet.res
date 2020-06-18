@@ -100,8 +100,12 @@
         (InputPanel IP_Note)
         (OptionMenu OM_Note)
         (Label L_STO)
+        (PushButton PB_STO)
+        (InputPanel IP_STO)
         (OptionMenu OM_STO)
         (Label L_Results)
+        (PushButton PB_Results)
+        (InputPanel IP_Results)
         (OptionMenu OM_Results)
     )
     (Resources
@@ -143,7 +147,20 @@
         (L_STO.BottomOffset 2)
         (L_STO.LeftOffset 10)
         (L_STO.RightOffset 0)
-        (OM_STO.TopOffset 1)
+        (PB_STO.Label "Искать обозначение по части строки:")
+        (PB_STO.ButtonStyle 2)
+        (PB_STO.AttachLeft True)
+        (PB_STO.ResourceHints "UserOverrideAttrs:ButtonStyle")
+        (PB_STO.TopOffset 1)
+        (PB_STO.BottomOffset 3)
+        (PB_STO.LeftOffset 10)
+        (PB_STO.RightOffset 4)
+        (IP_STO.TopOffset 1)
+        (IP_STO.BottomOffset 3)
+        (IP_STO.LeftOffset 3)
+        (IP_STO.RightOffset 0)
+        (IP_STO.InputType 0)
+        (OM_STO.TopOffset 3)
         (OM_STO.BottomOffset 2)
         (OM_STO.LeftOffset 10)
         (OM_STO.RightOffset 0)
@@ -154,7 +171,20 @@
         (L_Results.BottomOffset 2)
         (L_Results.LeftOffset 10)
         (L_Results.RightOffset 0)
-        (OM_Results.TopOffset 1)
+        (PB_Results.Label "Искать обозначение по части строки:")
+        (PB_Results.ButtonStyle 2)
+        (PB_Results.AttachLeft True)
+        (PB_Results.ResourceHints "UserOverrideAttrs:ButtonStyle")
+        (PB_Results.TopOffset 1)
+        (PB_Results.BottomOffset 3)
+        (PB_Results.LeftOffset 10)
+        (PB_Results.RightOffset 4)
+        (IP_Results.TopOffset 1)
+        (IP_Results.BottomOffset 3)
+        (IP_Results.LeftOffset 3)
+        (IP_Results.RightOffset 0)
+        (IP_Results.InputType 0)
+        (OM_Results.TopOffset 3)
         (OM_Results.BottomOffset 0)
         (OM_Results.LeftOffset 10)
         (OM_Results.RightOffset 0)
@@ -174,18 +204,18 @@
                 (Cols 1)
                 L_Documents
                 (Grid
-                    (Rows 0 0 0 0 0 0 0)
+                    (Rows 0 0 0 0 0 0 0 0 0)
                     (Cols 0 1)
                     (Size 1 2)
                     L_Note PB_Note IP_Note
                     (Size 1 2)
                     OM_Note
                     (Size 1 2)
-                    L_STO
+                    L_STO PB_STO IP_STO
                     (Size 1 2)
                     OM_STO
                     (Size 1 2)
-                    L_Results
+                    L_Results PB_Results IP_Results
                     (Size 1 2)
                     OM_Results
                 )
