@@ -7,7 +7,7 @@ repositories {
 }
 
 task copyJar(type: Copy) {
-	from 'C:\\Program Files\\PTC\\Creo 5.0.2.0\\Common Files\\text\\java\\otk.jar'
+	from 'D:\\Program Files\\PTC\\Creo 5.0.5.0\\Common Files\\text\\java\\otk.jar'
 	into 'src\\main\\resources'
 	from 'D:\\Common_Pro\\Dobrynin\\RuselpromLib\\RuselpromLib\\build\\tmp\\jar\\RuselpromLib.jar'
 	into 'src\\main\\resources'
