@@ -17,7 +17,6 @@ dependencies {
 	compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
 	compile 'org.jsoup:jsoup:1.13.1'
-    //api 'org.apache.commons:commons-math3:3.6.1'
 	implementation fileTree(dir: 'src\\main\\resources', include: '*.jar')
     testImplementation 'junit:junit:4.12'
 }
