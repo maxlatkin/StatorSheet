@@ -86,15 +86,10 @@ public class General {
 			
 			if (DataStore.getSegmQty() != 1) {
 				TransformAndMark.getInstance().build(currSolid);
-			}
-			
-			Params.setAllParams(currSolid);
-			session.CreateModelWindow(currSolid).Activate();
-			
-			if (DataStore.getSegmQty() != 1) {
 				ProProgram.getInstance().addConditions(currSolid);
 			}
 			
+			Params.setAllParams(currSolid);
 			new DrawingDimensions().setTo(currDrw);
 			
 			currSolid.Save();
@@ -106,6 +101,7 @@ public class General {
 				dxf.addToModelInWS();
 			}
 			Models.getInstance().getDxfTempFromSession().Erase();
+			session.CreateModelWindow(currSolid).Activate();
 		} catch (InputCheckException | RetrieveModelException | NullPointerException | jxthrowable e) {
 			LOG.error("Error in the General class!", e);
 		}
