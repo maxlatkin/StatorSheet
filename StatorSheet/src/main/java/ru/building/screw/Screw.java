@@ -26,7 +26,6 @@ public abstract class Screw implements Buildable {
 		screwHole.build(extHole.name(), hole.name(), currSolid);
 		screwAr.patternBuild(2, 180, DataStore.getSegmQty(), 360.0 / DataStore.getSegmQty(),
 				arHole.name(), extHole.name(), currSolid);
-		ModelFeat.deleteAllScrewExceptOf(currSolid, solid, hole);
 	}
 	
 	protected void buildScrew03(Solid currSolid, ModelFeat hole, ModelFeat extHole, ModelFeat arHole) throws jxthrowable {
@@ -35,7 +34,6 @@ public abstract class Screw implements Buildable {
 		TwoRotatPattern screwHoleAr = new TwoRotatPattern(ModelFeat.Y.name(), ModelFeat.Z.name());
 		screwHoleAr.patternBuild(2, 180, DataStore.getSegmQty(), 360.0 / DataStore.getSegmQty(), 
 				arHole.name(), extHole.name(), currSolid);
-		ModelFeat.deleteAllScrewExceptOf(currSolid, hole, ModelFeat.SCREW_04_HOLE);
 	}
 	
 	protected void buildScrew050607(Solid currSolid, ModelFeat hole, ModelFeat extHole, ModelFeat arHole) throws jxthrowable {
@@ -44,6 +42,5 @@ public abstract class Screw implements Buildable {
 		RotatPattern360 screwAr = new RotatPattern360(ModelFeat.Z.name());
 		screwAr.patternBuild(DataStore.getSegmQty() * DataStore.getScrewQty(), 1, 
 				arHole.name(), extHole.name(), currSolid);
-		ModelFeat.deleteAllScrewExceptOf(currSolid, hole);
 	}
 }

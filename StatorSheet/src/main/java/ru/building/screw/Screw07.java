@@ -17,6 +17,7 @@ public class Screw07 extends Screw {
 	public void build(Solid currSolid) {
 		try {
 			buildScrew050607(currSolid, ModelFeat.SCREW_07_HOLE, ModelFeat.EXT_SCREW_07_HOLE, ModelFeat.AR_SCREW_07_HOLE);
+			ModelFeat.deleteAllScrewExceptOf(currSolid, ModelFeat.SCREW_07_HOLE);
 			LOG.info("Screw_07_Qty={} is built", DataStore.getScrewQty());
 		} catch (jxthrowable e) {
 			LOG.error("Error building the Screw_07", e);

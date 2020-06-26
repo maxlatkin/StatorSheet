@@ -22,8 +22,10 @@ public class Screw03And04 extends Screw {
 		try {
 			if (DataStore.getScrewQty() == 2) {
 				buildScrew03(currSolid, ModelFeat.SCREW_03_HOLE_2, ModelFeat.EXT_SCREW_03_HOLE_2, ModelFeat.AR_SCREW_03_HOLE_2);
+				ModelFeat.deleteAllScrewExceptOf(currSolid, ModelFeat.SCREW_03_HOLE_2, ModelFeat.SCREW_04_HOLE);
 			} else if (DataStore.getScrewQty() == 4) {
 				buildScrew03(currSolid, ModelFeat.SCREW_03_HOLE_4, ModelFeat.EXT_SCREW_03_HOLE_4, ModelFeat.AR_SCREW_03_HOLE_4);
+				ModelFeat.deleteAllScrewExceptOf(currSolid, ModelFeat.SCREW_03_HOLE_4, ModelFeat.SCREW_04_HOLE);
 			}
 			if (DataStore.isScrew04Exist()) {
 				ExtrusionCut screw04Hole = new ExtrusionCut();
@@ -41,7 +43,7 @@ public class Screw03And04 extends Screw {
 			} else {
 				FetOperations.deleteFeature(currSolid, ModelFeat.SCREW_04_HOLE.name());
 			}
-			LOG.info("Screw_03And04_Qty is built");
+			LOG.info("Screw03And04 is built");
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error building the Screw_03And04", e);
 		}

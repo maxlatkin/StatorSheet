@@ -20,11 +20,13 @@ public class Screw02 extends Screw {
 				buildScrew0102(currSolid,
 						ModelFeat.SCREW_02_SOLID_2, ModelFeat.EXT_SCREW_02_SOLID_2,	ModelFeat.AR_SCREW_02_SOLID_2,
 						ModelFeat.SCREW_02_HOLE_2, ModelFeat.EXT_SCREW_02_HOLE_2, ModelFeat.AR_SCREW_02_HOLE_2);
+				ModelFeat.deleteAllScrewExceptOf(currSolid, ModelFeat.SCREW_02_SOLID_2, ModelFeat.SCREW_02_HOLE_2);
 				LOG.info("Screw_02_Qty=2 is built");
 			} else if (DataStore.getScrewQty() == 4) {
 				buildScrew0102(currSolid,
 						ModelFeat.SCREW_02_SOLID_4, ModelFeat.EXT_SCREW_02_SOLID_4,	ModelFeat.AR_SCREW_02_SOLID_4,
 						ModelFeat.SCREW_02_HOLE_4, ModelFeat.EXT_SCREW_02_HOLE_4, ModelFeat.AR_SCREW_02_HOLE_4);
+				ModelFeat.deleteAllScrewExceptOf(currSolid, ModelFeat.SCREW_02_SOLID_4, ModelFeat.SCREW_02_HOLE_4);
 				LOG.info("Screw_02_Qty=4 is built");
 			}
 		} catch (jxthrowable e) {

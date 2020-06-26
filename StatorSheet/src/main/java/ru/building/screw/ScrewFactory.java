@@ -34,6 +34,9 @@ public final class ScrewFactory {
 		case 7:
 			screw = new Screw07();
 			break;
+		case 37:
+			screw = new Screw03And07();
+			break;
 		default:
 			IllegalArgumentException e = new IllegalArgumentException("Unknown type of screw!");
 			LOG.error("ScrewFactory - incorrect screw type entered", e);
