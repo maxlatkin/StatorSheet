@@ -26,6 +26,7 @@ public class DrawingDimensions {
 			setScrew07Dims();
 			setSlotDims();
 			setMarkDim();
+			setScrew03And07Dims();
 			LOG.info("Dimensions are set");
 		} catch (jxthrowable e) {
 			LOG.error("Setting dimensions error", e);
@@ -61,8 +62,19 @@ public class DrawingDimensions {
 	}
 	private void setScrew07Dims() throws jxthrowable {
 		setValueToDimById(245, 60, null);
+		setValueToDimById(364, 60, null);
 		setValueToDimById(249, DataStore.getScrew07Hght() + DataStore.getScrew07Gap(), pfcDimension.DimTolSymmetric_Create(0.1));
+		setValueToDimById(366, DataStore.getScrew07Hght() + DataStore.getScrew07Gap(), pfcDimension.DimTolSymmetric_Create(0.1));
 	}
+	
+	private void setScrew03And07Dims() throws jxthrowable {
+		setValueToDimById(353, DataStore.getScrew020304NearestPoints().get(DataStore.getStudHoleDiam()), pfcDimension.DimTolSymmetric_Create(0.1));
+		setValueToDimById(354, DataStore.getScrew010203NearestPoints().get(DataStore.getStudHoleDiam()), pfcDimension.DimTolSymmetric_Create(0.1));
+		setValueToDimById(355, DataStore.getScrew0304IntRads().get(DataStore.getStudHoleDiam()), null);
+		getDimById(355).SetAsBasic(true);
+		
+	}
+	
 	private void setSlotDims() throws jxthrowable {
 		setValueToDimById(0, DataStore.getRoundWedgeOfSlot(), null);
 		setValueToDimById(1, DataStore.getRoundWedgeOfSlot(), null);
