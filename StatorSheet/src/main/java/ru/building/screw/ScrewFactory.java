@@ -3,8 +3,6 @@ package ru.building.screw;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ru.data.DataStore;
-
 public final class ScrewFactory {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ScrewFactory.class);
@@ -13,9 +11,9 @@ public final class ScrewFactory {
 	    throw new IllegalStateException("Utility class");
 	}
 	
-	public static Screw getScrew() {
+	public static Screw getScrew(int typeOfScrew) {
 		Screw screw = null;
-		switch (DataStore.getTypeOfScrew()) {
+		switch (typeOfScrew) {
 		case 1:
 			screw = new Screw01();
 			break;
@@ -33,9 +31,6 @@ public final class ScrewFactory {
 			break;
 		case 7:
 			screw = new Screw07();
-			break;
-		case 37:
-			screw = new Screw03And07();
 			break;
 		default:
 			IllegalArgumentException e = new IllegalArgumentException("Unknown type of screw!");

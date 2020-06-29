@@ -14,6 +14,7 @@ import ru.assignment.SheetDimAssignment;
 import ru.assignment.screw.ScrewDimAssignmentBuilder;
 import ru.building.Sheet;
 import ru.building.TransformAndMark;
+import ru.building.screw.ScrewBuilder;
 import ru.building.screw.ScrewFactory;
 import ru.data.DataOperations;
 import ru.data.DataStore;
@@ -82,7 +83,7 @@ public class General {
 			Sheet.getInstance().build(currSolid);
 			
 			ScrewDimAssignmentBuilder.buildScrew(currSolid);
-			ScrewFactory.getScrew().build(currSolid);
+			ScrewBuilder.buildScrew(currSolid);
 			
 			if (DataStore.getSegmQty() != 1) {
 				TransformAndMark.getInstance().build(currSolid);

@@ -6,10 +6,8 @@ import org.slf4j.LoggerFactory;
 import com.ptc.pfc.pfcModel.Model;
 
 import ru.parameters.setting.AuxiliaryParams;
-import ru.parameters.setting.CalculatedParams;
 import ru.parameters.setting.SheetParams;
 import ru.parameters.setting.SlotParams;
-import ru.parameters.setting.screw.ScrewParamsFactory;
 
 public final class Params {
 	
