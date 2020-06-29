@@ -3,7 +3,6 @@ package ru.parameters.setting.screw;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ru.data.DataStore;
 import ru.parameters.setting.ParamsSetting;
 
 public class ScrewParamsFactory {
@@ -14,9 +13,9 @@ public class ScrewParamsFactory {
 	    throw new IllegalStateException("Utility class");
 	}
 	
-	public static ParamsSetting getParams() {
+	public static ParamsSetting getParams(int typeOfScrew) {
 		ParamsSetting params = null;
-		switch (DataStore.getTypeOfScrew()) {
+		switch (typeOfScrew) {
 		case 1:
 			params = new Screw01Params();
 			break;

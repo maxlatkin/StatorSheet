@@ -1,6 +1,5 @@
 package ru.data;
 
-import ru.data.calculation.ScrewShift;
 import ru.data.calculation.SlotHghtToWdg;
 import ru.data.check.ExtAndIntDiams;
 import ru.data.check.ScrewQty;
@@ -21,7 +20,6 @@ public class DataOperations {
 	}
 
 	public static void calculateVars() {
-		ScrewShift.getInstance().calculate();
 		SlotHghtToWdg.getInstance().calculate();
 	}
 }

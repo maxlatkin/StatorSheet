@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.assignment.DimAssignment;
-import ru.data.DataStore;
 
 public class ScrewDimAssignmentFactory {
 	
@@ -16,9 +15,9 @@ public class ScrewDimAssignmentFactory {
 	    throw new IllegalStateException("Utility class");
 	}
 	
-	public static DimAssignment getScrewDimAssignment(Solid currSolid) {
+	public static DimAssignment getScrewDimAssignment(Solid currSolid, int typeOfScrew) {
 		DimAssignment screwDimAssignment = null;
-		switch (DataStore.getTypeOfScrew()) {
+		switch (typeOfScrew) {
 		case 1:
 			screwDimAssignment = new Screw01DimAssignment(currSolid);
 			break;

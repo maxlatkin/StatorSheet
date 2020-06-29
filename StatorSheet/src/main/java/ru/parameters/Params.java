@@ -22,8 +22,6 @@ public final class Params {
 	public static void setAllParams(Model currModel) {
 		SheetParams.getInstance().setValue(currModel);
 		SlotParams.getInstance().setValue(currModel);
-		ScrewParamsFactory.getParams().setValue(currModel);
-		CalculatedParams.getInstance().setValue(currModel);
 		AuxiliaryParams.getInstance().setValue(currModel);
 		LOG.info("All parameters set");
 	}

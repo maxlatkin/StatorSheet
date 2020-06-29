@@ -41,7 +41,8 @@ public class UiOkListener extends DefaultPushButtonListener {
 			CheckState roundState = uifcCheckButton.CheckButtonFind(UiDialog.DIALOG, "CB_Round").GetCheckedState();
 			DataStore.setSlotWithRound(roundState.getValue() == 1);
 			stringseq selectedItem  = uifcOptionMenu.OptionMenuFind(UiDialog.DIALOG, UiDialog.SCREWS_OM).GetSelectedItemNameArray();
-			DataStore.setTypeOfScrew(Integer.parseInt(selectedItem.get(0)));
+//			DataStore.setTypeOfScrew(Integer.parseInt(selectedItem.get(0)));
+			DataStore.setTypeOfScrew(37);
 			CheckState screw04State = uifcCheckButton.CheckButtonFind(UiDialog.DIALOG, "CB_S34_Screw_4").GetCheckedState();
 			DataStore.setScrew04Exist(screw04State.getValue() == 1);
 			uifcComponent.ExitDialog(handle.GetDialog(),0);

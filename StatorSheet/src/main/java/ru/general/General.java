@@ -11,7 +11,7 @@ import com.ptc.pfc.pfcSession.pfcSession;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.assignment.SheetDimAssignment;
-import ru.assignment.screw.ScrewDimAssignmentFactory;
+import ru.assignment.screw.ScrewDimAssignmentBuilder;
 import ru.building.Sheet;
 import ru.building.TransformAndMark;
 import ru.building.screw.ScrewFactory;
@@ -81,7 +81,7 @@ public class General {
 			new SheetDimAssignment(currSolid).assign();
 			Sheet.getInstance().build(currSolid);
 			
-			ScrewDimAssignmentFactory.getScrewDimAssignment(currSolid).assign();
+			ScrewDimAssignmentBuilder.buildScrew(currSolid);
 			ScrewFactory.getScrew().build(currSolid);
 			
 			if (DataStore.getSegmQty() != 1) {

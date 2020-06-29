@@ -18,8 +18,10 @@ public class Screw03And07 extends Screw {
 		try {
 			if (DataStore.getScrewQty() == 2) {
 				buildScrew03(currSolid, ModelFeat.SCREW_03_HOLE_2, ModelFeat.EXT_SCREW_03_HOLE_2, ModelFeat.AR_SCREW_03_HOLE_2);
+				ModelFeat.deleteAllScrewExceptOf(currSolid, ModelFeat.SCREW_03_HOLE_2, ModelFeat.SCREW_07_HOLE);
 			} else if (DataStore.getScrewQty() == 4) {
 				buildScrew03(currSolid, ModelFeat.SCREW_03_HOLE_4, ModelFeat.EXT_SCREW_03_HOLE_4, ModelFeat.AR_SCREW_03_HOLE_4);
+				ModelFeat.deleteAllScrewExceptOf(currSolid, ModelFeat.SCREW_03_HOLE_4, ModelFeat.SCREW_07_HOLE);
 			}
 			buildScrew050607(currSolid, ModelFeat.SCREW_07_HOLE, ModelFeat.EXT_SCREW_07_HOLE, ModelFeat.AR_SCREW_07_HOLE);
 			LOG.info("Screw03And07 is built");

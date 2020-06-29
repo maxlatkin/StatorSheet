@@ -13,19 +13,21 @@ public class ScrewShift implements Calculable {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ScrewShift.class);
 	private static ScrewShift instance;
+	private int typeOfScrew;
 	
     private ScrewShift(){}
-    public static ScrewShift getInstance() {
+    public static ScrewShift getInstance(int typeOfScrew) {
         if (instance == null) {
             instance = new ScrewShift();
         }
+        instance.typeOfScrew = typeOfScrew;
         return instance;
     }
 	
 	@Override
 	public void calculate() {
 		try {
-			double screwShift = getScrewShiftByType();
+			double screwShift = getScrewShiftByType(typeOfScrew);
 			DataStore.setScrewShift(screwShift);
 			LOG.info("ScrewShift was calculated: {}", screwShift);
 		} catch (IllegalArgumentException e) {
@@ -33,8 +35,8 @@ public class ScrewShift implements Calculable {
 		}
 	}
 	
-	private double getScrewShiftByType() {
-		switch (DataStore.getTypeOfScrew()) {
+	private double getScrewShiftByType(int typeOfScrew) {
+		switch (typeOfScrew) {
 		case 1:
 			return getShiftForScrew0102();
 		case 2:
