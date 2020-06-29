@@ -169,7 +169,13 @@ public class CalculatedParams implements ParamsSetting {
 		return getChordExt() - shiftEdge - shiftPrun;
 	}
 	private double getScrew05067Step() {
-		return 360.0 / (DataStore.getScrewQty() * DataStore.getSegmQty());
+		int screwQty;
+		if (DataStore.getTypeOfScrew() / 10 == 0) {
+			screwQty = DataStore.getTotalScrewQty();
+		} else {
+			screwQty = DataStore.getTotalSecondScrewQty();
+		}
+		return 360.0 / screwQty;
 	}
 	private double getScrew05067HStep() {
 		return getScrew05067Step() / 2;

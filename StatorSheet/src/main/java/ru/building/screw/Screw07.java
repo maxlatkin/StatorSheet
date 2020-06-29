@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcSolid.Solid;
 
-import ru.data.DataStore;
 import ru.general.ModelFeat;
 
 public class Screw07 extends Screw {
@@ -17,7 +16,7 @@ public class Screw07 extends Screw {
 	public void build(Solid currSolid) {
 		try {
 			buildScrew050607(currSolid, ModelFeat.SCREW_07_HOLE, ModelFeat.EXT_SCREW_07_HOLE, ModelFeat.AR_SCREW_07_HOLE);
-			LOG.info("Screw_07_Qty={} is built", DataStore.getScrewQty());
+			LOG.info("Screw_07 is built");
 		} catch (jxthrowable e) {
 			LOG.error("Error building the Screw_07", e);
 		}

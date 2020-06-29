@@ -4,11 +4,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ptc.cipjava.jxthrowable;
+import com.ptc.pfc.pfcLayer.DisplayStatus;
 import com.ptc.pfc.pfcModel.Model;
+import com.ptc.pfc.pfcModelItem.ModelItem;
+import com.ptc.pfc.pfcModelItem.ModelItemType;
 import com.ptc.pfc.pfcSession.CreoCompatibility;
 import com.ptc.pfc.pfcSession.Session;
 import com.ptc.pfc.pfcSession.pfcSession;
 import com.ptc.pfc.pfcSolid.Solid;
+import com.ptc.wfc.wfcLayerState.WLayer;
+import com.ptc.wfc.wfcModel.WModel;
 
 import ru.assignment.SheetDimAssignment;
 import ru.assignment.screw.ScrewDimAssignmentBuilder;
@@ -102,6 +107,12 @@ public class General {
 			}
 			Models.getInstance().getDxfTempFromSession().Erase();
 			session.CreateModelWindow(currSolid).Activate();
+			
+//			WModel model = (WModel)session.GetCurrentModel();
+//			int size = model.ListLayers().getarraysize();
+//			WLayer layer = (WLayer)model.GetItemByName(ModelItemType.ITEM_LAYER, "DRW_LAY_SEGM_SCREW_03__07_B_01");
+//			layer.SetStatus(DisplayStatus.LAYER_NORMAL);
+//			session.UIShowMessageDialog(size + "! " + layer.GetStatus().getValue() , null);
 		} catch (InputCheckException | RetrieveModelException | NullPointerException | jxthrowable e) {
 			LOG.error("Error in the General class!", e);
 		}

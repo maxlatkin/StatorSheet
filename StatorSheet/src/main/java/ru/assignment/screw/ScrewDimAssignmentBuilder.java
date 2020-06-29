@@ -15,11 +15,14 @@ public class ScrewDimAssignmentBuilder {
 	public static void buildScrew(Solid currSolid) {
 		int typeOfScrew = DataStore.getTypeOfScrew();
 		if (typeOfScrew / 10 == 0) {
+			ScrewShift.getInstance(typeOfScrew).calculate();
+			ScrewParamsFactory.getParams(typeOfScrew).setValue(currSolid);
+			CalculatedParams.getInstance().setValue(currSolid);
 			ScrewDimAssignmentFactory.getScrewDimAssignment(currSolid, typeOfScrew).assign();
 		} else {
 			int firstTypeOfScrew = typeOfScrew / 10;
-			ScrewParamsFactory.getParams(firstTypeOfScrew).setValue(currSolid);
 			ScrewShift.getInstance(firstTypeOfScrew).calculate();
+			ScrewParamsFactory.getParams(firstTypeOfScrew).setValue(currSolid);
 			CalculatedParams.getInstance().setValue(currSolid);
 			ScrewDimAssignmentFactory.getScrewDimAssignment(currSolid, firstTypeOfScrew).assign();
 			
