@@ -9,7 +9,6 @@ import com.ptc.pfc.pfcSolid.Solid;
 import ru.data.DataStore;
 import ru.general.ModelFeat;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
-import ru.ruselprom.fet.operations.FetOperations;
 import ru.ruselprom.fet.patterns.RotatPattern360;
 import ru.ruselprom.fet.patterns.TwoRotatPattern;
 
@@ -38,8 +37,6 @@ public class Screw03And04 extends Screw {
 							2, 360.0 / (DataStore.getSegmQty() * (DataStore.getScrewQty() + 2)),
 							ModelFeat.AR_SCREW_04_HOLE.name(), ModelFeat.EXT_SCREW_04_HOLE.name(), currSolid);
 				}
-			} else {
-				FetOperations.deleteFeature(currSolid, ModelFeat.SCREW_04_HOLE.name());
 			}
 			LOG.info("Screw03And04 is built");
 		} catch (NullPointerException | jxthrowable e) {

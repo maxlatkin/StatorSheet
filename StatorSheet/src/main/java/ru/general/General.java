@@ -15,7 +15,6 @@ import ru.assignment.screw.ScrewDimAssignmentBuilder;
 import ru.building.Sheet;
 import ru.building.TransformAndMark;
 import ru.building.screw.ScrewBuilder;
-import ru.building.screw.ScrewFactory;
 import ru.data.DataOperations;
 import ru.data.DataStore;
 import ru.drawing.DrawingDimensions;

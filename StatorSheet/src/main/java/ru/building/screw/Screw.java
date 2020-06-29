@@ -40,7 +40,12 @@ public abstract class Screw implements Buildable {
 		ExtrusionCut screwHole = new ExtrusionCut();
 		screwHole.build(extHole.name(), hole.name(), currSolid);
 		RotatPattern360 screwAr = new RotatPattern360(ModelFeat.Z.name());
-		screwAr.patternBuild(DataStore.getSegmQty() * DataStore.getScrewQty(), 1, 
-				arHole.name(), extHole.name(), currSolid);
+		int screwQty;
+		if (DataStore.getTypeOfScrew() / 10 == 0) {
+			screwQty = DataStore.getTotalScrewQty();
+		} else {
+			screwQty = DataStore.getTotalSecondScrewQty();
+		}
+		screwAr.patternBuild(screwQty, 1, arHole.name(), extHole.name(), currSolid);
 	}
 }

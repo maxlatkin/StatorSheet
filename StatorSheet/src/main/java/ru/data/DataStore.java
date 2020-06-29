@@ -48,9 +48,16 @@ public final class DataStore {
 	private static int slotStep;
 	private static double totalSlotHght;
 	private static int totalScrewQty;
+	private static int totalSecondScrewQty;
 	private static double screw04Shift;
 	private static double difBetwDiamOfStudAndDiamOfHole;
 	
+	
+	public static int getTotalSecondScrewQty() {
+		totalSecondScrewQty = 8;
+		return totalSecondScrewQty;
+	}
+
 	public static double getStudDiam() {
 		return studDiam;
 	}
