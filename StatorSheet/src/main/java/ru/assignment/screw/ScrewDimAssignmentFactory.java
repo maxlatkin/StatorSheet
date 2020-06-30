@@ -15,26 +15,26 @@ public class ScrewDimAssignmentFactory {
 	    throw new IllegalStateException("Utility class");
 	}
 	
-	public static DimAssignment getScrewDimAssignment(Solid currSolid, int typeOfScrew) {
+	public static DimAssignment getScrewDimAssignment(Solid currSolid, int typeOfScrew, double screwShift) {
 		DimAssignment screwDimAssignment = null;
 		switch (typeOfScrew) {
 		case 1:
-			screwDimAssignment = new Screw01DimAssignment(currSolid);
+			screwDimAssignment = new Screw01DimAssignment(currSolid, screwShift);
 			break;
 		case 2:
-			screwDimAssignment = new Screw02DimAssignment(currSolid);
+			screwDimAssignment = new Screw02DimAssignment(currSolid, screwShift);
 			break;
 		case 3:
-			screwDimAssignment = new Screw03And04DimAssignment(currSolid);
+			screwDimAssignment = new Screw03And04DimAssignment(currSolid, screwShift);
 			break;
 		case 5:
-			screwDimAssignment = new Screw05DimAssignment(currSolid);
+			screwDimAssignment = new Screw05DimAssignment(currSolid, screwShift);
 			break;
 		case 6:
-			screwDimAssignment = new Screw06DimAssignment(currSolid);
+			screwDimAssignment = new Screw06DimAssignment(currSolid, screwShift);
 			break;
 		case 7:
-			screwDimAssignment = new Screw07DimAssignment(currSolid);
+			screwDimAssignment = new Screw07DimAssignment(currSolid, screwShift);
 			break;
 		default:
 			IllegalArgumentException e = new IllegalArgumentException("Unknown type of screw!");

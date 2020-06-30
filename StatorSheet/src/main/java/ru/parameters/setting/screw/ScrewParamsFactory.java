@@ -13,26 +13,26 @@ public class ScrewParamsFactory {
 	    throw new IllegalStateException("Utility class");
 	}
 	
-	public static ParamsSetting getParams(int typeOfScrew) {
+	public static ParamsSetting getParams(int typeOfScrew, double screwShift) {
 		ParamsSetting params = null;
 		switch (typeOfScrew) {
 		case 1:
-			params = new Screw01Params();
+			params = new Screw01Params(screwShift);
 			break;
 		case 2:
-			params = new Screw02Params();
+			params = new Screw02Params(screwShift);
 			break;
 		case 3:
-			params = new Screw03and04Params();
+			params = new Screw03and04Params(screwShift);
 			break;
 		case 5:
-			params = new Screw05Params();
+			params = new Screw05Params(screwShift);
 			break;
 		case 6:
-			params = new Screw06Params();
+			params = new Screw06Params(screwShift);
 			break;
 		case 7:
-			params = new Screw07Params();
+			params = new Screw07Params(screwShift);
 			break;
 		default:
 			IllegalArgumentException e = new IllegalArgumentException("Unknown type of screw!");

@@ -16,11 +16,13 @@ import ru.general.ModelFeat;
 public class Screw05DimAssignment extends DimAssignment {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Screw05DimAssignment.class);
-
-	public Screw05DimAssignment(Solid currSolid) {
-		super(currSolid);
-	}
+	private double screwShift;
 	
+	public Screw05DimAssignment(Solid currSolid, double screwShift) {
+		super(currSolid);
+		this.screwShift = screwShift;
+	}
+
 	@Override
 	public void assign() {
 		try {
@@ -28,7 +30,7 @@ public class Screw05DimAssignment extends DimAssignment {
 			screwSolidIndexAndValue.put(0, DataStore.getScrew05Wdth());
 			screwSolidIndexAndValue.put(1, DataStore.getScrew05Hght());
 			screwSolidIndexAndValue.put(2, DataStore.getExtDiam()/2);
-			screwSolidIndexAndValue.put(3, DataStore.getScrewShift());
+			screwSolidIndexAndValue.put(3, screwShift);
 			setArrayOfDimValue(ModelFeat.SCREW_05_HOLE, screwSolidIndexAndValue);
 			setDimValue(ModelFeat.MARK, 2, DataStore.getMarkShift() + DataStore.getScrew05Hght());
 			LOG.info("Dimensions for the Screw05 assigned");

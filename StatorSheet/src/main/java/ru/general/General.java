@@ -81,8 +81,8 @@ public class General {
 			new SheetDimAssignment(currSolid).assign();
 			Sheet.getInstance().build(currSolid);
 			
-			ScrewDimAssignmentBuilder.buildScrew(currSolid);
-			ScrewBuilder.buildScrew(currSolid);
+			ScrewDimAssignmentBuilder.assign(currSolid);
+			ScrewBuilder.build(currSolid);
 			
 			if (DataStore.getSegmQty() != 1) {
 				TransformAndMark.getInstance().build(currSolid);

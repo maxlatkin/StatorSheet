@@ -1,5 +1,6 @@
 package ru.data;
 
+import ru.data.calculation.ScrewShift;
 import ru.data.calculation.SlotHghtToWdg;
 import ru.data.check.ExtAndIntDiams;
 import ru.data.check.ScrewQty;
@@ -20,6 +21,15 @@ public class DataOperations {
 	}
 
 	public static void calculateVars() {
-		SlotHghtToWdg.getInstance().calculate();
+		DataStore.setSlotHghtToWdg(SlotHghtToWdg.getInstance().calculate());
+		int typeOfScrew = DataStore.getTypeOfScrew();
+		if (typeOfScrew / 10 == 0) {
+			DataStore.setScrewShift(ScrewShift.getInstance(typeOfScrew).calculate());
+		} else {
+			int firstTypeOfScrew = typeOfScrew / 10;
+			int secondTypeOfScrew = typeOfScrew % 10;
+			DataStore.setScrewShift(ScrewShift.getInstance(firstTypeOfScrew).calculate());
+			DataStore.setSecondScrewShift(ScrewShift.getInstance(secondTypeOfScrew).calculate());
+		}
 	}
 }

@@ -16,26 +16,28 @@ import ru.general.ModelFeat;
 public class Screw03And04DimAssignment extends DimAssignment {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Screw03And04DimAssignment.class);
+	private double screwShift;
 	
-	public Screw03And04DimAssignment(Solid currSolid) {
+	public Screw03And04DimAssignment(Solid currSolid, double screwShift) {
 		super(currSolid);
+		this.screwShift = screwShift;
 	}
-	
+
 	@Override
 	public void assign() {
 		try {
 			if (DataStore.getScrewQty() == 2) {
 				setArrayOfDimValue(ModelFeat.SCREW_03_HOLE_2, getCommonScrew03IndexAndValue());
-				setDimValue(ModelFeat.SCREW_03_HOLE_2, 5, DataStore.getScrewShift());
+				setDimValue(ModelFeat.SCREW_03_HOLE_2, 5, screwShift);
 			} else if (DataStore.getScrewQty() == 4) {
 				setArrayOfDimValue(ModelFeat.SCREW_03_HOLE_4, getCommonScrew03IndexAndValue());
-				setDimValue(ModelFeat.SCREW_03_HOLE_4, 5, DataStore.getScrewShift());
+				setDimValue(ModelFeat.SCREW_03_HOLE_4, 5, screwShift);
 				if (DataStore.isScrew04Exist()) {
-					setDimValue(ModelFeat.SCREW_03_HOLE_4, 10, DataStore.getScrewShift() - 
-							(2 * DataStore.getScrewShift() - (360.0 / DataStore.getSegmQty()) * 2 / 3));
+					setDimValue(ModelFeat.SCREW_03_HOLE_4, 10, screwShift - 
+							(2 * screwShift - (360.0 / DataStore.getSegmQty()) * 2 / 3));
 				} else {
-					setDimValue(ModelFeat.SCREW_03_HOLE_4, 10, DataStore.getScrewShift() - 
-							(2 * DataStore.getScrewShift() - (360.0 / DataStore.getSegmQty()) / 2));
+					setDimValue(ModelFeat.SCREW_03_HOLE_4, 10, screwShift - 
+							(2 * screwShift - (360.0 / DataStore.getSegmQty()) / 2));
 				}
 			}
 			

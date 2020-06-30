@@ -7,8 +7,6 @@ import static ru.data.DataStore.isScrew04Exist;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ru.data.DataStore;
-
 public class ScrewShift implements Calculable {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ScrewShift.class);
@@ -25,13 +23,14 @@ public class ScrewShift implements Calculable {
     }
 	
 	@Override
-	public void calculate() {
+	public double calculate() {
 		try {
 			double screwShift = getScrewShiftByType(typeOfScrew);
-			DataStore.setScrewShift(screwShift);
 			LOG.info("ScrewShift was calculated: {}", screwShift);
+			return screwShift;
 		} catch (IllegalArgumentException e) {
 			LOG.error("Error calculating screwShift", e);
+			return 0;
 		}
 	}
 	

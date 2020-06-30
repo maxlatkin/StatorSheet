@@ -14,13 +14,18 @@ import ru.ruselprom.parameters.Parameters;
 public class Screw06Params implements ParamsSetting {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(Screw06Params.class);
+	private double screwShift;
 	
+	public Screw06Params(double screwShift) {
+		this.screwShift = screwShift;
+	}
+
 	@Override
 	public void setValue(Model currModel) {
 		try {
 			Parameters.setBoolParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_06_EXIST.name(), true, currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_06_WDTH.name(), DataStore.getScrew06Wdth(), currModel);
-			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_06_SHIFT.name(), Math.toRadians(DataStore.getScrewShift()), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_06_SHIFT.name(), Math.toRadians(screwShift), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_06_QTY.name(), DataStore.getTotalScrewQty(), currModel);
 			LOG.info("Screw06 parameters set");
 		} catch (NullPointerException | jxthrowable e) {

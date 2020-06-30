@@ -16,9 +16,11 @@ import ru.general.ModelFeat;
 public class Screw01DimAssignment extends DimAssignment {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(Screw01DimAssignment.class);
+	private double screwShift;
 
-	public Screw01DimAssignment(Solid currSolid) {
+	public Screw01DimAssignment(Solid currSolid, double screwShift) {
 		super(currSolid);
+		this.screwShift = screwShift;
 	}
 
 	@Override
@@ -41,16 +43,16 @@ public class Screw01DimAssignment extends DimAssignment {
 	private Map<Integer, Double> getScrewHole04IndexAndValue() {
 		Map<Integer, Double> screwHoleIndexAndValue = new HashMap<>();
 		setCommonScrewHoleIndexAndValue(screwHoleIndexAndValue);
-		screwHoleIndexAndValue.put(3, DataStore.getScrewShift());
-		screwHoleIndexAndValue.put(5, DataStore.getScrewShift() - 
-				(2 * DataStore.getScrewShift() - (360.0 / DataStore.getSegmQty()) / 2));
+		screwHoleIndexAndValue.put(3, screwShift);
+		screwHoleIndexAndValue.put(5, screwShift - 
+				(2 * screwShift - (360.0 / DataStore.getSegmQty()) / 2));
 		return screwHoleIndexAndValue;
 	}
 
 	private Map<Integer, Double> getScrewHole02IndexAndValue() {
 		Map<Integer, Double> screwHoleIndexAndValue = new HashMap<>();
 		setCommonScrewHoleIndexAndValue(screwHoleIndexAndValue);
-		screwHoleIndexAndValue.put(2, DataStore.getScrewShift());
+		screwHoleIndexAndValue.put(2, screwShift);
 		return screwHoleIndexAndValue;
 	}
 
@@ -67,17 +69,17 @@ public class Screw01DimAssignment extends DimAssignment {
 		screwSolidIndexAndValue.put(3, DataStore.getScrew0102FarBottomPoints().get(DataStore.getStudHoleDiam()));  
 		screwSolidIndexAndValue.put(4, DataStore.getScrew01ExtRads().get(DataStore.getStudHoleDiam()));          
 		screwSolidIndexAndValue.put(5, DataStore.getScrew01MidRads().get(DataStore.getStudHoleDiam()));          
-		screwSolidIndexAndValue.put(6, DataStore.getScrewShift());     
+		screwSolidIndexAndValue.put(6, screwShift);     
 		screwSolidIndexAndValue.put(13, DataStore.getExtDiam()/2);                                            
-		screwSolidIndexAndValue.put(14, DataStore.getScrewShift() - 
-				(2 * DataStore.getScrewShift() - (360.0 / DataStore.getSegmQty()) / 2));
+		screwSolidIndexAndValue.put(14, screwShift - 
+				(2 * screwShift - (360.0 / DataStore.getSegmQty()) / 2));
 		return screwSolidIndexAndValue;
 	}
 
 
 	private Map<Integer, Double> getScrewSolid02IndexAndValue() {
 		Map<Integer, Double> screwSolidIndexAndValue = new HashMap<>();
-		screwSolidIndexAndValue.put(0, DataStore.getScrewShift());                                   
+		screwSolidIndexAndValue.put(0, screwShift);                                   
 		screwSolidIndexAndValue.put(1, DataStore.getScrew01MidRads().get(DataStore.getStudHoleDiam()));          
 		screwSolidIndexAndValue.put(2, DataStore.getExtDiam()/2);                                             
 		screwSolidIndexAndValue.put(3, DataStore.getStudHoleDiam());                                             

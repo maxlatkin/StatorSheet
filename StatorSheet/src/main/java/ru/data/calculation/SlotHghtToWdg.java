@@ -20,9 +20,9 @@ public class SlotHghtToWdg implements Calculable {
     }
 
 	@Override
-	public void calculate() {
+	public double calculate() {
 		double slotHghtToWdg = DataStore.getTotalSlotHght() - DataStore.getWedgeThck() - DataStore.getWedgeGap();
-		DataStore.setSlotHghtToWdg(slotHghtToWdg);
 		LOG.info("SlotHghtToWdg was calculated: {}", slotHghtToWdg);
+		return slotHghtToWdg;
 	}
 }

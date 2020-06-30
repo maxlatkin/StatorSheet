@@ -38,6 +38,7 @@ public final class DataStore {
 	private static double studDiam;
 	private static double studHoleDiam;
 	private static double screwShift;
+	private static double secondScrewShift;
 	private static double screw05Wdth;
 	private static double screw05Hght;
 	private static double screw06Wdth;
@@ -53,7 +54,10 @@ public final class DataStore {
 	private static double screw04Shift;
 	private static double difBetwDiamOfStudAndDiamOfHole;
 	
-	
+	public static double getSecondScrewShift() {
+		return secondScrewShift;
+	}
+
 	public static double getScrew07NeckWdth() {
 		screw07NeckWdth = 19;
 		return screw07NeckWdth;
@@ -379,6 +383,10 @@ public final class DataStore {
 	
 	public static void setScrew04Exist(boolean screw04Exist) {
 		DataStore.screw04Exist = screw04Exist;
+	}
+
+	public static void setSecondScrewShift(double secondScrewShift) {
+		DataStore.secondScrewShift = secondScrewShift;
 	}
 
 	private DataStore() {
