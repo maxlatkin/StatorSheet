@@ -66,7 +66,6 @@ public class CalculatedParams implements ParamsSetting {
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_07_STEP.name(), getScrew05067Step(), currModel);
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_07_H_STEP.name(), getScrew05067HStep(), currModel);
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_CHORD_SCREW_07.name(), getChordScrew07(), currModel);
-			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_07_NECK.name(), getScrew07Neck(), currModel);
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_07_H_NECK.name(), getScrew07HNeck(), currModel);
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_07_H_WDTH.name(), getScrew07HWdth(), currModel);
 			
@@ -185,12 +184,8 @@ public class CalculatedParams implements ParamsSetting {
 		double shiftPrun = 2 * DataStore.getSegmPruning() * cos(toRadians(getHAnglPerSegm()));
 		return getChordExt() - shiftDovetail - shiftPrun;
 	}
-	private double getScrew07Neck() {
-		return DataStore.getScrew07Wdth() - 2 * 
-				(DataStore.getScrew07Hght() - DataStore.getScrew07Gap()) / Math.tan(toRadians(60));
-	} 
 	private double getScrew07HNeck() {
-		return getScrew07Neck() / 2;
+		return DataStore.getScrew07NeckWdth() / 2;
 	}
 	private double getScrew07HWdth() {
 		return DataStore.getScrew07Wdth() / 2;

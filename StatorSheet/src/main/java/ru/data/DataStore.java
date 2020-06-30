@@ -42,6 +42,7 @@ public final class DataStore {
 	private static double screw05Hght;
 	private static double screw06Wdth;
 	private static double screw07Wdth;
+	private static double screw07NeckWdth;
 	private static double screw07Hght;
 	private static double screw07Gap;
 	private static String segmRolling;
@@ -53,6 +54,11 @@ public final class DataStore {
 	private static double difBetwDiamOfStudAndDiamOfHole;
 	
 	
+	public static double getScrew07NeckWdth() {
+		screw07NeckWdth = 19;
+		return screw07NeckWdth;
+	}
+
 	public static int getTotalSecondScrewQty() {
 		totalSecondScrewQty = 8;
 		return totalSecondScrewQty;

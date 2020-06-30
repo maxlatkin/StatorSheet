@@ -28,6 +28,7 @@ public class Screw07DimAssignment extends DimAssignment {
 			screwSolidIndexAndValue.put(0, DataStore.getScrew07Wdth());
 			screwSolidIndexAndValue.put(1, DataStore.getScrew07Gap() + DataStore.getScrew07Hght());
 			screwSolidIndexAndValue.put(3, DataStore.getScrew07Hght());
+			screwSolidIndexAndValue.put(4, DataStore.getScrew07NeckWdth());
 			screwSolidIndexAndValue.put(5, DataStore.getExtDiam()/2);
 			screwSolidIndexAndValue.put(6, DataStore.getScrewShift());
 			setArrayOfDimValue(ModelFeat.SCREW_07_HOLE, screwSolidIndexAndValue);

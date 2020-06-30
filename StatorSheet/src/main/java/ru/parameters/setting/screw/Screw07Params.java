@@ -22,6 +22,7 @@ public class Screw07Params implements ParamsSetting {
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_07_WDTH.name(), DataStore.getScrew07Wdth(), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_07_HGHT.name(), DataStore.getScrew07Hght(), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_07_SHIFT.name(), Math.toRadians(DataStore.getScrewShift()), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SCREW_07_NECK.name(), DataStore.getScrew07NeckWdth(), currModel);
 			int screwQty;
 			if (DataStore.getTypeOfScrew() / 10 == 0) {
 				screwQty = DataStore.getTotalScrewQty();
