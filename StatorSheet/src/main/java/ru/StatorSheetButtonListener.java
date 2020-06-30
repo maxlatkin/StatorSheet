@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcCommand.DefaultUICommandActionListener;
 
+import ru.data.DataOperations;
 import ru.general.General;
 import ru.ui.UiCancelListener;
 import ru.ui.UiDialog;
@@ -22,6 +23,10 @@ public class StatorSheetButtonListener extends DefaultUICommandActionListener {
 				UiCancelListener.getInstance().setCancelPressed(false);
 				return;
 			}
+			
+			DataOperations.assignVarsToDataStore();
+			DataOperations.checkVars();
+			DataOperations.calculateVars();
 			General.execute();
 			LOG.info("The StatorSheet application completed.\n");
 		} catch (Exception e) {

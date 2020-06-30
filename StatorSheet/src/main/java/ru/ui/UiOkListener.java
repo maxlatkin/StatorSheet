@@ -13,7 +13,7 @@ import com.ptc.uifc.uifcPushButton.DefaultPushButtonListener;
 import com.ptc.uifc.uifcPushButton.PushButton;
 
 import ru.data.DataStore;
-import ru.general.General;
+import ru.wnc.documents.Documents;
 
 public class UiOkListener extends DefaultPushButtonListener {
 	
@@ -35,9 +35,9 @@ public class UiOkListener extends DefaultPushButtonListener {
 			stringseq noteName = uifcOptionMenu.OptionMenuFind(UiDialog.DIALOG, "OM_Note").GetSelectedItemNameArray();
 			stringseq stoName = uifcOptionMenu.OptionMenuFind(UiDialog.DIALOG, "OM_STO").GetSelectedItemNameArray();
 			stringseq resultsName = uifcOptionMenu.OptionMenuFind(UiDialog.DIALOG, "OM_Results").GetSelectedItemNameArray();
-			General.setNoteName(noteName.get(0));
-			General.setStoName(stoName.get(0));
-			General.setResultsName(resultsName.get(0));
+			Documents.setNoteName(noteName.get(0));
+			Documents.setStoName(stoName.get(0));
+			Documents.setResultsName(resultsName.get(0));
 			CheckState roundState = uifcCheckButton.CheckButtonFind(UiDialog.DIALOG, "CB_Round").GetCheckedState();
 			DataStore.setSlotWithRound(roundState.getValue() == 1);
 			stringseq selectedItem  = uifcOptionMenu.OptionMenuFind(UiDialog.DIALOG, UiDialog.SCREWS_OM).GetSelectedItemNameArray();
