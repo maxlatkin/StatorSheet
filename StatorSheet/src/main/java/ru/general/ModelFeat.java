@@ -21,7 +21,7 @@ public enum ModelFeat {
 	Z,
 	SHEET,
 	EXT_SHEET,
-	SLOT_WITHOUT_ROUND,
+	SLOT,
 	EXT_SLOT,
 	AR_SLOT,
 	ROUND,

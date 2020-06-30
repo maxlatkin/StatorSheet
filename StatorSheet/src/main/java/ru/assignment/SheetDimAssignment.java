@@ -26,12 +26,12 @@ public class SheetDimAssignment extends DimAssignment {
 			setDimValue(ModelFeat.SHEET, 0, DataStore.getExtDiam());
 			setDimValue(ModelFeat.SHEET, 1, DataStore.getIntDiam());
 			
-			setArrayOfDimValue(ModelFeat.SLOT_WITHOUT_ROUND, getSlotWithoutRoundIndexAndValue());
+			setArrayOfDimValue(ModelFeat.SLOT, getSlotWithoutRoundIndexAndValue());
 			if (DataStore.getSegmQty() != 1) {
-				setDimValue(ModelFeat.SLOT_WITHOUT_ROUND, 8, getHalfSegmAngle());
+				setDimValue(ModelFeat.SLOT, 8, getHalfSegmAngle());
 				setArrayOfDimValue(ModelFeat.TRANSFORM_CORE_TO_SHEET, getTransformCoreToSheetIndexAndValue());
 			} else {
-				setDimValue(ModelFeat.SLOT_WITHOUT_ROUND, 8, 0);
+				setDimValue(ModelFeat.SLOT, 8, 0);
 			}
 			
 			setDimValue(ModelFeat.MARK, 0, DataStore.getMarkRound());

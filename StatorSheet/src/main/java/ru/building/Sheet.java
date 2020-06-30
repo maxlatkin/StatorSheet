@@ -35,7 +35,7 @@ public final class Sheet implements Buildable {
 			sheet.build(DataStore.getSheetThck(), ModelFeat.EXT_SHEET.name(), ModelFeat.SHEET.name(), currSolid);
 			
 			ExtrusionCut slot = new ExtrusionCut();
-			slot.build(ModelFeat.EXT_SLOT.name(), ModelFeat.SLOT_WITHOUT_ROUND.name(), currSolid);
+			slot.build(ModelFeat.EXT_SLOT.name(), ModelFeat.SLOT.name(), currSolid);
 			
 			RotatPattern360 slotPattern = new RotatPattern360(ModelFeat.Z.name());
 			
