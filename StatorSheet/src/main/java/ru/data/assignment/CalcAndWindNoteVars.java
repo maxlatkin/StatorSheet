@@ -7,14 +7,14 @@ import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import ru.data.DataStore;
 import ru.wnc.documents.DocVars;
-import ru.wnc.documents.DocumentTypes;
+import ru.wnc.documents.DocTypes;
 
 public class CalcAndWindNoteVars extends DocVars {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(CalcAndWindNoteVars.class);
 	
 	public CalcAndWindNoteVars() {
-		type = DocumentTypes.CALC_AND_WIND_NOTE;
+		type = DocTypes.CALC_AND_WIND_NOTE;
 	}
 
 	@Override

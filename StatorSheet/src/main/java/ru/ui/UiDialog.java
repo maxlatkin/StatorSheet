@@ -13,7 +13,7 @@ import com.ptc.uifc.uifcOptionMenu.uifcOptionMenu;
 import com.ptc.uifc.uifcPushButton.uifcPushButton;
 
 import ru.wnc.documents.DocNumbers;
-import ru.wnc.documents.DocumentTypes;
+import ru.wnc.documents.DocTypes;
 
 
 public class UiDialog extends DefaultUICommandActionListener {
@@ -69,7 +69,7 @@ public class UiDialog extends DefaultUICommandActionListener {
 		}
 	}
 
-	public void setNumbersToOM(String numberFilter,String omName, DocumentTypes type) throws jxthrowable {
+	public void setNumbersToOM(String numberFilter,String omName, DocTypes type) throws jxthrowable {
 		stringseq numbers = stringseq.create();
 		DocNumbers docNumbers = new DocNumbers(type);
 		for (String number: docNumbers.getSetOfDocNumbers(numberFilter)) {

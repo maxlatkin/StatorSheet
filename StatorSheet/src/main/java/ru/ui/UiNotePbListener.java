@@ -5,14 +5,14 @@ import com.ptc.uifc.uifcInputPanel.uifcInputPanel;
 import com.ptc.uifc.uifcPushButton.PushButton;
 import com.ptc.uifc.uifcPushButton.PushButtonListener_u;
 
-import ru.wnc.documents.DocumentTypes;
+import ru.wnc.documents.DocTypes;
 
 public class UiNotePbListener extends PushButtonListener_u {
 
 	@Override
 	public void OnActivate(PushButton arg0) throws jxthrowable {
 		String noteNumberFilter = uifcInputPanel.InputPanelFind(UiDialog.DIALOG, "IP_Note").GetStringValue();
-		UiDialog.getInstance().setNumbersToOM(noteNumberFilter,"OM_Note", DocumentTypes.CALC_AND_WIND_NOTE);
+		UiDialog.getInstance().setNumbersToOM(noteNumberFilter,"OM_Note", DocTypes.CALC_AND_WIND_NOTE);
 	}
 
 	@Override

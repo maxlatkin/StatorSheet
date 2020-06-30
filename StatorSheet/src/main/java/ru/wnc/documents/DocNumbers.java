@@ -12,17 +12,17 @@ import org.slf4j.LoggerFactory;
 public class DocNumbers {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(DocNumbers.class);
-	private DocumentTypes type;
+	private DocTypes type;
 
-	public DocNumbers(DocumentTypes type) {
+	public DocNumbers(DocTypes type) {
 		this.type = type;
 	}
 	
 	public Set<String> getSetOfDocNumbers(String numberFilter) {
 		try {
 			ArrayList<String> listNumbers = new ArrayList<>();
-			DocsConnection.getInstance(type).setTrElemsByNumberFilter(numberFilter);
-			Elements rows = DocsConnection.getInstance(type).getTrElems();
+			DocConnection.getInstance(type).setTrElemsByNumberFilter(numberFilter);
+			Elements rows = DocConnection.getInstance(type).getTrElems();
 			Elements cols = null;
 			if (rows != null) {
 				for (int i = 1; i < rows.size(); i++) {

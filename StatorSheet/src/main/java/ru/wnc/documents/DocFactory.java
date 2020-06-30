@@ -11,7 +11,7 @@ public class DocFactory {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(DocFactory.class);
 	
-	public DocVars getDocument(DocumentTypes type) {
+	public DocVars getDocument(DocTypes type) {
 		DocVars document = null;
 		switch (type) {
 		case CALC_AND_WIND_NOTE:

@@ -9,14 +9,14 @@ import org.slf4j.LoggerFactory;
 
 import ru.data.DataStore;
 import ru.wnc.documents.DocVars;
-import ru.wnc.documents.DocumentTypes;
+import ru.wnc.documents.DocTypes;
 
 public class MechCalcResultsVars extends DocVars {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(MechCalcResultsVars.class);
 	
 	public MechCalcResultsVars() {
-		type = DocumentTypes.MECH_CALC_RESULTS;
+		type = DocTypes.MECH_CALC_RESULTS;
 	}
 
 	@Override

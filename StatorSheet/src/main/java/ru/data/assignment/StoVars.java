@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import ru.data.DataStore;
 import ru.exceptions.InputCheckException;
 import ru.wnc.documents.DocVars;
-import ru.wnc.documents.DocumentTypes;
+import ru.wnc.documents.DocTypes;
 
 public class StoVars extends DocVars {
 	
@@ -23,7 +23,7 @@ public class StoVars extends DocVars {
 	private static final Logger LOG = LoggerFactory.getLogger(StoVars.class);
 	
 	public StoVars() {
-		type = DocumentTypes.STO;
+		type = DocTypes.STO;
 	}
 
 	@Override

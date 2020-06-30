@@ -24,7 +24,7 @@ import ru.exceptions.RetrieveModelException;
 import ru.parameters.Params;
 import ru.wnc.Models;
 import ru.wnc.documents.DocFactory;
-import ru.wnc.documents.DocumentTypes;
+import ru.wnc.documents.DocTypes;
 
 public class General {
 	
@@ -67,9 +67,9 @@ public class General {
 			LOG.info("Session received in {}", General.class);
 			
 			DocFactory docFactory = new DocFactory();
-			docFactory.getDocument(DocumentTypes.CALC_AND_WIND_NOTE).assignToDataStore(noteName);
-			docFactory.getDocument(DocumentTypes.STO).assignToDataStore(stoName);
-			docFactory.getDocument(DocumentTypes.MECH_CALC_RESULTS).assignToDataStore(resultsName);
+			docFactory.getDocument(DocTypes.CALC_AND_WIND_NOTE).assignToDataStore(noteName);
+			docFactory.getDocument(DocTypes.STO).assignToDataStore(stoName);
+			docFactory.getDocument(DocTypes.MECH_CALC_RESULTS).assignToDataStore(resultsName);
 			
 			DataOperations.checkVars();
 			DataOperations.calculateVars();

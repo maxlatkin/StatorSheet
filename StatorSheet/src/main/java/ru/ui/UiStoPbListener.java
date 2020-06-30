@@ -5,14 +5,14 @@ import com.ptc.uifc.uifcInputPanel.uifcInputPanel;
 import com.ptc.uifc.uifcPushButton.PushButton;
 import com.ptc.uifc.uifcPushButton.PushButtonListener_u;
 
-import ru.wnc.documents.DocumentTypes;
+import ru.wnc.documents.DocTypes;
 
 public class UiStoPbListener extends PushButtonListener_u {
 
 	@Override
 	public void OnActivate(PushButton arg0) throws jxthrowable {
 		String stoNumberFilter = uifcInputPanel.InputPanelFind(UiDialog.DIALOG, "IP_STO").GetStringValue();
-		UiDialog.getInstance().setNumbersToOM(stoNumberFilter,"OM_STO", DocumentTypes.STO);
+		UiDialog.getInstance().setNumbersToOM(stoNumberFilter,"OM_STO", DocTypes.STO);
 	}
 
 	@Override

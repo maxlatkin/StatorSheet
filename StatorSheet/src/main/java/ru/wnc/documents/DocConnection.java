@@ -12,20 +12,20 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DocsConnection {
+public class DocConnection {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(DocsConnection.class);
-	private DocumentTypes type;
+	private static final Logger LOG = LoggerFactory.getLogger(DocConnection.class);
+	private DocTypes type;
 	private Elements noteElements;
 	private Elements stoElements;
 	private Elements resultsElements;
-	private static DocsConnection instance;
+	private static DocConnection instance;
     
-	private DocsConnection() {}
+	private DocConnection() {}
 	
-	public static DocsConnection getInstance(DocumentTypes type) {
+	public static DocConnection getInstance(DocTypes type) {
 		if (instance == null) {
-			instance = new DocsConnection();
+			instance = new DocConnection();
 		}
 		instance.type = type;
 		return instance;

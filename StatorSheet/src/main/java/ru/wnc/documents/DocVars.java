@@ -6,11 +6,11 @@ import org.slf4j.LoggerFactory;
 
 public abstract class DocVars {
 	private static final Logger LOG = LoggerFactory.getLogger(DocVars.class);
-	protected DocumentTypes type;
+	protected DocTypes type;
 	
 	public void assignToDataStore(String number) {
 		try {
-			Elements rows = DocsConnection.getInstance(type).getTrElems();
+			Elements rows = DocConnection.getInstance(type).getTrElems();
 			Elements cols = null;
 			if (rows != null) {
 				for (int i = 1; i < rows.size(); i++) {

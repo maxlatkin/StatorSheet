@@ -5,7 +5,7 @@ import com.ptc.uifc.uifcInputPanel.uifcInputPanel;
 import com.ptc.uifc.uifcPushButton.PushButton;
 import com.ptc.uifc.uifcPushButton.PushButtonListener_u;
 
-import ru.wnc.documents.DocumentTypes;
+import ru.wnc.documents.DocTypes;
 
 public class UiResultsPbListener extends PushButtonListener_u {
 
@@ -13,7 +13,7 @@ public class UiResultsPbListener extends PushButtonListener_u {
 	public void OnActivate(PushButton arg0) throws jxthrowable {
 		// TODO Auto-generated method stub
 		String resultsNumberFilter = uifcInputPanel.InputPanelFind(UiDialog.DIALOG, "IP_Results").GetStringValue();
-		UiDialog.getInstance().setNumbersToOM(resultsNumberFilter,"OM_Results", DocumentTypes.MECH_CALC_RESULTS);
+		UiDialog.getInstance().setNumbersToOM(resultsNumberFilter,"OM_Results", DocTypes.MECH_CALC_RESULTS);
 	}
 
 	@Override

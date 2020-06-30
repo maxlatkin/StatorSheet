@@ -26,7 +26,7 @@ public class SheetDimAssignment extends DimAssignment {
 			setDimValue(ModelFeat.SHEET, 0, DataStore.getExtDiam());
 			setDimValue(ModelFeat.SHEET, 1, DataStore.getIntDiam());
 			
-			setArrayOfDimValue(ModelFeat.SLOT, getSlotWithoutRoundIndexAndValue());
+			setArrayOfDimValue(ModelFeat.SLOT, getSlotIndexAndValue());
 			if (DataStore.getSegmQty() != 1) {
 				setDimValue(ModelFeat.SLOT, 8, getHalfSegmAngle());
 				setArrayOfDimValue(ModelFeat.TRANSFORM_CORE_TO_SHEET, getTransformCoreToSheetIndexAndValue());
@@ -50,7 +50,7 @@ public class SheetDimAssignment extends DimAssignment {
 		return transformCoreToSheetIndexAndValue;
 	}
 
-	private Map<Integer, Double> getSlotWithoutRoundIndexAndValue() {
+	private Map<Integer, Double> getSlotIndexAndValue() {
 		Map<Integer, Double> slotWithoutRoundIndexAndValue = new HashMap<>();
 		slotWithoutRoundIndexAndValue.put(0, DataStore.getSlotHghtToWdg());
 		slotWithoutRoundIndexAndValue.put(1, DataStore.getWedgeThck());
