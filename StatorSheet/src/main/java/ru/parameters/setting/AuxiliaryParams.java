@@ -56,7 +56,7 @@ public class AuxiliaryParams implements ParamsSetting {
 	}
 	private double getSheetArea(Model currModel) throws jxthrowable {
 		return ((Surface)((Solid)currModel).GetFeatureByName(ModelFeat.EXT_SHEET.name()).
-				ListSubItems(ModelItemType.ITEM_SURFACE).get(0)).EvalArea() / 1e+6;
+				ListSubItems(ModelItemType.ITEM_SURFACE).get(0)).EvalArea();
 	}
 	private double getSheetPerimeter(Model currModel) throws jxthrowable {
 		double value = 0;
