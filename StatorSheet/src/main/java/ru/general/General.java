@@ -12,9 +12,9 @@ import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.assignment.screw.ScrewDimAssignmentBuilder;
 import ru.assignment.sheet.SheetDimAssignmentFactory;
-import ru.building.Sheet;
 import ru.building.TransformAndMark;
 import ru.building.screw.ScrewBuilder;
+import ru.building.sheet.SheetFactory;
 import ru.data.DataStore;
 import ru.drawing.DrawingDimensions;
 import ru.dxf.Dxf;
@@ -40,7 +40,7 @@ public class General {
 			Model currDrw =  Models.getInstance().getDrwFromSession();
 			
 			SheetDimAssignmentFactory.getSheetDimAssignment(currSolid, sheetType).assign();
-			Sheet.getInstance().build(currSolid);
+			SheetFactory.getSheet(sheetType).build(currSolid);
 			
 			ScrewDimAssignmentBuilder.assign(currSolid);
 			ScrewBuilder.build(currSolid);

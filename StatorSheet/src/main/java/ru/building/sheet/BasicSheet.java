@@ -1,4 +1,4 @@
-package ru.building;
+package ru.building.sheet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,34 +8,20 @@ import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.data.DataStore;
 import ru.general.ModelFeat;
-import ru.ruselprom.fet.extrusions.add.ExtrusionAddSym;
-import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.fet.patterns.RefPattern;
 import ru.ruselprom.fet.patterns.RotatPattern360;
 import ru.ruselprom.fet.round.RadiusAndEdgeIndices;
 import ru.ruselprom.fet.round.Round;
 
-public final class Sheet implements Buildable {
+public final class BasicSheet extends Sheet {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(Sheet.class);
-	private static Sheet instance;
+	private static final Logger LOG = LoggerFactory.getLogger(BasicSheet.class);
 	
-	private Sheet() {}
-	
-	public static Sheet getInstance() {
-        if (instance == null) {
-            instance = new Sheet();
-        }
-        return instance;
-    }
-	
+	@Override
 	public void build(Solid currSolid) {
 		try {
-			ExtrusionAddSym sheet = new ExtrusionAddSym();
-			sheet.build(DataStore.getSheetThck(), ModelFeat.EXT_SHEET.name(), ModelFeat.SHEET.name(), currSolid);
-			
-			ExtrusionCut slot = new ExtrusionCut();
-			slot.build(ModelFeat.EXT_SLOT.name(), ModelFeat.SLOT.name(), currSolid);
+			buildSheetBody(currSolid);
+			buildSlot(currSolid, ModelFeat.EXT_SLOT, ModelFeat.SLOT);
 			
 			RotatPattern360 slotPattern = new RotatPattern360(ModelFeat.Z.name());
 			
@@ -56,9 +42,9 @@ public final class Sheet implements Buildable {
 			} else {
 				slotPattern.patternBuild(DataStore.getSlotQty(), 1, ModelFeat.AR_SLOT.name(), ModelFeat.EXT_SLOT.name(), currSolid);
 			}
-			LOG.info("Sheet is built");
+			LOG.info("BasicSheet is built");
 		} catch (NullPointerException | jxthrowable e) {
-			LOG.error("Error in creating sheet!", e);
+			LOG.error("Error in creating BasicSheet!", e);
 		}
 	}
 }
