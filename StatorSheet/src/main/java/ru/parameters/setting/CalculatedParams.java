@@ -33,7 +33,6 @@ public class CalculatedParams implements ParamsSetting {
 	@Override
 	public void setValue(Model currModel) {
 		try {
-			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_WDG_WDTH.name(), getSlotWdgWdth(), currModel);
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_HGHT_ADD.name(), getSlotHghtAdd(), currModel);
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLT_PER_SEGM.name(), getSltPerSegm(), currModel);
 			setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_ANGL_PER_SEGM.name(), toRadians(getAnglPerSegm()), currModel);
@@ -83,11 +82,6 @@ public class CalculatedParams implements ParamsSetting {
 		return 2 * (360.0 / DataStore.getSegmQty() / 2 - DataStore.getScrewShift());
 	}
 	
-	private double getSlotWdgWdth() {
-		double triangleHeight = DataStore.getWedgeThck()*sin(toRadians(DataStore.getWedgeAngleTop()))*
-				cos(toRadians(DataStore.getWedgeAngleTop()));
-		return DataStore.getSlotWdth() + 2*triangleHeight;
-	}
 	private double getSlotHghtAdd() {
 		return DataStore.getWedgeThck() + DataStore.getWedgeGap();
 	}

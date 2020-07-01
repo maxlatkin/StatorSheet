@@ -2,6 +2,7 @@ package ru.data;
 
 import ru.data.calculation.ScrewShift;
 import ru.data.calculation.SlotHghtToWdg;
+import ru.data.calculation.SlotWedgeWdth;
 import ru.data.check.ExtAndIntDiams;
 import ru.data.check.ScrewQty;
 import ru.data.check.SlotAndSegmQtyWithScrewType;
@@ -31,7 +32,8 @@ public class DataOperations {
 	}
 
 	public static void calculateVars() {
-		DataStore.setSlotHghtToWdg(SlotHghtToWdg.getInstance().calculate());
+		DataStore.setSlotHghtToWdg(new SlotHghtToWdg().calculate());
+		DataStore.setSlotWedgeWdth(new SlotWedgeWdth().calculate());
 		int typeOfScrew = DataStore.getTypeOfScrew();
 		if (typeOfScrew / 10 == 0) {
 			DataStore.setScrewShift(ScrewShift.getInstance(typeOfScrew).calculate());

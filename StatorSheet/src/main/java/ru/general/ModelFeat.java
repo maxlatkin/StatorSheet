@@ -24,6 +24,7 @@ public enum ModelFeat {
 	SLOT,
 	EXT_SLOT,
 	AR_SLOT,
+	VENT_SLOT,
 	ROUND,
 	AR_ROUND,
 	TRANSFORM_CORE_TO_SHEET,

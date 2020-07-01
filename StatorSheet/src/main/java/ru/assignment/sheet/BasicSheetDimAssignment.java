@@ -25,18 +25,11 @@ public class BasicSheetDimAssignment extends SheetDimAssignment {
 		try {
 			setDimValue(ModelFeat.SHEET, 0, DataStore.getExtDiam());
 			setDimValue(ModelFeat.SHEET, 1, DataStore.getIntDiam());
-			
 			setArrayOfDimValue(ModelFeat.SLOT, getSlotIndexAndValue());
-			if (DataStore.getSegmQty() != 1) {
-				setDimValue(ModelFeat.SLOT, 8, getHalfSegmAngle());
-				setArrayOfDimValue(ModelFeat.TRANSFORM_CORE_TO_SHEET, getTransformCoreToSheetIndexAndValue());
-			} else {
-				setDimValue(ModelFeat.SLOT, 8, 0);
-			}
-			
+			setSlotShiftDimValue(ModelFeat.SLOT, 8);
 			setDimValue(ModelFeat.MARK, 0, DataStore.getMarkRound());
 			setDimValue(ModelFeat.MARK, 1, DataStore.getMarkRadius());
-			LOG.info("Dimensions for the Sheet assigned");
+			LOG.info("Dimensions for the BasicSheet assigned");
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Failed to assing dimensions!", e);
 		}

@@ -8,16 +8,6 @@ import ru.data.DataStore;
 public class SlotHghtToWdg implements Calculable {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(SlotHghtToWdg.class);
-	private static SlotHghtToWdg instance;
-	
-	private SlotHghtToWdg(){}
-    
-    public static SlotHghtToWdg getInstance() {
-        if (instance == null) {
-            instance = new SlotHghtToWdg();
-        }
-        return instance;
-    }
 
 	@Override
 	public double calculate() {

@@ -53,7 +53,12 @@ public final class DataStore {
 	private static int totalSecondScrewQty;
 	private static double screw04Shift;
 	private static double difBetwDiamOfStudAndDiamOfHole;
+	private static double slotWedgeWdth;
 	
+	public static double getSlotWedgeWdth() {
+		return slotWedgeWdth;
+	}
+
 	public static double getSecondScrewShift() {
 		return secondScrewShift;
 	}
@@ -387,6 +392,10 @@ public final class DataStore {
 
 	public static void setSecondScrewShift(double secondScrewShift) {
 		DataStore.secondScrewShift = secondScrewShift;
+	}
+
+	public static void setSlotWedgeWdth(double slotWedgeWdth) {
+		DataStore.slotWedgeWdth = slotWedgeWdth;
 	}
 
 	private DataStore() {

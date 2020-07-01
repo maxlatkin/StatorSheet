@@ -34,6 +34,7 @@ public class SheetParams implements ParamsSetting {
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SEGM_QTY.name(), DataStore.getSegmQty(), currModel);
 			Parameters.setBoolParamValue(ModelParamNames.AA_STATOR_CORE_SEGM_MARK_EXIST.name(), DataStore.getSegmQty() != 1, currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SEGM_MARK_SHIFT.name(), DataStore.getMarkShift(), currModel);
+			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_WDG_WDTH.name(), DataStore.getSlotWedgeWdth(), currModel);
 			LOG.info("Sheet parameters set");
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in setting sheet parameters", e);
