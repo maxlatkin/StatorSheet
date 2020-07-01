@@ -10,8 +10,8 @@ import com.ptc.pfc.pfcSession.Session;
 import com.ptc.pfc.pfcSession.pfcSession;
 import com.ptc.pfc.pfcSolid.Solid;
 
-import ru.assignment.SheetDimAssignment;
 import ru.assignment.screw.ScrewDimAssignmentBuilder;
+import ru.assignment.sheet.BasicSheetDimAssignment;
 import ru.building.Sheet;
 import ru.building.TransformAndMark;
 import ru.building.screw.ScrewBuilder;
@@ -40,7 +40,7 @@ public class General {
 			Solid currSolid = (Solid) Models.getInstance().getPartFromSession();
 			Model currDrw =  Models.getInstance().getDrwFromSession();
 			
-			new SheetDimAssignment(currSolid).assign();
+			new BasicSheetDimAssignment(currSolid).assign();
 			Sheet.getInstance().build(currSolid);
 			
 			ScrewDimAssignmentBuilder.assign(currSolid);
