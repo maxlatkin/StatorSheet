@@ -10,11 +10,15 @@ import ru.data.DataStore;
 import ru.general.ModelFeat;
 
 public class Screw02 extends Screw {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(Screw02.class);
 	
+	public Screw02(Solid currSolid) {
+		super(currSolid);
+	}
+	
 	@Override
-	public void build(Solid currSolid) {
+	public void build() {
 		try {
 			if (DataStore.getScrewQty() == 2) {
 				buildScrew0102(currSolid,

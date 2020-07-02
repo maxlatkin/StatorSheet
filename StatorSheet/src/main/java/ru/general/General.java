@@ -40,13 +40,13 @@ public class General {
 			Model currDrw =  Models.getInstance().getDrwFromSession();
 			
 			SheetDimAssignmentFactory.getSheetDimAssignment(currSolid, sheetType).assign();
-			SheetFactory.getSheet(sheetType).build(currSolid);
+			SheetFactory.getSheet(currSolid, sheetType).build();
 			
 			ScrewDimAssignmentBuilder.assign(currSolid);
 			ScrewBuilder.build(currSolid);
 			
 			if (DataStore.getSegmQty() != 1) {
-				TransformAndMark.getInstance().build(currSolid);
+				new TransformAndMark(currSolid).build();
 				ProProgram.getInstance().addConditions(currSolid);
 			}
 			

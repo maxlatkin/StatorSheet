@@ -12,13 +12,13 @@ public class ScrewBuilder {
 	public static void build(Solid currSolid) {
 		int typeOfScrew = DataStore.getTypeOfScrew();
 		if (typeOfScrew / 10 == 0) {
-			ScrewFactory.getScrew(typeOfScrew).build(currSolid);
+			ScrewFactory.getScrew(currSolid, typeOfScrew).build();
 			ModelFeat.deleteScrewExceptTypes(currSolid, typeOfScrew);
 		} else {
 			int firstTypeOfScrew = typeOfScrew / 10;
 			int secondTypeOfScrew = typeOfScrew % 10;
-			ScrewFactory.getScrew(firstTypeOfScrew).build(currSolid);
-			ScrewFactory.getScrew(secondTypeOfScrew).build(currSolid);
+			ScrewFactory.getScrew(currSolid, firstTypeOfScrew).build();
+			ScrewFactory.getScrew(currSolid, secondTypeOfScrew).build();
 			ModelFeat.deleteScrewExceptTypes(currSolid, firstTypeOfScrew, secondTypeOfScrew);
 		}
 	}

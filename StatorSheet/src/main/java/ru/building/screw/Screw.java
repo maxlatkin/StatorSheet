@@ -14,6 +14,12 @@ import ru.ruselprom.fet.patterns.RotatPattern360;
 import ru.ruselprom.fet.patterns.TwoRotatPattern;
 
 public abstract class Screw implements Buildable {
+	protected Solid currSolid;
+	
+	public Screw(Solid currSolid) {
+		this.currSolid = currSolid;
+	}
+
 	protected void buildScrew0102(Solid currSolid, ModelFeat solid, ModelFeat extSolid, ModelFeat arSolid,
 			ModelFeat hole, ModelFeat extHole, ModelFeat arHole) throws jxthrowable {
 		ExtrusionAddRef screwSolid = new ExtrusionAddRef();

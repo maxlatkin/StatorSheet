@@ -12,19 +12,14 @@ import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 public class TransformAndMark implements Buildable {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(TransformAndMark.class);
-	private static TransformAndMark instance;
-	
-	private TransformAndMark() {}
-	
-	public static TransformAndMark getInstance() {
-        if (instance == null) {
-            instance = new TransformAndMark();
-        }
-        return instance;
-    }
+	private Solid currSolid;
+
+	public TransformAndMark(Solid currSolid) {
+		this.currSolid = currSolid;
+	}
 
 	@Override
-	public void build(Solid currSolid) {
+	public void build() {
 		try {
 			ExtrusionCut transformCoreToSheet = new ExtrusionCut();
 			transformCoreToSheet.build(ModelFeat.EXT_TRANSFORM.name(), ModelFeat.TRANSFORM_CORE_TO_SHEET.name(), currSolid);

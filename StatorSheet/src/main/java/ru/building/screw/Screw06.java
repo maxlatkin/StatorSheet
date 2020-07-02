@@ -12,8 +12,12 @@ public class Screw06 extends Screw {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(Screw06.class);
 	
+	public Screw06(Solid currSolid) {
+		super(currSolid);
+	}
+
 	@Override
-	public void build(Solid currSolid) {
+	public void build() {
 		try {
 			buildScrew050607(currSolid, ModelFeat.SCREW_06_HOLE, ModelFeat.EXT_SCREW_06_HOLE, ModelFeat.AR_SCREW_06_HOLE);
 			LOG.info("Screw_06 is built");

@@ -12,9 +12,13 @@ import ru.general.ModelFeat;
 public class Screw01 extends Screw {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(Screw01.class);
+
+	public Screw01(Solid currSolid) {
+		super(currSolid);
+	}
 	
 	@Override
-	public void build(Solid currSolid) {
+	public void build() {
 		try {
 			if (DataStore.getScrewQty() == 2) {
 				buildScrew0102(currSolid,

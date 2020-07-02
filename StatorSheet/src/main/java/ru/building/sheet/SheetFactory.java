@@ -3,6 +3,8 @@ package ru.building.sheet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ptc.pfc.pfcSolid.Solid;
+
 import ru.general.SheetType;
 
 public class SheetFactory {
@@ -13,14 +15,14 @@ public class SheetFactory {
 	    throw new IllegalStateException("Utility class");
 	}
 	
-	public static Sheet getSheet(SheetType sheetType) {
+	public static Sheet getSheet(Solid currSolid, SheetType sheetType) {
 		Sheet sheet = null;
 		switch (sheetType) {
 		case BASIC:
-			sheet = new BasicSheet();
+			sheet = new BasicSheet(currSolid);
 			break;
 		case VENT:
-			sheet = new VentSheet();
+			sheet = new VentSheet(currSolid);
 			break;
 		default:
 			IllegalArgumentException e = new IllegalArgumentException("Unknown type of sheet!");

@@ -16,8 +16,12 @@ public class Screw03And04 extends Screw {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Screw03And04.class);
 	
+	public Screw03And04(Solid currSolid) {
+		super(currSolid);
+	}
+	
 	@Override
-	public void build(Solid currSolid) {
+	public void build() {
 		try {
 			if (DataStore.getScrewQty() == 2) {
 				buildScrew03(currSolid, ModelFeat.SCREW_03_HOLE_2, ModelFeat.EXT_SCREW_03_HOLE_2, ModelFeat.AR_SCREW_03_HOLE_2);

@@ -29,7 +29,7 @@ public class StatorSheetButtonListener extends DefaultUICommandActionListener {
 			DataOperations.assignVarsToDataStore();
 			DataOperations.checkVars();
 			DataOperations.calculateVars();
-			General.execute(SheetType.BASIC);
+			General.execute(SheetType.VENT);
 			LOG.info("The StatorSheet application completed.\n");
 		} catch (InputCheckException e) {
 			LOG.error("Input error", e);

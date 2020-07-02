@@ -11,27 +11,51 @@ import ru.data.DataStore;
 import ru.general.ModelFeat;
 import ru.ruselprom.fet.extrusions.add.ExtrusionAddSym;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
+import ru.ruselprom.fet.patterns.RefPattern;
+import ru.ruselprom.fet.patterns.RotatPattern360;
 
 public abstract class Sheet implements Buildable {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(Sheet.class);
+	protected Solid currSolid;
 	
-	
-	protected void buildSlot(Solid currSolid, ModelFeat extSlot, ModelFeat slot) {
-		try {
-			ExtrusionCut slotCut = new ExtrusionCut();
-			slotCut.build(extSlot.name(),slot.name(), currSolid);
-		} catch (jxthrowable e) {
-			LOG.error("Error slot building");
-		}
+	public Sheet(Solid currSolid) {
+		this.currSolid = currSolid;
 	}
 	
-	protected void buildSheetBody(Solid currSolid) {
+	protected void buildSheetBody() {
 		try {
 			ExtrusionAddSym sheet = new ExtrusionAddSym();
 			sheet.build(DataStore.getSheetThck(), ModelFeat.EXT_SHEET.name(), ModelFeat.SHEET.name(), currSolid);
 		} catch (jxthrowable e) {
-			LOG.error("Error sheet body building");
+			LOG.error("Error building sheet body");
 		}
 	}
+
+	protected void buildSlot(ModelFeat extSlot, ModelFeat slot) {
+		try {
+			ExtrusionCut slotCut = new ExtrusionCut();
+			slotCut.build(extSlot.name(), slot.name(), currSolid);
+		} catch (jxthrowable e) {
+			LOG.error("Error building slot");
+		}
+	}
+	
+	protected void buildSlotPatternWithRoundOrNot(boolean withRound, ModelFeat arSlot, ModelFeat extSlot) {
+		try {
+			RotatPattern360 slotPattern = new RotatPattern360(ModelFeat.Z.name());
+			if (withRound) {
+				buildRound();
+				slotPattern.patternBuild(DataStore.getSlotQty(), 1, arSlot.name(), extSlot.name(), currSolid);
+				RefPattern roundPattern = new RefPattern();
+				roundPattern.patternBuild(ModelFeat.AR_ROUND.name(), ModelFeat.ROUND.name(), currSolid);
+			} else {
+				slotPattern.patternBuild(DataStore.getSlotQty(), 1, arSlot.name(), extSlot.name(), currSolid);
+			}
+		} catch (jxthrowable e) {
+			LOG.error("Error building slotPattern");
+		}
+	}
+	
+	protected abstract void buildRound();
 }
