@@ -7,6 +7,7 @@ import ru.data.check.ExtAndIntDiams;
 import ru.data.check.ScrewQty;
 import ru.data.check.SlotAndSegmQtyWithScrewType;
 import ru.data.check.SlotStepAndQty;
+import ru.general.SheetType;
 import ru.wnc.documents.DocFactory;
 import ru.wnc.documents.DocTypes;
 import ru.wnc.documents.Documents;
@@ -31,7 +32,7 @@ public class DataOperations {
 		new ScrewQty().check();
 	}
 
-	public static void calculateVars() {
+	public static void calculateCommonVars() {
 		DataStore.setSlotHghtToWdg(new SlotHghtToWdg().calculate());
 		DataStore.setSlotWedgeWdth(new SlotWedgeWdth().calculate());
 		int typeOfScrew = DataStore.getTypeOfScrew();
@@ -42,6 +43,12 @@ public class DataOperations {
 			int secondTypeOfScrew = typeOfScrew % 10;
 			DataStore.setScrewShift(ScrewShift.getInstance(firstTypeOfScrew).calculate());
 			DataStore.setSecondScrewShift(ScrewShift.getInstance(secondTypeOfScrew).calculate());
+		}
+	}
+	
+	public static void calculateDifferentVars(SheetType sheetType) {
+		if (sheetType == SheetType.VENT) {
+			DataStore.setIntDiam(DataStore.getIntDiam() + 4);
 		}
 	}
 }

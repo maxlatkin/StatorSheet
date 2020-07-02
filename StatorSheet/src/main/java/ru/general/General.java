@@ -63,6 +63,7 @@ public class General {
 			}
 			Models.getInstance().getDxfTempFromSession().Erase();
 			session.CreateModelWindow(currSolid).Activate();
+			currSolid.Display();
 		} catch (RetrieveModelException | NullPointerException | jxthrowable e) {
 			LOG.error("Error in the General class!", e);
 		}
