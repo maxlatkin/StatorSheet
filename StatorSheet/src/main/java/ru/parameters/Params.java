@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.ptc.pfc.pfcModel.Model;
 
 import ru.data.DataStore;
+import ru.general.SheetType;
 import ru.parameters.setting.AuxiliaryParams;
 import ru.parameters.setting.CalculatedParams;
 import ru.parameters.setting.SheetParams;
@@ -20,8 +21,8 @@ public final class Params {
 		throw new IllegalStateException("Utility class");
 	}
 	
-	public static void setAllParams(Model currModel) {
-		SheetParams.getInstance().setValue(currModel);
+	public static void setAllParams(Model currModel, SheetType sheetType) {
+		new SheetParams(sheetType).setValue(currModel);
 		SlotParams.getInstance().setValue(currModel);
 		AuxiliaryParams.getInstance().setValue(currModel);
 		CalculatedParams.getInstance().setValue(currModel);

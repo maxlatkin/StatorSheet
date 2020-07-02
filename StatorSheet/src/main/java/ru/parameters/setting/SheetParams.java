@@ -7,23 +7,19 @@ import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcModel.Model;
 
 import ru.data.DataStore;
+import ru.general.SheetType;
 import ru.parameters.ModelParamNames;
 import ru.ruselprom.parameters.Parameters;
 
 public class SheetParams implements ParamsSetting {
 	
-	private static SheetParams instance;
 	private static final Logger LOG = LoggerFactory.getLogger(SheetParams.class);
+	private SheetType sheetType;
 	
-	private SheetParams() {}
-	
-	public static SheetParams getInstance() {
-        if (instance == null) {
-            instance = new SheetParams();
-        }
-        return instance;
-    }
-	
+	public SheetParams(SheetType sheetType) {
+		this.sheetType = sheetType;
+	}
+
 	@Override
 	public void setValue(Model currModel) {
 		try {
@@ -35,6 +31,7 @@ public class SheetParams implements ParamsSetting {
 			Parameters.setBoolParamValue(ModelParamNames.AA_STATOR_CORE_SEGM_MARK_EXIST.name(), DataStore.getSegmQty() != 1, currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SEGM_MARK_SHIFT.name(), DataStore.getMarkShift(), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_WDG_WDTH.name(), DataStore.getSlotWedgeWdth(), currModel);
+			Parameters.setStringParamValue(ModelParamNames.AA_STATOR_CORE_SHEET_TYPE.name(), sheetType.name(), currModel);
 			LOG.info("Sheet parameters set");
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in setting sheet parameters", e);

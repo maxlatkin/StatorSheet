@@ -84,7 +84,8 @@ public enum ModelParamNames {
 	AA_STATOR_CORE_SHEET_PERIMETER(ModelParamTypes.DOUBLE_LENGTH_M),
 	AA_STATOR_CORE_NOTE(ModelParamTypes.STRING),
 	AA_STATOR_CORE_STO(ModelParamTypes.STRING),
-	AA_STATOR_CORE_MECH_RESULTS(ModelParamTypes.STRING);
+	AA_STATOR_CORE_MECH_RESULTS(ModelParamTypes.STRING),
+	AA_STATOR_CORE_SHEET_TYPE(ModelParamTypes.STRING);
 	
 	private ModelParamTypes paramType;
 

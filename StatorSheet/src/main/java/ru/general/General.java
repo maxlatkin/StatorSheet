@@ -50,7 +50,7 @@ public class General {
 				ProProgram.getInstance().addConditions(currSolid);
 			}
 			
-			Params.setAllParams(currSolid);
+			Params.setAllParams(currSolid, sheetType);
 			new DrawingDimensions().setTo(currDrw);
 			
 			currSolid.Save();
