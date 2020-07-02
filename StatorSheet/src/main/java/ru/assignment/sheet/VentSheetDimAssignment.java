@@ -22,7 +22,7 @@ public class VentSheetDimAssignment extends SheetDimAssignment {
 		try {
 			setDimValue(ModelFeat.SHEET, 0, DataStore.getExtDiam());
 			setDimValue(ModelFeat.SHEET, 1, DataStore.getIntDiam());
-			setDimValue(ModelFeat.VENT_SLOT, 0, DataStore.getSlotWedgeWdth() + 1.5);
+			setDimValue(ModelFeat.VENT_SLOT, 0, DataStore.getSlotWdth());
 			setDimValue(ModelFeat.VENT_SLOT, 1, DataStore.getTotalSlotHght());
 			setSlotShiftDimValue(ModelFeat.VENT_SLOT, 2);
 			setDimValue(ModelFeat.MARK, 0, DataStore.getMarkRound());

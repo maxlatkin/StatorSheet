@@ -49,6 +49,9 @@ public class DataOperations {
 	public static void calculateDifferentVars(SheetType sheetType) {
 		if (sheetType == SheetType.VENT) {
 			DataStore.setIntDiam(DataStore.getIntDiam() + 4);
+			DataStore.setSheetThck(1);
+			double roundedSlotWedgeWdth = Math.ceil(DataStore.getSlotWedgeWdth() * 10.0) / 10.0;
+			DataStore.setSlotWdth(roundedSlotWedgeWdth + 1.5);
 		}
 	}
 }
