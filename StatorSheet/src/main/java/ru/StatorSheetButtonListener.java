@@ -7,6 +7,7 @@ import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcCommand.DefaultUICommandActionListener;
 
 import ru.data.DataOperations;
+import ru.data.DataStore;
 import ru.exceptions.InputCheckException;
 import ru.general.General;
 import ru.general.SheetType;
@@ -29,12 +30,15 @@ public class StatorSheetButtonListener extends DefaultUICommandActionListener {
 			DataOperations.assignVarsToDataStore();
 			DataOperations.checkVars();
 			DataOperations.calculateCommonVars();
+			
 			SheetType.setCurrSheetType(SheetType.BASIC);
 			DataOperations.calculateDifferentVars(SheetType.getCurrSheetType());
 			General.execute(SheetType.getCurrSheetType());
-			SheetType.setCurrSheetType(SheetType.VENT);
-			DataOperations.calculateDifferentVars(SheetType.getCurrSheetType());
-			General.execute(SheetType.getCurrSheetType());
+			if (DataStore.getVentDucts().equals("true")) {
+				SheetType.setCurrSheetType(SheetType.VENT);
+				DataOperations.calculateDifferentVars(SheetType.getCurrSheetType());
+				General.execute(SheetType.getCurrSheetType());
+			}
 			LOG.info("The StatorSheet application completed.\n");
 		} catch (InputCheckException e) {
 			LOG.error("Input error", e);

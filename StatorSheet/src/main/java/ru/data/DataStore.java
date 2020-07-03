@@ -54,7 +54,13 @@ public final class DataStore {
 	private static double screw04Shift;
 	private static double difBetwDiamOfStudAndDiamOfHole;
 	private static double slotWedgeWdth;
+	private static String ventDucts;
 	
+	public static String getVentDucts() {
+		ventDucts = "true";
+		return ventDucts;
+	}
+
 	public static double getSlotWedgeWdth() {
 		return slotWedgeWdth;
 	}
