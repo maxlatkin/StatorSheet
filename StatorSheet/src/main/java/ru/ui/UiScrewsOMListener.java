@@ -69,6 +69,9 @@ public class UiScrewsOMListener extends OptionMenuListener_u {
 			case "7":
 				screw.append("LO_Screw_7");
 				break;
+			case "37":
+				screw.append("LO_Screw_37");
+				break;
 			default:
 				break;	
 			}

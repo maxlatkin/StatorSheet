@@ -29,10 +29,12 @@ public class StatorSheetButtonListener extends DefaultUICommandActionListener {
 			DataOperations.assignVarsToDataStore();
 			DataOperations.checkVars();
 			DataOperations.calculateCommonVars();
-			DataOperations.calculateDifferentVars(SheetType.BASIC);
-			General.execute(SheetType.BASIC);
-			DataOperations.calculateDifferentVars(SheetType.VENT);
-			General.execute(SheetType.VENT);
+			SheetType.setCurrSheetType(SheetType.BASIC);
+			DataOperations.calculateDifferentVars(SheetType.getCurrSheetType());
+			General.execute(SheetType.getCurrSheetType());
+			SheetType.setCurrSheetType(SheetType.VENT);
+			DataOperations.calculateDifferentVars(SheetType.getCurrSheetType());
+			General.execute(SheetType.getCurrSheetType());
 			LOG.info("The StatorSheet application completed.\n");
 		} catch (InputCheckException e) {
 			LOG.error("Input error", e);

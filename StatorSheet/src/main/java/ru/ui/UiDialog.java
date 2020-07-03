@@ -61,6 +61,7 @@ public class UiDialog extends DefaultUICommandActionListener {
 			uifcLabel.LabelFind(DIALOG, "L_S5_Image").SetImage("Screw\\s5.png");
 			uifcLabel.LabelFind(DIALOG, "L_S6_Image").SetImage("Screw\\s6.png");
 			uifcLabel.LabelFind(DIALOG, "L_S7_Image").SetImage("Screw\\s7.png");
+			uifcLabel.LabelFind(DIALOG, "L_S37_Image").SetImage("Screw\\s37.png");
 			
 			uifcComponent.ActivateDialog(DIALOG);	
 			uifcComponent.DestroyDialog(DIALOG);

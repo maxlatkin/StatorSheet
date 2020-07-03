@@ -69,6 +69,7 @@
         (CB_Round.BottomOffset 0)
         (CB_Round.LeftOffset 3)
         (CB_Round.RightOffset 0)
+        (CB_Round.Set 1)
         (.AttachLeft True)
         (.AttachRight True)
         (.AttachTop True)
@@ -228,7 +229,7 @@
         (Label L_Screws)
         (Label L_Screw)
         (OptionMenu OM_Screws)
-        (Tab T_Screws LO_Screw_1 LO_Screw_2 LO_Screw_3and4 LO_Screw_5 LO_Screw_6 LO_Screw_7)
+        (Tab T_Screws LO_Screw_1 LO_Screw_2 LO_Screw_3and4 LO_Screw_5 LO_Screw_6 LO_Screw_7 LO_Screw_37)
     )
     (Resources
         (L_Screws.Label "Крепеж")
@@ -245,8 +246,8 @@
         (L_Screw.BottomOffset 2)
         (L_Screw.LeftOffset 10)
         (L_Screw.RightOffset 0)
-        (OM_Screws.Names "1" "2" "3" "5" "6" "7")
-        (OM_Screws.Labels "Пазы под шпильки с обниженным базовым радиусом" "Пазы под шпильки с частично обниженным базовым радиусом" "Пазы под шпильки без обнижения базового радиуса" "Пазы под ребра" "Лыски под ребра" "Пазы под ласточкин хвост")
+        (OM_Screws.Names "1" "2" "3" "5" "6" "7" "37")
+        (OM_Screws.Labels "Пазы под шпильки с обниженным базовым радиусом" "Пазы под шпильки с частично обниженным базовым радиусом" "Пазы под шпильки без обнижения базового радиуса" "Пазы под ребра" "Лыски под ребра" "Пазы под ласточкин хвост" "Шпильки без обнижения + пазы под ласточкин хвост")
         (OM_Screws.TopOffset 1)
         (OM_Screws.BottomOffset 2)
         (OM_Screws.LeftOffset 10)
@@ -455,6 +456,27 @@
                 (Cols 1)
                 (Size 4 1)
                 L_S7_Image
+            )
+        )
+    )
+)
+(Layout LO_Screw_37
+    (Components
+        (Label L_S37_Image)
+    )
+    (Resources
+        (L_S37_Image.TopOffset 0)
+        (L_S37_Image.BottomOffset 0)
+        (L_S37_Image.LeftOffset 0)
+        (L_S37_Image.RightOffset 0)
+        (L_S37_Image.ResourceHints "UserOverrideAttrs:AttachLeft")
+        (.ResourceHints "UserOverrideCols:1")
+        (.Layout
+            (Grid
+                (Rows 0 0 0 0)
+                (Cols 1)
+                (Size 4 1)
+                L_S37_Image
             )
         )
     )

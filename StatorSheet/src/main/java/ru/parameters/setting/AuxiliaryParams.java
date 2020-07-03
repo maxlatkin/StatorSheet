@@ -14,6 +14,7 @@ import com.ptc.wfc.wfcGeometry.WSurface;
 
 import ru.data.DataStore;
 import ru.general.ModelFeat;
+import ru.general.SheetType;
 import ru.parameters.ModelParamNames;
 import ru.ruselprom.parameters.Parameters;
 import ru.wnc.documents.Documents;
@@ -41,7 +42,9 @@ public class AuxiliaryParams implements ParamsSetting {
 			Parameters.setStringParamValue(ModelParamNames.AA_STATOR_CORE_NOTE.name(), Documents.getNoteName(), currModel);
 			Parameters.setStringParamValue(ModelParamNames.AA_STATOR_CORE_STO.name(), Documents.getStoName(), currModel);
 			Parameters.setStringParamValue(ModelParamNames.AA_STATOR_CORE_MECH_RESULTS.name(), Documents.getResultsName(), currModel);
-			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_WDG_FLT_W.name(), getSlotWdgFltW(currModel), currModel);
+			if (SheetType.getCurrSheetType() == SheetType.BASIC) {
+				Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SLOT_WDG_FLT_W.name(), getSlotWdgFltW(currModel), currModel);
+			}
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SHEET_AREA.name(), getSheetArea(currModel), currModel);
 			Parameters.setDoubleParamValue(ModelParamNames.AA_STATOR_CORE_SHEET_PERIMETER.name(), getSheetPerimeter(currModel), currModel);
 			LOG.info("Auxiliary parameters set");
