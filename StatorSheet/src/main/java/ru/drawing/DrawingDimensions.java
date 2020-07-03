@@ -84,11 +84,14 @@ public class DrawingDimensions {
 		setValueToDimById(11, DataStore.getWedgeAngleBottom(),pfcDimension.DimTolSymmetric_Create(1.0/6));
 		setValueToDimById(12, DataStore.getWedgeThck(), null);
 		setValueToDimById(14, DataStore.getRoundAtBottomOfSlot(), null);
+		setValueToDimById(377, DataStore.getRoundAtBottomOfSlot(), null);
+		setValueToDimById(372, DataStore.getRoundAtBottomOfSlot(), null);
 	}
 	private void setMarkDim() throws jxthrowable {
 		setValueToDimById(41, DataStore.getSegmPruning(), pfcDimension.DimTolPlusMinus_Create(0.1, 0.0));
 		setValueToDimById(42, DataStore.getMarkRadius(), null);
 		setValueToDimById(43, DataStore.getMarkRound(), null);
+		setValueToDimById(389, DataStore.getSegmPruning(), pfcDimension.DimTolPlusMinus_Create(0.1, 0.0));
 	}
 	private void setValueToDimById(int id, double value, DimTolerance tolerance) throws jxthrowable {
 		getDimById(id).SetOverrideValue(value);
