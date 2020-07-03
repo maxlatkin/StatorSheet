@@ -8,6 +8,7 @@ import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.data.DataStore;
 import ru.general.ModelFeat;
+import ru.ruselprom.fet.operations.FetOperations;
 import ru.ruselprom.fet.round.RadiusAndEdgeIndices;
 import ru.ruselprom.fet.round.Round;
 
@@ -25,8 +26,9 @@ public final class BasicSheet extends Sheet {
 			buildSheetBody();
 			buildSlot(ModelFeat.EXT_SLOT, ModelFeat.SLOT);
 			buildSlotPatternWithRoundOrNot(DataStore.isSlotWithRound(), ModelFeat.AR_SLOT, ModelFeat.EXT_SLOT);
+			FetOperations.deleteFeature(currSolid, ModelFeat.VENT_SLOT.name());
 			LOG.info("BasicSheet is built");
-		} catch (NullPointerException e) {
+		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in creating BasicSheet!", e);
 		}
 	}

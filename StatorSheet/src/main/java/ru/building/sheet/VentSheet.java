@@ -8,6 +8,7 @@ import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.data.DataStore;
 import ru.general.ModelFeat;
+import ru.ruselprom.fet.operations.FetOperations;
 import ru.ruselprom.fet.round.RadiusAndEdgeIndices;
 import ru.ruselprom.fet.round.Round;
 
@@ -25,8 +26,9 @@ public class VentSheet extends Sheet {
 			buildSheetBody();
 			buildSlot(ModelFeat.EXT_VENT_SLOT, ModelFeat.VENT_SLOT);
 			buildSlotPatternWithRoundOrNot(DataStore.isSlotWithRound(), ModelFeat.AR_VENT_SLOT, ModelFeat.EXT_VENT_SLOT);
+			FetOperations.deleteFeature(currSolid, ModelFeat.SLOT.name());
 			LOG.info("VentSheet is built");
-		} catch (NullPointerException e) {
+		} catch (NullPointerException | jxthrowable e) {
 			LOG.error("Error in creating VentSheet!", e);
 		}
 	}
