@@ -8,6 +8,7 @@ import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.data.DataStore;
 import ru.general.ModelFeat;
+import ru.ruselprom.base.Direction;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.fet.patterns.RotatPattern360;
 import ru.ruselprom.fet.patterns.TwoRotatPattern;
@@ -33,7 +34,7 @@ public class Screw03And04 extends Screw {
 				screw04Hole.build(ModelFeat.EXT_SCREW_04_HOLE.name(), ModelFeat.SCREW_04_HOLE.name(), currSolid);
 				if (DataStore.getScrewQty() == 2) {
 					RotatPattern360 screw04HoleAr = new RotatPattern360(ModelFeat.Z.name());
-					screw04HoleAr.patternBuild(DataStore.getSegmQty(), 1,
+					screw04HoleAr.patternBuild(DataStore.getSegmQty(), Direction.CLOCKWISE,
 							ModelFeat.AR_SCREW_04_HOLE.name(), ModelFeat.EXT_SCREW_04_HOLE.name(), currSolid);
 				} else if (DataStore.getScrewQty() == 4) {
 					TwoRotatPattern screw04HoleTwoAr = new TwoRotatPattern(ModelFeat.Z.name(), ModelFeat.Z.name());

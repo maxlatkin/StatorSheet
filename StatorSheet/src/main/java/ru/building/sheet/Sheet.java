@@ -9,6 +9,7 @@ import com.ptc.pfc.pfcSolid.Solid;
 import ru.building.Buildable;
 import ru.data.DataStore;
 import ru.general.ModelFeat;
+import ru.ruselprom.base.Direction;
 import ru.ruselprom.fet.extrusions.add.ExtrusionAddSym;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.fet.patterns.RefPattern;
@@ -46,11 +47,11 @@ public abstract class Sheet implements Buildable {
 			RotatPattern360 slotPattern = new RotatPattern360(ModelFeat.Z.name());
 			if (withRound) {
 				buildRound();
-				slotPattern.patternBuild(DataStore.getSlotQty(), 1, arSlot.name(), extSlot.name(), currSolid);
+				slotPattern.patternBuild(DataStore.getSlotQty(), Direction.CLOCKWISE, arSlot.name(), extSlot.name(), currSolid);
 				RefPattern roundPattern = new RefPattern();
 				roundPattern.patternBuild(ModelFeat.AR_ROUND.name(), ModelFeat.ROUND.name(), currSolid);
 			} else {
-				slotPattern.patternBuild(DataStore.getSlotQty(), 1, arSlot.name(), extSlot.name(), currSolid);
+				slotPattern.patternBuild(DataStore.getSlotQty(), Direction.CLOCKWISE, arSlot.name(), extSlot.name(), currSolid);
 			}
 		} catch (jxthrowable e) {
 			LOG.error("Error building slotPattern");

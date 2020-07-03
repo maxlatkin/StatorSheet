@@ -8,6 +8,7 @@ import com.ptc.pfc.pfcSolid.Solid;
 import ru.building.Buildable;
 import ru.data.DataStore;
 import ru.general.ModelFeat;
+import ru.ruselprom.base.Direction;
 import ru.ruselprom.fet.extrusions.add.ExtrusionAddRef;
 import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.fet.patterns.RotatPattern360;
@@ -52,6 +53,6 @@ public abstract class Screw implements Buildable {
 		} else {
 			screwQty = DataStore.getTotalSecondScrewQty();
 		}
-		screwAr.patternBuild(screwQty, 1, arHole.name(), extHole.name(), currSolid);
+		screwAr.patternBuild(screwQty, Direction.CLOCKWISE, arHole.name(), extHole.name(), currSolid);
 	}
 }
