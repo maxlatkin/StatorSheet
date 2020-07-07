@@ -20,6 +20,9 @@ import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcModel.ProgramExportInstructions;
 import com.ptc.pfc.pfcModel.ProgramImportInstructions;
 import com.ptc.pfc.pfcModel.pfcModel;
+import com.ptc.pfc.pfcSession.CreoCompatibility;
+import com.ptc.pfc.pfcSession.Session;
+import com.ptc.pfc.pfcSession.pfcSession;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.data.DataStore;
@@ -27,7 +30,7 @@ import ru.ruselprom.base.Regeneration;
 
 public class ProProgram {
 	
-	private String fileName = "D:\\Project\\pro\\models\\stator_sheet.pls";
+	private String fileName;
 	private String startOfCondition = "IF AA_STATOR_CORE_SHEET_MODE == \"PRT\"";
 	private String endOfCondition = "ENDIF";
 	private String startOfBlock = "ADD FEATURE";
@@ -47,6 +50,7 @@ public class ProProgram {
 	
 	public void addConditions(Solid currSolid) {
 		try {
+			setFileName();
 			exportToFile(currSolid);
 			overwriteFile();
 			importFile(currSolid);
@@ -57,6 +61,16 @@ public class ProProgram {
 			LOG.error("Error adding conditions", e);
 		}
 	}
+	
+	private void setFileName() {
+		try {
+			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
+			fileName = session.GetCurrentDirectory() + "stator_sheet.pls";
+		} catch (jxthrowable e) {
+			LOG.error("Error setting file name", e);
+		}
+	}
+
 	private void importFile(Solid currSolid) throws jxthrowable {
 		ProgramImportInstructions importInstructions = pfcModel.ProgramImportInstructions_Create();
 		currSolid.Import(fileName, importInstructions);
