@@ -6,9 +6,9 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>logs/statorsheet.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <!-- each archived file, size max 10MB -->
-            <maxFileSize>5000</maxFileSize>
+            <maxFileSize>10000</maxFileSize>
             <!-- total size of all archive files, if total size > 20GB, it will delete old archived file -->
-            <totalSizeCap>25KB</totalSizeCap>
+            <totalSizeCap>50KB</totalSizeCap>
             <!-- 30 days to keep -->
             <maxHistory>30</maxHistory>
         </rollingPolicy>
