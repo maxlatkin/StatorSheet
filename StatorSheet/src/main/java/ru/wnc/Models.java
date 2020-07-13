@@ -63,16 +63,16 @@ public class Models {
 	}
 	
 	public Model getDxfTempFromSession() {
-		LOG.info("dxfTemp is got");
+		LOG.info("А new dxfTemp is received from session");
 		return dxfTemp;
 	}
 	public Model getPartFromSession() {
-		LOG.info("Part is got");
+		LOG.info("А new part is received from session");
 		return part;
 	}
 	
 	public Model getDrwFromSession() {
-		LOG.info("Drw is got");
+		LOG.info("А new drw is received from session");
 		return drw;
 	}
 	
