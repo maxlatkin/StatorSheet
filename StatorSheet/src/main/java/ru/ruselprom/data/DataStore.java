@@ -54,10 +54,10 @@ public final class DataStore {
 	private static double screw04Shift;
 	private static double difBetwDiamOfStudAndDiamOfHole;
 	private static double slotWedgeWdth;
-	private static String ventDucts;
+	private static boolean ventDucts;
 	
-	public static String getVentDucts() {
-		ventDucts = "true";
+	public static boolean getVentDucts() {
+		ventDucts = Boolean.parseBoolean("true");
 		return ventDucts;
 	}
 

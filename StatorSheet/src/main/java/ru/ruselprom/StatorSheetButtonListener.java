@@ -34,7 +34,7 @@ public class StatorSheetButtonListener extends DefaultUICommandActionListener {
 			SheetType.setCurrSheetType(SheetType.BASIC);
 			DataOperations.calculateDifferentVars(SheetType.getCurrSheetType());
 			General.execute(SheetType.getCurrSheetType());
-			if (DataStore.getVentDucts().equals("true")) {
+			if (DataStore.getVentDucts()) {
 				SheetType.setCurrSheetType(SheetType.VENT);
 				DataOperations.calculateDifferentVars(SheetType.getCurrSheetType());
 				General.execute(SheetType.getCurrSheetType());
