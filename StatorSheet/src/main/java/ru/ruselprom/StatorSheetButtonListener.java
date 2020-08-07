@@ -27,6 +27,7 @@ public class StatorSheetButtonListener extends DefaultUICommandActionListener {
 				return;
 			}
 			
+			
 			DataOperations.assignVarsToDataStore();
 			DataOperations.checkVars();
 			DataOperations.calculateCommonVars();
