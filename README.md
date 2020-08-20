@@ -4,4 +4,5 @@
 
 StatorSheet is an auxiliary application to Creo Parametric 5 that generates stator segments (or sheet) based on information from Windchill (PDM) documents.
 
-![](gif/name-of-giphy.gif)
+![GIF](gif/GUI.gif)
+![image](gif/test.bmp)
