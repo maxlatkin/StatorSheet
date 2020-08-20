@@ -7,6 +7,9 @@ StatorSheet is an auxiliary application to Creo Parametric 5 that generates stat
 ## Graphical interface
 The application has its own graphical interface, in which the necessary documents from Windchill are selected, as well as the type of segment.
 
-![Text](https://media.giphy.com/media/h1tu2nhdQRIABDMQ2R/giphy.gif)
-hello
-<img src="https://media.giphy.com/media/h1tu2nhdQRIABDMQ2R/giphy.gif" width="80%"></p>
+![](gif/GUI.gif)
+
+## Generating segments
+After entering the data, the normal and ventilation stator segments are automatically created. Also, information is filled in for them in the template drawings.
+
+![](gif/main_part.gif)
