@@ -6,5 +6,6 @@ StatorSheet is an auxiliary application to Creo Parametric 5 that generates stat
 
 ## Graphical interface
 The application has its own graphical interface, in which the necessary documents from Windchill are selected, as well as the type of segment.
-![](gif/GUI.gif)
+
+![](https://media.giphy.com/media/h1tu2nhdQRIABDMQ2R/giphy.gif)
 
