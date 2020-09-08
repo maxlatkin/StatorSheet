@@ -12,7 +12,7 @@ import com.ptc.pfc.pfcUI.MessageDialogType;
 import com.ptc.pfc.pfcUI.pfcUI;
 
 import ru.ruselprom.data.DataStore;
-import ru.ruselprom.exceptions.InputCheckException;
+import ru.ruselprom.exceptions.InvalidInputException;
 
 public class SlotAndSegmQtyWithScrewType implements Checkable {
 
@@ -46,7 +46,7 @@ public class SlotAndSegmQtyWithScrewType implements Checkable {
 		if (!isRemainderZero()) {
 			session.UIShowMessageDialog("Ошибка: на сегмент приходится нецелое число пазов"
 					+ "\nОбратитесь к расчётчику.", dialogOptions);
-			throw new InputCheckException("Remainder of slotQty/segmQty is not zero");
+			throw new InvalidInputException("Remainder of slotQty/segmQty is not zero");
 		}
 	}
 	
@@ -58,7 +58,7 @@ public class SlotAndSegmQtyWithScrewType implements Checkable {
 		if (segmQty == 1 && typeOfScrew != 5 && typeOfScrew != 6) {
 			session.UIShowMessageDialog("Ошибка: данный тип крепежа не существует для цельного листа."
 					+ "\nВыберите другой тип крепежа или обратитесь к расчётчику.", dialogOptions);
-			throw new InputCheckException("This type of screw does not exist for a whole sheet");
+			throw new InvalidInputException("This type of screw does not exist for a whole sheet");
 		}
 	}	
 	
@@ -80,13 +80,13 @@ public class SlotAndSegmQtyWithScrewType implements Checkable {
 			session.UIShowMessageDialog("Ошибка: крепеж с открытыми пазами под шпильки укладывают с перекрытием 1/3."
 					+ "\nПри текущем числе пазов и сегментов необходимо укладывать с перекрытием 1/2."
 					+ "\nВыберите другой тип крепежа или обратитесь к расчётчику.", dialogOptions);
-			throw new InputCheckException("screw03and04 with overlap 1/2");
+			throw new InvalidInputException("screw03and04 with overlap 1/2");
 		} else if ((typeOfScrew == 5 || typeOfScrew == 6 || typeOfScrew == 7) && screwQty % 2 != 0) {
 			session.UIShowMessageDialog("Ошибка: данный тип крепежа при нечетном числе на сегмент "
 					+ "укладывают с перекрытием 1/3."
 					+ "\nПри текущем числе пазов и сегментов необходимо укладывать с перекрытием 1/2."
 					+ "\nВыберите другой тип крепежа или обратитесь к расчётчику.", dialogOptions);
-			throw new InputCheckException("screw050607 with odd screwQty with overlap 1/2");
+			throw new InvalidInputException("screw050607 with odd screwQty with overlap 1/2");
 		}
 	}
 	
@@ -96,13 +96,13 @@ public class SlotAndSegmQtyWithScrewType implements Checkable {
 			session.UIShowMessageDialog("Ошибка: данный тип крепежа укладывают с перекрытием 1/2."
 					+ "\nПри текущем числе пазов и сегментов необходимо укладывать с перекрытием 1/3."
 					+ "\nВыберите другой тип крепежа или обратитесь к расчётчику.", dialogOptions);
-			throw new InputCheckException("screw010203 with overlap 1/3");
+			throw new InvalidInputException("screw010203 with overlap 1/3");
 		} else if ((typeOfScrew == 5 || typeOfScrew == 6 || typeOfScrew == 7) && screwQty % 2 == 0) {
 			session.UIShowMessageDialog("Ошибка: данный тип крепежа при четном числе на сегмент "
 					+ "укладывают с перекрытием 1/2."
 					+ "\nПри текущем числе пазов и сегментов необходимо укладывать с перекрытием 1/3."
 					+ "\nВыберите другой тип крепежа или обратитесь к расчётчику.", dialogOptions);
-			throw new InputCheckException("screw050607 with even screwQty with overlap 1/3");
+			throw new InvalidInputException("screw050607 with even screwQty with overlap 1/3");
 		}
 	}
 }

@@ -12,7 +12,7 @@ import com.ptc.pfc.pfcUI.MessageDialogType;
 import com.ptc.pfc.pfcUI.pfcUI;
 
 import ru.ruselprom.data.DataStore;
-import ru.ruselprom.exceptions.InputCheckException;
+import ru.ruselprom.exceptions.InvalidInputException;
 
 public class SlotStepAndQty implements Checkable {
 	
@@ -28,7 +28,7 @@ public class SlotStepAndQty implements Checkable {
 				dialogOptions.SetMessageDialogType(MessageDialogType.MESSAGE_ERROR);
 				session.UIShowMessageDialog("Ошибка: шаг обмотки по пазам больше числа пазов!"
 						+ "\nОбратитесь к расчётчику.", dialogOptions);
-				throw new InputCheckException("slotStep > slotQty");
+				throw new InvalidInputException("slotStep > slotQty");
 			}
 		} catch (NullPointerException | jxthrowable e) {
 			LOG.error(e.toString());

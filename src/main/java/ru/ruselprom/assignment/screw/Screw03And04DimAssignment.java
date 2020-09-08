@@ -11,6 +11,7 @@ import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.ruselprom.assignment.DimAssignment;
 import ru.ruselprom.data.DataStore;
+import ru.ruselprom.exceptions.InvalidInputException;
 import ru.ruselprom.general.ModelFeat;
 
 public class Screw03And04DimAssignment extends DimAssignment {
@@ -26,10 +27,11 @@ public class Screw03And04DimAssignment extends DimAssignment {
 	@Override
 	public void assign() {
 		try {
-			if (DataStore.getScrewQty() == 2) {
+			int screwQty = DataStore.getScrewQty();
+			if (screwQty == 2) {
 				setArrayOfDimValue(ModelFeat.SCREW_03_HOLE_2, getCommonScrew03IndexAndValue());
 				setDimValue(ModelFeat.SCREW_03_HOLE_2, 5, screwShift);
-			} else if (DataStore.getScrewQty() == 4) {
+			} else if (screwQty == 4) {
 				setArrayOfDimValue(ModelFeat.SCREW_03_HOLE_4, getCommonScrew03IndexAndValue());
 				setDimValue(ModelFeat.SCREW_03_HOLE_4, 5, screwShift);
 				if (DataStore.isScrew04Exist()) {
@@ -39,12 +41,14 @@ public class Screw03And04DimAssignment extends DimAssignment {
 					setDimValue(ModelFeat.SCREW_03_HOLE_4, 10, screwShift - 
 							(2 * screwShift - (360.0 / DataStore.getSegmQty()) / 2));
 				}
+			} else {
+				throw new InvalidInputException("Wrong screw quantity:" + screwQty);
 			}
 			
 			if (DataStore.isScrew04Exist()) {
 				setArrayOfDimValue(ModelFeat.SCREW_04_HOLE, getScrew04IndexAndValue());
-				if(DataStore.isScrew04Exist() && DataStore.getScrewQty() == 4) {
-					setDimValue(ModelFeat.SCREW_04_HOLE, 4, 360.0 / (DataStore.getSegmQty() * (DataStore.getScrewQty() + 2)) * 0.5);
+				if(DataStore.isScrew04Exist() && screwQty == 4) {
+					setDimValue(ModelFeat.SCREW_04_HOLE, 4, 360.0 / (DataStore.getSegmQty() * (screwQty + 2)) * 0.5);
 				}
 			}
 			setDimValue(ModelFeat.MARK, 2, DataStore.getMarkShift());

@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ru.ruselprom.data.DataStore;
-import ru.ruselprom.exceptions.InputCheckException;
+import ru.ruselprom.exceptions.InvalidInputException;
 import ru.ruselprom.wnc.documents.DocTypes;
 import ru.ruselprom.wnc.documents.DocVars;
 
@@ -82,7 +82,7 @@ public class StoVars extends DocVars {
 	private double[] getArray(int index) {
 		double[] list = parseAndSortStringArray(columns.get(index).text().split(";"));
 		if (studHoleDiams.length != list.length) {
-			throw new InputCheckException("studDiams.length != list.length");
+			throw new InvalidInputException("studDiams.length != list.length");
 		}
 		return list;
 	}

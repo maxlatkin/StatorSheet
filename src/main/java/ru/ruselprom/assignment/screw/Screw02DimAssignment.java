@@ -11,6 +11,7 @@ import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.ruselprom.assignment.DimAssignment;
 import ru.ruselprom.data.DataStore;
+import ru.ruselprom.exceptions.InvalidInputException;
 import ru.ruselprom.general.ModelFeat;
 
 public class Screw02DimAssignment extends DimAssignment {
@@ -26,12 +27,15 @@ public class Screw02DimAssignment extends DimAssignment {
 	@Override
 	public void assign() {
 		try {
-			if (DataStore.getScrewQty() == 2) {
+			int screwQty = DataStore.getScrewQty();
+			if (screwQty == 2) {
 				setArrayOfDimValue(ModelFeat.SCREW_02_SOLID_2, getScrewSolid02IndexAndValue());
 				setArrayOfDimValue(ModelFeat.SCREW_02_HOLE_2, getScrewHole02IndexAndValue());
-			} else if (DataStore.getScrewQty() == 4) {
+			} else if (screwQty == 4) {
 				setArrayOfDimValue(ModelFeat.SCREW_02_SOLID_4, getScrewSolid04IndexAndValue());
 				setArrayOfDimValue(ModelFeat.SCREW_02_HOLE_4, getScrewHole04IndexAndValue());
+			} else {
+				throw new InvalidInputException("Wrong screw quantity:" + screwQty);
 			}
 			setDimValue(ModelFeat.MARK, 2, DataStore.getMarkShift());
 			LOG.info("Dimensions for the Screw02 assigned");

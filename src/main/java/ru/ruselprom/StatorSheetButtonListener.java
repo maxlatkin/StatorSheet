@@ -8,7 +8,7 @@ import com.ptc.pfc.pfcCommand.DefaultUICommandActionListener;
 
 import ru.ruselprom.data.DataOperations;
 import ru.ruselprom.data.DataStore;
-import ru.ruselprom.exceptions.InputCheckException;
+import ru.ruselprom.exceptions.InvalidInputException;
 import ru.ruselprom.general.General;
 import ru.ruselprom.general.SheetType;
 import ru.ruselprom.ui.UiCancelListener;
@@ -41,7 +41,7 @@ public class StatorSheetButtonListener extends DefaultUICommandActionListener {
 				General.execute(SheetType.getCurrSheetType());
 			}
 			LOG.info("The StatorSheet application completed.\n");
-		} catch (InputCheckException e) {
+		} catch (InvalidInputException e) {
 			LOG.error("Input error", e);
 		} catch (Exception e) {
 			LOG.error("Error in button listener", e);

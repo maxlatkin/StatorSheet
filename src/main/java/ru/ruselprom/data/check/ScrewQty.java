@@ -12,7 +12,7 @@ import com.ptc.pfc.pfcUI.MessageDialogType;
 import com.ptc.pfc.pfcUI.pfcUI;
 
 import ru.ruselprom.data.DataStore;
-import ru.ruselprom.exceptions.InputCheckException;
+import ru.ruselprom.exceptions.InvalidInputException;
 
 public class ScrewQty implements Checkable {
 	
@@ -33,12 +33,12 @@ public class ScrewQty implements Checkable {
 			if (!isRemainderZero()) {
 				session.UIShowMessageDialog("Ошибка: на сегмент приходится нецелое число крепежей"
 						+ "\nОбратитесь к расчётчику.", dialogOptions);
-				throw new InputCheckException("Remainder of screwQty/segmQty is not zero");
+				throw new InvalidInputException("Remainder of screwQty/segmQty is not zero");
 			}
 			if ((screwQty != 2 && screwQty != 4) && (typeOfScrew == 1 || typeOfScrew == 2 || (typeOfScrew == 3 && !isScrew04Exist))) {
 				session.UIShowMessageDialog("Ошибка: неправильное число крепежей на сегмент для данного типа!"
 						+ "\nВыберите другой тип крепежа или обратитесь к расчётчику.", dialogOptions);
-				throw new InputCheckException("Wrong screwQty for this screw type");
+				throw new InvalidInputException("Wrong screwQty for this screw type");
 			}			
 		} catch (jxthrowable e) {
 			LOG.error("Error checking ScrewQty", e);
