@@ -75,7 +75,6 @@ public final class DataStore {
 	}
 
 	public static int getTotalSecondScrewQty() {
-		totalSecondScrewQty = 8;
 		return totalSecondScrewQty;
 	}
 
@@ -402,6 +401,10 @@ public final class DataStore {
 
 	public static void setSlotWedgeWdth(double slotWedgeWdth) {
 		DataStore.slotWedgeWdth = slotWedgeWdth;
+	}
+	
+	public static void setTotalSecondScrewQty(int totalSecondScrewQty) {
+		DataStore.totalSecondScrewQty = totalSecondScrewQty;
 	}
 
 	private DataStore() {
