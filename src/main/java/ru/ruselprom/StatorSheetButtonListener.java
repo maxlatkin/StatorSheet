@@ -27,7 +27,6 @@ public class StatorSheetButtonListener extends DefaultUICommandActionListener {
 				return;
 			}
 			
-			
 			DataOperations.assignVarsToDataStore();
 			DataOperations.checkVars();
 			DataOperations.calculateCommonVars();
@@ -43,8 +42,10 @@ public class StatorSheetButtonListener extends DefaultUICommandActionListener {
 			LOG.info("The StatorSheet application completed.\n");
 		} catch (InvalidInputException e) {
 			LOG.error("Input error", e);
+		} catch (IllegalArgumentException e) {
+			LOG.error("Illegal argument", e);
 		} catch (Exception e) {
-			LOG.error("Error in button listener", e);
+			LOG.error("Error in app", e);
 		}
 	}
 }

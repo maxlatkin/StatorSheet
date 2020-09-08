@@ -7,6 +7,8 @@ import static ru.ruselprom.data.DataStore.isScrew04Exist;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ru.ruselprom.exceptions.InvalidInputException;
+
 public class ScrewShift implements Calculable {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ScrewShift.class);
@@ -24,14 +26,9 @@ public class ScrewShift implements Calculable {
 	
 	@Override
 	public double calculate() {
-		try {
-			double screwShift = getScrewShiftByType(typeOfScrew);
-			LOG.info("ScrewShift was calculated: {}", screwShift);
-			return screwShift;
-		} catch (IllegalArgumentException e) {
-			LOG.error("Error calculating screwShift", e);
-			return 0;
-		}
+		double screwShift = getScrewShiftByType(typeOfScrew);
+		LOG.info("ScrewShift was calculated: {}", screwShift);
+		return screwShift;
 	}
 	
 	private double getScrewShiftByType(int typeOfScrew) {
@@ -51,27 +48,29 @@ public class ScrewShift implements Calculable {
 		default:
 			break;	
 		}
-		throw new IllegalArgumentException("Unknown type of Screw");
+		throw new IllegalArgumentException("Unknown type of screw:" + typeOfScrew);
 	}
  
 	private double getShiftForScrew0102() {
-		if (getScrewQty() == 2) {
+		int screwQty = getScrewQty();
+		if (screwQty == 2) {
             return 360.0 / getSegmQty() / 4;
-        } else if (getScrewQty() == 4) {
-            return  360.0 / (getSegmQty() * getScrewQty()) * 1.5;
+        } else if (screwQty == 4) {
+            return  360.0 / (getSegmQty() * screwQty) * 1.5;
         }
-        throw new IllegalArgumentException("Wrong number of screw");
+        throw new InvalidInputException("Wrong number of screw:" + screwQty);
 	}
 	
 	private double getShiftForScrew03() {
-		if (getScrewQty() == 2) {
+		int screwQty = getScrewQty();
+		if (screwQty == 2) {
             if (isScrew04Exist()) return 360.0 / getSegmQty() / 3;
             else return 360.0 / getSegmQty() / 4;
-        } else if (getScrewQty() == 4) {
-            if (isScrew04Exist()) return 360.0 / (getSegmQty() * (getScrewQty() + 2)) * 2.5;
-            else return 360.0 / (getSegmQty() * getScrewQty()) * 1.5;
+        } else if (screwQty == 4) {
+            if (isScrew04Exist()) return 360.0 / (getSegmQty() * (screwQty + 2)) * 2.5;
+            else return 360.0 / (getSegmQty() * screwQty) * 1.5;
         }
-        throw new IllegalArgumentException("Wrong number of screw");
+        throw new InvalidInputException("Wrong number of screw:" + screwQty);
 	}
 	
 	private double getShiftForScrew050607() {
