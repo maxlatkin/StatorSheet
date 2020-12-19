@@ -16,7 +16,7 @@ import ru.ruselprom.data.DataStore;
 import ru.ruselprom.general.ModelFeat;
 import ru.ruselprom.general.SheetType;
 import ru.ruselprom.parameters.ModelParamNames;
-import ru.ruselprom.parameters.Parameters;
+import ru.ruselprom.lib.parameters.Parameters;
 import ru.ruselprom.wnc.documents.Documents;
 
 public class AuxiliaryParams implements ParamsSetting {

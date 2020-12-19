@@ -13,7 +13,7 @@ import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.ruselprom.data.DataStore;
-import ru.ruselprom.fet.operations.FetOperations;
+import ru.ruselprom.lib.fet.operations.FetOperations;
 
 public enum ModelFeat {
 	X,

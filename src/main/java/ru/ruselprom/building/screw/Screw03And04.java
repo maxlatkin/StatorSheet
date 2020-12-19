@@ -6,11 +6,11 @@ import org.slf4j.LoggerFactory;
 import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcSolid.Solid;
 
-import ru.ruselprom.base.Direction;
+import ru.ruselprom.lib.base.Direction;
 import ru.ruselprom.data.DataStore;
-import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
-import ru.ruselprom.fet.patterns.RotatPattern360;
-import ru.ruselprom.fet.patterns.TwoRotatPattern;
+import ru.ruselprom.lib.fet.extrusions.cut.ExtrusionCut;
+import ru.ruselprom.lib.fet.patterns.RotatPattern360;
+import ru.ruselprom.lib.fet.patterns.TwoRotatPattern;
 import ru.ruselprom.general.ModelFeat;
 
 public class Screw03And04 extends Screw {

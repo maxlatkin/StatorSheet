@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcSolid.Solid;
 
-import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
+import ru.ruselprom.lib.fet.extrusions.cut.ExtrusionCut;
 import ru.ruselprom.general.ModelFeat;
 
 public class TransformAndMark implements Buildable {

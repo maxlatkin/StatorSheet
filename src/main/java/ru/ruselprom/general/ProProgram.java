@@ -25,7 +25,7 @@ import com.ptc.pfc.pfcSession.Session;
 import com.ptc.pfc.pfcSession.pfcSession;
 import com.ptc.pfc.pfcSolid.Solid;
 
-import ru.ruselprom.base.Regeneration;
+import ru.ruselprom.lib.base.CreoUtils;
 import ru.ruselprom.data.DataStore;
 
 public class ProProgram {
@@ -54,7 +54,7 @@ public class ProProgram {
 			exportToFile(currSolid);
 			overwriteFile();
 			importFile(currSolid);
-			Regeneration.regenerateSolid(currSolid);
+			CreoUtils.regenerateSolid(currSolid);
 			Files.delete(Paths.get(fileName));
 			LOG.info("Conditions added to the ProProgram file");
 		} catch (NullPointerException | IOException | jxthrowable e) {

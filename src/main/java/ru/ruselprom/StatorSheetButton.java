@@ -25,12 +25,15 @@ public class StatorSheetButton {
 	}
 
 
+	public static Session session;
+	
     public static void start() {
     	try {
 			setLogbackFile();
 			LOG.info("The StatorSheet application has begun its work.");
 			
-			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);			 
+			session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);			 
+
 			UICommand uiCommand = session.UICreateCommand("StatorSheet", new StatorSheetButtonListener());		
 			uiCommand.SetIcon("statorsheet_16x16.png");
 			uiCommand.Designate(MSG_FILE, "StatorSheet.label", "Stator sheet creation.", null);

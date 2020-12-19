@@ -5,7 +5,7 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.toRadians;
-import static ru.ruselprom.parameters.Parameters.setDoubleParamValue;
+import static ru.ruselprom.lib.parameters.Parameters.setDoubleParamValue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

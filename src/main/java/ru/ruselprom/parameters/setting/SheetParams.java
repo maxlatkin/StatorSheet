@@ -9,7 +9,7 @@ import com.ptc.pfc.pfcModel.Model;
 import ru.ruselprom.data.DataStore;
 import ru.ruselprom.general.SheetType;
 import ru.ruselprom.parameters.ModelParamNames;
-import ru.ruselprom.parameters.Parameters;
+import ru.ruselprom.lib.parameters.Parameters;
 
 public class SheetParams implements ParamsSetting {
 	

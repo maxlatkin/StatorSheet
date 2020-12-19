@@ -8,7 +8,7 @@ import com.ptc.pfc.pfcModel.Model;
 
 import ru.ruselprom.data.DataStore;
 import ru.ruselprom.parameters.ModelParamNames;
-import ru.ruselprom.parameters.Parameters;
+import ru.ruselprom.lib.parameters.Parameters;
 import ru.ruselprom.parameters.setting.ParamsSetting;
 
 public class Screw07Params implements ParamsSetting {

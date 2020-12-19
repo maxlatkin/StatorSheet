@@ -7,9 +7,9 @@ import com.ptc.cipjava.jxthrowable;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.ruselprom.data.DataStore;
-import ru.ruselprom.fet.operations.FetOperations;
-import ru.ruselprom.fet.round.RadiusAndEdgeIndices;
-import ru.ruselprom.fet.round.Round;
+import ru.ruselprom.lib.fet.operations.FetOperations;
+import ru.ruselprom.lib.fet.round.RadiusAndEdgeIndices;
+import ru.ruselprom.lib.fet.round.Round;
 import ru.ruselprom.general.ModelFeat;
 
 public class VentSheet extends Sheet {

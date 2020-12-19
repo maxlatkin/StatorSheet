@@ -21,7 +21,7 @@ import com.ptc.pfc.pfcUI.pfcUI;
 import ru.ruselprom.data.DataStore;
 import ru.ruselprom.exceptions.RetrieveModelException;
 import ru.ruselprom.general.AppProperties;
-import ru.ruselprom.parameters.Parameters;
+import ru.ruselprom.lib.parameters.Parameters;
 
 public class Models {
 	

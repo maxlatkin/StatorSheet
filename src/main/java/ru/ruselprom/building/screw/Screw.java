@@ -5,13 +5,13 @@ import com.ptc.pfc.pfcModelItem.ModelItemType;
 import com.ptc.pfc.pfcModelItem.ModelItems;
 import com.ptc.pfc.pfcSolid.Solid;
 
-import ru.ruselprom.base.Direction;
+import ru.ruselprom.lib.base.Direction;
 import ru.ruselprom.building.Buildable;
 import ru.ruselprom.data.DataStore;
-import ru.ruselprom.fet.extrusions.add.ExtrusionAddRef;
-import ru.ruselprom.fet.extrusions.cut.ExtrusionCut;
-import ru.ruselprom.fet.patterns.RotatPattern360;
-import ru.ruselprom.fet.patterns.TwoRotatPattern;
+import ru.ruselprom.lib.fet.extrusions.add.ExtrusionAddRef;
+import ru.ruselprom.lib.fet.extrusions.cut.ExtrusionCut;
+import ru.ruselprom.lib.fet.patterns.RotatPattern360;
+import ru.ruselprom.lib.fet.patterns.TwoRotatPattern;
 import ru.ruselprom.general.ModelFeat;
 
 public abstract class Screw implements Buildable {

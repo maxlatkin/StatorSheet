@@ -1,6 +1,6 @@
 package ru.ruselprom.parameters.setting;
 
-import static ru.ruselprom.parameters.Parameters.setDoubleParamValue;
+import static ru.ruselprom.lib.parameters.Parameters.setDoubleParamValue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

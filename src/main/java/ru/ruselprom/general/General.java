@@ -34,7 +34,7 @@ public class General {
 		try {
 			Session session = pfcSession.GetCurrentSessionWithCompatibility(CreoCompatibility.C4Compatible);
 			LOG.info("Session received in {}", General.class);
-			
+						
 			Models.getInstance().retrieveToSessionWithRenameAndRenumber();
 			Solid currSolid = (Solid) Models.getInstance().getPartFromSession();
 			Model currDrw =  Models.getInstance().getDrwFromSession();
