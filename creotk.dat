@@ -1,6 +1,6 @@
 name				StatorSheet
 startup				otk_java
-java_app_classpath 	$COMMON_PRO\otk\Maven\StatorSheet\target\StatorSheet-Maven.jar
+java_app_classpath 	$COMMON_PRO\otk\Maven\StatorSheet\target\StatorSheet-1.0-jar-with-dependencies.jar
 java_app_class  	ru.ruselprom.StatorSheetButton
 java_app_start  	start
 java_app_stop   	stop

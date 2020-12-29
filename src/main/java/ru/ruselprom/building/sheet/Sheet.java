@@ -4,9 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ptc.cipjava.jxthrowable;
-import com.ptc.pfc.pfcSession.CreoCompatibility;
-import com.ptc.pfc.pfcSession.Session;
-import com.ptc.pfc.pfcSession.pfcSession;
 import com.ptc.pfc.pfcSolid.Solid;
 
 import ru.ruselprom.lib.base.Direction;
@@ -30,7 +27,7 @@ public abstract class Sheet implements Buildable {
 	protected void buildSheetBody() {
 		try {
 			ExtrusionAddSym sheet = new ExtrusionAddSym();
-			sheet.build( DataStore.getSheetThck(), ModelFeat.EXT_SHEET.name(), ModelFeat.SHEET.name(), currSolid);
+			sheet.build(DataStore.getSheetThck(), ModelFeat.EXT_SHEET.name(), ModelFeat.SHEET.name(), currSolid);
 		} catch (jxthrowable e) {
 			LOG.error("Error building sheet body");
 		}
